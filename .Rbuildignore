@@ -1,2 +1,8 @@
-^zootraits\.Rproj$
+^.*\.Rproj$
 ^\.Rproj\.user$
+^data-raw$
+dev_history.R
+^dev$
+$run_dev.*
+^README\.Rmd$
+^CODE_OF_CONDUCT\.md$
