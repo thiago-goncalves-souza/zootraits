@@ -5,8 +5,7 @@ Authors@R:
     person("Beatriz", "Milz", , "milz.bea@gmail.com", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0002-3064-4486"))
 Description: What the package does (one paragraph).
-License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
-    license
+License: CC BY 4.0
 URL: https://github.com/beatrizmilz/zootraits
 BugReports: https://github.com/beatrizmilz/zootraits/issues
 Imports: 
