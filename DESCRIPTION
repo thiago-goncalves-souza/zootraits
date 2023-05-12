@@ -9,7 +9,9 @@ License: CC BY 4.0
 URL: https://github.com/beatrizmilz/zootraits
 BugReports: https://github.com/beatrizmilz/zootraits/issues
 Imports: 
+    bs4Dash,
     config,
+    fresh,
     golem,
     pkgload,
     shiny
