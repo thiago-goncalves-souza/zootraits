@@ -12,6 +12,7 @@ BugReports: https://github.com/beatrizmilz/zootraits/issues
 Imports: 
     config,
     golem,
+    pkgload,
     shiny
 Suggests: 
     spelling,
