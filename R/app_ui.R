@@ -8,9 +8,47 @@ app_ui <- function(request) {
   tagList(
     # Leave this function for adding external resources
     golem_add_external_resources(),
-    # Your application UI logic
-    fluidPage(
-      h1("zootraits")
+    bs4Dash::dashboardPage(
+
+      # ---
+      header = bs4Dash::dashboardHeader(
+       title = "ZooTraits",
+       fixed = FALSE
+      ),
+
+      # ----
+      sidebar = bs4Dash::dashboardSidebar(
+        skin = "light",
+        title = "ZooTraits",
+        bs4Dash::bs4SidebarMenu(
+          bs4Dash::bs4SidebarMenuItem(
+            text = "About",
+            tabName = "about",
+            icon = icon("book-open")
+          )
+        )
+      ),
+
+      # ----
+      body = bs4Dash::dashboardBody(
+        fresh::use_theme(create_theme_css()),
+        bs4Dash::bs4TabItems(
+          bs4Dash::bs4TabItem(
+            tabName = "about",
+            mod_about_ui("about_1")
+          )
+        )
+      ),
+
+      # ----
+      footer = bs4Dash::dashboardFooter(
+        left = shiny::HTML(
+          ".."
+        ),
+        right = shiny::HTML(
+          ".."
+        )
+      )
     )
   )
 }
