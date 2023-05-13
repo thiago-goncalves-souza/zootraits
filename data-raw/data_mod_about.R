@@ -1,5 +1,5 @@
-## code to prepare `authors_list` dataset goes here
 
+# AUTHORS ----------
 authors_raw <- readr::read_csv("data-raw/authors-raw.csv")
 
 institutions_raw <- readr::read_csv2("data-raw/institutions-raw.csv") |>
@@ -10,3 +10,9 @@ authors_list <- authors_raw |>
   dplyr::left_join(institutions_raw)
 
 usethis::use_data(authors_list, overwrite = TRUE)
+
+
+# INSTITUTIONS ------
+institutions <- readr::read_csv2("data-raw/institutions-raw.csv")
+
+usethis::use_data(institutions, overwrite = TRUE)

@@ -29,9 +29,7 @@ mod_about_ui <- function(id){
         title = "Supporting institutions",
         collapsible = FALSE,
         width = 12,
-        shiny::tags$p(
-          "TO DO."
-        )
+        shiny::htmlOutput(ns("logos_institutions"))
       )
     )
   )
@@ -59,6 +57,15 @@ mod_about_server <- function(id){
                              ))
     })
 
+  output$logos_institutions <- shiny::renderUI({
+    img_institutions <- institutions |>
+      tidyr::drop_na(img) |>
+      dplyr::mutate(img_html = glue::glue("<a href='{url}' target='_blank'><img src='www/logos/{img}' style='max-width: 50%;'></a>")) |>
+      dplyr::pull(img_html) |>
+      paste0(collapse = " <br> ")
+
+    HTML(paste0("<center>", img_institutions, "</center>"))
+  })
 
   })
 }

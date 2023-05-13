@@ -1,7 +1,7 @@
-institutions_id;desc
-1; Institute for Global Change Biology, School for Environment and Sustainability, University of Michigan, Ann Arbor, Michigan
+institutions_id;desc;img;url
+1; Institute for Global Change Biology, School for Environment and Sustainability, University of Michigan, Ann Arbor, Michigan;global-change-biology-logo.png;https://seas.umich.edu/globalchangebiology
 2; Department of Ecology and Evolutionary Biology, University of Michigan, Ann Arbor, Michigan
-3; Ecological Synthesis and Biodiversity Conservation Lab, Department of Biology, Federal Rural University of Pernambuco, Recife, Brazil
+3; Ecological Synthesis and Biodiversity Conservation Lab, Department of Biology, Federal Rural University of Pernambuco, Recife, Brazil;Federal_Rural_University_of_Pernambuco.jpg;https://www.ufrpe.br/
 4; Escola de Educação e Humanidades, Universidade Católica de Pernambuco, Rua do Príncipe, n. 526, Boa Vista, Recife, Pernambuco, Brasil
 5; Museu de Arqueologia e Ciências Naturais da Universidade Católica de Pernambuco, Rua Oliveira Lima, 824, Boa Vista, Recife, Pernambuco, Brasil
 6; Graduate Program in Ethnobiology and Nature Conservation, Department of Biology, Federal Rural University of Pernambuco, Recife, Brazil
