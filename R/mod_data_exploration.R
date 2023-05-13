@@ -72,6 +72,12 @@ mod_data_exploration_ui <- function(id){
           label =  "Trait dimension",
           choices = options_input(review_data$trait_dimension),
           selected = options_input(review_data$trait_dimension)
+        ),
+        picker_input(
+          inputId = ns("intraspecific_data"),
+          label =  "Intraspecific data",
+          choices = options_input(review_data$intraspecific_data),
+          selected = options_input(review_data$intraspecific_data)
         )
       )
       ),
@@ -98,16 +104,23 @@ mod_data_exploration_server <- function(id){
       req(input$taxonomic_group)
       req(input$taxonomic_unit)
       req(input$ecosystem)
+      req(input$study_scale)
+      req(input$trait_type)
+      req(input$trait_dimension)
 
       review_data |>
-      dplyr::filter(taxon_span %in% input$taxonomic_level,
-                    taxon %in% input$taxonomic_group,
-                    taxunit %in% input$taxonomic_unit) |>
-        dplyr::filter(ecosystem %in% prepare_input_to_filter(input$ecosystem),
-                      study_scale %in% prepare_input_to_filter(input$study_scale),
-                      trait_type %in% prepare_input_to_filter(input$trait_type),
-                      trait_dimension %in% prepare_input_to_filter(input$trait_dimension))
-
+        dplyr::filter(
+          taxon_span %in% input$taxonomic_level,
+          taxon %in% input$taxonomic_group,
+          taxunit %in% input$taxonomic_unit
+        ) |>
+        dplyr::filter(
+          ecosystem %in% prepare_input_to_filter(input$ecosystem),
+          study_scale %in% prepare_input_to_filter(input$study_scale),
+          trait_type %in% prepare_input_to_filter(input$trait_type),
+          trait_dimension %in% prepare_input_to_filter(input$trait_dimension),
+          intraspecific_data %in% prepare_input_to_filter(input$intraspecific_data)
+        )
 
     })
 
