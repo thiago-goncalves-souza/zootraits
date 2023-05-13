@@ -10,7 +10,7 @@ experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](h
 [![R-CMD-check](https://github.com/beatrizmilz/zootraits/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/beatrizmilz/zootraits/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
-The goal of zootraits is to … **TO DO**
+<p>ZooTraits is an R Shiny App for exploring animal trait data for Ecological and Evolutionary Research.</p>
 
 ## Code of Conduct
 
