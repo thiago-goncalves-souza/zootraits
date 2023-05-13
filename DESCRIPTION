@@ -15,9 +15,11 @@ Imports:
     fresh,
     glue,
     golem,
+    knitr,
     pkgload,
     reactable,
     shiny,
+    shinyWidgets,
     tidyr
 Suggests: 
     readr,

@@ -23,6 +23,11 @@ app_ui <- function(request) {
         title = "ZooTraits",
         bs4Dash::bs4SidebarMenu(
           bs4Dash::bs4SidebarMenuItem(
+            text = "Data Exploration",
+            tabName = "data_exploration",
+            icon = icon("magnifying-glass")
+          ),
+          bs4Dash::bs4SidebarMenuItem(
             text = "About",
             tabName = "about",
             icon = icon("book-open")
@@ -35,11 +40,15 @@ app_ui <- function(request) {
         fresh::use_theme(create_theme_css()),
         bs4Dash::bs4TabItems(
           bs4Dash::bs4TabItem(
+            tabName = "data_exploration",
+            mod_data_exploration_ui("data_exploration_1")
+          ),
+          bs4Dash::bs4TabItem(
             tabName = "about",
             mod_about_ui("about_1")
           )
         )
-      ),
+        ),
 
       # ----
       footer = bs4Dash::dashboardFooter(
