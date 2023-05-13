@@ -60,21 +60,22 @@ mod_data_exploration_ui <- function(id){
               `actions-box` = TRUE),
             multiple = TRUE
           )
-         ),
-
-         # fluidRow(
-         #   shinyWidgets::pickerInput(
-         #     inputId = ns("ecosystem"),
-         #     label =  "Ecosystem",
-         #     choices = c("Freshwater", "Marine", "Terrestrial"),
-         #     selected =  c("Freshwater", "Marine", "Terrestrial"),
-         #     options = list(
-         #       `actions-box` = TRUE),
-         #     multiple = TRUE
-         #   )
-         # ),
-        )
-      ),
+         )
+        ),
+         fluidRow(
+           column(width = 4,
+           shinyWidgets::pickerInput(
+             inputId = ns("ecosystem"),
+             label =  "Ecosystem",
+             choices = c("Freshwater", "Marine", "Terrestrial"),
+             selected =  c("Freshwater", "Marine", "Terrestrial"),
+             options = list(
+               `actions-box` = TRUE),
+             multiple = TRUE
+           )
+          )
+         )
+        ),
       bs4Dash::box(
         title = "Dataset",
         collapsible = TRUE,
@@ -97,31 +98,33 @@ mod_data_exploration_server <- function(id){
       req(input$taxonomic_level)
       req(input$taxonomic_group)
       req(input$taxonomic_unit)
-      # req(input$ecosystem)
-
-
-     #  browser()
-
-      # filter_ecosystem_freshwater <- dplyr::if_else("Freshwater" %in% input$ecosystem, 1, 0)
+      req(input$ecosystem)
 
       review_data |>
       dplyr::filter(taxon_span %in% input$taxonomic_level,
                     taxon %in% input$taxonomic_group,
-                    taxunit %in% input$taxonomic_unit)
+                    taxunit %in% input$taxonomic_unit) |>
+        tidyr::pivot_longer(cols = c("freshwater", "marine", "terrestrial"),
+                            names_to =  "ecosystem", values_to = "ecosystem_value") |>
+        dplyr::filter(ecosystem_value == 1) |>
+        dplyr::filter(ecosystem %in% stringr::str_to_lower(input$ecosystem)) |>
+        dplyr::select(-ecosystem_value)
 
     })
 
     output$table <- reactable::renderReactable({
       review_dataset() |>
         dplyr::select(year, reference, doi_html, where) |>
+        dplyr::mutate(details = '<center><i class="fa-solid fa-magnifying-glass-plus"></i></center>') |>
         dplyr::arrange(desc(year)) |>
         reactable::reactable(sortable = TRUE,
                              columns =
                                list(
                                  year = reactable::colDef(name = "Year", maxWidth = 50),
-                                 reference =  reactable::colDef(name = "Reference"),
+                                 reference =  reactable::colDef(name = "Reference", minWidth = 200),
                                  doi_html = reactable::colDef(name = "DOI", html = TRUE),
-                                 where = reactable::colDef(name = "Where", html = TRUE)
+                                 where = reactable::colDef(name = "Where", html = TRUE),
+                                 details = reactable::colDef(name = "See more", html = TRUE, maxWidth = 100)
                                ))
     })
 
