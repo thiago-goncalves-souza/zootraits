@@ -17,10 +17,12 @@ review_data <- review_data_raw |>
                       names_to =  "study_scale", values_to = "study_scale_value") |>
   dplyr::filter(study_scale_value == 1) |>
   dplyr::select(-study_scale_value) |>
+  dplyr::mutate(study_scale = forcats::fct_relevel(study_scale, c("local", "regional", "global"))) |>
   tidyr::pivot_longer(cols = c("conclusion_ok", "conclusion_wrong"),
                       names_to =  "conclusion", values_to = "conclusion_value") |>
   dplyr::filter(conclusion_value == 1) |>
   dplyr::select(-conclusion_value)
+
 
 
 # Use data --------

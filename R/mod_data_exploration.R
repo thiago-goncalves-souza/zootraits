@@ -73,6 +73,17 @@ mod_data_exploration_ui <- function(id){
                `actions-box` = TRUE),
              multiple = TRUE
            )
+          ),
+          column(width = 4,
+                 shinyWidgets::pickerInput(
+                   inputId = ns("study_scale"),
+                   label =  "Study Scale",
+                   choices = stringr::str_to_title(as.character(sort(unique(review_data$study_scale)))),
+                   selected =  stringr::str_to_title(as.character(sort(unique(review_data$study_scale)))),
+                   options = list(
+                     `actions-box` = TRUE),
+                   multiple = TRUE
+                 )
           )
          )
         ),
@@ -104,7 +115,8 @@ mod_data_exploration_server <- function(id){
       dplyr::filter(taxon_span %in% input$taxonomic_level,
                     taxon %in% input$taxonomic_group,
                     taxunit %in% input$taxonomic_unit) |>
-        dplyr::filter(ecosystem %in% stringr::str_to_lower(input$ecosystem))
+        dplyr::filter(ecosystem %in% stringr::str_to_lower(input$ecosystem),
+                      study_scale %in% stringr::str_to_lower(input$study_scale))
 
 
     })
