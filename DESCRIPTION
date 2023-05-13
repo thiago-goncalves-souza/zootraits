@@ -16,6 +16,7 @@ Imports:
     glue,
     golem,
     htmltools,
+    janitor,
     knitr,
     markdown,
     pkgload,

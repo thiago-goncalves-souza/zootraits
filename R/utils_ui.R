@@ -9,5 +9,14 @@ picker_input <- function(...) {
 
 
 options_input <- function(col) {
-  stringr::str_to_title(as.character(sort(unique(col))))
+  col |>
+    unique() |>
+    sort() |>
+    as.character() |>
+    stringr::str_to_title() |>
+    stringr::str_replace_all("_", " ")
+}
+
+prepare_input_to_filter <- function(col){
+  col |> janitor::make_clean_names()
 }

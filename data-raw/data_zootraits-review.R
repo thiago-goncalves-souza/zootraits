@@ -21,7 +21,21 @@ review_data <- review_data_raw |>
   tidyr::pivot_longer(cols = c("conclusion_ok", "conclusion_wrong"),
                       names_to =  "conclusion", values_to = "conclusion_value") |>
   dplyr::filter(conclusion_value == 1) |>
-  dplyr::select(-conclusion_value) # |>
+  dplyr::select(-conclusion_value) |>
+  tidyr::pivot_longer(
+    cols = c(
+      "trophic",
+      "life_history",
+      "habitat",
+      "defense",
+      "metabolic",
+      "other"
+    ),
+    names_to =  "trait_dimension",
+    values_to = "trait_dimension_value"
+  ) |>
+   dplyr::filter(trait_dimension_value == 1) |>
+   dplyr::select(-trait_dimension_value)
   # tidyr::separate_longer_delim(cols = "where", delim = ";") |>
   # dplyr::mutate(where = stringr::str_squish(where))
 
