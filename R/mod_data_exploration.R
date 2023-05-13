@@ -29,64 +29,55 @@ mod_data_exploration_ui <- function(id){
         fluidRow(
           column(
             width = 4,
-            shinyWidgets::pickerInput(
+            picker_input(
               inputId = ns("taxonomic_unit"),
               label =  "Taxonomic unit",
               choices = unique(review_data$taxunit),
-              selected =  unique(review_data$taxunit),
-              options = list(
-                `actions-box` = TRUE),
-              multiple = TRUE
+              selected =  unique(review_data$taxunit)
             )),
           column(
           width = 4,
-          shinyWidgets::pickerInput(
+          picker_input(
             inputId = ns("taxonomic_level"),
             label =  "Taxonomic level",
             choices = unique(review_data$taxon_span),
-            selected =  unique(review_data$taxon_span),
-            options = list(
-              `actions-box` = TRUE),
-            multiple = TRUE
-          )),
+            selected =  unique(review_data$taxon_span)
+            )
+          ),
           column(
             width = 4,
-          shinyWidgets::pickerInput(
+            picker_input(
             inputId = ns("taxonomic_group"),
             label =  "Taxonomic group",
             choices = sort(unique(review_data$taxon)),
-            selected =  unique(review_data$taxon),
-            options = list(
-              `actions-box` = TRUE),
-            multiple = TRUE
+            selected =  unique(review_data$taxon)
           )
          )
         ),
          fluidRow(
            column(width = 4,
-           shinyWidgets::pickerInput(
+             picker_input(
              inputId = ns("ecosystem"),
              label =  "Ecosystem",
              choices = c("Freshwater", "Marine", "Terrestrial"),
-             selected =  c("Freshwater", "Marine", "Terrestrial"),
-             options = list(
-               `actions-box` = TRUE),
-             multiple = TRUE
+             selected =  c("Freshwater", "Marine", "Terrestrial")
            )
           ),
-          column(width = 4,
-                 shinyWidgets::pickerInput(
-                   inputId = ns("study_scale"),
-                   label =  "Study Scale",
-                   choices = stringr::str_to_title(as.character(sort(unique(review_data$study_scale)))),
-                   selected =  stringr::str_to_title(as.character(sort(unique(review_data$study_scale)))),
-                   options = list(
-                     `actions-box` = TRUE),
-                   multiple = TRUE
-                 )
+          column(
+            width = 4,
+            picker_input(
+              inputId = ns("study_scale"),
+              label =  "Study Scale",
+              choices = stringr::str_to_title(as.character(sort(
+                unique(review_data$study_scale)
+              ))),
+              selected =  stringr::str_to_title(as.character(sort(
+                unique(review_data$study_scale)
+              )))
+            )
           )
          )
-        ),
+      ),
       bs4Dash::box(
         title = "Dataset",
         collapsible = TRUE,
