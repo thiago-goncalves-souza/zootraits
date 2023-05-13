@@ -27,69 +27,47 @@ mod_data_exploration_ui <- function(id){
         collapsible = FALSE,
         width = 12,
         fluidRow(
-          column(
-            width = 4,
             picker_input(
               inputId = ns("taxonomic_unit"),
               label =  "Taxonomic unit",
               choices = unique(review_data$taxunit),
               selected =  unique(review_data$taxunit)
-            )),
-          column(
-          width = 4,
+            ),
           picker_input(
             inputId = ns("taxonomic_level"),
             label =  "Taxonomic level",
             choices = unique(review_data$taxon_span),
             selected =  unique(review_data$taxon_span)
-            )
           ),
-          column(
-            width = 4,
             picker_input(
             inputId = ns("taxonomic_group"),
             label =  "Taxonomic group",
-            choices = sort(unique(review_data$taxon)),
-            selected =  unique(review_data$taxon)
+            choices = options_input(review_data$taxon),
+            selected =  options_input(review_data$taxon)
           )
-         )
         ),
          fluidRow(
-           column(width = 4,
              picker_input(
              inputId = ns("ecosystem"),
              label =  "Ecosystem",
-             choices = c("Freshwater", "Marine", "Terrestrial"),
-             selected =  c("Freshwater", "Marine", "Terrestrial")
-           )
+             choices = options_input(review_data$ecosystem),
+             selected =  options_input(review_data$ecosystem)
           ),
-          column(
-            width = 4,
             picker_input(
               inputId = ns("study_scale"),
               label =  "Study Scale",
-              choices = stringr::str_to_title(as.character(sort(
-                unique(review_data$study_scale)
-              ))),
-              selected =  stringr::str_to_title(as.character(sort(
-                unique(review_data$study_scale)
-              )))
-            )
+              choices = options_input(review_data$study_scale),
+              selected =  options_input(review_data$study_scale)
           ),
-          # column(
-          #   width = 4,
-          #   picker_input(
-          #     inputId = ns("study_site"),
-          #     label =  "Study Site",
-          #     choices = stringr::str_to_title(as.character(sort(
-          #       unique(review_data$where)
-          #     ))),
-          #     selected =  stringr::str_to_title(as.character(sort(
-          #       unique(review_data$where)
-          #     )))
-          #   )
-          # )
-         )
+         ),
+      fluidRow(
+          picker_input(
+            inputId = ns("trait_type"),
+            label =  "Trait type",
+            choices = options_input(review_data$trait_type),
+            selected = options_input(review_data$trait_type)
+        )
+      )
       ),
       bs4Dash::box(
         title = "Dataset",
@@ -120,7 +98,8 @@ mod_data_exploration_server <- function(id){
                     taxon %in% input$taxonomic_group,
                     taxunit %in% input$taxonomic_unit) |>
         dplyr::filter(ecosystem %in% stringr::str_to_lower(input$ecosystem),
-                      study_scale %in% stringr::str_to_lower(input$study_scale))
+                      study_scale %in% stringr::str_to_lower(input$study_scale),
+                      trait_type %in% stringr::str_to_lower(input$trait_type))
 
 
     })
@@ -130,6 +109,7 @@ mod_data_exploration_server <- function(id){
         dplyr::select(year, reference, doi_html, where) |>
         dplyr::mutate(details = '<center><i class="fa-solid fa-magnifying-glass-plus"></i></center>') |>
         dplyr::arrange(desc(year)) |>
+        dplyr::distinct() |>
         reactable::reactable(sortable = TRUE,
                              columns =
                                list(
