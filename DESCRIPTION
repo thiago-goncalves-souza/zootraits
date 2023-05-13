@@ -17,7 +17,8 @@ Imports:
     golem,
     pkgload,
     reactable,
-    shiny
+    shiny,
+    tidyr
 Suggests: 
     readr,
     spelling,
