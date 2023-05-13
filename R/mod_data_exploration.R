@@ -11,15 +11,35 @@ mod_data_exploration_ui <- function(id){
   ns <- NS(id)
 
   tagList(
+   fluidRow(
+    bs4Dash::box(
+      title = "Welcome to ZooTraits",
+      collapsible = FALSE,
+      width = 12,
+      shiny::tags$p(
+        htmltools::includeMarkdown("inst/md/ZooTraits.md"))
+    )
+  ),
     fluidRow(
 
       bs4Dash::box(
         title = "Filter",
         collapsible = FALSE,
         width = 12,
-        column(
+        fluidRow(
+          column(
+            width = 4,
+            shinyWidgets::pickerInput(
+              inputId = ns("taxonomic_unit"),
+              label =  "Taxonomic unit",
+              choices = unique(review_data$taxunit),
+              selected =  unique(review_data$taxunit),
+              options = list(
+                `actions-box` = TRUE),
+              multiple = TRUE
+            )),
+          column(
           width = 4,
-          fluidRow(
           shinyWidgets::pickerInput(
             inputId = ns("taxonomic_level"),
             label =  "Taxonomic level",
@@ -29,7 +49,8 @@ mod_data_exploration_ui <- function(id){
               `actions-box` = TRUE),
             multiple = TRUE
           )),
-          fluidRow(
+          column(
+            width = 4,
           shinyWidgets::pickerInput(
             inputId = ns("taxonomic_group"),
             label =  "Taxonomic group",
@@ -75,6 +96,7 @@ mod_data_exploration_server <- function(id){
     review_dataset <- reactive({
       req(input$taxonomic_level)
       req(input$taxonomic_group)
+      req(input$taxonomic_unit)
       # req(input$ecosystem)
 
 
@@ -84,13 +106,23 @@ mod_data_exploration_server <- function(id){
 
       review_data |>
       dplyr::filter(taxon_span %in% input$taxonomic_level,
-                    taxon %in% input$taxonomic_group)
+                    taxon %in% input$taxonomic_group,
+                    taxunit %in% input$taxonomic_unit)
 
     })
 
     output$table <- reactable::renderReactable({
       review_dataset() |>
-        reactable::reactable()
+        dplyr::select(year, reference, doi_html, where) |>
+        dplyr::arrange(desc(year)) |>
+        reactable::reactable(sortable = TRUE,
+                             columns =
+                               list(
+                                 year = reactable::colDef(name = "Year", maxWidth = 50),
+                                 reference =  reactable::colDef(name = "Reference"),
+                                 doi_html = reactable::colDef(name = "DOI", html = TRUE),
+                                 where = reactable::colDef(name = "Where", html = TRUE)
+                               ))
     })
 
 

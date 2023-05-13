@@ -15,6 +15,7 @@ Imports:
     fresh,
     glue,
     golem,
+    htmltools,
     knitr,
     pkgload,
     reactable,
