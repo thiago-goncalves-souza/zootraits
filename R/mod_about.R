@@ -7,7 +7,7 @@
 #' @noRd
 #'
 #' @importFrom shiny NS tagList
-mod_about_ui <- function(id){
+mod_about_ui <- function(id) {
   ns <- NS(id)
   tagList(
     fluidRow(
@@ -16,7 +16,8 @@ mod_about_ui <- function(id){
         collapsible = FALSE,
         width = 12,
         shiny::tags$p(
-          htmltools::includeMarkdown(app_sys("app/www/md/ZooTraits.md")))
+          htmltools::includeMarkdown(app_sys("app/www/md/ZooTraits.md"))
+        )
       ),
       bs4Dash::box(
         title = "Authors",
@@ -37,8 +38,8 @@ mod_about_ui <- function(id){
 #' about Server Functions
 #'
 #' @noRd
-mod_about_server <- function(id){
-  moduleServer( id, function(input, output, session){
+mod_about_server <- function(id) {
+  moduleServer(id, function(input, output, session) {
     ns <- session$ns
 
     output$authors_table <- reactable::renderReactable({
@@ -48,23 +49,24 @@ mod_about_server <- function(id){
         dplyr::group_by(name) |>
         dplyr::mutate(desc_group = knitr::combine_words(university)) |>
         dplyr::distinct(name, desc_group) |>
-        reactable::reactable(pagination = FALSE,
-                             columns = list(
-                               name = reactable::colDef(name = "Author", maxWidth = 250),
-                               desc_group= reactable::colDef(name = "Institutions", html = TRUE)
-                             ))
+        reactable::reactable(
+          pagination = FALSE,
+          columns = list(
+            name = reactable::colDef(name = "Author", maxWidth = 250),
+            desc_group = reactable::colDef(name = "Institutions", html = TRUE)
+          )
+        )
     })
 
-  output$logos_institutions <- shiny::renderUI({
-    img_institutions <- institutions |>
-      tidyr::drop_na(img) |>
-      dplyr::mutate(img_html = glue::glue("<a href='{url}' target='_blank'><img src='www/logos/{img}' style='max-width: 50%;'></a>")) |>
-      dplyr::pull(img_html) |>
-      paste0(collapse = " <br> ")
+    output$logos_institutions <- shiny::renderUI({
+      img_institutions <- institutions |>
+        tidyr::drop_na(img) |>
+        dplyr::mutate(img_html = glue::glue("<a href='{url}' target='_blank'><img src='www/logos/{img}' style='max-width: 50%;'></a>")) |>
+        dplyr::pull(img_html) |>
+        paste0(collapse = " <br> ")
 
-    HTML(paste0("<center>", img_institutions, "</center>"))
-  })
-
+      HTML(paste0("<center>", img_institutions, "</center>"))
+    })
   })
 }
 

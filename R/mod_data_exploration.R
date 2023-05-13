@@ -7,79 +7,79 @@
 #' @noRd
 #'
 #' @importFrom shiny NS tagList
-mod_data_exploration_ui <- function(id){
+mod_data_exploration_ui <- function(id) {
   ns <- NS(id)
 
   tagList(
-   fluidRow(
-    bs4Dash::box(
-      title = "Welcome to ZooTraits",
-      collapsible = FALSE,
-      width = 12,
-      shiny::tags$p(
-        htmltools::includeMarkdown(app_sys("app/www/md/ZooTraits.md")))
-    )
-  ),
     fluidRow(
-
+      bs4Dash::box(
+        title = "Welcome to ZooTraits",
+        collapsible = FALSE,
+        width = 12,
+        shiny::tags$p(
+          htmltools::includeMarkdown(app_sys("app/www/md/ZooTraits.md"))
+        )
+      )
+    ),
+    fluidRow(
       bs4Dash::box(
         title = "Filter",
         collapsible = FALSE,
         width = 12,
         fluidRow(
-            picker_input(
-              inputId = ns("taxonomic_unit"),
-              label =  "Taxonomic unit",
-              choices = unique(review_data$taxunit),
-              selected =  unique(review_data$taxunit)
-            ),
+          picker_input(
+            inputId = ns("taxonomic_unit"),
+            label =  "Taxonomic unit",
+            choices = unique(review_data$taxunit),
+            selected =  unique(review_data$taxunit)
+          ),
           picker_input(
             inputId = ns("taxonomic_level"),
             label =  "Taxonomic level",
             choices = unique(review_data$taxon_span),
             selected =  unique(review_data$taxon_span)
           ),
-            picker_input(
+          picker_input(
             inputId = ns("taxonomic_group"),
             label =  "Taxonomic group",
             choices = options_input(review_data$taxon),
             selected =  options_input(review_data$taxon)
           )
         ),
-         fluidRow(
-             picker_input(
-             inputId = ns("ecosystem"),
-             label =  "Ecosystem",
-             choices = options_input(review_data$ecosystem),
-             selected =  options_input(review_data$ecosystem)
+        fluidRow(
+          picker_input(
+            inputId = ns("ecosystem"),
+            label =  "Ecosystem",
+            choices = options_input(review_data$ecosystem),
+            selected =  options_input(review_data$ecosystem)
           ),
-            picker_input(
-              inputId = ns("study_scale"),
-              label =  "Study Scale",
-              choices = options_input(review_data$study_scale),
-              selected =  options_input(review_data$study_scale)
+          picker_input(
+            inputId = ns("study_scale"),
+            label =  "Study Scale",
+            choices = options_input(review_data$study_scale),
+            selected =  options_input(review_data$study_scale)
           ),
-         ),
-      fluidRow(
+        ),
+        fluidRow(
           picker_input(
             inputId = ns("trait_type"),
-            label =  "Trait type",
+            label = "Trait type",
             choices = options_input(review_data$trait_type),
             selected = options_input(review_data$trait_type)
-        ),
-        picker_input(
-          inputId = ns("trait_dimension"),
-          label =  "Trait dimension",
-          choices = options_input(review_data$trait_dimension),
-          selected = options_input(review_data$trait_dimension)
-        ),
-        picker_input(
-          inputId = ns("intraspecific_data"),
-          label =  "Intraspecific data",
-          choices = options_input(review_data$intraspecific_data),
-          selected = options_input(review_data$intraspecific_data)
+          ),
+          picker_input(
+            inputId = ns("trait_dimension"),
+            label = "Trait dimension",
+            choices = options_input(review_data$trait_dimension),
+            selected = options_input(review_data$trait_dimension)
+          ),
+          picker_input(
+            inputId = ns("intraspecific_data"),
+            label = "Intraspecific data",
+            choices = options_input(review_data$intraspecific_data),
+            selected = options_input(review_data$intraspecific_data)
+          )
         )
-      )
       ),
       bs4Dash::box(
         title = "Dataset",
@@ -88,15 +88,14 @@ mod_data_exploration_ui <- function(id){
         reactable::reactableOutput(ns("table"))
       ),
     )
-
   )
 }
 
 #' data_exploration Server Functions
 #'
 #' @noRd
-mod_data_exploration_server <- function(id){
-  moduleServer( id, function(input, output, session){
+mod_data_exploration_server <- function(id) {
+  moduleServer(id, function(input, output, session) {
     ns <- session$ns
 
     review_dataset <- reactive({
@@ -121,7 +120,6 @@ mod_data_exploration_server <- function(id){
           trait_dimension %in% prepare_input_to_filter(input$trait_dimension),
           intraspecific_data %in% prepare_input_to_filter(input$intraspecific_data)
         )
-
     })
 
     output$table <- reactable::renderReactable({
@@ -130,18 +128,18 @@ mod_data_exploration_server <- function(id){
         dplyr::mutate(details = '<center><i class="fa-solid fa-magnifying-glass-plus"></i></center>') |>
         dplyr::arrange(desc(year)) |>
         dplyr::distinct() |>
-        reactable::reactable(sortable = TRUE,
-                             columns =
-                               list(
-                                 year = reactable::colDef(name = "Year", maxWidth = 50),
-                                 reference =  reactable::colDef(name = "Reference", minWidth = 200),
-                                 doi_html = reactable::colDef(name = "DOI", html = TRUE),
-                                 where = reactable::colDef(name = "Where", html = TRUE),
-                                 details = reactable::colDef(name = "See more", html = TRUE, maxWidth = 100)
-                               ))
+        reactable::reactable(
+          sortable = TRUE,
+          columns =
+            list(
+              year = reactable::colDef(name = "Year", maxWidth = 50),
+              reference = reactable::colDef(name = "Reference", minWidth = 200),
+              doi_html = reactable::colDef(name = "DOI", html = TRUE),
+              where = reactable::colDef(name = "Where", html = TRUE),
+              details = reactable::colDef(name = "See more", html = TRUE, maxWidth = 100)
+            )
+        )
     })
-
-
   })
 }
 

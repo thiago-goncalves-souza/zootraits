@@ -8,13 +8,12 @@ app_ui <- function(request) {
   tagList(
     # Leave this function for adding external resources
     golem_add_external_resources(),
-
     bs4Dash::dashboardPage(
 
       # ---
       header = bs4Dash::dashboardHeader(
-       title = "ZooTraits",
-       fixed = FALSE
+        title = "ZooTraits",
+        fixed = FALSE
       ),
 
       # ----
@@ -48,7 +47,7 @@ app_ui <- function(request) {
             mod_about_ui("about_1")
           )
         )
-        ),
+      ),
 
       # ----
       footer = bs4Dash::dashboardFooter(
