@@ -45,10 +45,9 @@ mod_about_server <- function(id){
     output$authors_table <- reactable::renderReactable({
       authors_list |>
         dplyr::select(-institutions_id) |>
-        dplyr::mutate(desc2 = glue::glue("- {desc} <br>")) |>
+        dplyr::distinct(name, university, .keep_all = TRUE) |>
         dplyr::group_by(name) |>
-        dplyr::mutate(desc_group = paste0(desc2, collapse = "\n")
-        ) |>
+        dplyr::mutate(desc_group = knitr::combine_words(university)) |>
         dplyr::distinct(name, desc_group) |>
         reactable::reactable(pagination = FALSE,
                              columns = list(
