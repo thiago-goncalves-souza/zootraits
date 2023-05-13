@@ -21,7 +21,7 @@ mod_about_ui <- function(id){
       ),
       bs4Dash::box(
         title = "Authors",
-        collapsible = FALSE,
+        collapsible = TRUE,
         width = 12,
         reactable::reactableOutput(ns("authors_table"))
       ),
@@ -45,17 +45,16 @@ mod_about_server <- function(id){
     ns <- session$ns
 
     output$authors_table <- reactable::renderReactable({
-      # TO DO
       authors_list |>
         dplyr::select(-institutions_id) |>
-        dplyr::mutate(desc2 = glue::glue("- {desc} <br><br>")) |>
+        dplyr::mutate(desc2 = glue::glue("- {desc} <br>")) |>
         dplyr::group_by(name) |>
         dplyr::mutate(desc_group = paste0(desc2, collapse = "\n")
         ) |>
         dplyr::distinct(name, desc_group) |>
         reactable::reactable(pagination = FALSE,
                              columns = list(
-                               name = reactable::colDef(name = "Author"),
+                               name = reactable::colDef(name = "Author", maxWidth = 250),
                                desc_group= reactable::colDef(name = "Institutions", html = TRUE)
                              ))
     })
