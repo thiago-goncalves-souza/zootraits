@@ -17,7 +17,7 @@ mod_data_exploration_ui <- function(id){
       collapsible = FALSE,
       width = 12,
       shiny::tags$p(
-        htmltools::includeMarkdown("inst/md/ZooTraits.md"))
+        htmltools::includeMarkdown(app_sys("app/www/md/ZooTraits.md")))
     )
   ),
     fluidRow(

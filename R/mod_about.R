@@ -16,8 +16,7 @@ mod_about_ui <- function(id){
         collapsible = FALSE,
         width = 12,
         shiny::tags$p(
-          "TO DO."
-        )
+          htmltools::includeMarkdown(app_sys("app/www/md/ZooTraits.md")))
       ),
       bs4Dash::box(
         title = "Authors",
