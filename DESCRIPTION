@@ -11,9 +11,12 @@ BugReports: https://github.com/beatrizmilz/zootraits/issues
 Imports: 
     bs4Dash,
     config,
+    dplyr,
     fresh,
+    glue,
     golem,
     pkgload,
+    reactable,
     shiny
 Suggests: 
     readr,
