@@ -75,7 +75,20 @@ mod_data_exploration_ui <- function(id){
                 unique(review_data$study_scale)
               )))
             )
-          )
+          ),
+          # column(
+          #   width = 4,
+          #   picker_input(
+          #     inputId = ns("study_site"),
+          #     label =  "Study Site",
+          #     choices = stringr::str_to_title(as.character(sort(
+          #       unique(review_data$where)
+          #     ))),
+          #     selected =  stringr::str_to_title(as.character(sort(
+          #       unique(review_data$where)
+          #     )))
+          #   )
+          # )
          )
       ),
       bs4Dash::box(

@@ -22,6 +22,7 @@ Imports:
     reactable,
     shiny,
     shinyWidgets,
+    stringr,
     tidyr
 Suggests: 
     readr,
