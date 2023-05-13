@@ -104,11 +104,8 @@ mod_data_exploration_server <- function(id){
       dplyr::filter(taxon_span %in% input$taxonomic_level,
                     taxon %in% input$taxonomic_group,
                     taxunit %in% input$taxonomic_unit) |>
-        tidyr::pivot_longer(cols = c("freshwater", "marine", "terrestrial"),
-                            names_to =  "ecosystem", values_to = "ecosystem_value") |>
-        dplyr::filter(ecosystem_value == 1) |>
-        dplyr::filter(ecosystem %in% stringr::str_to_lower(input$ecosystem)) |>
-        dplyr::select(-ecosystem_value)
+        dplyr::filter(ecosystem %in% stringr::str_to_lower(input$ecosystem))
+
 
     })
 

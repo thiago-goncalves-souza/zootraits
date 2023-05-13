@@ -8,7 +8,19 @@ trait_information <- readxl::read_xlsx("data-raw/zootraits-review/ZooTraits_trai
 
 # Clean data ----
 review_data <- review_data_raw |>
-  dplyr::mutate(doi_html = glue::glue("<a href=' https://doi.org/{doi}' target='_blank'>{doi}</a>"))
+  dplyr::mutate(doi_html = glue::glue("<a href=' https://doi.org/{doi}' target='_blank'>{doi}</a>")) |>
+  tidyr::pivot_longer(cols = c("freshwater", "marine", "terrestrial"),
+                      names_to =  "ecosystem", values_to = "ecosystem_value") |>
+  dplyr::filter(ecosystem_value == 1) |>
+  dplyr::select(-ecosystem_value) |>
+  tidyr::pivot_longer(cols = c("local", "regional", "global"),
+                      names_to =  "study_scale", values_to = "study_scale_value") |>
+  dplyr::filter(study_scale_value == 1) |>
+  dplyr::select(-study_scale_value) |>
+  tidyr::pivot_longer(cols = c("conclusion_ok", "conclusion_wrong"),
+                      names_to =  "conclusion", values_to = "conclusion_value") |>
+  dplyr::filter(conclusion_value == 1) |>
+  dplyr::select(-conclusion_value)
 
 
 # Use data --------
