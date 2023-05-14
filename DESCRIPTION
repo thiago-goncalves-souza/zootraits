@@ -24,6 +24,7 @@ Imports:
     pkgload,
     reactable,
     shiny,
+    shinycssloaders,
     shinyWidgets,
     stringr,
     tidyr

@@ -24,7 +24,8 @@ create_theme_css <- function() {
 }
 
 color_for_status <- function(status) {
-  switch(status,
+  switch(
+    status,
     info = "#0f7cbf",
     secondary = "#495961",
     primary = "#003366",
@@ -32,4 +33,9 @@ color_for_status <- function(status) {
     warning = "#ffcd37",
     danger = "#BF616A"
   )
+}
+
+
+waiting <- function(output) {
+  shinycssloaders::withSpinner(output, color = "#0f7cbf", type = 4)
 }

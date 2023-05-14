@@ -44,7 +44,11 @@ review_data <- review_data_raw |>
     values_to = "trait_dimension_value"
   ) |>
   dplyr::filter(trait_dimension_value == 1) |>
-  dplyr::select(-trait_dimension_value)
+  dplyr::select(-trait_dimension_value) |>
+  dplyr::left_join(taxon_names, by = "taxon") |>
+  dplyr::rename(taxon_higher_level_1 = higher_taxon_lev1,
+                taxon_higher_level_2 = higher_taxon_lev2) |>
+  dplyr::relocate(taxon_higher_level_1, taxon_higher_level_2, .after = taxon)
 # tidyr::separate_longer_delim(cols = "where", delim = ";") |>
 # dplyr::mutate(where = stringr::str_squish(where))
 

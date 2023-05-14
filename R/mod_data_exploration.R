@@ -40,10 +40,10 @@ mod_data_exploration_ui <- function(id) {
             selected =  unique(review_data$taxon_span)
           ),
           picker_input(
-            inputId = ns("taxonomic_group"),
+            inputId = ns("taxon_higher_level_1"),
             label =  "Taxonomic group",
-            choices = options_input(review_data$taxon),
-            selected =  options_input(review_data$taxon)
+            choices = options_input(review_data$taxon_higher_level_1),
+            selected =  options_input(review_data$taxon_higher_level_1)
           )
         ),
         fluidRow(
@@ -81,27 +81,26 @@ mod_data_exploration_ui <- function(id) {
           )
         )
       )),
-    fluidRow(bs4Dash::box(
-      title = "Visualizations",
-      collapsible = TRUE,
-      width = 12,
-      fluidRow(
-        column(width = 6,
-        echarts4r::echarts4rOutput(
-          ns("chart_taxonomic_groups")
-        )),
-      column(width = 6,
-        echarts4r::echarts4rOutput(
-          ns("chart_trait_dimension")
-        ))
-
-    ))),
+    fluidRow(
+      bs4Dash::box(
+        title = "Higher taxonomic groups",
+        collapsible = TRUE,
+        width = 6,
+        echarts4r::echarts4rOutput(ns("chart_taxonomic_groups")) |> waiting()
+      ),
+      bs4Dash::box(
+        title = "Trait dimensions",
+        collapsible = TRUE,
+        width = 6,
+        echarts4r::echarts4rOutput(ns("chart_trait_dimension")) |> waiting()
+      )
+    ),
     fluidRow(
       bs4Dash::box(
         title = "Dataset",
         collapsible = TRUE,
         width = 12,
-        reactable::reactableOutput(ns("table"))
+        reactable::reactableOutput(ns("table") ) |> waiting()
       ),
     )
   )
@@ -116,7 +115,7 @@ mod_data_exploration_server <- function(id) {
 
     review_dataset <- reactive({
       req(input$taxonomic_level)
-      req(input$taxonomic_group)
+      req(input$taxon_higher_level_1)
       req(input$taxonomic_unit)
       req(input$ecosystem)
       req(input$study_scale)
@@ -126,7 +125,7 @@ mod_data_exploration_server <- function(id) {
       review_data |>
         dplyr::filter(
           taxon_span %in% input$taxonomic_level,
-          taxon %in% input$taxonomic_group,
+          taxon_higher_level_1 %in% input$taxon_higher_level_1,
           taxunit %in% input$taxonomic_unit
         ) |>
         dplyr::filter(
@@ -140,7 +139,7 @@ mod_data_exploration_server <- function(id) {
 
     output$chart_taxonomic_groups <- echarts4r::renderEcharts4r({
       review_dataset() |>
-        bar_echart(x_var = "taxon")
+        bar_echart(x_var = "taxon_higher_level_1")
     })
 
     output$chart_trait_dimension <- echarts4r::renderEcharts4r({
