@@ -80,7 +80,23 @@ mod_data_exploration_ui <- function(id) {
             selected = options_input(review_data$intraspecific_data)
           )
         )
-      ),
+      )),
+    fluidRow(bs4Dash::box(
+      title = "Visualizations",
+      collapsible = TRUE,
+      width = 12,
+      fluidRow(
+        column(width = 6,
+        echarts4r::echarts4rOutput(
+          ns("chart_taxonomic_groups")
+        )),
+      column(width = 6,
+        echarts4r::echarts4rOutput(
+          ns("chart_trait_dimension")
+        ))
+
+    ))),
+    fluidRow(
       bs4Dash::box(
         title = "Dataset",
         collapsible = TRUE,
@@ -121,6 +137,18 @@ mod_data_exploration_server <- function(id) {
           intraspecific_data %in% prepare_input_to_filter(input$intraspecific_data)
         )
     })
+
+    output$chart_taxonomic_groups <- echarts4r::renderEcharts4r({
+      review_dataset() |>
+        bar_echart(x_var = "taxon")
+    })
+
+    output$chart_trait_dimension <- echarts4r::renderEcharts4r({
+      review_dataset() |>
+        bar_echart(x_var = "trait_dimension")
+    })
+
+
 
     output$table <- reactable::renderReactable({
       review_dataset() |>

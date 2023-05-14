@@ -12,6 +12,8 @@ Imports:
     bs4Dash,
     config,
     dplyr,
+    echarts4r,
+    forcats,
     fresh,
     glue,
     golem,
