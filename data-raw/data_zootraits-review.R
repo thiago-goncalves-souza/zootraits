@@ -5,8 +5,13 @@ taxon_names <- readxl::read_xlsx("data-raw/zootraits-review/ZooTraits_taxon_name
 
 trait_information <- readxl::read_xlsx("data-raw/zootraits-review/ZooTraits_trait_information_may23.xlsx") |> janitor::clean_names()
 
+# Check data ---
+
+source("tests/testthat/test_raw_data_zootraits.R")
 
 # Clean data ----
+# We need to have the same number of lines for review_data_raw and
+# review_data
 review_data <- review_data_raw |>
   dplyr::mutate(doi_html = glue::glue("<a href=' https://doi.org/{doi}' target='_blank'>{doi}</a>")) |>
   tidyr::pivot_longer(
