@@ -97,6 +97,15 @@ mod_data_exploration_ui <- function(id) {
     ),
     fluidRow(
       bs4Dash::box(
+        title = "General traits",
+        collapsible = TRUE,
+        width = 12, "TO DO"
+        # wordcloud2::wordcloud2Output(ns("chart_general_trait")) |> waiting()
+      )
+    ),
+
+    fluidRow(
+      bs4Dash::box(
         title = "Dataset",
         collapsible = TRUE,
         width = 12,
@@ -146,6 +155,19 @@ mod_data_exploration_server <- function(id) {
       review_dataset() |>
         bar_echart(x_var = "trait_dimension")
     })
+
+    # output$chart_general_trait <- wordcloud2::renderWordcloud2({
+    #   review_dataset() |>
+    #     tidyr::separate_longer_delim(cols = "trait_details", delim = ";") |>
+    #     dplyr::mutate(trait_details = stringr::str_to_lower(trait_details),
+    #                   trait_details = stringr::str_squish(trait_details)) |>
+    #     dplyr::left_join(trait_information,
+    #                      by = "trait_details",
+    #                      relationship = "many-to-many") |>
+    #     dplyr::select(-trait_type.y) |>
+    #     dplyr::rename(trait_type = trait_type.x) |>
+    #     wordcloud_chart(var = "general_trait")
+    # })
 
 
 
