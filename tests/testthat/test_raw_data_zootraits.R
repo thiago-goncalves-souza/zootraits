@@ -1,5 +1,34 @@
 review_data_raw <- readxl::read_xlsx("data-raw/zootraits-review/ZooTraits_review_data_may23.xlsx") |> janitor::clean_names()
 
+# testthat::test_that("ZooTraits data: every line have data", {
+#  # TO DO
+#   col_names <- review_data_raw |> names()
+#
+#     purrr::map(col_names,
+#    ~   test_missing(review_data_raw, .x)
+#  )
+#
+# })
+
+testthat::test_that("ZooTraits data: every line have information for 'year'", {
+  test_missing(review_data_raw, year)
+})
+
+testthat::test_that("ZooTraits data: every line have information for 'DOI'", {
+  test_missing(review_data_raw, doi)
+})
+
+testthat::test_that("ZooTraits data: every line have information for 'taxunit'", {
+  test_missing(review_data_raw, taxunit)
+})
+
+testthat::test_that("ZooTraits data: every line have information for 'taxunit'", {
+  test_missing(review_data_raw, taxon)
+})
+
+
+
+
 
 testthat::test_that("ZooTraits data: every line have information for 'ecosystem'", {
   missing_ecosystem <-  review_data_raw |>
