@@ -109,6 +109,8 @@ mod_data_exploration_ui <- function(id) {
         title = "Dataset",
         collapsible = TRUE,
         width = 12,
+        mod_download_table_ui(ns("download_table_1")),
+
         reactable::reactableOutput(ns("table") ) |> waiting()
       ),
     )
@@ -169,7 +171,7 @@ mod_data_exploration_server <- function(id) {
     #     wordcloud_chart(var = "general_trait")
     # })
 
-
+    mod_download_table_server("download_table_1", review_dataset())
 
     output$table <- reactable::renderReactable({
       review_dataset() |>
