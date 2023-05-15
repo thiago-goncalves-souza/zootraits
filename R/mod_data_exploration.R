@@ -174,11 +174,25 @@ mod_data_exploration_server <- function(id) {
     mod_download_table_server("download_table_1", review_dataset())
 
     output$table <- reactable::renderReactable({
-      review_dataset() |>
-        dplyr::select(year, reference, doi_html, where) |>
+      prepared_data <- review_dataset() |>
         dplyr::mutate(details = '<center><i class="fa-solid fa-magnifying-glass-plus"></i></center>') |>
         dplyr::arrange(desc(year)) |>
-        dplyr::distinct() |>
+        dplyr::group_by(code) |>
+        dplyr::summarise(
+          code = code,
+          year = year,
+          reference = reference,
+          doi_html = doi_html,
+          where = where,
+          taxon = prepare_col(taxon),
+          study_scale = prepare_col(study_scale),
+          ecosystem = prepare_col(ecosystem),
+          trait_dimension = prepare_col(trait_dimension)
+        ) |>
+        dplyr::distinct()
+
+        prepared_data |>
+         dplyr::select(-code) |>
         reactable::reactable(
           sortable = TRUE,
           columns =
@@ -187,7 +201,11 @@ mod_data_exploration_server <- function(id) {
               reference = reactable::colDef(name = "Reference", minWidth = 200),
               doi_html = reactable::colDef(name = "DOI", html = TRUE),
               where = reactable::colDef(name = "Where", html = TRUE),
-              details = reactable::colDef(name = "See more", html = TRUE, maxWidth = 100)
+              taxon = reactable::colDef(name = "Taxon"),
+              study_scale = reactable::colDef(name = "Study Scale"),
+              ecosystem = reactable::colDef(name = "Ecosystem"),
+              trait_dimension = reactable::colDef(name = "Trait Dimensions")
+             # details = reactable::colDef(name = "See more", html = TRUE, maxWidth = 100)
             )
         )
     })
@@ -199,3 +217,13 @@ mod_data_exploration_server <- function(id) {
 
 ## To be copied in the server
 # mod_data_exploration_server("data_exploration_1")
+
+# utils to prepare table -------
+
+prepare_col <- function(col){
+  col |>
+    unique() |>
+    stringr::str_replace_all("_", " ") |>
+    stringr::str_to_sentence() |>
+    knitr::combine_words()
+}

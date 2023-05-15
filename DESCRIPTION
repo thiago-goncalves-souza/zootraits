@@ -27,7 +27,8 @@ Imports:
     shinycssloaders,
     shinyWidgets,
     stringr,
-    tidyr
+    tidyr,
+    writexl
 Suggests: 
     readr,
     spelling,
