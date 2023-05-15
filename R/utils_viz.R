@@ -18,7 +18,8 @@ bar_echart <- function(dataset, x_var, x_lab = "", y_lab = "") {
       ) |>
       echarts4r::e_flip_coords() |>
       echarts4r::e_grid(left = "20%") |>
-      echarts4r::e_tooltip()
+      echarts4r::e_tooltip() |>
+      echart_theme()
   }
 }
 
@@ -31,4 +32,8 @@ wordcloud_chart <- function(dataset, var){
     dplyr::filter(var != "NA") |>
     dplyr::rename(word = var, freq = n) |>
   wordcloud2::wordcloud2()
+}
+
+echart_theme <- function(plot){
+  echarts4r::e_theme_custom(plot, '{"color":["#01274c","#ffca06"]}')
 }

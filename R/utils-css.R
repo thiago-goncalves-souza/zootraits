@@ -28,14 +28,14 @@ color_for_status <- function(status) {
     status,
     info = "#0f7cbf",
     secondary = "#495961",
-    primary = "#003366",
+    primary = "#01274c",
     success = "#7AD151",
-    warning = "#ffcd37",
+    warning = "#ffca06",
     danger = "#BF616A"
   )
 }
 
 
 waiting <- function(output) {
-  shinycssloaders::withSpinner(output, color = "#0f7cbf", type = 4)
+  shinycssloaders::withSpinner(output, color = "#ffca06", type = 4)
 }
