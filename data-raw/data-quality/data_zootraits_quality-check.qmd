@@ -1,0 +1,73 @@
+---
+title: "Data quality verification: ZooTraits review"
+format: 
+  html: 
+    theme: minty
+knitr:
+  opts_chunk: 
+    echo: false
+    message: false
+embed-resources: true
+---
+
+```{r}
+devtools::load_all()
+data_path <- "data-raw/zootraits-review/ZooTraits_review_data_may23.xlsx"
+review_data_raw <- readxl::read_xlsx(here::here(data_path)) |> janitor::clean_names()
+```
+
+**File name:** `r data_path`
+
+**Number of rows:** `r nrow(review_data_raw)`
+
+
+```{r}
+#| results: asis
+purrr::walk(names(review_data_raw),
+            ~   test_missing(review_data_raw, .x))
+```
+
+## Binary variables
+
+## Study scale
+
+
+```{r}
+review_data_raw |> 
+  dplyr::mutate(sum_binary_cols = local + regional + global) |> 
+  dplyr::filter(sum_binary_cols == 0 | is.na(sum_binary_cols)) |> 
+  dplyr::select(code, reference, doi, local, regional, global) |> 
+  knitr::kable()
+```
+
+
+## Ecosystem
+
+```{r}
+review_data_raw |> 
+  dplyr::mutate(sum_binary_cols = freshwater + marine + terrestrial) |> 
+  dplyr::filter(sum_binary_cols == 0 | is.na(sum_binary_cols)) |> 
+  dplyr::select(code, reference, doi, freshwater, marine, terrestrial) |> 
+  knitr::kable()
+```
+
+## Traits
+
+```{r}
+review_data_raw |> 
+  dplyr::mutate(sum_binary_cols = trophic + life_history + habitat + defense + metabolic + body_size_undetermined + other) |> 
+  dplyr::filter(sum_binary_cols == 0 | is.na(sum_binary_cols)) |> 
+  dplyr::select(code, reference, doi, trophic, life_history, habitat, defense, metabolic, body_size_undetermined,other) |> 
+  knitr::kable()
+```
+
+
+## Conclusion
+
+```{r}
+review_data_raw |> 
+  dplyr::mutate(sum_binary_cols = conclusion_ok + conclusion_wrong) |> 
+  dplyr::filter(sum_binary_cols == 0 | is.na(sum_binary_cols)) |> 
+  dplyr::select(code, reference, doi, conclusion_ok, conclusion_wrong) |> 
+  knitr::kable()
+```
