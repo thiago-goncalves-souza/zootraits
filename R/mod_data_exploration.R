@@ -184,10 +184,10 @@ mod_data_exploration_server <- function(id) {
           reference = reference,
           doi_html = doi_html,
           where = where,
-          taxon = prepare_col(taxon),
-          study_scale = prepare_col(study_scale),
-          ecosystem = prepare_col(ecosystem),
-          trait_dimension = prepare_col(trait_dimension)
+          taxon = prepare_wide_col(taxon),
+          study_scale = prepare_wide_col(study_scale),
+          ecosystem = prepare_wide_col(ecosystem),
+          trait_dimension = prepare_wide_col(trait_dimension)
         ) |>
         dplyr::distinct()
 
@@ -218,12 +218,3 @@ mod_data_exploration_server <- function(id) {
 ## To be copied in the server
 # mod_data_exploration_server("data_exploration_1")
 
-# utils to prepare table -------
-
-prepare_col <- function(col){
-  col |>
-    unique() |>
-    stringr::str_replace_all("_", " ") |>
-    stringr::str_to_sentence() |>
-    knitr::combine_words()
-}

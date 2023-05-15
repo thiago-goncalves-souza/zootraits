@@ -22,3 +22,14 @@ options_input <- function(col) {
 prepare_input_to_filter <- function(col) {
   col |> janitor::make_clean_names()
 }
+
+# utils to prepare table -------
+
+prepare_wide_col <- function(col){
+  col |>
+    unique() |>
+    stringr::str_replace_all("_", " ") |>
+    stringr::str_to_sentence() |>
+    knitr::combine_words()
+}
+
