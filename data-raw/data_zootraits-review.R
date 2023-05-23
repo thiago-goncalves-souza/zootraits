@@ -11,14 +11,11 @@ review_data_raw |>
   dplyr::distinct(code, reference) |>
   nrow()
 
-# review_data_raw |>
-#   janitor::get_dupes(code, reference)
-
-
 # Clean data ----
 # We need to have the same number of lines for review_data_raw and
 # review_data
 review_data <- review_data_raw |>
+  dplyr::select(-tidyselect::any_of(c("conclusion_ok", "conclusion_wrong"))) |>
   dplyr::mutate(doi_html = glue::glue("<a href=' https://doi.org/{doi}' target='_blank'>{doi}</a>")) |>
   tidyr::pivot_longer(
     cols = c("freshwater", "marine", "terrestrial"),
@@ -36,12 +33,6 @@ review_data <- review_data_raw |>
     study_scale = forcats::fct_relevel(study_scale, c("local", "regional", "global")),
     intraspecific_data = forcats::fct_relevel(intraspecific_data, c("yes", "no"))
   ) |>
-  tidyr::pivot_longer(
-    cols = c("conclusion_ok", "conclusion_wrong"),
-    names_to = "conclusion", values_to = "conclusion_value"
-  ) |>
-  dplyr::filter(conclusion_value == 1) |>
-  dplyr::select(-conclusion_value) |>
   tidyr::pivot_longer(
     cols = c(
       "trophic",
