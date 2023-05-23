@@ -14,7 +14,7 @@ metadata_var <- function(var){
       sort()
 
 
-  if(length(options) < 500){
+  if(length(options) < 50){
     options_var <-  options |>
       paste0(collapse = ", ")
   } else {
@@ -33,10 +33,14 @@ variables <- review_data |>
 metadata_raw <- purrr::map(variables, metadata_var) |>
   purrr::list_rbind() |>
   dplyr::filter(name_var != "doi_html") |>
-  dplyr::mutate(description = "")
+  dplyr::mutate(description = "TO DO",
+                options_var = dplyr::if_else(name_var %in% c("year"),
+                                             "", options_var))
 
 metadata_raw |>
   writexl::write_xlsx("data-raw/metadata-raw.xlsx")
+
+usethis::use_data(metadata_raw, overwrite = TRUE)
 
 # variables
 

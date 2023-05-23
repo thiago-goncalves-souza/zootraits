@@ -14,7 +14,7 @@ mod_review_metadata_ui <- function(id){
       title = "Metadata",
       collapsible = FALSE,
       width = 12,
-      "TODO"
+      reactable::reactableOutput(ns("table"))
     )
   )
 }
@@ -25,6 +25,18 @@ mod_review_metadata_ui <- function(id){
 mod_review_metadata_server <- function(id){
   moduleServer( id, function(input, output, session){
     ns <- session$ns
+   output$table <- reactable::renderReactable({
+     metadata_raw |>
+       reactable::reactable(pagination = FALSE,
+         columns =
+           list(
+             name_var = reactable::colDef(name = "Variable", maxWidth = 200),
+             class_var = reactable::colDef(name = "Class", maxWidth = 100),
+             options_var = reactable::colDef(name = "Categories"),
+             description = reactable::colDef(name = "Description", maxWidth = 400)
+           )
+       )
+   })
 
   })
 }
