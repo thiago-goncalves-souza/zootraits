@@ -75,7 +75,8 @@ mod_data_exploration_ui <- function(id) {
       bs4Dash::box(
         title = "General traits",
         collapsible = TRUE,
-        width = 12, "TO DO"
+        width = 12,
+        echarts4r::echarts4rOutput(ns("chart_traits")) |> waiting()
         # wordcloud2::wordcloud2Output(ns("chart_general_trait")) |> waiting()
       )
     ),
@@ -129,6 +130,24 @@ mod_data_exploration_server <- function(id) {
       review_dataset() |>
         bar_echart(x_var = "trait_dimension")
     })
+
+
+    output$chart_traits <- echarts4r::renderEcharts4r({
+       data_tidy <- review_dataset() |>
+          tidyr::separate_longer_delim(cols = "trait_details", delim = ";") |>
+          dplyr::mutate(trait_details = stringr::str_to_lower(trait_details),
+                        trait_details = stringr::str_squish(trait_details)) |>
+          dplyr::left_join(trait_information,
+                           by = "trait_details",
+                           relationship = "many-to-many") |>
+          dplyr::select(-trait_type.y) |>
+          dplyr::rename(trait_type = trait_type.x)
+
+       data_tidy |>
+         treemap_echart(x_var = "general_trait")
+    })
+
+
 
     # output$chart_general_trait <- wordcloud2::renderWordcloud2({
     #   review_dataset() |>

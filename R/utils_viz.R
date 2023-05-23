@@ -1,3 +1,26 @@
+treemap_echart <- function(dataset, x_var, x_lab = "", y_lab = "") {
+  if(nrow(dataset) > 0){
+    data_prepared <- dataset |>
+      dplyr::rename(tree_var = {{x_var}}) |>
+      dplyr::distinct(code, tree_var) |>
+      dplyr::mutate(tree_var = stringr::str_to_title(tree_var) |>
+                      stringr::str_replace_all("_", " ")) |>
+      tidyr::drop_na(tree_var) |>
+      dplyr::filter(tree_var != "Na|NA|na") |>
+      dplyr::count(tree_var) |>
+      dplyr::mutate(tree_var = dplyr::if_else(n < 10, "Other", tree_var)) |>
+      dplyr::arrange(n) |>
+      dplyr::rename(name = tree_var, value = n) |>
+      dplyr::group_by(name) |>
+      dplyr::summarise(value = sum(value))
+
+    data_prepared |>
+      echarts4r::e_chart(x = tree_var) |>
+      echarts4r::e_treemap() |>
+      echarts4r::e_tooltip()
+  }
+}
+
 bar_echart <- function(dataset, x_var, x_lab = "", y_lab = "") {
   if(nrow(dataset) > 0){
     data_prepared <- dataset |>
