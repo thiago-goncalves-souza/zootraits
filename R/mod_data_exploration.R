@@ -13,16 +13,6 @@ mod_data_exploration_ui <- function(id) {
   tagList(
     fluidRow(
       bs4Dash::box(
-        title = "Welcome to ZooTraits",
-        collapsible = FALSE,
-        width = 12,
-        shiny::tags$p(
-          htmltools::includeMarkdown(app_sys("app/www/md/ZooTraits.md"))
-        )
-      )
-    ),
-    fluidRow(
-      bs4Dash::box(
         title = "Filter",
         collapsible = FALSE,
         width = 12,
