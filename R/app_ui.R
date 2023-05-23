@@ -22,8 +22,13 @@ app_ui <- function(request) {
         title = "ZooTraits",
         bs4Dash::bs4SidebarMenu(
           bs4Dash::bs4SidebarMenuItem(
+            text = "Home",
+            tabName = "homepage",
+            icon = icon("home")
+          ),
+          bs4Dash::bs4SidebarMenuItem(
             text = "Review Dataset",
-            icon = icon("magnifying-glass"),
+            icon = icon("table"),
             startExpanded = TRUE,
 
             bs4Dash::bs4SidebarMenuSubItem(
@@ -34,7 +39,7 @@ app_ui <- function(request) {
             bs4Dash::bs4SidebarMenuSubItem(
               text = "Metadata",
               tabName = "review_metadata",
-              icon = icon("magnifying-glass")
+              icon = icon("file-lines")
             )
           ),
           bs4Dash::bs4SidebarMenuItem(
@@ -49,6 +54,11 @@ app_ui <- function(request) {
       body = bs4Dash::dashboardBody(
         fresh::use_theme(create_theme_css()),
         bs4Dash::bs4TabItems(
+          bs4Dash::bs4TabItem(
+            tabName = "homepage",
+            mod_homepage_ui("homepage_1")
+          ),
+
           bs4Dash::bs4TabItem(
             tabName = "data_exploration",
             mod_data_exploration_ui("data_exploration_1")
