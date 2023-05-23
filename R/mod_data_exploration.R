@@ -169,7 +169,8 @@ mod_data_exploration_server <- function(id) {
           taxon = prepare_wide_col(taxon),
           study_scale = prepare_wide_col(study_scale),
           ecosystem = prepare_wide_col(ecosystem),
-          trait_dimension = prepare_wide_col(trait_dimension)
+          trait_type = prepare_wide_col(trait_type),
+          trait_dimension = prepare_wide_col(trait_dimension),
         ) |>
         dplyr::distinct() |>
         dplyr::ungroup()
@@ -187,8 +188,8 @@ mod_data_exploration_server <- function(id) {
               taxon = reactable::colDef(name = "Taxon"),
               study_scale = reactable::colDef(name = "Study Scale"),
               ecosystem = reactable::colDef(name = "Ecosystem"),
-              trait_dimension = reactable::colDef(name = "Trait Dimensions")
-             # details = reactable::colDef(name = "See more", html = TRUE, maxWidth = 100)
+              trait_dimension = reactable::colDef(name = "Trait Dimensions"),
+              trait_type = reactable::colDef(name = "Trait type")
             )
         )
     })
