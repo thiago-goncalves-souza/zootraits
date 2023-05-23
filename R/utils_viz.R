@@ -9,7 +9,6 @@ bar_echart <- function(dataset, x_var, x_lab = "", y_lab = "") {
 
     data_prepared |>
       dplyr::count(bar_var) |>
-      #  dplyr::slice_max(order_by = n, n = 10) |>
       dplyr::arrange(n) |>
       echarts4r::e_chart(x = bar_var) |>
       echarts4r::e_bar(
@@ -35,5 +34,6 @@ wordcloud_chart <- function(dataset, var){
 }
 
 echart_theme <- function(plot){
-  echarts4r::e_theme_custom(plot, '{"color":["#01274c","#ffca06"]}')
+  echarts4r::e_theme_custom(plot, '{"color":["#01274c","#ffca06"]}') |>
+  echarts4r::e_toolbox_feature(feature = c("saveAsImage"))
 }
