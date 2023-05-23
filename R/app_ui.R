@@ -22,9 +22,20 @@ app_ui <- function(request) {
         title = "ZooTraits",
         bs4Dash::bs4SidebarMenu(
           bs4Dash::bs4SidebarMenuItem(
-            text = "Data Exploration",
-            tabName = "data_exploration",
-            icon = icon("magnifying-glass")
+            text = "Review Dataset",
+            icon = icon("magnifying-glass"),
+            startExpanded = TRUE,
+
+            bs4Dash::bs4SidebarMenuSubItem(
+              text = "Data Exploration",
+              tabName = "data_exploration",
+              icon = icon("magnifying-glass")
+            ),
+            bs4Dash::bs4SidebarMenuSubItem(
+              text = "Metadata",
+              tabName = "review_metadata",
+              icon = icon("magnifying-glass")
+            )
           ),
           bs4Dash::bs4SidebarMenuItem(
             text = "About",
@@ -42,6 +53,12 @@ app_ui <- function(request) {
             tabName = "data_exploration",
             mod_data_exploration_ui("data_exploration_1")
           ),
+          bs4Dash::bs4TabItem(
+            tabName = "review_metadata",
+            mod_review_metadata_ui("review_metadata_1")
+          ),
+
+
           bs4Dash::bs4TabItem(
             tabName = "about",
             mod_about_ui("about_1")
