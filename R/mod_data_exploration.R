@@ -28,25 +28,11 @@ mod_data_exploration_ui <- function(id) {
         width = 12,
         fluidRow(
           picker_input(
-            inputId = ns("taxonomic_unit"),
-            label =  "Taxonomic unit",
-            choices = unique(review_data$taxunit),
-            selected =  unique(review_data$taxunit)
-          ),
-          picker_input(
-            inputId = ns("taxonomic_level"),
-            label =  "Taxonomic level",
-            choices = unique(review_data$taxon_span),
-            selected =  unique(review_data$taxon_span)
-          ),
-          picker_input(
             inputId = ns("taxon_higher_level_1"),
             label =  "Taxonomic group",
             choices = options_input(review_data$taxon_higher_level_1),
             selected =  options_input(review_data$taxon_higher_level_1)
-          )
-        ),
-        fluidRow(
+          ),
           picker_input(
             inputId = ns("ecosystem"),
             label =  "Ecosystem",
@@ -58,7 +44,7 @@ mod_data_exploration_ui <- function(id) {
             label =  "Study Scale",
             choices = options_input(review_data$study_scale),
             selected =  options_input(review_data$study_scale)
-          ),
+          )
         ),
         fluidRow(
           picker_input(
@@ -125,9 +111,7 @@ mod_data_exploration_server <- function(id) {
     ns <- session$ns
 
     review_dataset <- reactive({
-      req(input$taxonomic_level)
       req(input$taxon_higher_level_1)
-      req(input$taxonomic_unit)
       req(input$ecosystem)
       req(input$study_scale)
       req(input$trait_type)
@@ -135,9 +119,7 @@ mod_data_exploration_server <- function(id) {
 
       review_data |>
         dplyr::filter(
-          taxon_span %in% input$taxonomic_level,
-          taxon_higher_level_1 %in% input$taxon_higher_level_1,
-          taxunit %in% input$taxonomic_unit
+          taxon_higher_level_1 %in% input$taxon_higher_level_1
         ) |>
         dplyr::filter(
           ecosystem %in% prepare_input_to_filter(input$ecosystem),
