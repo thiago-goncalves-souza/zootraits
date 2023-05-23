@@ -23,6 +23,9 @@ mod_about_ui <- function(id) {
         title = "Authors",
         collapsible = TRUE,
         width = 12,
+
+        leaflet::leafletOutput(ns("authors_map")),
+        br(),
         reactable::reactableOutput(ns("authors_table"))
       ),
       bs4Dash::box(
@@ -56,6 +59,18 @@ mod_about_server <- function(id) {
             desc_group = reactable::colDef(name = "Institutions", html = TRUE)
           )
         )
+    })
+
+
+    output$authors_map <- leaflet::renderLeaflet({
+      authors_list |>
+        tidyr::drop_na(lat, long) |>
+        dplyr::distinct(name, lat, long) |>
+        leaflet::leaflet() |>
+        leaflet::setView(lng = -50, lat = 0, zoom = 2) |>
+        leaflet::addProviderTiles(provider = leaflet::providers$OpenStreetMap) |>
+        leaflet::addMarkers(lng = ~ long, lat = ~lat, popup = ~name,
+                            clusterOptions = leaflet::markerClusterOptions())
     })
 
     output$logos_institutions <- shiny::renderUI({

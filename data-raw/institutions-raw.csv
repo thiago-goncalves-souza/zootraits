@@ -1,12 +1,12 @@
-institutions_id;desc;university;img;url
-1; Institute for Global Change Biology, School for Environment and Sustainability, University of Michigan, Ann Arbor, Michigan;University of Michigan;global-change-biology-logo.png;https://seas.umich.edu/globalchangebiology
-2; Department of Ecology and Evolutionary Biology, University of Michigan, Ann Arbor, Michigan;University of Michigan
-3; Ecological Synthesis and Biodiversity Conservation Lab, Department of Biology, Federal Rural University of Pernambuco, Recife, Brazil;Federal Rural University of Pernambuco;Federal_Rural_University_of_Pernambuco.jpg;https://www.ufrpe.br/
-4; Escola de Educação e Humanidades, Universidade Católica de Pernambuco, Rua do Príncipe, n. 526, Boa Vista, Recife, Pernambuco, Brasil;Universidade Católica de Pernambuco
-5; Museu de Arqueologia e Ciências Naturais da Universidade Católica de Pernambuco, Rua Oliveira Lima, 824, Boa Vista, Recife, Pernambuco, Brasil;Universidade Católica de Pernambuco
-6; Graduate Program in Ethnobiology and Nature Conservation, Department of Biology, Federal Rural University of Pernambuco, Recife, Brazil; Federal Rural University of Pernambuco
-7; Graduate Program in Biodiversity, Department of Biology, Federal Rural University of Pernambuco, Recife, Brazil;Federal Rural University of Pernambuco
-8; Graduate Program in Natural Resources of Cerrado, State University of Goiás, Anápolis, Brazil;State University of Goiás
-9; Biogeography and Aquatic Ecology Lab, State University of Goiás, Anápolis, Brazil;State University of Goiás
-10; Department of Ecology and Evolutionary Biology, University of Arizona, Tucson, Arizona, USA;University of Arizona
-11; Hawaii Institute of Marine Biology, University of Hawaii at Manoa, Hawaii, USA;University of Hawaii
+institutions_id;desc;university;img;url;lat;long
+1; Institute for Global Change Biology, School for Environment and Sustainability, University of Michigan, Ann Arbor, Michigan;University of Michigan;global-change-biology-logo.png;https://seas.umich.edu/globalchangebiology;42.2781;-83.7382
+2; Department of Ecology and Evolutionary Biology, University of Michigan, Ann Arbor, Michigan;University of Michigan;;;42.2781;-83.7382
+3; Ecological Synthesis and Biodiversity Conservation Lab, Department of Biology, Federal Rural University of Pernambuco, Recife, Brazil;Federal Rural University of Pernambuco;Federal_Rural_University_of_Pernambuco.jpg;https://www.ufrpe.br/;-8.055190;-34.871180
+4; Escola de Educação e Humanidades, Universidade Católica de Pernambuco, Rua do Príncipe, n. 526, Boa Vista, Recife, Pernambuco, Brasil;Universidade Católica de Pernambuco;;;-8.056900;-34.885860
+5; Museu de Arqueologia e Ciências Naturais da Universidade Católica de Pernambuco, Rua Oliveira Lima, 824, Boa Vista, Recife, Pernambuco, Brasil;Universidade Católica de Pernambuco;;;-8.056145207165741; -34.88868198420165
+6; Graduate Program in Ethnobiology and Nature Conservation, Department of Biology, Federal Rural University of Pernambuco, Recife, Brazil; Federal Rural University of Pernambuco;;;-8.0140347779095; -34.948989417386585
+7; Graduate Program in Biodiversity, Department of Biology, Federal Rural University of Pernambuco, Recife, Brazil;Federal Rural University of Pernambuco;;;-8.055190;-34.871180
+8; Graduate Program in Natural Resources of Cerrado, State University of Goiás, Anápolis, Brazil;State University of Goiás;;;-16.38134783840226; -48.94671116132884
+9; Biogeography and Aquatic Ecology Lab, State University of Goiás, Anápolis, Brazil;State University of Goiás;;;-16.38134783840226; -48.94671116132884
+10; Department of Ecology and Evolutionary Biology, University of Arizona, Tucson, Arizona, USA;University of Arizona;;;32.23218456440003; -110.95003430155796
+11; Hawaii Institute of Marine Biology, University of Hawaii at Manoa, Hawaii, USA;University of Hawaii;;;21.438304128358258;-157.78956106432523
