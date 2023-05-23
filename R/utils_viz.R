@@ -17,7 +17,8 @@ treemap_echart <- function(dataset, x_var, x_lab = "", y_lab = "") {
     data_prepared |>
       echarts4r::e_chart(x = tree_var) |>
       echarts4r::e_treemap() |>
-      echarts4r::e_tooltip()
+      echarts4r::e_tooltip() |>
+      echarts4r::e_toolbox_feature(feature = c("saveAsImage"))
   }
 }
 
