@@ -189,10 +189,11 @@ mod_data_exploration_server <- function(id) {
           ecosystem = prepare_wide_col(ecosystem),
           trait_dimension = prepare_wide_col(trait_dimension)
         ) |>
-        dplyr::distinct()
+        dplyr::distinct() |>
+        dplyr::ungroup()
 
-        prepared_data |>
-         dplyr::select(-code) |>
+    prepared_data |>
+      dplyr::select(-code) |>
         reactable::reactable(
           sortable = TRUE,
           columns =
