@@ -68,11 +68,11 @@ app_ui <- function(request) {
 
       # ----
       footer = bs4Dash::dashboardFooter(
-        left = shiny::HTML(
-          ".."
-        ),
         right = shiny::HTML(
-          ".."
+          "<a href='https://onlinelibrary.wiley.com/doi/full/10.1002/ece3.10016' target='_blank'>Review Article</a>"
+        ),
+        left = shiny::HTML(
+          "<a href='https://seas.umich.edu/globalchangebiology' target='_blank'><img src='www/logos/global-change-biology-logo.png' style='max-width: 25%;'></a>"
         )
       )
     )
