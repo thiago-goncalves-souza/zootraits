@@ -22,16 +22,16 @@ bar_echart <- function(dataset, x_var, x_lab = "", y_lab = "") {
   }
 }
 
-wordcloud_chart <- function(dataset, var){
-  dataset |>
-    dplyr::rename(var = {{var}}) |>
-    dplyr::distinct(code, var) |>
-    dplyr::count(var) |>
-    tidyr::drop_na() |>
-    dplyr::filter(var != "NA") |>
-    dplyr::rename(word = var, freq = n) |>
-  wordcloud2::wordcloud2()
-}
+# wordcloud_chart <- function(dataset, var){
+#   dataset |>
+#     dplyr::rename(var = {{var}}) |>
+#     dplyr::distinct(code, var) |>
+#     dplyr::count(var) |>
+#     tidyr::drop_na() |>
+#     dplyr::filter(var != "NA") |>
+#     dplyr::rename(word = var, freq = n) |>
+#   wordcloud2::wordcloud2()
+# }
 
 echart_theme <- function(plot){
   echarts4r::e_theme_custom(plot, '{"color":["#01274c","#ffca06"]}') |>
