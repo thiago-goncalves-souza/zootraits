@@ -55,6 +55,9 @@ mod_review_data_exploration_ui <- function(id) {
             choices = options_input(review_data$intraspecific_data),
             selected = options_input(review_data$intraspecific_data)
           )
+        ),
+        fluidRow(
+          shiny::actionButton(inputId = ns("search"), label = "Search")
         )
       )),
     fluidRow(
@@ -114,25 +117,31 @@ mod_review_data_exploration_server <- function(id) {
   moduleServer(id, function(input, output, session) {
     ns <- session$ns
 
-    review_dataset <- reactive({
-      req(input$taxon_higher_level_1)
-      req(input$ecosystem)
-      req(input$study_scale)
-      req(input$trait_type)
-      req(input$trait_dimension)
+      review_dataset <- reactive({
 
-      review_data |>
-        dplyr::filter(
-          taxon_higher_level_1 %in% input$taxon_higher_level_1
-        ) |>
-        dplyr::filter(
-          ecosystem %in% prepare_input_to_filter(input$ecosystem),
-          study_scale %in% prepare_input_to_filter(input$study_scale),
-          trait_type %in% prepare_input_to_filter(input$trait_type),
-          trait_dimension %in% prepare_input_to_filter(input$trait_dimension),
-          intraspecific_data %in% prepare_input_to_filter(input$intraspecific_data)
-        )
+        input$search
+        isolate({
+          req(input$taxon_higher_level_1)
+          req(input$ecosystem)
+          req(input$study_scale)
+          req(input$trait_type)
+          req(input$trait_dimension)
+
+          review_data |>
+            dplyr::filter(
+              taxon_higher_level_1 %in% input$taxon_higher_level_1
+            ) |>
+            dplyr::filter(
+              ecosystem %in% prepare_input_to_filter(input$ecosystem),
+              study_scale %in% prepare_input_to_filter(input$study_scale),
+              trait_type %in% prepare_input_to_filter(input$trait_type),
+              trait_dimension %in% prepare_input_to_filter(input$trait_dimension),
+              intraspecific_data %in% prepare_input_to_filter(input$intraspecific_data)
+            )
+        })
+
     })
+
 
     output$chart_taxonomic_groups <- echarts4r::renderEcharts4r({
       review_dataset() |>
@@ -161,6 +170,7 @@ mod_review_data_exploration_server <- function(id) {
     })
 
     output$map <- leaflet::renderLeaflet({
+      # TO DO
       review_map_data |>
         dplyr::left_join(review_dataset(),
                           by = "code",
