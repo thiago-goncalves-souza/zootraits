@@ -32,8 +32,10 @@ mod_review_metadata_server <- function(id){
            list(
              name_var = reactable::colDef(name = "Variable", maxWidth = 200),
              class_var = reactable::colDef(name = "Class", maxWidth = 100),
-             options_var = reactable::colDef(name = "Categories"),
-             description = reactable::colDef(name = "Description", maxWidth = 400)
+             options_var = reactable::colDef(name = "Examples"),
+             description = reactable::colDef(name = "Description",
+                                             maxWidth = 400,
+                                             html = TRUE)
            )
        )
    })
