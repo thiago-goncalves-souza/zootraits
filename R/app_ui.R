@@ -8,7 +8,8 @@ app_ui <- function(request) {
   tagList(
     # Leave this function for adding external resources
     golem_add_external_resources(),
-    bs4Dash::dashboardPage(
+    bs4Dash::dashboardPage(scrollToTop = TRUE,
+                           dark = NULL,
 
       # ---
       header = bs4Dash::dashboardHeader(
