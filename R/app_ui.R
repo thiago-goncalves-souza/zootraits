@@ -60,8 +60,8 @@ app_ui <- function(request) {
           ),
 
           bs4Dash::bs4TabItem(
-            tabName = "data_exploration",
-            mod_data_exploration_ui("data_exploration_1")
+            tabName = "review_data_exploration",
+            mod_review_data_exploration_ui("review_data_exploration_1")
           ),
           bs4Dash::bs4TabItem(
             tabName = "review_metadata",

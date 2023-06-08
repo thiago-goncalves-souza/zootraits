@@ -34,7 +34,7 @@ mod_review_metadata_server <- function(id){
              class_var = reactable::colDef(name = "Class", maxWidth = 100),
              options_var = reactable::colDef(name = "Examples"),
              description = reactable::colDef(name = "Description",
-                                             maxWidth = 400,
+                                             maxWidth = 500,
                                              html = TRUE)
            )
        )

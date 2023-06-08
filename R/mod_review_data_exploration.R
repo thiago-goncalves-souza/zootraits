@@ -7,7 +7,7 @@
 #' @noRd
 #'
 #' @importFrom shiny NS tagList
-mod_data_exploration_ui <- function(id) {
+mod_review_data_exploration_ui <- function(id) {
   ns <- NS(id)
 
   tagList(
@@ -97,7 +97,7 @@ mod_data_exploration_ui <- function(id) {
 #' data_exploration Server Functions
 #'
 #' @noRd
-mod_data_exploration_server <- function(id) {
+mod_review_data_exploration_server <- function(id) {
   moduleServer(id, function(input, output, session) {
     ns <- session$ns
 
@@ -204,10 +204,3 @@ mod_data_exploration_server <- function(id) {
     })
   })
 }
-
-## To be copied in the UI
-# mod_data_exploration_ui("data_exploration_1")
-
-## To be copied in the server
-# mod_data_exploration_server("data_exploration_1")
-
