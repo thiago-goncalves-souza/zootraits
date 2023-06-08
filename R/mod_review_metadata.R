@@ -28,13 +28,15 @@ mod_review_metadata_server <- function(id){
    output$table <- reactable::renderReactable({
      metadata_raw |>
        reactable::reactable(pagination = FALSE,
+                            searchable = TRUE,
+                            highlight = TRUE,
+                            compact = TRUE,
          columns =
            list(
              name_var = reactable::colDef(name = "Variable", maxWidth = 200),
              class_var = reactable::colDef(name = "Class", maxWidth = 100),
              options_var = reactable::colDef(name = "Examples"),
              description = reactable::colDef(name = "Description",
-                                             maxWidth = 500,
                                              html = TRUE)
            )
        )

@@ -77,7 +77,7 @@ mod_review_data_exploration_ui <- function(id) {
         collapsible = TRUE,
         width = 12,
         p("Not every paper is shown in the map.
-          Each study is grouped by country."),
+          The studies are grouped by country."),
         br(),
         leaflet::leafletOutput(ns("map")) |> waiting()
         # wordcloud2::wordcloud2Output(ns("chart_general_trait")) |> waiting()
