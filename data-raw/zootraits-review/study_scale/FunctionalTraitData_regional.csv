@@ -1,0 +1,1473 @@
+code,where,scale
+2,Spain,regional
+3,Poland,regional
+11,Vietnam,regional
+18,Greece,regional
+22,Spain,regional
+22,Morocco,regional
+22,France,regional
+22,Sweden,regional
+22,Slovakia,regional
+26,Europe,regional
+33,United States of America,regional
+33,United States of America,regional
+36,Japan,regional
+37,Finland,regional
+39,New Zealand,regional
+43,United Kingdom,regional
+43,United Kingdom,regional
+44,Canada,regional
+48,South Africa,regional
+48,South Africa,regional
+48,South Africa,regional
+49,New Zealand,regional
+52,Spain,regional
+56,Brazil,regional
+57,Brazil,regional
+58,Poland,regional
+66,Argentina,regional
+70,United States of America,regional
+72,Italy,regional
+73,Australia,regional
+82,Brazil,regional
+84,Ecuador,regional
+98,South Africa,regional
+103,Switzerland,regional
+107,United States of America,regional
+108,China,regional
+110,Australia,regional
+111,Brazil,regional
+117,South Africa,regional
+120,China,regional
+121,Brazil,regional
+122,Costa Rica,regional
+122,Mexico,regional
+122,Guatemala,regional
+122,Peru,regional
+122,Brazil,regional
+126,China,regional
+128,United States of America,regional
+134,United States of America,regional
+142,India,regional
+144,United States of America,regional
+145,Czech Republic,regional
+148,Spain,regional
+148,Germany,regional
+148,Romania,regional
+148,Italy,regional
+148,Poland,regional
+148,Finland,regional
+149,India,regional
+151,United Kingdom,regional
+168,Slovakia,regional
+178,Brazil,regional
+188,Colombia,regional
+188,Peru,regional
+188,Ecuador,regional
+188,Bolivia,regional
+188,Argentina,regional
+190,Japan,regional
+204,United States of America,regional
+204,The Bahamas,regional
+204,Haiti,regional
+204,Jamaica,regional
+204,Colombia,regional
+204,Honduras,regional
+204,Guatemala,regional
+204,Belize,regional
+204,Mexico,regional
+209,Germany,regional
+215,Mexico,regional
+222,Brazil,regional
+225,Canada,regional
+228,Brazil,regional
+233,Brazil,regional
+236,Argentina,regional
+239,Colombia,regional
+240,Canada,regional
+240,Mexico,regional
+240,United States of America,regional
+242,Italy,regional
+247,Spain,regional
+247,Netherlands,regional
+247,Germany,regional
+247,Czech Republic,regional
+247,Poland,regional
+247,Finland,regional
+250,Montserrat,regional
+255,United States of America,regional
+258,Brazil,regional
+263,Baltic Sea,regional
+271,United Republic of Tanzania,regional
+271,Mozambique,regional
+278,Mexico,regional
+278,Mexico,regional
+279,South Africa,regional
+281,Germany,regional
+284,South Africa,regional
+288,Czech Republic,regional
+289,United States of America,regional
+292,Indonesia,regional
+296,Australia,regional
+299,Mexico,regional
+300,United States of America,regional
+306,Madagascar,regional
+310,United States of America,regional
+314,France,regional
+318,Brazil,regional
+321,China,regional
+325,Finland,regional
+327,Italy,regional
+328,Brazil,regional
+330,Spain,regional
+332,Northwest Atlantic,regional
+336,Brazil,regional
+341,France,regional
+341,France,regional
+341,France,regional
+341,France,regional
+341,France,regional
+341,France,regional
+343,Jamaica,regional
+343,French Polynesia,regional
+348,Italy,regional
+349,Norway,regional
+351,Switzerland,regional
+351,Switzerland,regional
+352,Italy,regional
+358,Mexico,regional
+360,Brazil,regional
+373,Hungary,regional
+375,Italy,regional
+377,Brazil,regional
+381,Spain,regional
+382,United States of America,regional
+384,Italy,regional
+387,Brazil,regional
+389,Brazil,regional
+390,Kenya,regional
+393,Italy,regional
+403,France,regional
+406,Brazil,regional
+409,United States of America,regional
+411,Austria,regional
+424,France,regional
+430,United States of America,regional
+433,United States of America,regional
+438,Italy,regional
+446,South Africa,regional
+446,South Africa,regional
+446,South Africa,regional
+448,Argentina,regional
+451,United States of America,regional
+454,South Africa,regional
+457,Australia,regional
+458,Northwest Atlantic,regional
+460,Peru,regional
+462,New Zealand,regional
+468,Albania,regional
+477,United States of America,regional
+478,Brazil,regional
+479,Brazil,regional
+481,Brazil,regional
+482,China,regional
+483,Australia,regional
+485,Seychelles,regional
+485,Spain,regional
+489,Austria,regional
+499,Australia,regional
+507,Brazil,regional
+508,Brazil,regional
+509,United States of America,regional
+513,United States of America,regional
+517,France,regional
+519,China,regional
+525,Australia,regional
+531,North Atlantic,regional
+533,Zambia,regional
+534,China,regional
+540,Brazil,regional
+542,France,regional
+544,United States of America,regional
+546,Mexico,regional
+550,Brazil,regional
+550,Argentina,regional
+550,Guyana,regional
+550,Suriname,regional
+550,Venezuela,regional
+550,Colombia,regional
+550,Ecuador,regional
+550,Peru,regional
+550,Bolivia,regional
+550,Mexico,regional
+550,Costa Rica,regional
+550,Panama,regional
+550,Zambia,regional
+550,Senegal,regional
+550,Ivory Coast,regional
+550,Ghana,regional
+550,Cameroon,regional
+550,Somalia,regional
+550,Zimbabwe,regional
+550,Botswana,regional
+550,Madagascar,regional
+550,South Africa,regional
+562,Brazil,regional
+565,Spain,regional
+567,Germany,regional
+567,Germany,regional
+567,Germany,regional
+568,Hungary,regional
+572,Spain,regional
+580,United States of America,regional
+581,Finland,regional
+581,Poland,regional
+581,Germany,regional
+581,Romania,regional
+581,Italy,regional
+581,Spain,regional
+585,Greece,regional
+597,Australia,regional
+603,Colombia,regional
+607,United States of America,regional
+608,Mexico,regional
+608,Mexico,regional
+630,Brazil,regional
+632,Madagascar,regional
+632,Madagascar,regional
+634,Ghana,regional
+640,Brazil,regional
+641,Argentina,regional
+641,Bolivia,regional
+641,Brazil,regional
+641,Chile,regional
+641,Colombia,regional
+641,Ecuador,regional
+641,Guyana,regional
+641,Paraguay,regional
+641,Peru,regional
+641,Suriname,regional
+641,Uruguay,regional
+641,Venezuela,regional
+641,Guyana,regional
+641,Belize,regional
+641,Costa Rica,regional
+641,El Salvador,regional
+641,Guatemala,regional
+641,Honduras,regional
+641,Nicaragua,regional
+641,Panama,regional
+641,Mexico,regional
+641,United States of America,regional
+641,Canada,regional
+656,Poland,regional
+658,Mexico,regional
+658,Belize,regional
+658,Honduras,regional
+661,Mexico,regional
+665,Baltic Sea,regional
+676,United States of America,regional
+677,Australia,regional
+677,Australia,regional
+680,United States of America,regional
+693,Czech Republic,regional
+693,France,regional
+693,Italy,regional
+693,Poland,regional
+696,New Zealand,regional
+698,Barents Sea,regional
+699,Eastern English Channel,regional
+702,Canada,regional
+710,Canada,regional
+711,Colombia,regional
+711,Ecuador,regional
+711,Peru,regional
+711,Bolivia,regional
+711,Argentina,regional
+712,Finland,regional
+731,United Kingdom,regional
+732,China,regional
+734,United States of America,regional
+735,Sweden,regional
+736,France,regional
+736,France,regional
+736,France,regional
+737,Montenegro,regional
+738,Austria,regional
+740,Brazil,regional
+748,France,regional
+750,United States of America,regional
+756,Swaziland,regional
+758,Poland,regional
+766,China,regional
+782,Puerto Rico,regional
+783,Argentina,regional
+783,Brazil,regional
+783,France,regional
+783,Colombia,regional
+783,Costa Rica,regional
+783,Honduras,regional
+783,Mexico,regional
+783,Dominica,regional
+783,Netherlands,regional
+783,Puerto Rico,regional
+787,United States of America,regional
+789,Singapore,regional
+792,Brazil,regional
+796,Brazil,regional
+805,Pacific Ocean,regional
+808,Brazil,regional
+813,France,regional
+814,Brazil,regional
+818,South Africa,regional
+828,France,regional
+828,France,regional
+829,United Kingdom,regional
+829,France,regional
+835,Argentina,regional
+840,Kenya,regional
+850,Atlantic Ocean,regional
+853,United Republic of Tanzania,regional
+853,United Republic of Tanzania,regional
+853,United Republic of Tanzania,regional
+853,United Republic of Tanzania,regional
+857,Indian Ocean,regional
+864,Germany,regional
+866,United Kingdom,regional
+867,South Africa,regional
+878,Brazil,regional
+885,United States of America,regional
+886,Brazil,regional
+887,Finland,regional
+894,Brazil,regional
+895,United States of America,regional
+896,United Kingdom,regional
+901,United States of America,regional
+911,United States of America,regional
+915,Russia,regional
+922,Europe,regional
+922,Europe,regional
+922,Europe,regional
+923,Malaysia,regional
+930,Mediterranean Sea,regional
+932,Atlatic ocean,regional
+935,United States of America,regional
+942,Costa Rica,regional
+945,Greece,regional
+947,Japan,regional
+951,China,regional
+958,Mexico,regional
+958,Jamaica,regional
+958,Haiti,regional
+958,El Salvador,regional
+958,Costa Rica,regional
+958,Panama,regional
+958,Colombia,regional
+958,Venezuela,regional
+958,Trinidad and Tobago,regional
+958,Suriname,regional
+958,France,regional
+958,Ecuador,regional
+958,Peru,regional
+958,Brazil,regional
+963,Brazil,regional
+966,United States of America,regional
+968,Arctic Ocean,regional
+970,Germany,regional
+980,Germany,regional
+981,United States of America,regional
+983,Spain,regional
+994,Indian Ocean,regional
+995,United States of America,regional
+996,United States of America,regional
+1000,Canada,regional
+1002,Brazil,regional
+1003,Australia,regional
+1003,Australia,regional
+1003,Australia,regional
+1006,North Atlantic,regional
+1010,Russia,regional
+1012,United States of America,regional
+1013,Madagascar,regional
+1014,Mexico,regional
+1015,New Zealand,regional
+1019,Chile,regional
+1030,Finland,regional
+1030,Germany,regional
+1030,Latvia,regional
+1030,United Kingdom,regional
+1037,Cuba,regional
+1039,China,regional
+1040,Brazil,regional
+1046,Brazil,regional
+1051,Finland,regional
+1052,United Kingdom,regional
+1053,Mexico,regional
+1053,United States of America,regional
+1053,Canada,regional
+1057,Brazil,regional
+1062,United States of America,regional
+1069,Caribbean,regional
+1070,Germany,regional
+1077,Brazil,regional
+1080,United Kingdom,regional
+1098,Finland,regional
+1098,Poland,regional
+1098,Germany,regional
+1098,Romania,regional
+1098,Italy,regional
+1098,Spain,regional
+1102,Europe,regional
+1104,Canada,regional
+1110,Ecuador,regional
+1115,Mongolia,regional
+1121,France,regional
+1130,Brazil,regional
+1132,Brazil,regional
+1134,Philippines,regional
+1173,Italy,regional
+1190,South America,regional
+1191,Brazil,regional
+1196,Slovakia,regional
+1198,Brazil,regional
+1199,Venezuela,regional
+1204,Namibia,regional
+1205,Brazil,regional
+1209,Finland,regional
+1222,Costa Rica,regional
+1223,Costa Rica,regional
+1229,France,regional
+1242,North Atlantic,regional
+1245,Portugal,regional
+1251,United States of America,regional
+1252,Liberia,regional
+1257,Western Hemisphere,regional
+1269,Brazil,regional
+1272,Brazil,regional
+1279,Brazil,regional
+1284,United States of America,regional
+1285,France,regional
+1292,Barents Sea,regional
+1293,Brazil,regional
+1301,France,regional
+1319,Brazil,regional
+1320,United States of America,regional
+1322,Belgium,regional
+1322,Czech Republic,regional
+1322,Estonia,regional
+1322,France,regional
+1322,Germany,regional
+1322,Netherlands,regional
+1322,Switzerland,regional
+1323,Brazil,regional
+1327,Finland,regional
+1329,United States of America,regional
+1340,Finland,regional
+1340,Finland,regional
+1348,Spain,regional
+1354,Finland,regional
+1356,Spain,regional
+1356,Morocco,regional
+1364,Pacific Ocean,regional
+1365,France,regional
+1366,Finland,regional
+1382,Singapore,regional
+1382,Singapore,regional
+1388,Malaysia,regional
+1389,Belgium,regional
+1393,Brazil,regional
+1400,Qatar,regional
+1405,United Kingdom,regional
+1406,Canada,regional
+1415,Mexico,regional
+1438,France,regional
+1442,Finland,regional
+1442,Italy,regional
+1442,Sweden,regional
+1442,United Kingdom,regional
+1443,Madagascar,regional
+1446,United States of America,regional
+1447,Mexico,regional
+1447,Panama,regional
+1447,Nicaragua,regional
+1448,Brazil,regional
+1456,Fiji,regional
+1457,United States of America,regional
+1480,Canary Islands,regional
+1486,United States of America,regional
+1486,United States of America,regional
+1491,Estonia,regional
+1508,Mexico,regional
+1521,Brazil,regional
+1522,India,regional
+1524,Switzerland,regional
+1527,Russia,regional
+1527,Kyrgyzstan,regional
+1527,Azerbaijan,regional
+1527,Slovakia,regional
+1527,Lithuania,regional
+1527,Armenia,regional
+1527,Georgia,regional
+1527,Turkmenistan,regional
+1527,Uzbekistan,regional
+1527,Kazakhstan,regional
+1527,Mongolia,regional
+1528,Sweden,regional
+1528,Sweden,regional
+1529,Canada,regional
+1533,Argentina,regional
+1533,Argentina,regional
+1540,Australia,regional
+1540,United States of America,regional
+1540,Mexico,regional
+1540,Germany,regional
+1540,Bulgaria,regional
+1540,Moldova,regional
+1540,Ukraine,regional
+1540,Romania,regional
+1540,Republic of Serbia,regional
+1540,Croatia,regional
+1540,Hungary,regional
+1540,Slovakia,regional
+1540,Austria,regional
+1541,Seychelles,regional
+1541,Chagos,regional
+1541,Australia,regional
+1541,Maldives,regional
+1543,Belgium,regional
+1546,Palau,regional
+1547,Holartic region,regional
+1549,Sweden,regional
+1551,Israel,regional
+1552,Colombia,regional
+1557,Brazil,regional
+1558,United Kingdom,regional
+1564,Mexico,regional
+1570,Bolivia,regional
+1575,Brazil,regional
+1579,France,regional
+1592,Germany,regional
+1593,Switzerland,regional
+1593,Switzerland,regional
+1593,Switzerland,regional
+1593,Switzerland,regional
+1599,Italy,regional
+1601,Spain,regional
+1612,Madagascar,regional
+1615,United States of America,regional
+1615,United States of America,regional
+1621,United States of America,regional
+1623,Brazil,regional
+1628,Sweden,regional
+1632,Finland,regional
+1633,Portugal,regional
+1635,France,regional
+1642,Brazil,regional
+1648,Brazil,regional
+1654,Mediterranean Sea,regional
+1661,Peru,regional
+1664,Chile,regional
+1674,Finland,regional
+1674,Republic of Serbia,regional
+1674,Italy,regional
+1674,Spain,regional
+1674,France,regional
+1674,United Kingdom,regional
+1674,Belgium,regional
+1674,Netherlands,regional
+1674,Germany,regional
+1674,Austria,regional
+1674,Hungary,regional
+1674,Romania,regional
+1674,Sweden,regional
+1683,France,regional
+1685,Netherlands,regional
+1692,Brazil,regional
+1694,Hungary,regional
+1701,Mediterranean Sea,regional
+1701,Red Sea,regional
+1704,Finland,regional
+1706,Norway,regional
+1719,Australia,regional
+1720,United States of America,regional
+1721,Morocco,regional
+1721,Algeria,regional
+1721,Tunisia,regional
+1726,United States of America,regional
+1726,Canada,regional
+1726,Mexico,regional
+1726,Belize,regional
+1726,Costa Rica,regional
+1726,Panama,regional
+1726,Nicaragua,regional
+1726,Honduras,regional
+1726,Guatemala,regional
+1727,Japan,regional
+1735,Spain,regional
+1736,Arabian Sea,regional
+1737,Ukraine,regional
+1737,Poland,regional
+1737,Denmark,regional
+1738,Brazil,regional
+1739,Bolivia,regional
+1744,Finland,regional
+1753,China,regional
+1759,Brazil,regional
+1761,Brazil,regional
+1783,United States of America,regional
+1792,United Kingdom,regional
+1793,Mediterranean Sea,regional
+1799,Brazil,regional
+1802,Mexico,regional
+1813,United States of America,regional
+1816,Papua New Guinea,regional
+1821,United States of America,regional
+1827,Canada,regional
+1827,United States of America,regional
+1827,Mexico,regional
+1834,Brazil,regional
+1837,Brazil,regional
+1850,Germany,regional
+1850,Germany,regional
+1855,United States of America,regional
+1856,Brazil,regional
+1865,Australia,regional
+1869,Kenya,regional
+1869,Chad,regional
+1869,Niger,regional
+1869,Angola,regional
+1869,Rwanda,regional
+1869,Mali,regional
+1869,Burkina Faso,regional
+1869,United Republic of Tanzania,regional
+1869,Guinea,regional
+1869,Morocco,regional
+1869,Mauritania,regional
+1869,Zambia,regional
+1869,Algeria,regional
+1869,Cameroon,regional
+1869,Mozambique,regional
+1869,Burundi,regional
+1869,Democratic Republic of the Congo,regional
+1869,Republic of the Congo,regional
+1869,Tunisia,regional
+1869,Uganda,regional
+1869,Nigeria,regional
+1869,Senegal,regional
+1869,Egypt,regional
+1869,South Africa,regional
+1869,Zimbabwe,regional
+1869,Malawi,regional
+1869,Botswana,regional
+1869,Gabon,regional
+1869,Ivory Coast,regional
+1869,Central African Republic,regional
+1869,Namibia,regional
+1869,Ethiopia,regional
+1872,Spain,regional
+1879,Spain,regional
+1879,Italy,regional
+1879,Germany,regional
+1879,Romania,regional
+1879,Finland,regional
+1879,Poland,regional
+1880,India,regional
+1884,Canada,regional
+1886,Brazil,regional
+1887,Portugal,regional
+1896,United Kingdom,regional
+1897,Canary Islands,regional
+1897,Canary Islands,regional
+1904,France,regional
+1910,United States of America,regional
+1914,Iran,regional
+1914,Costa Rica,regional
+1921,New Zealand,regional
+1923,Finland,regional
+1925,Italy,regional
+1930,Spain,regional
+1940,Neotropical Region,regional
+1941,France,regional
+1952,Costa Rica,regional
+1964,Switzerland,regional
+1975,Bolivia,regional
+1996,Madagascar,regional
+2007,France,regional
+2017,United States of America,regional
+2025,Finland,regional
+2041,Germany,regional
+2043,Spain,regional
+2052,Brazil,regional
+2066,United States of America,regional
+2068,Portugal,regional
+2068,Portugal,regional
+2072,New Zealand,regional
+2074,Indonesia,regional
+2078,Netherlands,regional
+2080,Brazil,regional
+2080,Australia,regional
+2083,Mexico,regional
+2085,Germany,regional
+2091,France,regional
+2101,Greece,regional
+2106,Baltic Sea,regional
+2116,Germany,regional
+2117,Mediterranean Sea,regional
+2119,Brazil,regional
+2120,Austria,regional
+2124,Europe,regional
+2127,Norway,regional
+2144,Southern Africa,regional
+2144,Southern Africa,regional
+2157,Norway,regional
+2158,United States of America,regional
+2161,Italy,regional
+2165,Peru,regional
+2180,Brazil,regional
+2181,Canada,regional
+2190,Brazil,regional
+2195,Australia,regional
+2196,Albania,regional
+2200,Norway,regional
+2202,Costa Rica,regional
+2204,United States of America,regional
+2212,Colombia,regional
+2222,Korea No Mans Area,regional
+2223,Peru,regional
+2233,Turkmenistan,regional
+2233,Tajikistan,regional
+2233,Sweden,regional
+2233,Azerbaijan,regional
+2233,Slovakia,regional
+2233,Kyrgyzstan,regional
+2233,Armenia,regional
+2233,Mongolia,regional
+2233,Uzbekistan,regional
+2233,Kazakhstan,regional
+2233,Russia,regional
+2233,Georgia,regional
+2249,Brazil,regional
+2252,United States of America,regional
+2261,Chile,regional
+2272,Northeast Pacific,regional
+2287,Australia,regional
+2298,Indonesia,regional
+2301,Canada,regional
+2303,Brazil,regional
+2324,Brazil,regional
+2325,Europe,regional
+2327,Norway,regional
+2327,Sweden,regional
+2327,Finland,regional
+2327,Russia,regional
+2329,Japan,regional
+2336,Brazil,regional
+2356,Germany,regional
+2366,Portugal,regional
+2368,Australia,regional
+2374,Mediterranean Sea,regional
+2384,Portugal,regional
+2384,Spain,regional
+2385,Canada,regional
+2390,Germany,regional
+2390,Denmark,regional
+2390,Norway,regional
+2393,Australia,regional
+2413,Brazil,regional
+2417,United States of America,regional
+2419,Mediterranean Sea,regional
+2423,Sweden,regional
+2429,Costa Rica,regional
+2429,Costa Rica,regional
+2430,Sudan,regional
+2430,Mauritania,regional
+2430,Mali,regional
+2430,Morocco,regional
+2430,Senegal,regional
+2430,Tunisia,regional
+2430,Algeria,regional
+2430,Libya,regional
+2430,Egypt,regional
+2430,Sudan,regional
+2430,Chad,regional
+2430,Niger,regional
+2430,Burkina Faso,regional
+2433,Canada,regional
+2436,United States of America,regional
+2437,Brazil,regional
+2439,United States of America,regional
+2451,Australia,regional
+2453,Brazil,regional
+2468,Paraguay,regional
+2468,Argentina,regional
+2480,Colombia,regional
+2481,Colombia,regional
+2482,Brazil,regional
+2485,Australia,regional
+2490,Costa Rica,regional
+2494,Spain,regional
+2499,Canada,regional
+2501,Australia,regional
+2510,France,regional
+2513,Germany,regional
+2517,Brazil,regional
+2521,France,regional
+2538,Malaysia,regional
+2555,Norway,regional
+2561,Argentina,regional
+2564,Spain,regional
+2564,Greece,regional
+2564,Turkey,regional
+2564,Montenegro,regional
+2564,Lebanon,regional
+2564,Syria,regional
+2564,Cyprus,regional
+2564,Egypt,regional
+2564,Malta,regional
+2564,Algeria,regional
+2564,Morocco,regional
+2564,Tunisia,regional
+2564,Israel,regional
+2564,Albania,regional
+2564,Bosnia and Herzegovina,regional
+2564,Croatia,regional
+2564,Slovenia,regional
+2564,Italy,regional
+2564,France,regional
+2571,North Pacific,regional
+2611,Spain,regional
+2617,Norway,regional
+2625,Finland,regional
+2628,Brazil,regional
+2628,Brazil,regional
+2635,Spain,regional
+2639,New Zealand,regional
+2640,Australia,regional
+2641,Brazil,regional
+2641,Colombia,regional
+2641,Ecuador,regional
+2641,Peru,regional
+2641,Uruguay,regional
+2641,Guyana,regional
+2641,Guyana,regional
+2641,Suriname,regional
+2641,Paraguay,regional
+2641,Argentina,regional
+2641,Venezuela,regional
+2641,Bolivia,regional
+2641,Chile,regional
+2647,Southern Ocean,regional
+932,Western Mediterranean,regional
+932,Central-Eastern Mediterranean,regional
+2650,Spain,regional
+2652,Mediterranean Sea,regional
+2658,France,regional
+2671,Sweden,regional
+2671,Estonia,regional
+2671,Netherlands,regional
+2671,Germany,regional
+2673,South Africa,regional
+2675,South Africa,regional
+2675,South Africa,regional
+2676,Malaysia,regional
+2676,Malaysia,regional
+2685,Argentina,regional
+2685,Bolivia,regional
+2685,Brazil,regional
+2685,Chile,regional
+2685,Colombia,regional
+2685,Ecuador,regional
+2685,Guyana,regional
+2685,Paraguay,regional
+2685,Peru,regional
+2685,Suriname,regional
+2685,Uruguay,regional
+2685,Venezuela,regional
+2685,Guyana,regional
+2685,Belize,regional
+2685,Costa Rica,regional
+2685,El Salvador,regional
+2685,Guatemala,regional
+2685,Honduras,regional
+2685,Nicaragua,regional
+2685,Panama,regional
+2685,Mexico,regional
+2696,Mediterranean Sea,regional
+2703,Europe,regional
+2703,Europe,regional
+2728,Argentina,regional
+2732,New Zealand,regional
+2734,Australia,regional
+2744,United States of America,regional
+2756,France,regional
+2776,India,regional
+2781,Sweden,regional
+2788,France,regional
+2809,Portugal,regional
+2809,Spain,regional
+2809,France,regional
+2809,Italy,regional
+2809,Belgium,regional
+2809,Switzerland,regional
+2809,Germany,regional
+2809,Czech Republic,regional
+2809,Austria,regional
+2809,Croatia,regional
+2809,Hungary,regional
+2809,Bosnia and Herzegovina,regional
+2809,Republic of Serbia,regional
+2809,Albania,regional
+2809,Greece,regional
+2809,Bulgaria,regional
+2809,Poland,regional
+2809,Lithuania,regional
+2809,Latvia,regional
+2809,Estonia,regional
+2809,Norway,regional
+2809,Sweden,regional
+2809,Finland,regional
+2809,Ireland,regional
+2809,United Kingdom,regional
+2809,Denmark,regional
+2809,Netherlands,regional
+2809,Romania,regional
+2809,Slovakia,regional
+2819,Australia,regional
+2836,Brazil,regional
+2839,Australia,regional
+2851,France,regional
+2854,The Bahamas,regional
+2856,Canada,regional
+2860,Canada,regional
+2860,Canada,regional
+2871,France,regional
+2875,Venezuela,regional
+2885,Netherlands,regional
+2885,Germany,regional
+2885,Poland,regional
+2888,Guyana,regional
+2889,United Kingdom,regional
+2897,Sweden,regional
+2910,France,regional
+2920,Cuba,regional
+2920,Dominican Republic,regional
+2920,Haiti,regional
+2920,Jamaica,regional
+2920,Puerto Rico,regional
+2938,Arctic Ocean,regional
+2939,Europe,regional
+2946,France,regional
+2948,Namibia,regional
+2974,Spain,regional
+2977,Portugal,regional
+2978,France,regional
+2979,Portugal,regional
+2980,New Zealand,regional
+3017,Canada,regional
+3019,Germany,regional
+3019,Germany,regional
+3024,Australia,regional
+3028,Netherlands,regional
+3035,Celtic Sea,regional
+3065,Finland,regional
+3070,Italy,regional
+3077,Spain,regional
+3082,Canada,regional
+3089,Australia,regional
+3095,Spain,regional
+3098,Brazil,regional
+3101,Switzerland,regional
+3106,France,regional
+3110,New Caledonia,regional
+3121,Malaysia,regional
+3125,Malaysia,regional
+3129,Canada,regional
+3129,Greenland,regional
+3129,Mexico,regional
+3129,United States of America,regional
+3138,Ethiopia,regional
+3153,Australia,regional
+3154,Costa Rica,regional
+3157,Italy,regional
+3159,France,regional
+3164,Brazil,regional
+3168,France,regional
+3169,France,regional
+3194,Italy,regional
+3227,Germany,regional
+3233,Baltic Sea,regional
+3235,Taiwan,regional
+3249,Portugal,regional
+3249,Spain,regional
+3249,Italy,regional
+3249,Albania,regional
+3249,Greece,regional
+3249,Macedonia,regional
+3249,Republic of Serbia,regional
+3249,Montenegro,regional
+3249,Bosnia and Herzegovina,regional
+3249,Croatia,regional
+3249,Slovenia,regional
+3249,Ireland,regional
+3249,United Kingdom,regional
+3249,France,regional
+3249,Switzerland,regional
+3249,Belgium,regional
+3249,Netherlands,regional
+3249,Germany,regional
+3249,Luxembourg,regional
+3249,Czech Republic,regional
+3249,Austria,regional
+3249,Hungary,regional
+3249,Denmark,regional
+3249,Norway,regional
+3249,Sweden,regional
+3249,Finland,regional
+3249,Bulgaria,regional
+3249,Turkey,regional
+3249,Romania,regional
+3249,Moldova,regional
+3249,Slovakia,regional
+3249,Ukraine,regional
+3249,Poland,regional
+3249,Belarus,regional
+3249,Lithuania,regional
+3249,Latvia,regional
+3249,Estonia,regional
+3249,Russia,regional
+3257,Spain,regional
+3260,United Kingdom,regional
+3284,Atlantic sea,regional
+3285,El Salvador,regional
+3294,Colombia,regional
+3294,Ecuador,regional
+3299,Australia,regional
+3301,Brazil,regional
+3337,Brazil,regional
+3349,United States of America,regional
+3358,United Kingdom,regional
+3361,United States of America,regional
+3382,Italy,regional
+3396,Brazil,regional
+3416,South Africa,regional
+3422,Portugal,regional
+3422,Spain,regional
+3434,Italy,regional
+3442,Portugal,regional
+3449,Costa Rica,regional
+3974,United States of America,regional
+3975,Europe,regional
+3976,France,regional
+3988,French Polynesia,regional
+4010,Brazil,regional
+4010,Saint Helena,regional
+4010,Argentina,regional
+4010,Angola,regional
+4010,Italy,regional
+4010,Spain,regional
+4010,Cuba,regional
+4010,Cape Verde,regional
+4010,Sao Tome and Principe,regional
+4010,Senegal,regional
+4010,Niger,regional
+4010,Bermuda,regional
+4010,South Africa,regional
+4010,Venezuela,regional
+4032,United Kingdom,regional
+4042,Canada,regional
+4058,Finland,regional
+4065,France,regional
+4078,Bolivia,regional
+4079,United States of America,regional
+4088,Australia,regional
+4165,Ireland,regional
+4165,United Kingdom,regional
+4165,Spain,regional
+4165,Portugal,regional
+4165,France,regional
+4165,Switzerland,regional
+4165,Czech Republic,regional
+4165,Germany,regional
+4165,Slovakia,regional
+4165,Poland,regional
+4179,Finland,regional
+4187,France,regional
+4219,France,regional
+4225,United Kingdom,regional
+4233,Europe,regional
+4251,Paraguay,regional
+4252,Curacao,regional
+4266,France,regional
+4367,France,regional
+4404,France,regional
+4448,Poland,regional
+4448,Russia,regional
+4448,Lithuania,regional
+4448,Finland,regional
+4448,Norway,regional
+4448,Sweden,regional
+4781,Australia,regional
+5079,Colombia,regional
+5085,Hungary,regional
+5087,France,regional
+5088,South Africa,regional
+5095,France,regional
+5580,Guatemala,regional
+5607,Brazil,regional
+5640,Belgium,regional
+5640,France,regional
+5640,Germany,regional
+5640,Luxembourg,regional
+5640,Slovakia,regional
+5640,Sweden,regional
+5640,Switzerland,regional
+5640,Ukraine,regional
+5732,New Zealand,regional
+5741,Mexico,regional
+5753,Arctic Ocean,regional
+5823,France,regional
+5871,Mexico,regional
+5931,United States of America,regional
+6180,North Atlantic,regional
+6498,Netherlands,regional
+6505,Argentina,regional
+6505,Chile,regional
+6525,Mediterranean Sea,regional
+6525,Red Sea,regional
+6578,Brazil,regional
+6603,Mexico,regional
+6603,Ecuador,regional
+6603,Colombia,regional
+6603,Venezuela,regional
+6603,Peru,regional
+6603,Guyana,regional
+6603,Suriname,regional
+6603,Bolivia,regional
+6603,Chile,regional
+6603,Argentina,regional
+6603,Paraguay,regional
+6603,Uruguay,regional
+6603,Brazil,regional
+6605,Mexico,regional
+6612,China,regional
+6621,Argentina,regional
+6631,United States of America,regional
+6662,Brazil,regional
+6697,Mexico,regional
+6698,Brazil,regional
+6727,Brazil,regional
+6728,Mexico,regional
+6735,Norway,regional
+6741,France,regional
+6750,South Africa,regional
+6778,Romania,regional
+6778,Romania,regional
+6804,United States of America,regional
+6804,Mexico,regional
+6823,United States of America,regional
+6838,Brazil,regional
+6861,Iran,regional
+6876,Northeast Pacific,regional
+6930,Canada,regional
+6942,Spain,regional
+6967,Switzerland,regional
+6984,Sri Lanka,regional
+7041,Norway,regional
+7049,Italy,regional
+7050,China,regional
+7051,China,regional
+7054,Poland,regional
+7057,Canada,regional
+7060,Mediterranean Sea,regional
+7060,North Sea,regional
+7061,France,regional
+7064,France,regional
+7064,Switzerland,regional
+7064,Portugal,regional
+7065,Morocco,regional
+7067,Italy,regional
+7071,Brazil,regional
+7076,Russia,regional
+7092,India,regional
+7115,Guyana,regional
+7128,New Zealand,regional
+7137,Brazil,regional
+7138,Russia,regional
+7144,Albania,regional
+7148,China,regional
+7153,Sweden,regional
+7169,Italy,regional
+7180,United States of America,regional
+7182,United States of America,regional
+7189,Switzerland,regional
+7191,China,regional
+7207,Brazil,regional
+7223,Argentina,regional
+7231,Brazil,regional
+7246,China,regional
+7255,Brazil,regional
+7256,Italy,regional
+7259,Australia,regional
+7264,India,regional
+7285,Brazil,regional
+7289,Brazil,regional
+7305,Netherlands,regional
+7307,Russia,regional
+7309,France,regional
+7322,China,regional
+7323,Australia,regional
+7380,Slovenia,regional
+7380,Italy,regional
+7393,United States of America,regional
+7454,Baltic Sea,regional
+7462,Brazil,regional
+1392,United States of America,regional
+172,Colombia,regional
+1801,French Polynesia,regional
+2357,Madagascar,regional
+752,United Kingdom,regional
+830,United States of America,regional
+905,Saudi Arabia,regional
+2963,France,regional
+2641,South America,regional
+2458,United States of America,regional
+140,Poland,regional
+1479,China,regional
+861,Atlantic Ocean,regional
+1602,United States of America,regional
+761,Albania,regional
+624,Albania,regional
+3154,Argentina,regional
+3154,Bolivia,regional
+3154,Brazil,regional
+3154,Chile,regional
+3154,Colombia,regional
+3154,Ecuador,regional
+3154,Guyana,regional
+3154,Paraguay,regional
+3154,Peru,regional
+3154,Suriname,regional
+3154,Uruguay,regional
+3154,Venezuela,regional
+3154,Guyana,regional
+3154,Belize,regional
+5580,Honduras,regional
+5580,Nicaragua,regional
+5580,Panama,regional
+5580,Mexico,regional
+5580,United States of America,regional
+624,Andorra,regional
+624,Austria,regional
+624,Belarus,regional
+624,Belgium,regional
+624,Bosnia and Herzegovina,regional
+624,Bulgaria,regional
+624,Croatia,regional
+624,Czech Republic,regional
+624,Denmark,regional
+624,Estonia,regional
+624,Finland,regional
+624,France,regional
+624,Germany,regional
+624,Greece,regional
+624,Hungary,regional
+624,Iceland,regional
+624,Ireland,regional
+624,Italy,regional
+624,Latvia,regional
+624,Liechtenstein,regional
+624,Lithuania,regional
+624,Luxembourg,regional
+624,Macedonia,regional
+624,Malta,regional
+624,Moldova,regional
+624,Monaco,regional
+624,Montenegro,regional
+624,Netherlands,regional
+624,Norway,regional
+624,Poland,regional
+624,Portugal,regional
+624,Republic of Serbia,regional
+624,Romania,regional
+624,Russia,regional
+624,San Marino,regional
+624,Slovakia,regional
+624,Slovenia,regional
+624,Spain,regional
+624,Sweden,regional
+624,Switzerland,regional
+624,Ukraine,regional
+624,United Kingdom,regional
+624,Kazakhstan,regional
+761,Andorra,regional
+761,Austria,regional
+761,Belarus,regional
+761,Belgium,regional
+761,Bosnia and Herzegovina,regional
+761,Bulgaria,regional
+761,Croatia,regional
+761,Czech Republic,regional
+761,Denmark,regional
+761,Estonia,regional
+761,Finland,regional
+761,France,regional
+761,Germany,regional
+761,Greece,regional
+761,Hungary,regional
+761,Iceland,regional
+761,Ireland,regional
+761,Italy,regional
+761,Latvia,regional
+761,Liechtenstein,regional
+761,Lithuania,regional
+761,Luxembourg,regional
+761,Macedonia,regional
+761,Malta,regional
+761,Moldova,regional
+761,Monaco,regional
+761,Montenegro,regional
+761,Netherlands,regional
+761,Norway,regional
+761,Poland,regional
+761,Portugal,regional
+761,Republic of Serbia,regional
+761,Romania,regional
+761,Russia,regional
+761,San Marino,regional
+761,Slovakia,regional
+761,Slovenia,regional
+761,Spain,regional
+761,Sweden,regional
+761,Switzerland,regional
+761,Ukraine,regional
+761,United Kingdom,regional
+761,Kazakhstan,regional
+7144,Andorra,regional
+7144,Austria,regional
+7144,Belarus,regional
+7144,Belgium,regional
+7144,Bosnia and Herzegovina,regional
+7144,Bulgaria,regional
+7144,Croatia,regional
+7144,Czech Republic,regional
+7144,Denmark,regional
+7144,Estonia,regional
+7144,Finland,regional
+7144,France,regional
+7144,Germany,regional
+7144,Greece,regional
+7144,Hungary,regional
+7144,Iceland,regional
+7144,Ireland,regional
+7144,Italy,regional
+7144,Latvia,regional
+7144,Liechtenstein,regional
+7144,Lithuania,regional
+7144,Luxembourg,regional
+7144,Macedonia,regional
+7144,Malta,regional
+7144,Moldova,regional
+7144,Monaco,regional
+7144,Montenegro,regional
+7144,Netherlands,regional
+7144,Norway,regional
+7144,Poland,regional
+7144,Portugal,regional
+7144,Republic of Serbia,regional
+7144,Romania,regional
+7144,Russia,regional
+7144,San Marino,regional
+7144,Slovakia,regional
+7144,Slovenia,regional
+7144,Spain,regional
+7144,Sweden,regional
+7144,Switzerland,regional
+7144,Ukraine,regional
+7144,United Kingdom,regional
+7144,Kazakhstan,regional
+468,Andorra,regional
+468,Austria,regional
+468,Belarus,regional
+468,Belgium,regional
+468,Bosnia and Herzegovina,regional
+468,Bulgaria,regional
+468,Croatia,regional
+468,Czech Republic,regional
+468,Denmark,regional
+468,Estonia,regional
+468,Finland,regional
+468,France,regional
+468,Germany,regional
+468,Greece,regional
+468,Hungary,regional
+468,Iceland,regional
+468,Ireland,regional
+468,Italy,regional
+468,Latvia,regional
+468,Liechtenstein,regional
+468,Lithuania,regional
+468,Luxembourg,regional
+468,Macedonia,regional
+468,Malta,regional
+468,Moldova,regional
+468,Monaco,regional
+468,Montenegro,regional
+468,Netherlands,regional
+468,Norway,regional
+468,Poland,regional
+468,Portugal,regional
+468,Republic of Serbia,regional
+468,Romania,regional
+468,Russia,regional
+468,San Marino,regional
+468,Slovakia,regional
+468,Slovenia,regional
+468,Spain,regional
+468,Sweden,regional
+468,Switzerland,regional
+468,Ukraine,regional
+468,United Kingdom,regional
+468,Kazakhstan,regional
+2196,Andorra,regional
+2196,Austria,regional
+2196,Belarus,regional
+2196,Belgium,regional
+2196,Bosnia and Herzegovina,regional
+2196,Bulgaria,regional
+2196,Croatia,regional
+2196,Czech Republic,regional
+2196,Denmark,regional
+2196,Estonia,regional
+2196,Finland,regional
+2196,France,regional
+2196,Germany,regional
+2196,Greece,regional
+2196,Hungary,regional
+2196,Iceland,regional
+2196,Ireland,regional
+2196,Italy,regional
+2196,Latvia,regional
+2196,Liechtenstein,regional
+2196,Lithuania,regional
+2196,Luxembourg,regional
+2196,Macedonia,regional
+2196,Malta,regional
+2196,Moldova,regional
+2196,Monaco,regional
+2196,Montenegro,regional
+2196,Netherlands,regional
+2196,Norway,regional
+2196,Poland,regional
+2196,Portugal,regional
+2196,Republic of Serbia,regional
+2196,Romania,regional
+2196,Russia,regional
+2196,San Marino,regional
+2196,Slovakia,regional
+2196,Slovenia,regional
+2196,Spain,regional
+2196,Sweden,regional
+2196,Switzerland,regional
+2196,Ukraine,regional
+2196,United Kingdom,regional
+2196,Kazakhstan,regional

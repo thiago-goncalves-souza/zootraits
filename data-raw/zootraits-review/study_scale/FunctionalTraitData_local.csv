@@ -1,0 +1,730 @@
+code,where,scale,lat_GD,long_GD
+4,Norway,local,69.553157,18.631382
+5,Brazil,local,-27.638728,-48.589256
+8,Germany,local,51.39,11.88
+14,United States of America,local,41.477222,-81.616511
+15,Spain,local,,
+15,Spain,local,,
+29,Brazil,local,-23.007194,-43.825592
+34,Germany,local,,
+35,Brazil,local,-19.366944,-43.538056
+38,Brazil,local,,
+42,Tunisia,local,37.1,10.16666667
+53,Portugal,local,,
+53,Portugal,local,38.113855,-9.147271
+54,Germany,local,54.183312,7.882744
+61,United States of America,local,25.605264,-80.629931
+62,Brazil,local,,
+63,Hungary,local,47.6464,20.5936
+63,Hungary,local,47.6464,20.5936
+74,Italy,local,44.84111111,12.25333333
+75,India,local,18.537218,73.639026
+77,Mexico,local,20.412222,-89.753611
+78,Venezuela,local,8.804854,-69.398002
+78,Costa Rica,local,10.586967,-83.524041
+80,Turkey,local,37.749957,31.527139
+86,Mexico,local,20.9,-89.6
+93,Mexico,local,19.467222,-96.929167
+96,Brazil,local,,
+99,Portugal,local,,
+100,China,local,,
+101,Germany,local,51.660194,8.222659
+112,Germany,local,47.62898,9.386641
+118,Mexico,local,,
+119,Switzerland,local,47.474276,8.624965
+123,United States of America,local,41.50339,-81.532745
+124,Austria,local,48.104798,16.888937
+125,Brazil,local,-15.583333,-39.25
+127,Brazil,local,,
+150,Spain,local,43.261755,-3.502635
+153,China,local,,
+156,Brazil,local,-22.818757,-53.455481
+158,Japan,local,34,
+160,Finland,local,60.17,24.94
+160,Finland,local,60.17,24.94
+161,China,local,30.71666667,111.25
+163,Brazil,local,-22.290601,-41.693133
+170,Netherlands,local,,
+175,Brazil,local,,
+182,Mexico,local,24.725303,-110.379261
+189,Brazil,local,,
+191,Norway,local,59.93729167,10.71990278
+201,Slovenia,local,,
+202,China,local,,
+210,China,local,31.86,106.15
+211,Czech Republic,local,,
+212,Italy,local,,
+214,South Africa,local,-33.498414,26.497311
+216,South Africa,local,-25.256307,27.198298
+217,China,local,29.576096,101.998624
+220,Ecuador,local,-0.485,-78.14194444
+221,Mongolia,local,,
+223,United Kingdom,local,52.45,0.666667
+230,Malaysia,local,4.672361,117.977877
+235,Brazil,local,-10.06666667,-67.61666667
+251,Norway,local,60.277679,10.222755
+260,France,local,,
+265,Portugal,local,40.24888889,-8.324722222
+270,United States of America,local,,
+274,India,local,,
+308,United States of America,local,,
+311,Cambodia,local,13.682452,106.496426
+316,Colombia,local,4.683333,-75.666667
+317,Argentina,local,,
+324,Germany,local,53.758611,7.725
+326,Spain,local,,
+329,Italy,local,,
+331,United Kingdom,local,,
+335,Honduras,local,,
+337,Slovenia,local,46.145079,13.730088
+338,China,local,,
+350,Brazil,local,,
+356,China,local,31.416.667,109.166.667
+386,Vietnam,local,20.350.000,105.033.333
+392,Germany,local,,
+398,Brazil,local,-24.16666667,-50.61666667
+400,Brazil,local,,
+401,New Zealand,local,,
+405,South Africa,local,-33.3026,26.532435
+413,United States of America,local,,
+414,United States of America,local,34.240325,-95.490122
+414,United States of America,local,34.240325,-95.490122
+415,Switzerland,local,,
+427,Canada,local,,
+428,Norway,local,62.845205,7.092295
+443,Hungary,local,47.1625,19.5033
+447,China,local,30.416667,112.883333
+447,China,local,30.416667,112.883333
+456,Canada,local,49.827,-102.299
+465,Cameroon,local,,
+466,Canada,local,,
+469,United States of America,local,32.19138889,-81.41611111
+473,Colombia,local,3.75,-76.5
+473,Colombia,local,3.75,-76.5
+474,Spain,local,,
+475,Brazil,local,,
+487,Canada,local,,
+489,Austria,local,,
+490,Poland,local,7.383.333,12.816.667
+494,India,local,,
+498,Switzerland,local,,
+505,China,local,,
+515,Brazil,local,30.6309,104.0723
+516,United States of America,local,,
+520,Australia,local,,
+526,Spain,local,,
+526,Spain,local,,
+526,Spain,local,,
+526,Spain,local,,
+529,Cameroon,local,,
+541,Ecuador,local,4.9,8.733333333
+547,Brazil,local,,
+549,Ecuador,local,,
+561,France,local,,
+564,France,local,,
+570,Canada,local,,
+582,Italy,local,,
+588,Peru,local,,
+590,United Kingdom,local,,
+591,Croatia,local,58.357,-3.897
+599,Venezuela,local,,
+601,Colombia,local,,
+606,Czech Republic,local,,
+610,Brazil,local,,
+619,Mexico,local,,
+620,Taiwan,local,16.661.111,-95.011.111
+628,China,local,,
+633,Germany,local,,
+633,Germany,local,,
+636,France,local,,
+642,Germany,local,,
+645,United Kingdom,local,,
+647,France,local,,
+650,Italy,local,,
+652,Germany,local,40.72,13.95
+663,Brazil,local,49.87316389,8.653830556
+667,United States of America,local,,
+678,United Kingdom,local,26.375,-94.525
+681,Brazil,local,,
+683,China,local,,
+688,Brazil,local,,
+690,Argentina,local,,
+694,Poland,local,,
+700,United Kingdom,local,,
+703,Mexico,local,,
+704,Baltic Sea,local,,
+705,Czech Republic,local,,
+715,India,local,50.63,13.64
+717,United States of America,local,,
+724,Sweden,local,,
+728,Ecuador,local,,
+729,Bolivia,local,,
+730,Australia,local,-16.3622,62.00225
+739,Australia,local,,
+742,United States of America,local,,
+745,Spain,local,,
+746,Mexico,local,,
+747,United Kingdom,local,,
+753,Argentina,local,,
+757,United States of America,local,-24.250.000,-65.366.667
+759,China,local,,
+760,Argentina,local,23.143.333,111.775.833
+762,Brazil,local,-34.8,-58.43333333
+763,Netherlands,local,,
+767,Germany,local,,
+769,Switzerland,local,54,12
+769,Switzerland,local,46.69999722,10.09033333
+769,Switzerland,local,46.69999722,10.09033333
+773,United States of America,local,46.69999722,10.09033333
+797,Brazil,local,,
+807,Malaysia,local,,
+809,Spain,local,,
+812,Brazil,local,,
+812,Brazil,local,-1,-47
+816,United States of America,local,-1,-47
+817,Spain,local,,
+822,Spain,local,,
+832,Belgium,local,,
+834,Brazil,local,,
+838,France,local,-21.97083333,-47.88611111
+838,France,local,,
+841,Zimbabwe,local,,
+844,Japan,local,-20.08,32
+848,United Kingdom,local,,
+849,Uruguay,local,,
+851,Ukraine,local,-34.663.056,-54.229.722
+852,Netherlands,local,,
+862,Australia,local,17.416.667,-63.300.000
+869,United States of America,local,,
+872,Poland,local,,
+875,Australia,local,,
+883,Hungary,local,,
+888,United States of America,local,,
+890,Brazil,local,,
+891,Greece,local,-8.600.000,-37.016.667
+903,Papua New Guinea,local,37.8,21
+908,Madagascar,local,,
+909,Czech Republic,local,,
+912,Spain,local,,
+912,Spain,local,,
+912,Spain,local,,
+917,Brazil,local,,
+931,Australia,local,,
+934,Italy,local,,
+941,Malaysia,local,,
+943,France,local,4.816666667,116.9
+955,United States of America,local,-49.683.333,70.233.333
+956,Canada,local,,
+959,Brazil,local,,
+973,United Kingdom,local,,
+978,United States of America,local,52.133.333,-3.750.000
+984,Netherlands,local,,
+988,Finland,local,,
+998,Iceland,local,,
+999,China,local,,
+1008,United States of America,local,,
+1018,Italy,local,,
+1025,Germany,local,,
+1025,Germany,local,,
+1029,China,local,,
+1036,China,local,,
+1042,Brazil,local,,
+1045,France,local,,
+1047,Vietnam,local,,
+1049,China,local,,
+1059,France,local,25.583.333,106.633.333
+1060,Sweden,local,5.06,-53.05
+1068,Mexico,local,,
+1085,South Africa,local,,
+1087,Sweden,local,,
+1092,Brazil,local,,
+1099,Hungary,local,,
+1118,France,local,,
+1122,Brazil,local,,
+1126,United States of America,local,,
+1140,Portugal,local,,
+1147,Germany,local,41.58333333,-8.8
+1151,Germany,local,50.916.667,11.583.333
+1155,Brazil,local,,
+1157,Brazil,local,-19.910.000,-55.798.333
+1159,Canada,local,,
+1160,Brazil,local,,
+1175,Cuba,local,,
+1176,Germany,local,,
+1187,Argentina,local,,
+1203,Venezuela,local,,
+1206,Italy,local,,
+1208,China,local,,
+1212,Italy,local,,
+1216,Guinea Bissau,local,,
+1232,Sweden,local,,
+1236,Venezuela,local,,
+1237,Brazil,local,7.533333333,-64.98333333
+1247,Mexico,local,,
+1250,France,local,,
+1254,United States of America,local,,
+1255,China,local,,
+1258,Vietnam,local,,
+1261,Panama,local,,
+1262,France,local,9.25,-80.41666667
+1265,Mexico,local,,
+1267,United States of America,local,Mudaria este para regional,
+1268,Italy,local,,
+1268,Italy,local,46.22,10.68388889
+1270,Ecuador,local,46.22,10.68388889
+1277,Spain,local,,
+1278,Canada,local,,
+1286,United Kingdom,local,,
+1294,Indonesia,local,,
+1297,Brazil,local,,
+1308,Malaysia,local,-1.416.667,-56.250.000
+1326,Costa Rica,local,,
+1332,Poland,local,,
+1333,Netherlands,local,,
+1339,Mexico,local,,
+1344,France,local,,
+1350,South Africa,local,,
+1351,Brazil,local,,
+1361,Brazil,local,,
+1381,South Africa,local,-23.696.389,-46.450.278
+1384,United States of America,local,,
+1384,Netherlands,local,,
+1396,Slovenia,local,,
+1424,Brazil,local,45.633.333,14.083.333
+1431,Brazil,local,,
+1454,United Republic of Tanzania,local,,
+1468,United States of America,local,,
+1473,Australia,local,,
+1474,United States of America,local,,
+1478,Australia,local,,
+1481,Portugal,local,,
+1493,Peru,local,,
+1495,Peru,local,,
+1498,Sweden,local,,
+1505,Chile,local,,
+1505,Canada,local,,
+1512,Mexico,local,,
+1530,United States of America,local,16.516.667,-94.800.000
+1531,United States of America,local,,
+1531,United States of America,local,,
+1531,United States of America,local,,
+1536,Canada,local,,
+1555,Canada,local,,
+1560,Germany,local,,
+1567,Mexico,local,53.03,14.02
+1567,Mexico,local,,
+1580,Brazil,local,,
+1584,France,local,,
+1594,China,local,,
+1597,United Kingdom,local,29.37,118.57
+1598,Spain,local,,
+1604,United States of America,local,,
+1607,South Africa,local,,
+1609,Portugal,local,-31.07963611,30.19440833
+1619,Canada,local,,
+1629,Russia,local,,
+1639,China,local,,
+1647,Canada,local,,
+1655,United States of America,local,,
+1662,Ethiopia,local,44.7,-70.8
+1668,France,local,,
+1669,France,local,-12,-135
+1675,Australia,local,,
+1677,Czech Republic,local,,
+1687,Poland,local,,
+1705,South Africa,local,,
+1715,Colombia,local,,
+1751,Greece,local,,
+1760,Poland,local,,
+1764,Mexico,local,,
+1764,Mexico,local,21.33,-104.88
+1778,Spain,local,,
+1779,Brazil,local,37.876.944,-2.757.222
+1788,United States of America,local,,
+1790,South Africa,local,,
+1814,South Africa,local,,
+1818,Brazil,local,,
+1820,Luxembourg,local,,
+1822,Portugal,local,,
+1832,Italy,local,,
+1833,United States of America,local,,
+1836,Kenya,local,,
+1841,Australia,local,,
+1843,Costa Rica,local,-14.66455,590.25
+1854,South Africa,local,,
+1857,United Kingdom,local,,
+1860,Brazil,local,,
+1868,Australia,local,,
+1870,United States of America,local,,
+1875,Greece,local,,
+1885,Slovakia,local,,
+1889,Germany,local,,
+1898,Brazil,local,49.7833,9.9333
+1915,Australia,local,,
+1917,Brazil,local,,
+1928,Poland,local,,
+1929,Italy,local,48.986.944,19.767.500
+1936,United States of America,local,,
+1954,Spain,local,,
+1954,Spain,local,,
+1955,Brazil,local,,
+1956,New Zealand,local,,
+1958,Australia,local,,
+1959,Czech Republic,local,,
+1960,United States of America,local,,
+1965,France,local,,
+1976,Brazil,local,,
+1988,Norway,local,,
+1998,New Zealand,local,69.116.667,19.083.333
+2000,Japan,local,,
+2001,United States of America,local,,
+2006,Brazil,local,,
+2011,Spain,local,,
+2012,Australia,local,,
+2013,New Caledonia,local,,
+2018,United States of America,local,,
+2022,Greece,local,,
+2027,Germany,local,,
+2028,Seychelles,local,,
+2035,United States of America,local,,
+2035,United States of America,local,37.366.667,-76.800.000
+2037,Argentina,local,37.033.333,-76.583.333
+2050,Colombia,local,,
+2051,Spain,local,,
+2058,France,local,,
+2059,China,local,,
+2064,United Kingdom,local,,
+2064,United Kingdom,local,-7.894,-14.384
+2065,Italy,local,-7.894,-14.384
+2079,Belgium,local,,
+2090,France,local,,
+2093,Italy,local,,
+2099,Brazil,local,,
+2102,Japan,local,,
+2122,France,local,,
+2123,China,local,,
+2125,China,local,,
+2126,Japan,local,,
+2143,France,local,,
+2147,Czech Republic,local,,
+2150,Canada,local,,
+2151,Italy,local,,
+2160,Portugal,local,,
+2168,France,local,40.13333333,8.833333333
+2170,Peru,local,,
+2184,Turkey,local,,
+2187,Mexico,local,,
+2188,Italy,local,19.80753056,-87.682825
+2192,United States of America,local,,
+2199,United States of America,local,39.08333333,-93.58333333
+2208,France,local,,
+2211,Portugal,local,,
+2219,Switzerland,local,,
+2220,Canada,local,,
+2226,Colombia,local,,
+2240,Germany,local,,
+2240,Germany,local,,
+2241,Ethiopia,local,,
+2258,China,local,,
+2259,China,local,23.916.667,101.200.000
+2263,France,local,31.65,119.47
+2271,United States of America,local,,
+2277,Portugal,local,,
+2280,Panama,local,40,
+2291,Costa Rica,local,,
+2292,Czech Republic,local,10.433.333,84.016.667
+2299,Austria,local,,
+2308,China,local,,
+2309,Mexico,local,,
+2315,China,local,,
+2317,Finland,local,,
+2318,China,local,,
+2321,Indonesia,local,,
+2332,Australia,local,,
+2335,Switzerland,local,,
+2335,Switzerland,local,47.59,8.77
+2335,Switzerland,local,,
+2335,Switzerland,local,,
+2335,Switzerland,local,,
+2335,Switzerland,local,,
+2339,Hungary,local,,
+2340,Brazil,local,,
+2343,United States of America,local,,
+2349,New Zealand,local,,
+2352,Baltic Sea,local,,
+2354,Czech Republic,local,,
+2364,South Africa,local,,
+2369,Italy,local,,
+2371,France,local,,
+2394,United States of America,local,5.061.944,-53.046.111
+2395,Sweden,local,,
+2406,Malaysia,local,,
+2407,South Africa,local,4.97,117.8
+2410,China,local,,
+2411,Brazil,local,21.933.333,101.183.333
+2418,Australia,local,,
+2431,China,local,-34.85,148.55
+2434,Sweden,local,,
+2438,Italy,local,,
+2460,United States of America,local,,
+2478,Finland,local,,
+2478,Finland,local,,
+2488,Sweden,local,,
+2488,Sweden,local,,
+2491,Brazil,local,,
+2493,France,local,,
+2503,Brazil,local,,
+2504,Spain,local,,
+2507,Germany,local,,
+2509,France,local,,
+2515,Israel,local,,
+2516,United States of America,local,,
+2522,China,local,43.95,4.816
+2534,Czech Republic,local,,
+2537,Egypt,local,45.401,93.201
+2543,United States of America,local,,
+2556,Australia,local,,
+2557,Japan,local,28.55,33.93333333
+2558,United States of America,local,,
+2565,Canada,local,,
+2566,France,local,,
+2569,Germany,local,,
+2575,Brazil,local,,
+2583,France,local,49.12656389,4.679525
+2589,China,local,,
+2592,Australia,local,,
+2593,Colombia,local,,
+2608,Switzerland,local,,
+2613,Brazil,local,,
+2615,Czech Republic,local,,
+2649,Bolivia,local,,
+2655,France,local,,
+2659,Peru,local,,
+2672,Switzerland,local,,
+2684,Peru,local,,
+2688,United States of America,local,,
+2689,France,local,,
+2691,Portugal,local,,
+2691,Portugal,local,,
+2702,Peru,local,,
+2710,Portugal,local,,
+2711,United States of America,local,,
+2714,Kenya,local,,
+2742,China,local,,
+2751,Sweden,local,,
+2751,Sweden,local,,
+2771,Italy,local,,
+2772,United States of America,local,,
+2773,United States of America,local,,
+2778,Italy,local,,
+2785,United Kingdom,local,,
+2796,Panama,local,,
+2807,Australia,local,,
+2812,United States of America,local,,
+2817,United States of America,local,,
+2823,Australia,local,-14.66888889,145.4594444
+2824,United States of America,local,,
+2831,Australia,local,,
+2835,United States of America,local,,
+2847,Sweden,local,,
+2852,Brazil,local,,
+2855,United States of America,local,,
+2857,United States of America,local,63.833.333,20.250.000
+2861,Germany,local,,
+2868,China,local,,
+2872,Greece,local,,
+2878,France,local,,
+2879,China,local,31.07,103.72
+2882,New Zealand,local,,
+2894,Uganda,local,,
+2902,Mexico,local,,
+2912,Australia,local,,
+2913,United States of America,local,,
+2915,Australia,local,,
+2922,South Africa,local,,
+2934,France,local,,
+2940,France,local,,
+2951,Canada,local,,
+2953,Canada,local,,
+2968,Australia,local,,
+2973,Greece,local,,
+2987,Italy,local,46.79287,66.48058
+2988,Spain,local,,
+2988,Spain,local,,
+2992,Spain,local,38.75,22.51666667
+2994,Czech Republic,local,,
+3004,Argentina,local,40.88333333,-2.166666667
+3006,Germany,local,40.88333333,-2.166666667
+3016,Japan,local,,
+3023,France,local,,
+3034,France,local,,
+3037,Switzerland,local,,
+3057,China,local,,
+3061,Spain,local,,
+3068,Germany,local,,
+3072,Morocco,local,,
+3076,Ireland,local,,
+3076,Ireland,local,,
+3100,Germany,local,,
+3102,Germany,local,,
+3128,Brazil,local,,
+3149,United States of America,local,,
+3160,Spain,local,,
+3174,Australia,local,,
+3190,India,local,,
+3202,United Kingdom,local,,
+3245,Germany,local,,
+3265,Portugal,local,,
+3270,Australia,local,,
+3273,Portugal,local,,
+3280,France,local,,
+3281,Indonesia,local,,
+3283,Greece,local,,
+3293,Switzerland,local,,
+3300,United States of America,local,45.34,6.34
+3316,Senegal,local,-1.033333333,116.7833333
+3325,Brazil,local,,
+3331,Tunisia,local,,
+3338,Sweden,local,,
+3345,France,local,,
+3352,South Africa,local,,
+3371,Madagascar,local,,
+3423,United States of America,local,,
+3439,United Kingdom,local,49.016.667,2.166.667
+3446,United Kingdom,local,,
+3447,Dominica,local,-21.4486,-47.0869
+3457,United States of America,local,,
+3984,United States of America,local,,
+3989,United States of America,local,52.03333333,1.933333333
+4004,Ireland,local,,
+4039,United States of America,local,,
+4040,France,local,,
+4053,Germany,local,,
+4073,Switzerland,local,,
+4087,Germany,local,,
+4090,Mediterranean Sea,local,,
+4091,Sweden,local,,
+4093,Colombia,local,,
+4102,Ivory Coast,local,,
+4132,United Kingdom,local,,
+4142,United States of America,local,,
+4180,France,local,,
+4200,United States of America,local,,
+4200,United States of America,local,,
+4235,Ireland,local,,
+4309,United States of America,local,,
+4318,United Kingdom,local,,
+4700,Cameroon,local,,
+5081,Australia,local,,
+5089,France,local,,
+5093,Canada,local,57.35694444,-2.433333333
+5103,Ecuador,local,,
+5193,France,local,,
+5573,Chile,local,,
+5577,Italy,local,,
+5625,Portugal,local,,
+5628,Netherlands,local,,
+5640,Germany,local,,
+5649,United States of America,local,,
+5718,Denmark,local,,
+5721,Cameroon,local,,
+5764,United States of America,local,,
+5767,France,local,,
+5817,Portugal,local,,
+5843,Malaysia,local,,
+5891,France,local,,
+5930,Mexico,local,,
+5941,Switzerland,local,,
+6049,Japan,local,,
+6086,France,local,,
+6090,Spain,local,,
+6095,Portugal,local,,
+6144,Italy,local,24.33444444,124.1561111
+6159,Australia,local,,
+6195,Colombia,local,,
+6317,Germany,local,,
+6329,Netherlands,local,,
+6385,Germany,local,,
+6497,Czech Republic,local,,
+6516,Brazil,local,,
+6517,Denmark,local,,
+6527,Czech Republic,local,50.96666667,13.57111111
+6575,China,local,,
+6591,France,local,,
+6610,Brazil,local,,
+6611,Denmark,local,49.828,18.29888889
+6614,Colombia,local,,
+6615,Greece,local,,
+6619,Mexico,local,,
+6641,Sweden,local,,
+6696,The Bahamas,local,,
+6719,Uruguay,local,,
+6729,Brazil,local,,
+6755,Brazil,local,60.81666667,16.5
+6759,Canada,local,,
+6761,Colombia,local,,
+6762,Tunisia,local,,
+6791,United States of America,local,,
+6795,Netherlands,local,,
+6800,Antarctica,local,,
+6810,Brazil,local,,
+6835,France,local,,
+6854,Hungary,local,,
+6855,Brazil,local,,
+6875,France,local,,
+6911,Portugal,local,,
+6918,Malaysia,local,,
+6964,United Kingdom,local,,
+7003,China,local,,
+7010,Belgium,local,,
+7043,Germany,local,,
+7048,China,local,,
+7056,United Kingdom,local,41.52,123.37
+7059,Argentina,local,,
+7069,Brazil,local,39,
+7084,Peru,local,,
+7085,Colombia,local,,
+7113,Brazil,local,-53.66666667,-62
+7114,China,local,,
+7139,Ireland,local,,
+7140,South Africa,local,-12.89,-69.71
+7141,Canada,local,,
+7143,Belgium,local,,
+7149,China,local,,
+7150,Brazil,local,,
+7197,Finland,local,,
+7208,New Zealand,local,,
+7219,Portugal,local,,
+7245,Germany,local,,
+7251,Brazil,local,,
+7253,China,local,,
+7263,United States of America,local,,
+7271,Italy,local,,
+7276,Brazil,local,,
+7279,Venezuela,local,,
+7286,Poland,local,,
+7288,Colombia,local,,
+7290,Brazil,local,,
+7308,Portugal,local,,
+7312,Poland,local,,
+7339,Brazil,local,,
+7377,Brazil,local,,
+7443,China,local,,
+7446,Mexico,local,40,
+1234,Portugal,local,,
+1440,France,local,,
+6757,Colombia,local,,
+7068,Argentina,local,,
+7458,Poland,local,,
+7214,Brazil,local,,
+2358,Namibia,local,,
+252,Mexico,local,,
+1233,Brazil,local,,
+1961,Brazil,local,,
+560,United Kingdom,local,,
+649,Mexico,local,,
+674,Mozambique,local,,
+2866,Spain,local,,
+714,Brazil,local,,
+4218,United States of America,local,,
+2657,Peru,local,,

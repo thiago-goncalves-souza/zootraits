@@ -73,6 +73,19 @@ mod_review_data_exploration_ui <- function(id) {
     ),
     fluidRow(
       bs4Dash::box(
+        title = "Map",
+        collapsible = TRUE,
+        width = 12,
+        p("Not every paper is shown in the map.
+          Each study is grouped by country."),
+        br(),
+        leaflet::leafletOutput(ns("map")) |> waiting()
+        # wordcloud2::wordcloud2Output(ns("chart_general_trait")) |> waiting()
+      )
+    ),
+
+    fluidRow(
+      bs4Dash::box(
         title = "General traits",
         collapsible = TRUE,
         width = 12,
@@ -147,6 +160,31 @@ mod_review_data_exploration_server <- function(id) {
          treemap_echart(x_var = "general_trait")
     })
 
+    output$map <- leaflet::renderLeaflet({
+      review_map_data |>
+        dplyr::left_join(review_dataset(),
+                          by = "code",
+                          relationship =
+                           "many-to-many") |>
+        dplyr::distinct(code, id, scale_color, where_fixed,
+                        CNTR_ID,
+                        reference, year, doi_html, geometry) |>
+        dplyr::mutate(popup_text = glue::glue("
+                                              <b>{reference}</b><br>
+                                              {doi_html}<br>")) |>
+        leaflet::leaflet()  |>
+        leaflet::setView(lng = 0, lat = 0, zoom = 2) |>
+        leaflet::addProviderTiles(provider = leaflet::providers$OpenStreetMap) |>
+        leaflet::addAwesomeMarkers(popup = ~ popup_text,
+                                   icon = leaflet::awesomeIcons(
+                                     markerColor = ~scale_color,
+                                     icon = 'search',
+                                     iconColor = 'white',
+                                     library = 'ion'
+                                   ),
+                                   clusterOptions = leaflet::markerClusterOptions()
+        )
+    })
 
 
     # output$chart_general_trait <- wordcloud2::renderWordcloud2({
