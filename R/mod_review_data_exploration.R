@@ -172,6 +172,7 @@ mod_review_data_exploration_server <- function(id) {
         dplyr::mutate(popup_text = glue::glue("
                                               <b>{reference}</b><br>
                                               {doi_html}<br>")) |>
+        tidyr::drop_na(reference) |>
         leaflet::leaflet()  |>
         leaflet::setView(lng = 0, lat = 0, zoom = 2) |>
         leaflet::addProviderTiles(provider = leaflet::providers$OpenStreetMap) |>
