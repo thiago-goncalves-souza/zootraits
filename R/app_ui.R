@@ -33,7 +33,7 @@ app_ui <- function(request) {
 
             bs4Dash::bs4SidebarMenuSubItem(
               text = "Data Exploration",
-              tabName = "data_exploration",
+              tabName = "review_data_exploration",
               icon = icon("magnifying-glass")
             ),
             bs4Dash::bs4SidebarMenuSubItem(
