@@ -59,18 +59,21 @@ mod_review_data_exploration_ui <- function(id) {
         fluidRow(
           shiny::actionButton(inputId = ns("search"), label = "Search")
         )
-      )),
+      )
+    ),
     fluidRow(
       bs4Dash::box(
         title = "Higher taxonomic groups",
         collapsible = TRUE,
         width = 6,
+        mod_download_table_ui(ns("download_table_2")),
         echarts4r::echarts4rOutput(ns("chart_taxonomic_groups")) |> waiting()
       ),
       bs4Dash::box(
         title = "Trait dimensions",
         collapsible = TRUE,
         width = 6,
+        mod_download_table_ui(ns("download_table_3")),
         echarts4r::echarts4rOutput(ns("chart_trait_dimension")) |> waiting()
       )
     ),
@@ -83,28 +86,24 @@ mod_review_data_exploration_ui <- function(id) {
           The studies are grouped by country."),
         br(),
         leaflet::leafletOutput(ns("map")) |> waiting()
-        # wordcloud2::wordcloud2Output(ns("chart_general_trait")) |> waiting()
       )
     ),
-
     fluidRow(
       bs4Dash::box(
         title = "General traits",
         collapsible = TRUE,
         width = 12,
+        mod_download_table_ui(ns("download_table_4")),
         echarts4r::echarts4rOutput(ns("chart_traits")) |> waiting()
-        # wordcloud2::wordcloud2Output(ns("chart_general_trait")) |> waiting()
       )
     ),
-
     fluidRow(
       bs4Dash::box(
         title = "Dataset",
         collapsible = TRUE,
         width = 12,
         mod_download_table_ui(ns("download_table_1")),
-
-        reactable::reactableOutput(ns("table") ) |> waiting()
+        reactable::reactableOutput(ns("table")) |> waiting()
       ),
     )
   )
@@ -117,82 +116,109 @@ mod_review_data_exploration_server <- function(id) {
   moduleServer(id, function(input, output, session) {
     ns <- session$ns
 
-      review_dataset <- reactive({
+    review_dataset <- reactive({
+      input$search
+      isolate({
+        req(input$taxonomic_group)
+        req(input$ecosystem)
+        req(input$study_scale)
+        req(input$trait_type)
+        req(input$trait_dimension)
 
-        input$search
-        isolate({
-          req(input$taxonomic_group)
-          req(input$ecosystem)
-          req(input$study_scale)
-          req(input$trait_type)
-          req(input$trait_dimension)
-
-          review_data |>
-            dplyr::filter(
-              taxonomic_group %in% input$taxonomic_group
-            ) |>
-            dplyr::filter(
-              ecosystem %in% prepare_input_to_filter(input$ecosystem),
-              study_scale %in% prepare_input_to_filter(input$study_scale),
-              trait_type %in% prepare_input_to_filter(input$trait_type),
-              trait_dimension %in% prepare_input_to_filter(input$trait_dimension),
-              intraspecific_data %in% prepare_input_to_filter(input$intraspecific_data)
-            )
-        })
-
+        review_data |>
+          dplyr::filter(
+            taxonomic_group %in% input$taxonomic_group
+          ) |>
+          dplyr::filter(
+            ecosystem %in% prepare_input_to_filter(input$ecosystem),
+            study_scale %in% prepare_input_to_filter(input$study_scale),
+            trait_type %in% prepare_input_to_filter(input$trait_type),
+            trait_dimension %in% prepare_input_to_filter(input$trait_dimension),
+            intraspecific_data %in% prepare_input_to_filter(input$intraspecific_data)
+          )
+      })
     })
 
 
     output$chart_taxonomic_groups <- echarts4r::renderEcharts4r({
-      review_dataset() |>
-        bar_echart(x_var = "taxonomic_group")
+      data_for_chart <- review_dataset() |>
+        prepare_data_for_bar_echart(x_var = "taxonomic_group")
+
+      mod_download_table_server("download_table_2", data_for_chart,
+        prefix = "data_for_taxonomic_group_chart"
+      )
+
+      data_for_chart |>
+        bar_echart()
     })
 
     output$chart_trait_dimension <- echarts4r::renderEcharts4r({
-      review_dataset() |>
-        bar_echart(x_var = "trait_dimension")
+      data_for_chart <- review_dataset() |>
+        prepare_data_for_bar_echart(x_var = "trait_dimension")
+
+      mod_download_table_server("download_table_3", data_for_chart,
+        prefix = "data_for_trait_dimension_chart"
+      )
+
+      data_for_chart |>
+        bar_echart()
     })
 
 
     output$chart_traits <- echarts4r::renderEcharts4r({
-       data_tidy <- review_dataset() |>
-          tidyr::separate_longer_delim(cols = "trait_details", delim = ";") |>
-          dplyr::mutate(trait_details = stringr::str_to_lower(trait_details),
-                        trait_details = stringr::str_squish(trait_details)) |>
-          dplyr::left_join(trait_information,
-                           by = "trait_details",
-                           relationship = "many-to-many") |>
-          dplyr::select(-trait_type.y) |>
-          dplyr::rename(trait_type = trait_type.x)
+      data_tidy <- review_dataset() |>
+        tidyr::separate_longer_delim(cols = "trait_details", delim = ";") |>
+        dplyr::mutate(
+          trait_details = stringr::str_to_lower(trait_details),
+          trait_details = stringr::str_squish(trait_details)
+        ) |>
+        dplyr::left_join(trait_information,
+          by = "trait_details",
+          relationship = "many-to-many"
+        ) |>
+        dplyr::select(-trait_type.y) |>
+        dplyr::rename(trait_type = trait_type.x)
 
-       data_tidy |>
-         treemap_echart(x_var = "general_trait")
+      data_for_tree_map <- data_tidy |>
+        prepare_data_for_treemap_echart(x_var = "general_trait")
+
+      mod_download_table_server("download_table_4", data_for_tree_map,
+        prefix = "data_for_general_trait_chart"
+      )
+
+
+      data_for_tree_map |>
+        treemap_echart()
     })
 
     output$map <- leaflet::renderLeaflet({
       review_map_data |>
         dplyr::left_join(review_dataset(),
-                          by = "code",
-                          relationship =
-                           "many-to-many") |>
-        dplyr::distinct(code, id, scale_color, where_fixed,
-                        CNTR_ID,
-                        reference, year, doi_html, geometry) |>
+          by = "code",
+          relationship =
+            "many-to-many"
+        ) |>
+        dplyr::distinct(
+          code, id, scale_color, where_fixed,
+          CNTR_ID,
+          reference, year, doi_html, geometry
+        ) |>
         dplyr::mutate(popup_text = glue::glue("
                                               <b>{reference}</b><br>
                                               {doi_html}<br>")) |>
         tidyr::drop_na(reference) |>
-        leaflet::leaflet()  |>
+        leaflet::leaflet() |>
         leaflet::setView(lng = 0, lat = 0, zoom = 2) |>
         leaflet::addProviderTiles(provider = leaflet::providers$OpenStreetMap) |>
-        leaflet::addAwesomeMarkers(popup = ~ popup_text,
-                                   icon = leaflet::awesomeIcons(
-                                     markerColor = ~scale_color,
-                                     icon = 'search',
-                                     iconColor = 'white',
-                                     library = 'ion'
-                                   ),
-                                   clusterOptions = leaflet::markerClusterOptions()
+        leaflet::addAwesomeMarkers(
+          popup = ~popup_text,
+          icon = leaflet::awesomeIcons(
+            markerColor = ~scale_color,
+            icon = "search",
+            iconColor = "white",
+            library = "ion"
+          ),
+          clusterOptions = leaflet::markerClusterOptions()
         )
     })
 
@@ -232,8 +258,8 @@ mod_review_data_exploration_server <- function(id) {
         dplyr::distinct() |>
         dplyr::ungroup()
 
-    prepared_data |>
-      dplyr::select(-code) |>
+      prepared_data |>
+        dplyr::select(-code) |>
         reactable::reactable(
           sortable = TRUE,
           columns =
