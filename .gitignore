@@ -4,3 +4,4 @@
 .httr-oauth
 .DS_Store
 dev/
+data-raw/open-traits-network/traits.csv
