@@ -58,6 +58,7 @@ metadata_raw <- purrr::map(variables, metadata_var) |>
  "taxunit" ~ "Taxonomic unit used",
  "taxon_span" ~ "More inclusive taxonomic unit used (genus, family, order...)",
  "taxon" ~ "More inclusive taxonomic group used (Arachnida, Araneae, Mammalia, etc...)",
+ "taxonomic_group" ~ "Taxonomic group used",
   "where" ~ "In which country/ocean/continent the study was conducted",
  "ecosystem" ~ "In which ecosystem the study was conducted",
  "trait_type"~ "Trait type use",

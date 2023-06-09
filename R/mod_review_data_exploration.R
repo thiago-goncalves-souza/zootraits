@@ -18,10 +18,10 @@ mod_review_data_exploration_ui <- function(id) {
         width = 12,
         fluidRow(
           picker_input(
-            inputId = ns("taxon_higher_level_1"),
+            inputId = ns("taxonomic_group"),
             label =  "Taxonomic group",
-            choices = options_input(review_data$taxon_higher_level_1),
-            selected =  options_input(review_data$taxon_higher_level_1)
+            choices = options_input(review_data$taxonomic_group),
+            selected =  options_input(review_data$taxonomic_group)
           ),
           picker_input(
             inputId = ns("ecosystem"),
@@ -121,7 +121,7 @@ mod_review_data_exploration_server <- function(id) {
 
         input$search
         isolate({
-          req(input$taxon_higher_level_1)
+          req(input$taxonomic_group)
           req(input$ecosystem)
           req(input$study_scale)
           req(input$trait_type)
@@ -129,7 +129,7 @@ mod_review_data_exploration_server <- function(id) {
 
           review_data |>
             dplyr::filter(
-              taxon_higher_level_1 %in% input$taxon_higher_level_1
+              taxonomic_group %in% input$taxonomic_group
             ) |>
             dplyr::filter(
               ecosystem %in% prepare_input_to_filter(input$ecosystem),
@@ -145,7 +145,7 @@ mod_review_data_exploration_server <- function(id) {
 
     output$chart_taxonomic_groups <- echarts4r::renderEcharts4r({
       review_dataset() |>
-        bar_echart(x_var = "taxon_higher_level_1")
+        bar_echart(x_var = "taxonomic_group")
     })
 
     output$chart_trait_dimension <- echarts4r::renderEcharts4r({

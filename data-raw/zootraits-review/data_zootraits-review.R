@@ -52,9 +52,29 @@ review_data <- review_data_raw |>
   dplyr::filter(trait_dimension_value == 1) |>
   dplyr::select(-trait_dimension_value) |>
   dplyr::left_join(taxon_names, by = "taxon") |>
-  dplyr::select(-tidyselect::any_of(c("higher_taxon_lev1", "higher_taxon_lev2")))
+  dplyr::rename("taxonomic_group" = higher_taxon_lev1) |>
+  dplyr::relocate(taxonomic_group, .after = taxon) |>
+  dplyr::relocate(ecosystem, study_scale, .before = where) |>
+  dplyr::relocate(doi_html, .after = doi) |>
+  dplyr::relocate(year, .after = code) |>
+  dplyr::select(-tidyselect::any_of(c("higher_taxon_lev2")))
 
 
+# checking "other" ----
+# codes_other <- review_data |>
+#   dplyr::filter(trait_dimension == "other") |>
+#   dplyr::distinct(code) |>
+#   dplyr::pull(code)
+#
+# codes_only_other <- review_data |>
+#   dplyr::filter(code %in% codes_other) |>
+#   dplyr::count(code) |>
+#   dplyr::filter(n == 1) |>
+#   dplyr::pull(code)
+#
+# review_data_raw |>
+#   dplyr::filter(code %in% codes_only_other) |>
+#   writexl::write_xlsx("papers_only_other_traits.xlsx")
 
 # Use data --------
 usethis::use_data(review_data, overwrite = TRUE)
