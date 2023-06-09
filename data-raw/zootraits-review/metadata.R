@@ -73,6 +73,7 @@ metadata_raw <- purrr::map(variables, metadata_var) |>
 - <b>Habitat:</b>	Response to abiotic gradients; spatial, temporal or structural <br>
 - <b>Defense:</b>	Avoidance/resistance strategies <br>
 - <b>Metabolic:</b>	Metabolic rate strategies/Energy allocation  <br>
+- <b>Undetermined morphological traits:</b> When authors used morphological traits without explicitly linking them to a specific trait dimension. <br>
 - <b>Other:</b>	other traits that do not fit the previous dimensions",
  "trait_details" ~ "Detailed trait name given by the original author",
   .default = ""

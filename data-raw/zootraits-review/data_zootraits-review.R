@@ -17,6 +17,7 @@ review_data_raw |>
 # review_data
 review_data <- review_data_raw |>
   dplyr::select(-tidyselect::any_of(c("conclusion_ok", "conclusion_wrong"))) |>
+  dplyr::rename("undetermined_morphological_traits" = "body_size_undetermined") |>
   dplyr::mutate(doi = fix_doi(doi),
                 doi_html = glue::glue("<a href='{doi}' target='_blank'>{doi}</a>")) |>
   tidyr::pivot_longer(
@@ -42,6 +43,7 @@ review_data <- review_data_raw |>
       "habitat",
       "defense",
       "metabolic",
+      "undetermined_morphological_traits",
       "other"
     ),
     names_to = "trait_dimension",
@@ -50,11 +52,7 @@ review_data <- review_data_raw |>
   dplyr::filter(trait_dimension_value == 1) |>
   dplyr::select(-trait_dimension_value) |>
   dplyr::left_join(taxon_names, by = "taxon") |>
-  dplyr::rename(taxon_higher_level_1 = higher_taxon_lev1,
-                taxon_higher_level_2 = higher_taxon_lev2) |>
-  dplyr::relocate(taxon_higher_level_1, taxon_higher_level_2, .after = taxon)
-# tidyr::separate_longer_delim(cols = "where", delim = ";") |>
-# dplyr::mutate(where = stringr::str_squish(where))
+  dplyr::select(-tidyselect::any_of(c("higher_taxon_lev1", "higher_taxon_lev2")))
 
 
 
