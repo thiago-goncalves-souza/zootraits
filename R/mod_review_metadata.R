@@ -7,7 +7,7 @@
 #' @noRd
 #'
 #' @importFrom shiny NS tagList
-mod_review_metadata_ui <- function(id){
+mod_review_metadata_ui <- function(id) {
   ns <- NS(id)
   tagList(
     bs4Dash::box(
@@ -22,26 +22,28 @@ mod_review_metadata_ui <- function(id){
 #' review_metadata Server Functions
 #'
 #' @noRd
-mod_review_metadata_server <- function(id){
-  moduleServer( id, function(input, output, session){
+mod_review_metadata_server <- function(id) {
+  moduleServer(id, function(input, output, session) {
     ns <- session$ns
-   output$table <- reactable::renderReactable({
-     metadata_raw |>
-       reactable::reactable(pagination = FALSE,
-                            searchable = TRUE,
-                            highlight = TRUE,
-                            compact = TRUE,
-         columns =
-           list(
-             name_var = reactable::colDef(name = "Variable", maxWidth = 200),
-             class_var = reactable::colDef(name = "Class", maxWidth = 100),
-             options_var = reactable::colDef(name = "Examples"),
-             description = reactable::colDef(name = "Description",
-                                             html = TRUE)
-           )
-       )
-   })
-
+    output$table <- reactable::renderReactable({
+      metadata_raw |>
+        reactable::reactable(
+          pagination = FALSE,
+          searchable = TRUE,
+          highlight = TRUE,
+          compact = TRUE,
+          columns =
+            list(
+              name_var = reactable::colDef(name = "Variable", maxWidth = 200),
+              class_var = reactable::colDef(name = "Class", maxWidth = 100),
+              options_var = reactable::colDef(name = "Examples"),
+              description = reactable::colDef(
+                name = "Description",
+                html = TRUE
+              )
+            )
+        )
+    })
   })
 }
 

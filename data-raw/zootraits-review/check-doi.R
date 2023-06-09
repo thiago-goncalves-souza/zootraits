@@ -2,7 +2,7 @@ devtools::load_all()
 
 tab_doi <- fs::dir_ls("data-raw/zootraits-review/doi_check/", glob = "*.xlsx") |>
   purrr::map(readxl::read_excel) |>
-  purrr::map(~dplyr::select(.x, -group, -need_fixing)) |>
+  purrr::map(~ dplyr::select(.x, -group, -need_fixing)) |>
   purrr::list_rbind()
 
 
@@ -20,29 +20,31 @@ doi_prepare_check |>
 #   tidyr::drop_na(doi_url)
 
 
-check_status <- function(url_check){
+check_status <- function(url_check) {
   url_check |>
     httr::GET() |>
     purrr::pluck("status_code")
 }
 
-execute_check_status <- function(df){
+execute_check_status <- function(df) {
   df_status <- df |>
-   dplyr::mutate(status_code_doi = purrr::map_vec(doi_url, possibly_check_status, .progress = TRUE))
+    dplyr::mutate(status_code_doi = purrr::map_vec(doi_url, possibly_check_status, .progress = TRUE))
 
 
   df_status |>
-    writexl::write_xlsx(path = paste0("data-raw/zootraits-review/doi_check/temp_",
-                        unique(df$group),
-                        ".xlsx"))
+    writexl::write_xlsx(path = paste0(
+      "data-raw/zootraits-review/doi_check/temp_",
+      unique(df$group),
+      ".xlsx"
+    ))
 }
 
 possibly_check_status <- purrr::possibly(check_status, 1000)
 
 prepare_doi <- doi_prepare_check |>
   tibble::rowid_to_column() |>
-  dplyr::mutate(group = ceiling(rowid/50)) |>
- # dplyr::mutate(group = paste0("fix_", group)) |>
+  dplyr::mutate(group = ceiling(rowid / 50)) |>
+  # dplyr::mutate(group = paste0("fix_", group)) |>
   dplyr::group_split(group)
 
 
@@ -53,5 +55,3 @@ prepare_doi |>
 
 doi_to_fix <- readxl::read_excel("data-raw/zootraits-review/doi_check/temp_fix_1.xlsx") |>
   dplyr::filter(status_code_doi != 200)
-
-

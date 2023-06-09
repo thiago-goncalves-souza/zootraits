@@ -7,7 +7,7 @@
 #' @noRd
 #'
 #' @importFrom shiny NS tagList
-mod_homepage_ui <- function(id){
+mod_homepage_ui <- function(id) {
   ns <- NS(id)
   tagList(
     tagList(
@@ -18,17 +18,15 @@ mod_homepage_ui <- function(id){
         "TODO"
       )
     )
-
   )
 }
 
 #' homepage Server Functions
 #'
 #' @noRd
-mod_homepage_server <- function(id){
-  moduleServer( id, function(input, output, session){
+mod_homepage_server <- function(id) {
+  moduleServer(id, function(input, output, session) {
     ns <- session$ns
-
   })
 }
 

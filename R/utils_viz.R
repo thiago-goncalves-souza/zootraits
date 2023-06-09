@@ -1,10 +1,10 @@
-treemap_echart <- function(dataset, x_var, x_lab = "", y_lab = "") {
-  if(nrow(dataset) > 0){
+prepare_data_for_treemap_echart <- function(dataset, x_var) {
+  if (nrow(dataset) > 0) {
     data_prepared <- dataset |>
-      dplyr::rename(tree_var = {{x_var}}) |>
+      dplyr::rename(tree_var = {{ x_var }}) |>
       dplyr::distinct(code, tree_var) |>
       dplyr::mutate(tree_var = stringr::str_to_title(tree_var) |>
-                      stringr::str_replace_all("_", " ")) |>
+        stringr::str_replace_all("_", " ")) |>
       tidyr::drop_na(tree_var) |>
       dplyr::filter(tree_var != "Na|NA|na") |>
       dplyr::count(tree_var) |>
@@ -14,6 +14,12 @@ treemap_echart <- function(dataset, x_var, x_lab = "", y_lab = "") {
       dplyr::group_by(name) |>
       dplyr::summarise(value = sum(value))
 
+    data_prepared
+  }
+}
+
+treemap_echart <- function(data_prepared, x_lab = "", y_lab = "") {
+  if (nrow(data_prepared) > 0) {
     data_prepared |>
       echarts4r::e_chart(x = tree_var) |>
       echarts4r::e_treemap() |>
@@ -22,18 +28,21 @@ treemap_echart <- function(dataset, x_var, x_lab = "", y_lab = "") {
   }
 }
 
-bar_echart <- function(dataset, x_var, x_lab = "", y_lab = "") {
-  if(nrow(dataset) > 0){
+prepare_data_for_bar_echart <- function(dataset, x_var) {
+  if (nrow(dataset) > 0) {
     data_prepared <- dataset |>
-      dplyr::rename(bar_var = {{x_var}}) |>
+      dplyr::rename(bar_var = {{ x_var }}) |>
       dplyr::distinct(code, bar_var) |>
       dplyr::mutate(bar_var = stringr::str_to_title(bar_var) |>
-                      stringr::str_replace_all("_", " "))
-    #  dplyr::mutate(bar_var_lumped = forcats::fct_lump(bar_var, prop = 0.02))
-
-    data_prepared |>
+        stringr::str_replace_all("_", " ")) |>
       dplyr::count(bar_var) |>
-      dplyr::arrange(n) |>
+      dplyr::arrange(n)
+  }
+}
+
+bar_echart <- function(data_prepared, x_lab = "", y_lab = "") {
+  if (nrow(data_prepared) > 0) {
+    data_prepared |>
       echarts4r::e_chart(x = bar_var) |>
       echarts4r::e_bar(
         serie = n,
@@ -57,7 +66,7 @@ bar_echart <- function(dataset, x_var, x_lab = "", y_lab = "") {
 #   wordcloud2::wordcloud2()
 # }
 
-echart_theme <- function(plot){
+echart_theme <- function(plot) {
   echarts4r::e_theme_custom(plot, '{"color":["#01274c","#ffca06"]}') |>
-  echarts4r::e_toolbox_feature(feature = c("saveAsImage"))
+    echarts4r::e_toolbox_feature(feature = c("saveAsImage"))
 }

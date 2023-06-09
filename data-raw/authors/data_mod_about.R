@@ -2,7 +2,8 @@
 authors_raw <- readr::read_csv("data-raw/authors/authors-raw.csv")
 
 institutions_raw <- readr::read_delim("data-raw/authors/institutions-raw.csv",
-                               delim = ";", escape_double = FALSE, trim_ws = TRUE) |>
+  delim = ";", escape_double = FALSE, trim_ws = TRUE
+) |>
   dplyr::mutate(institutions_id = as.character(institutions_id))
 
 authors_list <- authors_raw |>

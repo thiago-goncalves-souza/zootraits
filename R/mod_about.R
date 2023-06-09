@@ -23,7 +23,6 @@ mod_about_ui <- function(id) {
         title = "Authors",
         collapsible = TRUE,
         width = 12,
-
         leaflet::leafletOutput(ns("authors_map")),
         br(),
         reactable::reactableOutput(ns("authors_table"))
@@ -69,8 +68,10 @@ mod_about_server <- function(id) {
         leaflet::leaflet() |>
         leaflet::setView(lng = -50, lat = 0, zoom = 2) |>
         leaflet::addProviderTiles(provider = leaflet::providers$OpenStreetMap) |>
-        leaflet::addMarkers(lng = ~ long, lat = ~lat, popup = ~name,
-                            clusterOptions = leaflet::markerClusterOptions())
+        leaflet::addMarkers(
+          lng = ~long, lat = ~lat, popup = ~name,
+          clusterOptions = leaflet::markerClusterOptions()
+        )
     })
 
     output$logos_institutions <- shiny::renderUI({

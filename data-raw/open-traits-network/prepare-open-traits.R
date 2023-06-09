@@ -10,13 +10,15 @@ otn_raw |>
 
 
 otn_raw2 <- otn_raw |>
-  dplyr::select(datasetId,
-                relationName,
-                resolvedName,
-                resolvedTraitName,
-                scientificNameVerbatim,
-                accessDate,
-                providedTraitName, traitNameVerbatim) |>
+  dplyr::select(
+    datasetId,
+    relationName,
+    resolvedName,
+    resolvedTraitName,
+    scientificNameVerbatim,
+    accessDate,
+    providedTraitName, traitNameVerbatim
+  ) |>
   dplyr::sample_n(1000)
 
 

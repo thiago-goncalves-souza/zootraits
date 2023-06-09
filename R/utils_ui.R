@@ -25,11 +25,10 @@ prepare_input_to_filter <- function(col) {
 
 # utils to prepare table -------
 
-prepare_wide_col <- function(col){
+prepare_wide_col <- function(col) {
   col |>
     unique() |>
     stringr::str_replace_all("_", " ") |>
     stringr::str_to_sentence() |>
     knitr::combine_words()
 }
-

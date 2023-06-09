@@ -46,36 +46,38 @@ review_map_data <-
     "United States of America" ~ "United States",
     "Czech Republic" ~ "Czechia",
     "The Bahamas" ~ "Bahamas",
-    "Swaziland" ~"Eswatini",
+    "Swaziland" ~ "Eswatini",
     "Russia" ~ "Russian Federation",
     "Republic of Serbia" ~ "Serbia",
     "Macedonia" ~ "North Macedonia",
     "Turkey" ~ "Türkiye",
-    "Ivory Coast"~"Côte D’Ivoire",
+    "Ivory Coast" ~ "Côte D’Ivoire",
     "Guinea Bissau" ~ "Guinea-Bissau",
     "Democratic Republic of the Congo" ~ "Democratic Republic of The Congo",
     "Republic of the Congo" ~ "Congo",
-   "Sao Tome and Principe" ~ "São Tomé and Príncipe",
+    "Sao Tome and Principe" ~ "São Tomé and Príncipe",
     .default = where
   )) |>
   dplyr::left_join(countries,
-                    by = c("where_fixed" = "NAME_ENGL"),
-                    copy = TRUE) |>
+    by = c("where_fixed" = "NAME_ENGL"),
+    copy = TRUE
+  ) |>
   tidyr::drop_na(code) |>
   sf::st_as_sf() |>
-  dplyr::select(code, id, where_fixed,  scale_color, geometry, CNTR_ID)
+  dplyr::select(code, id, where_fixed, scale_color, geometry, CNTR_ID)
 
-  # dplyr::left_join(review_data, by = "code", relationship =
-  #                    "many-to-many") |>
-  # dplyr::distinct(code, scale, id, scale_color, where_fixed,
-  #                 CNTR_ID,
-  #                 reference, year, doi_html, geometry)
+# dplyr::left_join(review_data, by = "code", relationship =
+#                    "many-to-many") |>
+# dplyr::distinct(code, scale, id, scale_color, where_fixed,
+#                 CNTR_ID,
+#                 reference, year, doi_html, geometry)
 
 
 
 review_map_data |>
   dplyr::filter(is.na(CNTR_ID)) |>
-  dplyr::count(where_fixed, sort = TRUE) |> View()
+  dplyr::count(where_fixed, sort = TRUE) |>
+  View()
 
 #
 # leaflet::leaflet(data = pol_review_map)  |>

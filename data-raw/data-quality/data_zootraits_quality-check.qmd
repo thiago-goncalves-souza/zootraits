@@ -23,8 +23,10 @@ review_data_raw <- readxl::read_xlsx(here::here(data_path)) |> janitor::clean_na
 
 ```{r}
 #| results: asis
-purrr::walk(names(review_data_raw),
-            ~   test_missing(review_data_raw, .x))
+purrr::walk(
+  names(review_data_raw),
+  ~ test_missing(review_data_raw, .x)
+)
 ```
 
 ## Binary variables
@@ -33,10 +35,10 @@ purrr::walk(names(review_data_raw),
 
 
 ```{r}
-review_data_raw |> 
-  dplyr::mutate(sum_binary_cols = local + regional + global) |> 
-  dplyr::filter(sum_binary_cols == 0 | is.na(sum_binary_cols)) |> 
-  dplyr::select(code, reference, doi, local, regional, global) |> 
+review_data_raw |>
+  dplyr::mutate(sum_binary_cols = local + regional + global) |>
+  dplyr::filter(sum_binary_cols == 0 | is.na(sum_binary_cols)) |>
+  dplyr::select(code, reference, doi, local, regional, global) |>
   knitr::kable()
 ```
 
@@ -44,20 +46,20 @@ review_data_raw |>
 ## Ecosystem
 
 ```{r}
-review_data_raw |> 
-  dplyr::mutate(sum_binary_cols = freshwater + marine + terrestrial) |> 
-  dplyr::filter(sum_binary_cols == 0 | is.na(sum_binary_cols)) |> 
-  dplyr::select(code, reference, doi, freshwater, marine, terrestrial) |> 
+review_data_raw |>
+  dplyr::mutate(sum_binary_cols = freshwater + marine + terrestrial) |>
+  dplyr::filter(sum_binary_cols == 0 | is.na(sum_binary_cols)) |>
+  dplyr::select(code, reference, doi, freshwater, marine, terrestrial) |>
   knitr::kable()
 ```
 
 ## Traits
 
 ```{r}
-review_data_raw |> 
-  dplyr::mutate(sum_binary_cols = trophic + life_history + habitat + defense + metabolic + body_size_undetermined + other) |> 
-  dplyr::filter(sum_binary_cols == 0 | is.na(sum_binary_cols)) |> 
-  dplyr::select(code, reference, doi, trophic, life_history, habitat, defense, metabolic, body_size_undetermined,other) |> 
+review_data_raw |>
+  dplyr::mutate(sum_binary_cols = trophic + life_history + habitat + defense + metabolic + body_size_undetermined + other) |>
+  dplyr::filter(sum_binary_cols == 0 | is.na(sum_binary_cols)) |>
+  dplyr::select(code, reference, doi, trophic, life_history, habitat, defense, metabolic, body_size_undetermined, other) |>
   knitr::kable()
 ```
 
@@ -65,9 +67,9 @@ review_data_raw |>
 ## Conclusion
 
 ```{r}
-review_data_raw |> 
-  dplyr::mutate(sum_binary_cols = conclusion_ok + conclusion_wrong) |> 
-  dplyr::filter(sum_binary_cols == 0 | is.na(sum_binary_cols)) |> 
-  dplyr::select(code, reference, doi, conclusion_ok, conclusion_wrong) |> 
+review_data_raw |>
+  dplyr::mutate(sum_binary_cols = conclusion_ok + conclusion_wrong) |>
+  dplyr::filter(sum_binary_cols == 0 | is.na(sum_binary_cols)) |>
+  dplyr::select(code, reference, doi, conclusion_ok, conclusion_wrong) |>
   knitr::kable()
 ```

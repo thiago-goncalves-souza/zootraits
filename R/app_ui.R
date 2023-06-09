@@ -8,8 +8,9 @@ app_ui <- function(request) {
   tagList(
     # Leave this function for adding external resources
     golem_add_external_resources(),
-    bs4Dash::dashboardPage(scrollToTop = TRUE,
-                           dark = NULL,
+    bs4Dash::dashboardPage(
+      scrollToTop = TRUE,
+      dark = NULL,
 
       # ---
       header = bs4Dash::dashboardHeader(
@@ -31,7 +32,6 @@ app_ui <- function(request) {
             text = "Review Dataset",
             icon = icon("table"),
             startExpanded = TRUE,
-
             bs4Dash::bs4SidebarMenuSubItem(
               text = "Data Exploration",
               tabName = "review_data_exploration",
@@ -59,7 +59,6 @@ app_ui <- function(request) {
             tabName = "homepage",
             mod_homepage_ui("homepage_1")
           ),
-
           bs4Dash::bs4TabItem(
             tabName = "review_data_exploration",
             mod_review_data_exploration_ui("review_data_exploration_1")
@@ -68,8 +67,6 @@ app_ui <- function(request) {
             tabName = "review_metadata",
             mod_review_metadata_ui("review_metadata_1")
           ),
-
-
           bs4Dash::bs4TabItem(
             tabName = "about",
             mod_about_ui("about_1")
