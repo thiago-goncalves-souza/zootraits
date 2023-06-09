@@ -38,6 +38,11 @@ app_ui <- function(request) {
               icon = icon("magnifying-glass")
             ),
             bs4Dash::bs4SidebarMenuSubItem(
+              text = "Table",
+              tabName = "review_data_exploration_table",
+              icon = icon("table")
+            ),
+            bs4Dash::bs4SidebarMenuSubItem(
               text = "Metadata",
               tabName = "review_metadata",
               icon = icon("file-lines")
@@ -62,6 +67,10 @@ app_ui <- function(request) {
           bs4Dash::bs4TabItem(
             tabName = "review_data_exploration",
             mod_review_data_exploration_ui("review_data_exploration_1")
+          ),
+          bs4Dash::bs4TabItem(
+            tabName = "review_data_exploration_table",
+            mod_review_data_exploration_table_ui("review_data_exploration_table_1")
           ),
           bs4Dash::bs4TabItem(
             tabName = "review_metadata",
