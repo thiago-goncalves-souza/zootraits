@@ -170,7 +170,6 @@ mod_review_data_exploration_server <- function(id) {
     })
 
     output$map <- leaflet::renderLeaflet({
-      # TO DO
       review_map_data |>
         dplyr::left_join(review_dataset(),
                           by = "code",
@@ -218,7 +217,7 @@ mod_review_data_exploration_server <- function(id) {
         dplyr::mutate(details = '<center><i class="fa-solid fa-magnifying-glass-plus"></i></center>') |>
         dplyr::arrange(desc(year)) |>
         dplyr::group_by(code) |>
-        dplyr::summarise(
+        dplyr::reframe(
           code = code,
           year = year,
           reference = reference,

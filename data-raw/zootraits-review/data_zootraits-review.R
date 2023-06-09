@@ -17,7 +17,8 @@ review_data_raw |>
 # review_data
 review_data <- review_data_raw |>
   dplyr::select(-tidyselect::any_of(c("conclusion_ok", "conclusion_wrong"))) |>
-  dplyr::mutate(doi_html = fix_doi(doi)) |>
+  dplyr::mutate(doi = fix_doi(doi),
+                doi_html = glue::glue("<a href='{doi}' target='_blank'>{doi}</a>")) |>
   tidyr::pivot_longer(
     cols = c("freshwater", "marine", "terrestrial"),
     names_to = "ecosystem", values_to = "ecosystem_value"
@@ -61,3 +62,4 @@ review_data <- review_data_raw |>
 usethis::use_data(review_data, overwrite = TRUE)
 usethis::use_data(taxon_names, overwrite = TRUE)
 usethis::use_data(trait_information, overwrite = TRUE)
+
