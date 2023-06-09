@@ -1,3 +1,4 @@
+devtools::load_all()
 # Read raw data --------
 review_data_raw <- readxl::read_xlsx("data-raw/zootraits-review/ZooTraits_review_data_may23.xlsx") |> janitor::clean_names()
 
@@ -16,7 +17,7 @@ review_data_raw |>
 # review_data
 review_data <- review_data_raw |>
   dplyr::select(-tidyselect::any_of(c("conclusion_ok", "conclusion_wrong"))) |>
-  dplyr::mutate(doi_html = glue::glue("<a href=' https://doi.org/{doi}' target='_blank'>{doi}</a>")) |>
+  dplyr::mutate(doi_html = fix_doi(doi)) |>
   tidyr::pivot_longer(
     cols = c("freshwater", "marine", "terrestrial"),
     names_to = "ecosystem", values_to = "ecosystem_value"
