@@ -78,7 +78,5 @@ metadata_raw <- purrr::map(variables, metadata_var) |>
   .default = ""
                 ))
 
-# metadata_raw |>
-#   writexl::write_xlsx("data-raw/metadata-raw.xlsx")
 
 usethis::use_data(metadata_raw, overwrite = TRUE)
