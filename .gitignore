@@ -5,3 +5,4 @@
 .DS_Store
 dev/
 data-raw/open-traits-network/traits.csv
+data-raw/zootraits-review/doi_check/temp*
