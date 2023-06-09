@@ -7,6 +7,8 @@ fix_doi <- function(doi_url){
     stringr::str_starts(doi_url, "doi.org/") ~ paste0("https://", doi_url),
     stringr::str_starts(doi_url, "dx.doi.org/") ~ paste0("https://", doi_url),
     stringr::str_starts(doi_url, "hdl.handle.net/") ~ paste0("https://", doi_url),
+    stringr::str_starts(doi_url, "zoolstud.sinica.edu.tw/") ~ paste0("https://", doi_url),
+
     !stringr::str_starts(doi_url, "https://doi.org/") ~ paste0("https://doi.org/", doi_url),
 
     TRUE ~ doi_url

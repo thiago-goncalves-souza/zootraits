@@ -1,19 +1,23 @@
 devtools::load_all()
 
-# tab_doi <- fs::dir_ls("data-raw/zootraits-review/doi_check/", glob = "*.xlsx") |>
-#   purrr::map(readxl::read_excel) |>
-#   purrr::list_rbind()
-#
-# doi_prepare_check <- tab_doi |>
-#   dplyr::filter(status_code_doi %in% c("404", "503", "1000")) |>
-#   dplyr::mutate(doi_url = fix_doi(doi)) |>
-#   dplyr::select(-rowid)
+tab_doi <- fs::dir_ls("data-raw/zootraits-review/doi_check/", glob = "*.xlsx") |>
+  purrr::map(readxl::read_excel) |>
+  purrr::map(~dplyr::select(.x, -group, -need_fixing)) |>
+  purrr::list_rbind()
+
+
+doi_prepare_check <- tab_doi |>
+  dplyr::filter(status_code_doi %in% c("404", "503", "1000")) |>
+  dplyr::select(code, doi, doi_url)
+
+doi_prepare_check |>
+  writexl::write_xlsx("doi_check.xlsx")
 
 # original
-doi_prepare_check <- review_data |>
-  dplyr::distinct(code, doi) |>
-  dplyr::mutate(doi_url = fix_doi(doi)) |>
-  tidyr::drop_na(doi_url)
+# doi_prepare_check <- review_data |>
+#   dplyr::distinct(code, doi) |>
+#   dplyr::mutate(doi_url = fix_doi(doi)) |>
+#   tidyr::drop_na(doi_url)
 
 
 check_status <- function(url_check){
