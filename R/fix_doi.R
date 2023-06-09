@@ -1,4 +1,6 @@
 fix_doi <- function(doi_url) {
+  doi_url <- stringr::str_remove_all(doi_url, "^\\[")
+
   dplyr::case_when(
     doi_url == "-" ~ NA_character_,
     doi_url == "NA" ~ NA_character_,
@@ -11,7 +13,6 @@ fix_doi <- function(doi_url) {
     TRUE ~ doi_url
   ) |>
     stringr::str_remove_all("\\.$") |>
-    stringr::str_remove_all("^\\[") |>
     stringr::str_remove_all("\\]$") |>
     stringr::str_remove_all(" ")
 }
