@@ -6,6 +6,11 @@ taxon_names <- readxl::read_xlsx("data-raw/zootraits-review/ZooTraits_taxon_name
 
 trait_information <- readxl::read_xlsx("data-raw/zootraits-review/ZooTraits_trait_information_may23.xlsx") |> janitor::clean_names()
 
+correct_DOI <- readxl::read_xlsx("data-raw/zootraits-review/doi_check-july23.xlsx") |>
+  janitor::clean_names() |>
+  dplyr::select(code, new_doi) |>
+  dplyr::mutate(new_doi = dplyr::na_if(new_doi, "no doi"))
+
 # Number of distinct papers reviewed!
 
 review_data_raw |>
@@ -18,10 +23,12 @@ review_data_raw |>
 review_data <- review_data_raw |>
   dplyr::select(-tidyselect::any_of(c("conclusion_ok", "conclusion_wrong"))) |>
   dplyr::rename("undetermined_morphological_traits" = "body_size_undetermined") |>
-  dplyr::mutate(
+  dplyr::left_join(correct_DOI, by = dplyr::join_by(code)) |>
+  dplyr::mutate(doi = dplyr::coalesce(new_doi, doi),
     doi = fix_doi(doi),
     doi_html = glue::glue("<a href='{doi}' target='_blank'>{doi}</a>")
   ) |>
+  dplyr::select(-new_doi) |>
   tidyr::pivot_longer(
     cols = c("freshwater", "marine", "terrestrial"),
     names_to = "ecosystem", values_to = "ecosystem_value"
