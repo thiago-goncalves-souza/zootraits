@@ -33,8 +33,7 @@ mod_review_data_exploration_ui <- function(id) {
         title = "Map",
         collapsible = TRUE,
         width = 12,
-        p("Not every paper is shown in the map.
-          The studies are grouped by country."),
+        p("Most of the studies are grouped by country."),
         br(),
         leaflet::leafletOutput(ns("map")) |> waiting()
       )
