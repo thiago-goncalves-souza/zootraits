@@ -72,7 +72,7 @@ metadata_raw <- purrr::map(variables, metadata_var) |>
 - <b>Defense:</b>	Avoidance/resistance strategies <br>
 - <b>Metabolic:</b>	Metabolic rate strategies/Energy allocation  <br>
 - <b>Undetermined morphological traits:</b> When authors used morphological traits without explicitly linking them to a specific trait dimension. <br>
-- <b>Other:</b>	other traits that do not fit the previous dimensions",
+- <b>Undetermined trait:</b>	other traits that do not fit the previous dimensions or the authors didn't name the trait",
     "trait_details" ~ "Detailed trait name given by the original author",
     .default = ""
   ))
