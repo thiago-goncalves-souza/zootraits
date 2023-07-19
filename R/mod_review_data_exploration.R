@@ -120,7 +120,7 @@ mod_review_data_exploration_server <- function(id) {
             "many-to-many"
         ) |>
         dplyr::distinct(
-          code, id, scale_color, where_fixed,
+          code, id, scale_color, #where,
           CNTR_ID,
           reference, year, doi_html, geometry
         ) |>
@@ -130,7 +130,7 @@ mod_review_data_exploration_server <- function(id) {
         tidyr::drop_na(reference) |>
         leaflet::leaflet() |>
         leaflet::setView(lng = 0, lat = 0, zoom = 2) |>
-        leaflet::addProviderTiles(provider = leaflet::providers$OpenStreetMap) |>
+        leaflet::addProviderTiles(provider = leaflet::providers$Esri.WorldTopoMap) |>
         leaflet::addAwesomeMarkers(
           popup = ~popup_text,
           icon = leaflet::awesomeIcons(

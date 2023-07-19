@@ -29,7 +29,7 @@ countries <- giscoR::gisco_get_countries(year = "2020", spatialtype = "LB")
 local <- review_map_local |>
   dplyr::select(code, where, scale)
 
-# regional and local withot lat/long
+# regional and local without lat/long
 review_map_data <-
   review_map_regional |>
   dplyr::bind_rows(local) |>
@@ -64,7 +64,7 @@ review_map_data <-
   ) |>
   tidyr::drop_na(code) |>
   sf::st_as_sf() |>
-  dplyr::select(code, id, where_fixed, scale_color, geometry, CNTR_ID)
+  dplyr::select(code, id, where, scale_color, geometry, CNTR_ID)
 
 # dplyr::left_join(review_data, by = "code", relationship =
 #                    "many-to-many") |>
@@ -76,7 +76,7 @@ review_map_data <-
 
 review_map_data |>
   dplyr::filter(is.na(CNTR_ID)) |>
-  dplyr::count(where_fixed, sort = TRUE) |>
+  dplyr::count(where, sort = TRUE) |>
   View()
 
 #
