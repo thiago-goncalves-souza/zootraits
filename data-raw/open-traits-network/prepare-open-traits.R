@@ -9,26 +9,20 @@ otn_raw |>
 
 
 
-otn_raw2 <- otn_raw |>
-  dplyr::select(
-    datasetId,
-    relationName,
-    resolvedName,
-    resolvedTraitName,
-    scientificNameVerbatim,
-    accessDate,
-    providedTraitName, traitNameVerbatim
-  ) |>
-  dplyr::sample_n(1000)
 
+otn_selected <- otn_raw |>
+  dplyr::select(-curator, -resolvedTaxonName, - resolvedTaxonId,
+  - parentTaxonId, -counts, -bucketName, -bucketId, - comment,
+- resolvedCommonNames, -phylum)
 
-otn_raw |>
+naniar::gg_miss_var(otn_selected, show_pct = TRUE)
+
+otn_selected |>
   dplyr::count(resolveKingdomName)
 
 
+# Pensar melhor quais sao os dados para mostrar.
+# A base original tem mais 3.4 milhões de linhas.
+# Ficaria muito pesado para rodar no shiny!
+# Se for isso mesmo, precisaremos de um backend de banco de dados.
 
-writexl::write_xlsx(otn_raw2, "otnraw_complete_sample1000.xlsx")
-
-
-
-naniar::gg_miss_var(otn_raw2)

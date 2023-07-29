@@ -49,6 +49,21 @@ app_ui <- function(request) {
             )
           ),
           bs4Dash::bs4SidebarMenuItem(
+            text = "Open Traits Network",
+            icon = icon("table"),
+            startExpanded = TRUE,
+            bs4Dash::bs4SidebarMenuSubItem(
+              text = "About",
+              tabName = "otn_about",
+              icon = icon("table")
+            ),
+            bs4Dash::bs4SidebarMenuSubItem(
+              text = "Data Exploration",
+              tabName = "otn_explore",
+              icon = icon("magnifying-glass")
+            )
+          ),
+          bs4Dash::bs4SidebarMenuItem(
             text = "About",
             tabName = "about",
             icon = icon("book-open")
@@ -75,6 +90,14 @@ app_ui <- function(request) {
           bs4Dash::bs4TabItem(
             tabName = "review_metadata",
             mod_review_metadata_ui("review_metadata_1")
+          ),
+          bs4Dash::bs4TabItem(
+            tabName = "otn_explore",
+            mod_otn_explore_ui("otn_explore_1")
+          ),
+          bs4Dash::bs4TabItem(
+            tabName = "otn_about",
+            mod_otn_about_ui("otn_about_1")
           ),
           bs4Dash::bs4TabItem(
             tabName = "about",
