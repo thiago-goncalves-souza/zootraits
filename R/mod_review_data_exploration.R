@@ -129,7 +129,18 @@ mod_review_data_exploration_server <- function(id) {
         tidyr::drop_na(reference) |>
         leaflet::leaflet() |>
         leaflet::setView(lng = 0, lat = 0, zoom = 2) |>
-        leaflet::addProviderTiles(provider = leaflet::providers$Esri.WorldTopoMap) |>
+        leaflet::addProviderTiles(
+          provider = leaflet::providers$Esri.WorldTopoMap,
+          group = "ESRI World Topo Map"
+          ) |>
+        leaflet::addProviderTiles(
+          "Esri.WorldImagery",
+          group = "ESRI World Imagery"
+        ) |>
+        leaflet::addProviderTiles(
+          leaflet::providers$OpenStreetMap,
+          group = "Open Street Map"
+        ) |>
         leaflet::addAwesomeMarkers(
           popup = ~popup_text,
           icon = leaflet::awesomeIcons(
@@ -139,6 +150,10 @@ mod_review_data_exploration_server <- function(id) {
             library = "ion"
           ),
           clusterOptions = leaflet::markerClusterOptions()
+        ) |>
+        leaflet::addLayersControl(
+          baseGroups = c("ESRI World Topo Map", "ESRI World Imagery", "Open Street Map"),
+          options = leaflet::layersControlOptions(collapsed = FALSE)
         )
     })
 
