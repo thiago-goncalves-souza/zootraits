@@ -11,6 +11,7 @@ BugReports: https://github.com/beatrizmilz/zootraits/issues
 Imports: 
     bs4Dash,
     config,
+    DBI,
     dplyr,
     echarts4r,
     forcats,
@@ -24,6 +25,7 @@ Imports:
     markdown,
     pkgload,
     reactable,
+    RPostgres,
     sf,
     shiny,
     shinycssloaders,
