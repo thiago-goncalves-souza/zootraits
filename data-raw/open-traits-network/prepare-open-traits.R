@@ -9,27 +9,44 @@ otn_raw |>
 
 
 
+naniar::gg_miss_var(otn_raw, show_pct = TRUE)
+
 
 otn_selected <- otn_raw |>
   dplyr::select(
     -curator, -resolvedTaxonName, -resolvedTaxonId,
     -parentTaxonId, -counts, -bucketName, -bucketId, -comment,
-    -resolvedCommonNames, -phylum, -taxonIdVerbatim
+    -resolvedCommonNames, -phylum, -taxonIdVerbatim, -traitIdVerbatim,
+    -family, -resolvedExternalId, -relationName, -resolvedPath, -resolvedPathIds,
+    -resolvedPathNames
+  ) |>
+  dplyr::distinct() |>
+  janitor::clean_names()
+
+nrow(otn_selected)
+names(otn_selected)
+
+con_db <- connect_db()
+
+
+RSQLite::dbWriteTable(con_db, "otn_selected", otn_selected, overwrite = TRUE)
+
+RSQLite::dbDisconnect(con_db)
+
+
+
+# distinct filter columns
+
+otn_filter_cols <- otn_selected |>
+  dplyr::distinct(
+    resolve_kingdom_name,
+    resolved_phylum_name, resolved_family_name, resolved_name
+  ) |>
+  tidyr::separate(
+    col = resolved_name,
+    into = c("resolved_genus_name", "resolved_species_name"),
+    sep = " ", extra = "merge", fill = "right",
+    remove = FALSE
   )
 
-
-otn_selected |>
-  dplyr::distinct(scientificNameVerbatim)
-
-
-
-naniar::gg_miss_var(otn_selected, show_pct = TRUE)
-
-otn_selected |>
-  dplyr::count(resolveKingdomName)
-
-
-# Pensar melhor quais sao os dados para mostrar.
-# A base original tem mais 3.4 milhões de linhas.
-# Ficaria muito pesado para rodar no shiny!
-# Se for isso mesmo, precisaremos de um backend de banco de dados.
+usethis::use_data(otn_filter_cols, overwrite = TRUE)
