@@ -1,9 +1,13 @@
-picker_input <- function(...) {
+picker_input <- function(..., multiple = TRUE, search = FALSE, width = 4) {
   column(
-    width = 4,
+    width = width,
     shinyWidgets::pickerInput(
-      options = list(`actions-box` = TRUE),
-      multiple = TRUE,
+      options = list(
+        `actions-box` = TRUE,
+        `live-search` = search,
+        `live-search-normalize` = TRUE
+      ),
+      multiple = multiple,
       ...
     )
   )

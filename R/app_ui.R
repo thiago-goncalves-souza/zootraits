@@ -46,6 +46,11 @@ app_ui <- function(request) {
               text = "Metadata",
               tabName = "review_metadata",
               icon = icon("file-lines")
+            ),
+            bs4Dash::bs4SidebarMenuSubItem(
+              text = "Contribute to the Review",
+              tabName = "review_add_paper",
+              icon = icon("folder-plus")
             )
           ),
           bs4Dash::bs4SidebarMenuItem(
@@ -90,6 +95,10 @@ app_ui <- function(request) {
           bs4Dash::bs4TabItem(
             tabName = "review_metadata",
             mod_review_metadata_ui("review_metadata_1")
+          ),
+          bs4Dash::bs4TabItem(
+            tabName = "review_add_paper",
+            mod_review_add_paper_ui("review_add_paper_1")
           ),
           bs4Dash::bs4TabItem(
             tabName = "otn_explore",
