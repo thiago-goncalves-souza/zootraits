@@ -34,7 +34,7 @@ missing_wheres <- tibble::tribble(
   "California", 36.30639523954953, -119.66800694060443,
   "Caribbean", 14.978398886637743, -75.12483015598443,
   "Celtic Sea", 49.00017500675439, -8.028765959072798,
-  "Central-Eastern Mediterranean",  33.26660826389885, 33.2022235205528,
+  "Central-Eastern Mediterranean", 33.26660826389885, 33.2022235205528,
   "Chagos", -6.36041932866884, 71.74125859593613,
   "Curacao", 12.182076091833933, -68.96253862905373,
   "Eastern English Channel", 50.07165479631966, -0.2991287133367694,
@@ -42,7 +42,7 @@ missing_wheres <- tibble::tribble(
   "Korea No Mans Area", 38.28549478353815, 127.2289422293421,
   "North Pacific", 31.450594881815565, -171.17441832792503,
   "North Sea", 56.48405089238342, 3.6678744352014454,
-  "Northern Europe",  59.92849895318174, 3.004918242883972,
+  "Northern Europe", 59.92849895318174, 3.004918242883972,
   "Saint Helena", -15.968651021149146, -5.711798392332217,
   "Southern Ocean", -68.43903797187745, -160.23743623108186,
   "Tropical Ocean Atlantic", 0.5301500988542861, -42.14885523592035,
@@ -54,15 +54,17 @@ missing_wheres <- tibble::tribble(
   sf::st_set_crs(value = 4326)
 
 
-countries <- giscoR::gisco_get_countries(year = "2020",
-                                         spatialtype = "LB",
-                                         epsg = "4326") |>
+countries <- giscoR::gisco_get_countries(
+  year = "2020",
+  spatialtype = "LB",
+  epsg = "4326"
+) |>
   dplyr::bind_rows(missing_wheres)
 
 
 
 missing_wheres |>
-  leaflet::leaflet()|>
+  leaflet::leaflet() |>
   leaflet::addProviderTiles(provider = leaflet::providers$OpenStreetMap) |>
   leaflet::addMarkers(
     clusterOptions = leaflet::markerClusterOptions()

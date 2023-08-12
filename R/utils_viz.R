@@ -25,10 +25,13 @@ treemap_echart <- function(data_prepared, x_lab = "", y_lab = "") {
       echarts4r::e_treemap() |>
       echarts4r::e_tooltip() |>
       echarts4r::e_toolbox_feature(feature = c("saveAsImage")) |>
-      echarts4r::e_color(color = c("#440154FF", "#3B528BFF", "#21908CFF",
-                                   "#5DC863FF")
-                         # viridis::viridis(n = 4)
-                         )
+      echarts4r::e_color(
+        color = c(
+          "#440154FF", "#3B528BFF", "#21908CFF",
+          "#5DC863FF"
+        )
+        # viridis::viridis(n = 4)
+      )
   }
 }
 

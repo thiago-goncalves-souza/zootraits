@@ -11,9 +11,17 @@ otn_raw |>
 
 
 otn_selected <- otn_raw |>
-  dplyr::select(-curator, -resolvedTaxonName, - resolvedTaxonId,
-  - parentTaxonId, -counts, -bucketName, -bucketId, - comment,
-- resolvedCommonNames, -phylum)
+  dplyr::select(
+    -curator, -resolvedTaxonName, -resolvedTaxonId,
+    -parentTaxonId, -counts, -bucketName, -bucketId, -comment,
+    -resolvedCommonNames, -phylum, -taxonIdVerbatim
+  )
+
+
+otn_selected |>
+  dplyr::distinct(scientificNameVerbatim)
+
+
 
 naniar::gg_miss_var(otn_selected, show_pct = TRUE)
 
@@ -25,4 +33,3 @@ otn_selected |>
 # A base original tem mais 3.4 milhões de linhas.
 # Ficaria muito pesado para rodar no shiny!
 # Se for isso mesmo, precisaremos de um backend de banco de dados.
-

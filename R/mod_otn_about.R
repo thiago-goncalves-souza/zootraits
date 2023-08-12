@@ -7,20 +7,17 @@
 #' @noRd
 #'
 #' @importFrom shiny NS tagList
-mod_otn_about_ui <- function(id){
+mod_otn_about_ui <- function(id) {
   ns <- NS(id)
-  tagList(
-
-  )
+  tagList()
 }
 
 #' otn_about Server Functions
 #'
 #' @noRd
-mod_otn_about_server <- function(id){
-  moduleServer( id, function(input, output, session){
+mod_otn_about_server <- function(id) {
+  moduleServer(id, function(input, output, session) {
     ns <- session$ns
-
   })
 }
 

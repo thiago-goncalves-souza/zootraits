@@ -7,7 +7,7 @@
 #' @noRd
 #'
 #' @importFrom shiny NS tagList
-mod_review_filter_ui <- function(id){
+mod_review_filter_ui <- function(id) {
   ns <- NS(id)
   tagList(
     fluidRow(
@@ -60,15 +60,14 @@ mod_review_filter_ui <- function(id){
         )
       )
     )
-
   )
 }
 
 #' review_filter Server Functions
 #'
 #' @noRd
-mod_review_filter_server <- function(id){
-  moduleServer( id, function(input, output, session){
+mod_review_filter_server <- function(id) {
+  moduleServer(id, function(input, output, session) {
     ns <- session$ns
 
     review_dataset <- reactive({
@@ -93,7 +92,6 @@ mod_review_filter_server <- function(id){
           )
       })
     })
-
   })
 }
 

@@ -24,7 +24,8 @@ review_data <- review_data_raw |>
   dplyr::select(-tidyselect::any_of(c("conclusion_ok", "conclusion_wrong"))) |>
   dplyr::rename("undetermined_morphological_traits" = "body_size_undetermined") |>
   dplyr::left_join(correct_DOI, by = dplyr::join_by(code)) |>
-  dplyr::mutate(doi = dplyr::coalesce(new_doi, doi),
+  dplyr::mutate(
+    doi = dplyr::coalesce(new_doi, doi),
     doi = fix_doi(doi),
     doi_html = glue::glue("<a href='{doi}' target='_blank'>{doi}</a>")
   ) |>

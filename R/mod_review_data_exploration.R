@@ -119,7 +119,7 @@ mod_review_data_exploration_server <- function(id) {
             "many-to-many"
         ) |>
         dplyr::distinct(
-          code, id, scale_color, #where,
+          code, id, scale_color, # where,
           CNTR_ID,
           reference, year, doi_html, geometry
         ) |>
@@ -132,7 +132,7 @@ mod_review_data_exploration_server <- function(id) {
         leaflet::addProviderTiles(
           provider = leaflet::providers$Esri.WorldTopoMap,
           group = "ESRI World Topo Map"
-          ) |>
+        ) |>
         leaflet::addProviderTiles(
           "Esri.WorldImagery",
           group = "ESRI World Imagery"
@@ -156,7 +156,5 @@ mod_review_data_exploration_server <- function(id) {
           options = leaflet::layersControlOptions(collapsed = FALSE)
         )
     })
-
-
   })
 }
