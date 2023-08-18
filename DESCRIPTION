@@ -29,6 +29,7 @@ Imports:
     sf,
     shiny,
     shinycssloaders,
+    shinyvalidate,
     shinyWidgets,
     stringr,
     tidyr,
