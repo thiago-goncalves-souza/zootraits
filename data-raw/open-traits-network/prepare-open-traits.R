@@ -36,7 +36,13 @@ dplyr::filter(resolveKingdomName == "Animalia") |>
     -resolveKingdomName, -providedTraitName, -datasetId, -scientificNameVerbatim
   ) |>
   dplyr::distinct() |>
-  janitor::clean_names()
+  janitor::clean_names() |>
+  tidyr::separate(
+    col = resolved_name,
+    into = c("resolved_genus_name", "resolved_species_name"),
+    sep = " ", extra = "merge", fill = "right",
+    remove = FALSE
+  )
 
 dplyr::glimpse(otn_selected)
 
@@ -45,29 +51,12 @@ names(otn_selected)
 
 usethis::use_data(otn_selected, overwrite = TRUE)
 
-
-# con_db <- connect_db()
-
-# RSQLite::dbListTables(con_db)
-
-# # RSQLite::dbRemoveTable(con_db, "otn_selected")
-
-# RSQLite::dbWriteTable(con_db, "otn_selected", otn_selected, overwrite = TRUE)
-
-# RSQLite::dbDisconnect(con_db)
-
 # distinct filter columns
 
 otn_filter_cols <- otn_selected |>
   dplyr::distinct(
-    resolved_phylum_name, resolved_family_name, resolved_name
-  ) |>
-  tidyr::separate(
-    col = resolved_name,
-    into = c("resolved_genus_name", "resolved_species_name"),
-    sep = " ", extra = "merge", fill = "right",
-    remove = FALSE
-  ) |>
-  dplyr::distinct()
+    resolved_phylum_name, resolved_family_name, resolved_name, resolved_genus_name, resolved_species_name
+  )  |>
+  dplyr::arrange(resolved_phylum_name, resolved_family_name, resolved_genus_name)
 
 usethis::use_data(otn_filter_cols, overwrite = TRUE)

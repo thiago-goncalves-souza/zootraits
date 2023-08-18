@@ -5,13 +5,6 @@
 #' @import shiny
 #' @noRd
 app_server <- function(input, output, session) {
-  # Connect to the database
-  con_db <- connect_db()
-
-  # Table "Open traits Network" - selected columns
-  otn_selected <- dplyr::tbl(con_db, "otn_selected")
-
-
   mod_review_data_exploration_server("review_data_exploration_1")
   mod_review_data_exploration_table_server("review_data_exploration_table_1")
   mod_about_server("about_1")
