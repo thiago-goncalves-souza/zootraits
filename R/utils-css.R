@@ -1,5 +1,13 @@
 create_theme_css <- function() {
   fresh::create_theme(
+    fresh::bs4dash_vars(
+      link_color =  "#0f7cbf",
+      link_decoration = "underline"
+
+    ),
+    fresh::bs4dash_font(
+      size_base =  "1.1rem"
+    ),
     fresh::bs4dash_yiq(
       contrasted_threshold = 100,
       text_dark = "#000000",
