@@ -96,7 +96,7 @@ mod_review_add_paper_ui <- function(id) {
           width = 4,
           textInput(
             inputId = ns("paper_author"),
-            label = shiny::HTML("Authors <br> <small> (e.g. '..') </small> "),
+            label = shiny::HTML("Authors <br> <small> (e.g. 'Sánchez-Pérez et al.') </small> "),
             value = ""
           )
         ),
@@ -128,22 +128,22 @@ mod_review_add_paper_ui <- function(id) {
         picker_input(
           inputId = ns("study_scale"),
           label = "Study Scale",
-          choices = options_input(review_data$study_scale),
-          selected = options_input(review_data$study_scale)[1],
+          choices = options_input(review_data$study_scale, option_none = TRUE),
+          selected = "None",
           multiple = FALSE
         ),
         picker_input(
           inputId = ns("ecosystem"),
           label = "Ecosystem",
-          choices = options_input(review_data$ecosystem),
-          selected = options_input(review_data$ecosystem)[1],
+          choices = options_input(review_data$ecosystem, option_none = TRUE),
+          selected = "None",
           multiple = FALSE
         ),
         picker_input(
           inputId = ns("where"),
           label = "Where",
-          choices = options_input(review_data$where),
-          selected = options_input(review_data$where)[1],
+          choices = options_input(review_data$where, option_none = TRUE),
+          selected = "None",
           multiple = FALSE
         )
       ),
@@ -151,22 +151,22 @@ mod_review_add_paper_ui <- function(id) {
         picker_input(
           inputId = ns("taxon_span"),
           label = "Taxon span",
-          choices = options_input(review_data$taxon_span),
-          selected = options_input(review_data$taxon_span)[1],
+          choices = options_input(review_data$taxon_span, option_none = TRUE),
+          selected = "None",
           multiple = FALSE
         ),
         picker_input(
           inputId = ns("taxonomic_unit"),
           label = "Taxonomic unit",
-          choices = options_input(review_data$taxunit),
-          selected = options_input(review_data$taxunit)[1],
+          choices = options_input(review_data$taxunit, option_none = TRUE),
+          selected = "None",
           multiple = FALSE
         ),
         picker_input(
           inputId = ns("taxonomic_group"),
           label = "Taxonomic group",
-          choices = options_input(review_data$taxonomic_group),
-          selected = options_input(review_data$taxonomic_group)[1],
+          choices = options_input(review_data$taxonomic_group, option_none = TRUE),
+          selected = "None",
           multiple = FALSE
         )
       )
@@ -205,22 +205,22 @@ mod_review_add_paper_ui <- function(id) {
         picker_input(
           inputId = ns("trait_type"),
           label = "Trait type",
-          choices = options_input(review_data$trait_type),
-          selected = options_input(review_data$trait_type)[1],
+          choices = options_input(review_data$trait_type, option_none = TRUE),
+          selected = "None",
           multiple = TRUE
         ),
         picker_input(
           inputId = ns("intraspecific_data"),
           label = "Intraspecific data",
-          choices = options_input(review_data$intraspecific_data),
-          selected = options_input(review_data$intraspecific_data)[1],
+          choices = options_input(review_data$intraspecific_data, option_none = TRUE),
+          selected = "None",
           multiple = TRUE
         ),
         picker_input(
           inputId = ns("trait_dimension"),
           label = "Trait dimension",
-          choices = options_input(review_data$trait_dimension),
-          selected = options_input(review_data$trait_dimension)[1],
+          choices = options_input(review_data$trait_dimension, option_none = TRUE),
+          selected = "None",
           multiple = TRUE
         )
       ),
@@ -228,8 +228,8 @@ mod_review_add_paper_ui <- function(id) {
         picker_input(
           inputId = ns("trait_details"),
           label = "Trait details",
-          choices = options_input(trait_information$trait_details),
-          selected = options_input(trait_information$trait_details)[1],
+          choices = options_input(trait_information$trait_details, option_none = TRUE),
+          selected = "None",
           multiple = TRUE, search = TRUE,
           width = 12
         )
@@ -313,6 +313,56 @@ mod_review_add_paper_ui <- function(id) {
 mod_review_add_paper_server <- function(id) {
   moduleServer(id, function(input, output, session) {
     ns <- session$ns
+
+    # Create an InputValidator object
+  input_validator <- shinyvalidate::InputValidator$new()
+
+  # Add validation rules
+  input_validator$add_rule("paper_title", shinyvalidate::sv_required())
+  input_validator$add_rule("paper_doi", shinyvalidate::sv_required())
+  input_validator$add_rule("paper_url", shinyvalidate::sv_required())
+  input_validator$add_rule("paper_author", shinyvalidate::sv_required())
+  input_validator$add_rule("paper_journal", shinyvalidate::sv_required())
+  input_validator$add_rule("paper_year", shinyvalidate::sv_required())
+  input_validator$add_rule("study_scale", shinyvalidate::sv_required())
+  input_validator$add_rule("ecosystem", shinyvalidate::sv_required())
+  input_validator$add_rule("where", shinyvalidate::sv_required())
+  input_validator$add_rule("taxon_span", shinyvalidate::sv_required())
+  input_validator$add_rule("taxonomic_unit", shinyvalidate::sv_required())
+  input_validator$add_rule("taxonomic_group", shinyvalidate::sv_required())
+  input_validator$add_rule("latitude", shinyvalidate::sv_required())
+  input_validator$add_rule("longitude", shinyvalidate::sv_required())
+  input_validator$add_rule("trait_type", shinyvalidate::sv_required())
+  input_validator$add_rule("intraspecific_data", shinyvalidate::sv_required())
+  input_validator$add_rule("trait_dimension", shinyvalidate::sv_required())
+  input_validator$add_rule("trait_details", shinyvalidate::sv_required())
+  input_validator$add_rule("your_name", shinyvalidate::sv_required())
+  input_validator$add_rule("your_email", shinyvalidate::sv_required())
+  input_validator$add_rule("your_affiliation", shinyvalidate::sv_required())
+  input_validator$add_rule("your_orcid", shinyvalidate::sv_required())
+
+
+  input_validator$add_rule("latitude", shinyvalidate::sv_numeric())
+  input_validator$add_rule("longitude", shinyvalidate::sv_numeric())
+
+  input_validator$add_rule("your_email", shinyvalidate::sv_email())
+
+    input_validator$add_rule("your_orcid", shinyvalidate::sv_url())
+
+    input_validator$add_rule("paper_doi", shinyvalidate::sv_url())
+
+    input_validator$add_rule("paper_url", shinyvalidate::sv_url())
+
+# Start displaying errors in the UI
+  input_validator$enable()
+
+  # output$greeting <- renderText({
+    # 4. Don't proceed if any input is invalid
+  #  req(iv$is_valid())
+
+  #  paste0("Nice to meet you, ", input$name, " <", input$email, ">!")
+  #})
+
   })
 }
 
