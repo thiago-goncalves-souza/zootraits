@@ -9,7 +9,16 @@
 #' @importFrom shiny NS tagList
 mod_otn_about_ui <- function(id) {
   ns <- NS(id)
-  tagList()
+  tagList(
+    bs4Dash::box(
+      title = "Open Traits Network",
+      collapsible = FALSE,
+      width = 12,
+      shiny::tags$p(
+        htmltools::includeMarkdown(app_sys("app/www/md/otn.md"))
+      )
+    ),
+  )
 }
 
 #' otn_about Server Functions

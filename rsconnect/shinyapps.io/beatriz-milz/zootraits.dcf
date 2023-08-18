@@ -5,9 +5,9 @@ account: beatriz-milz
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 9101142
-bundleId: 7584217
+bundleId: 7584332
 url: https://beatriz-milz.shinyapps.io/zootraits/
-when: 1692366988.62375
-lastSyncTime: 1692366988.62377
+when: 1692368885.21781
+lastSyncTime: 1692368885.21783
 asMultiple: FALSE
 asStatic: FALSE
