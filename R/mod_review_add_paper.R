@@ -65,26 +65,28 @@ mod_review_add_paper_ui <- function(id) {
       width = 12,
       fluidRow(
         column(
-          width = 4,
+          width = 12,
           textInput(
             inputId = ns("paper_title"),
-            label = "Title",
+            label = shiny::HTML("Title <br> <small> (e.g. 'Functional response of fish assemblage to multiple stressors in a highly regulated Mediterranean river system') </small> "),
             value = ""
           )
-        ),
+        )),
+        fluidRow(
         column(
-          width = 4,
+          width = 12,
           textInput(
             inputId = ns("paper_doi"),
-            label = "DOI",
-            value = ""
+            label = shiny::HTML("DOI <br> <small> (e.g. 'https://doi.org/10.1016/j.scitotenv.2020.138989') </small> "),
+            value = "https://doi.org/"
           )
-        ),
+        )),
+        fluidRow(
         column(
-          width = 4,
+          width = 12,
           textInput(
             inputId = ns("paper_url"),
-            label = "Alternative URL",
+            label = shiny::HTML("Alternative URL <br> <small> (e.g. 'https://www.sciencedirect.com/science/article/abs/pii/S0048969720325067') </small> "),
             value = ""
           )
         )
@@ -94,7 +96,7 @@ mod_review_add_paper_ui <- function(id) {
           width = 4,
           textInput(
             inputId = ns("paper_author"),
-            label = "Authors",
+            label = shiny::HTML("Authors <br> <small> (e.g. '..') </small> "),
             value = ""
           )
         ),
@@ -102,7 +104,7 @@ mod_review_add_paper_ui <- function(id) {
           width = 4,
           textInput(
             inputId = ns("paper_journal"),
-            label = "Journal Name",
+            label = shiny::HTML("Journal Name <br> <small> (e.g. 'Science of The Total Environment') </small> "),
             value = ""
           )
         ),
@@ -110,7 +112,7 @@ mod_review_add_paper_ui <- function(id) {
           width = 4,
           numericInput(
             inputId = ns("paper_year"),
-            label = "Year",
+            label = shiny::HTML("Year <br> <small> (e.g. '2020') </small> "),
             value = 2021,
             min = 1900,
             max = lubridate::year(Sys.Date())
@@ -178,7 +180,7 @@ mod_review_add_paper_ui <- function(id) {
           width = 6,
           textInput(
             inputId = ns("latitude"),
-            label = "Latitude",
+            label = shiny::HTML("Latitude (in Decimal Degrees) <br> <small> (e.g. '-28.164997') </small> "),
             value = ""
           )
         ),
@@ -186,10 +188,13 @@ mod_review_add_paper_ui <- function(id) {
           width = 6,
           textInput(
             inputId = ns("longitude"),
-            label = "Longitude",
+            label = shiny::HTML("Longitude (in Decimal Degrees) <br> <small> (e.g. '-20.390625') </small> "),
             value = ""
           )
         )
+      ),
+      fluidRow(
+        shiny::HTML("You can use &nbsp; <b><a href='https://www.latlong.net/' target='_blank'> this website </a></b> &nbsp; to convert the latitude and longitude of the study site to decimals degrees.")
       )
     ),
     bs4Dash::box(
@@ -234,7 +239,7 @@ mod_review_add_paper_ui <- function(id) {
           width = 12,
           textInput(
             inputId = ns("trait_details_other"),
-            label = "Other trait details",
+            label = shiny::HTML("Other trait details <br> <small> If there is any other trait not listed in the filter above, write it here: </small> "),
             value = "",
             width = "100%"
           )
@@ -273,7 +278,7 @@ mod_review_add_paper_ui <- function(id) {
         textInput(
           inputId = ns("your_orcid"),
           label = "Your ORCID ID",
-          value = "",
+          value = "https://orcid.org/0000-0000-0000-0000",
           width = "100%"
         )
       )
