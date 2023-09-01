@@ -174,24 +174,24 @@ mod_review_add_paper_ui <- function(id) {
       )
     ),
     bs4Dash::box(
-      title = "Information about the study - Location",
+      title = "Information about the study - Approximate Location",
       collapsible = FALSE,
       width = 12,
       fluidRow(
         column(
           width = 6,
-          numericInput(
+          sliderInput(
             inputId = ns("latitude"),
-            label = shiny::HTML("Latitude (in Decimal Degrees) <br> <small> (e.g. '-28.164997') </small> "),
-            value = 0
+            label = shiny::HTML("Latitude (in Decimal Degrees) <br> <small> (e.g. '-28.1') </small> "),
+            value = 0, min = -90, max = 90, step = 0.1
           )
         ),
         column(
           width = 6,
-          numericInput(
+          sliderInput(
             inputId = ns("longitude"),
-            label = shiny::HTML("Longitude (in Decimal Degrees) <br> <small> (e.g. '-20.390625') </small> "),
-            value = 0
+            label = shiny::HTML("Longitude (in Decimal Degrees) <br> <small> (e.g. '-20.3') </small> "),
+            value = 0, min = -180, max = 180, step = 0.1
           )
         )
       ),
