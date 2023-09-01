@@ -36,9 +36,9 @@ mod_otn_explore_ui <- function(id) {
           width = 12
         ),
       ),
-        fluidRow(
-          shiny::actionButton(inputId = ns("search"), label = "Search")
-        )
+      fluidRow(
+        shiny::actionButton(inputId = ns("search"), label = "Search")
+      )
       # fluidRow(
       #   picker_input(
       #     inputId = ns("genus_name"),
@@ -59,17 +59,17 @@ mod_otn_explore_ui <- function(id) {
       #   )
       #   )
     ),
-      fluidRow(
+    fluidRow(
       bs4Dash::box(
         title = "Dataset download",
         collapsible = TRUE,
         width = 12,
-       mod_download_table_ui(ns("download_table_1")),
-       br(),
+        mod_download_table_ui(ns("download_table_1")),
+        br(),
         reactable::reactableOutput(ns("table")) |> waiting()
       )
+    )
   )
-)
 }
 
 #' otn Server Functions
@@ -143,7 +143,7 @@ mod_otn_explore_server <- function(id, otn_selected) {
           dplyr::filter(
             resolved_phylum_name %in% filter_phylum,
             resolved_family_name %in% filter_family
-          )  |>
+          ) |>
           dplyr::collect()
       })
     })
@@ -151,26 +151,28 @@ mod_otn_explore_server <- function(id, otn_selected) {
     mod_download_table_server("download_table_1", otn_filtered(), prefix = "Zootraits_OTN")
 
     output$table <- reactable::renderReactable({
-
       prepared_data <- otn_filtered() |>
-        dplyr::arrange(resolved_phylum_name,
-        resolved_family_name,
-        resolved_genus_name,
-        resolved_species_name,
-        resolved_trait_name) |>
+        dplyr::arrange(
+          resolved_phylum_name,
+          resolved_family_name,
+          resolved_genus_name,
+          resolved_species_name,
+          resolved_trait_name
+        ) |>
         dplyr::distinct() |>
-       dplyr::mutate(url_html = glue::glue("<a href='{resolved_external_url}' target='_blank'>{resolved_external_url}</a>"),
-       resolved_species_name = tidyr::replace_na(resolved_species_name, ""),
-       resolved_genus_name = paste0("<i>", resolved_genus_name, "</i>"),
-       resolved_species_name = paste0("<i>", resolved_species_name, "</i>")
-       ) |>
-       dplyr::select(
+        dplyr::mutate(
+          url_html = glue::glue("<a href='{resolved_external_url}' target='_blank'>{resolved_external_url}</a>"),
+          resolved_species_name = tidyr::replace_na(resolved_species_name, ""),
+          resolved_genus_name = paste0("<i>", resolved_genus_name, "</i>"),
+          resolved_species_name = paste0("<i>", resolved_species_name, "</i>")
+        ) |>
+        dplyr::select(
           resolved_phylum_name,
           resolved_family_name,
           resolved_genus_name,
           resolved_species_name,
           resolved_trait_name,
-           url_html
+          url_html
         )
 
 
@@ -179,19 +181,16 @@ mod_otn_explore_server <- function(id, otn_selected) {
         reactable::reactable(
           sortable = TRUE,
           searchable = TRUE,
-           columns =
+          columns =
             list(
               resolved_phylum_name = reactable::colDef(name = "Phylum"),
               resolved_family_name = reactable::colDef(name = "Family"),
               resolved_genus_name = reactable::colDef(name = "Genus", html = TRUE),
               resolved_species_name = reactable::colDef(name = "Species", html = TRUE),
               resolved_trait_name = reactable::colDef(name = "Trait"),
-               url_html = reactable::colDef(name = "URL", html = TRUE)
-             )
+              url_html = reactable::colDef(name = "URL", html = TRUE)
+            )
         )
     })
-
-
-
   })
 }

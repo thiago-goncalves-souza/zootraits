@@ -22,11 +22,11 @@ options_input <- function(col, option_none = FALSE) {
     stringr::str_to_title() |>
     stringr::str_replace_all("_", " ")
 
-    if(isTRUE(option_none)){
-      options_to_add <- c("None", options_to_add)
-    }
+  if (isTRUE(option_none)) {
+    options_to_add <- c("None", options_to_add)
+  }
 
-    options_to_add
+  options_to_add
 }
 
 prepare_input_to_filter <- function(col) {
