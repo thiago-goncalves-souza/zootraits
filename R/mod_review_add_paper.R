@@ -71,8 +71,9 @@ mod_review_add_paper_ui <- function(id) {
             label = shiny::HTML("Title <br> <small> (e.g. 'Functional response of fish assemblage to multiple stressors in a highly regulated Mediterranean river system') </small> "),
             value = ""
           )
-        )),
-        fluidRow(
+        )
+      ),
+      fluidRow(
         column(
           width = 12,
           textInput(
@@ -80,8 +81,9 @@ mod_review_add_paper_ui <- function(id) {
             label = shiny::HTML("DOI <br> <small> (e.g. 'https://doi.org/10.1016/j.scitotenv.2020.138989') </small> "),
             value = "https://doi.org/"
           )
-        )),
-        fluidRow(
+        )
+      ),
+      fluidRow(
         column(
           width = 12,
           textInput(
@@ -293,24 +295,18 @@ mod_review_add_paper_ui <- function(id) {
       collapsible = FALSE,
       width = 12,
       br(),
-
       shiny::h5("Paper metadata"),
       reactable::reactableOutput(outputId = ns("paper_metadata_table_responses")),
       br(), br(),
-
       shiny::h5("Information about the study"),
       reactable::reactableOutput(outputId = ns("paper_study_table_responses")),
       br(), br(),
-
-
       shiny::h5("Information about the study - Location"),
       reactable::reactableOutput(ns("paper_study_location_responses")),
       br(), br(),
-
       shiny::h5("Information about the study - Traits"),
       reactable::reactableOutput(ns("paper_study_traits_responses")),
       br(), br(),
-
       shiny::h5("Information about you (contributer)"),
       reactable::reactableOutput(
         outputId = ns("contributor_table_responses")
@@ -342,37 +338,37 @@ mod_review_add_paper_server <- function(id) {
     ns <- session$ns
 
     # Create an InputValidator object
-  input_validator <- shinyvalidate::InputValidator$new()
+    input_validator <- shinyvalidate::InputValidator$new()
 
-  # Add validation rules
-  input_validator$add_rule("paper_title", shinyvalidate::sv_required())
-  input_validator$add_rule("paper_doi", shinyvalidate::sv_required())
-  input_validator$add_rule("paper_url", shinyvalidate::sv_required())
-  input_validator$add_rule("paper_author", shinyvalidate::sv_required())
-  input_validator$add_rule("paper_journal", shinyvalidate::sv_required())
-  input_validator$add_rule("paper_year", shinyvalidate::sv_required())
-  input_validator$add_rule("study_scale", shinyvalidate::sv_required())
-  input_validator$add_rule("ecosystem", shinyvalidate::sv_required())
-  input_validator$add_rule("where", shinyvalidate::sv_required())
-  input_validator$add_rule("taxon_span", shinyvalidate::sv_required())
-  input_validator$add_rule("taxonomic_unit", shinyvalidate::sv_required())
-  input_validator$add_rule("taxonomic_group", shinyvalidate::sv_required())
-  input_validator$add_rule("latitude", shinyvalidate::sv_required())
-  input_validator$add_rule("longitude", shinyvalidate::sv_required())
-  input_validator$add_rule("trait_type", shinyvalidate::sv_required())
-  input_validator$add_rule("intraspecific_data", shinyvalidate::sv_required())
-  input_validator$add_rule("trait_dimension", shinyvalidate::sv_required())
-  input_validator$add_rule("trait_details", shinyvalidate::sv_required())
-  input_validator$add_rule("your_name", shinyvalidate::sv_required())
-  input_validator$add_rule("your_email", shinyvalidate::sv_required())
-  input_validator$add_rule("your_affiliation", shinyvalidate::sv_required())
-  input_validator$add_rule("your_orcid", shinyvalidate::sv_required())
+    # Add validation rules
+    input_validator$add_rule("paper_title", shinyvalidate::sv_required())
+    input_validator$add_rule("paper_doi", shinyvalidate::sv_required())
+    input_validator$add_rule("paper_url", shinyvalidate::sv_required())
+    input_validator$add_rule("paper_author", shinyvalidate::sv_required())
+    input_validator$add_rule("paper_journal", shinyvalidate::sv_required())
+    input_validator$add_rule("paper_year", shinyvalidate::sv_required())
+    input_validator$add_rule("study_scale", shinyvalidate::sv_required())
+    input_validator$add_rule("ecosystem", shinyvalidate::sv_required())
+    input_validator$add_rule("where", shinyvalidate::sv_required())
+    input_validator$add_rule("taxon_span", shinyvalidate::sv_required())
+    input_validator$add_rule("taxonomic_unit", shinyvalidate::sv_required())
+    input_validator$add_rule("taxonomic_group", shinyvalidate::sv_required())
+    input_validator$add_rule("latitude", shinyvalidate::sv_required())
+    input_validator$add_rule("longitude", shinyvalidate::sv_required())
+    input_validator$add_rule("trait_type", shinyvalidate::sv_required())
+    input_validator$add_rule("intraspecific_data", shinyvalidate::sv_required())
+    input_validator$add_rule("trait_dimension", shinyvalidate::sv_required())
+    input_validator$add_rule("trait_details", shinyvalidate::sv_required())
+    input_validator$add_rule("your_name", shinyvalidate::sv_required())
+    input_validator$add_rule("your_email", shinyvalidate::sv_required())
+    input_validator$add_rule("your_affiliation", shinyvalidate::sv_required())
+    input_validator$add_rule("your_orcid", shinyvalidate::sv_required())
 
 
-  input_validator$add_rule("latitude", shinyvalidate::sv_numeric())
-  input_validator$add_rule("longitude", shinyvalidate::sv_numeric())
+    input_validator$add_rule("latitude", shinyvalidate::sv_numeric())
+    input_validator$add_rule("longitude", shinyvalidate::sv_numeric())
 
-  input_validator$add_rule("your_email", shinyvalidate::sv_email())
+    input_validator$add_rule("your_email", shinyvalidate::sv_email())
 
     input_validator$add_rule("your_orcid", shinyvalidate::sv_url())
 
@@ -380,145 +376,180 @@ mod_review_add_paper_server <- function(id) {
 
     input_validator$add_rule("paper_url", shinyvalidate::sv_url())
 
-# Start displaying errors in the UI
-  input_validator$enable()
+    # Start displaying errors in the UI
+    input_validator$enable()
 
-contributor_responses <- reactive({
-  tibble::tibble(
-    contributor_name = input$your_name,
-    contributor_email = input$your_email,
-    contributor_affiliation = input$your_affiliation,
-    contributor_orcid = input$your_orcid
-  )
- })
-
-output$contributor_table_responses <- reactable::renderReactable({
-    contributor_responses() |>
-    reactable::reactable(
-      columns = list(
-        contributor_name = reactable::colDef(name = "Name"),
-        contributor_email = reactable::colDef(name = "Email"),
-        contributor_affiliation = reactable::colDef(name = "Affiliation"),
-        contributor_orcid = reactable::colDef(name = "ORCID")
+    contributor_responses <- reactive({
+      tibble::tibble(
+        contributor_name = input$your_name,
+        contributor_email = input$your_email,
+        contributor_affiliation = input$your_affiliation,
+        contributor_orcid = input$your_orcid
       )
-    )
-  })
+    })
 
-paper_responses <- reactive({
+    output$contributor_table_responses <- reactable::renderReactable({
+      contributor_responses() |>
+        reactable::reactable(
+          columns = list(
+            contributor_name = reactable::colDef(name = "Name"),
+            contributor_email = reactable::colDef(name = "Email"),
+            contributor_affiliation = reactable::colDef(name = "Affiliation"),
+            contributor_orcid = reactable::colDef(name = "ORCID")
+          )
+        )
+    })
 
-  tibble::tibble(
-    paper_title = input$paper_title,
-    paper_doi = input$paper_doi,
-    paper_url = input$paper_url,
-    paper_author = input$paper_author,
-    paper_journal = input$paper_journal,
-    paper_year = input$paper_year,
-    study_scale = input$study_scale,
-    ecosystem = input$ecosystem,
-    where = input$where,
-    taxon_span = input$taxon_span,
-    taxonomic_unit = input$taxonomic_unit,
-    taxonomic_group = input$taxonomic_group,
-    latitude = input$latitude,
-    longitude = input$longitude,
-    trait_type = input$trait_type,
-    intraspecific_data = input$intraspecific_data,
-    trait_dimension = list(input$trait_dimension),
-    trait_details = list(input$trait_details),
-    trait_details_other = input$trait_details_other
-  )
-})
-
-
-output$paper_metadata_table_responses <- reactable::renderReactable({
-
-  paper_responses() |>
-  dplyr::select(paper_title:paper_year) |>
-  reactable::reactable(
-    columns = list(
-      paper_title = reactable::colDef(name = "Title"),
-      paper_doi = reactable::colDef(name = "DOI"),
-      paper_url = reactable::colDef(name = "URL"),
-      paper_author = reactable::colDef(name = "Author"),
-      paper_journal = reactable::colDef(name = "Journal"),
-      paper_year = reactable::colDef(name = "Year")
-    )
-  )
-})
+    paper_responses <- reactive({
+      tibble::tibble(
+        paper_title = input$paper_title,
+        paper_doi = input$paper_doi,
+        paper_url = input$paper_url,
+        paper_author = input$paper_author,
+        paper_journal = input$paper_journal,
+        paper_year = input$paper_year,
+        study_scale = input$study_scale,
+        ecosystem = input$ecosystem,
+        where = input$where,
+        taxon_span = input$taxon_span,
+        taxonomic_unit = input$taxonomic_unit,
+        taxonomic_group = input$taxonomic_group,
+        latitude = input$latitude,
+        longitude = input$longitude,
+        trait_type = input$trait_type,
+        intraspecific_data = input$intraspecific_data,
+        trait_dimension = list(input$trait_dimension),
+        trait_details = list(input$trait_details),
+        trait_details_other = input$trait_details_other
+      )
+    })
 
 
-output$paper_study_table_responses <- reactable::renderReactable({
-    paper_responses() |>
-  dplyr::select(study_scale:taxonomic_group) |>
-  reactable::reactable(
-    columns = list(
-      study_scale = reactable::colDef(name = "Study Scale"),
-      ecosystem = reactable::colDef(name = "Ecosystem"),
-      where = reactable::colDef(name = "Where"),
-      taxon_span = reactable::colDef(name = "Taxon span"),
-      taxonomic_unit = reactable::colDef(name = "Taxonomic unit"),
-      taxonomic_group = reactable::colDef(name = "Taxonomic group")
-    )
-    )
-  })
-
-output$paper_study_traits_responses <- reactable::renderReactable({
-    paper_responses() |>
-  dplyr::select(trait_type:trait_details_other) |>
-  reactable::reactable(
-    columns = list(
-      trait_type = reactable::colDef(name = "Trait type"),
-      intraspecific_data = reactable::colDef(name = "Intraspecific data"),
-      trait_dimension = reactable::colDef(name = "Trait dimension"),
-      trait_details = reactable::colDef(name = "Trait details"),
-      trait_details_other = reactable::colDef(name = "Other trait details"
-    )
-    )
-    )
-  })
+    output$paper_metadata_table_responses <- reactable::renderReactable({
+      paper_responses() |>
+        dplyr::select(paper_title:paper_year) |>
+        reactable::reactable(
+          columns = list(
+            paper_title = reactable::colDef(name = "Title"),
+            paper_doi = reactable::colDef(name = "DOI"),
+            paper_url = reactable::colDef(name = "URL"),
+            paper_author = reactable::colDef(name = "Author"),
+            paper_journal = reactable::colDef(name = "Journal"),
+            paper_year = reactable::colDef(name = "Year")
+          )
+        )
+    })
 
 
-lat_lon <- reactive({
-   tibble::tibble(
-   lng = input$longitude,
-   lat = input$latitude
-   )
-})
+    output$paper_study_table_responses <- reactable::renderReactable({
+      paper_responses() |>
+        dplyr::select(study_scale:taxonomic_group) |>
+        reactable::reactable(
+          columns = list(
+            study_scale = reactable::colDef(name = "Study Scale"),
+            ecosystem = reactable::colDef(name = "Ecosystem"),
+            where = reactable::colDef(name = "Where"),
+            taxon_span = reactable::colDef(name = "Taxon span"),
+            taxonomic_unit = reactable::colDef(name = "Taxonomic unit"),
+            taxonomic_group = reactable::colDef(name = "Taxonomic group")
+          )
+        )
+    })
 
-output$study_location <- leaflet::renderLeaflet({
-  lat_lon() |>
-  leaflet::leaflet() |>
-  leaflet::setView(lng = 0, lat = 0, zoom = 2) |>
+    output$paper_study_traits_responses <- reactable::renderReactable({
+      paper_responses() |>
+        dplyr::select(trait_type:trait_details_other) |>
+        reactable::reactable(
+          columns = list(
+            trait_type = reactable::colDef(name = "Trait type"),
+            intraspecific_data = reactable::colDef(name = "Intraspecific data"),
+            trait_dimension = reactable::colDef(name = "Trait dimension"),
+            trait_details = reactable::colDef(name = "Trait details"),
+            trait_details_other = reactable::colDef(name = "Other trait details")
+          )
+        )
+    })
+
+
+    lat_lon <- reactive({
+      tibble::tibble(
+        lng = input$longitude,
+        lat = input$latitude
+      )
+    })
+
+    output$study_location <- leaflet::renderLeaflet({
+      lat_lon() |>
+        leaflet::leaflet() |>
+        leaflet::setView(lng = 0, lat = 0, zoom = 2) |>
         leaflet::addProviderTiles(
           "Esri.WorldImagery",
           group = "ESRI World Imagery"
         ) |>
-         leaflet::addMarkers(
+        leaflet::addMarkers(
           lng = ~lng,
           lat = ~lat
         )
+    })
+
+    output$paper_study_location_responses <- reactable::renderReactable({
+      lat_lon() |>
+        reactable::reactable(
+          columns = list(
+            lng = reactable::colDef(name = "Longitude"),
+            lat = reactable::colDef(name = "Latitude")
+          )
+        )
+    })
+
+    observeEvent(input$send_suggestion, {
+      # 4. Don't proceed if any input is invalid
+
+      if (input_validator$is_valid()) {
+        # 5. If all inputs are valid, proceed
+
+        paper_to_add <- paper_responses() |>
+          dplyr::mutate(date_time = Sys.time(), contributor_email = input$your_email)
+
+        contributor_to_add <- contributor_responses() |>
+          dplyr::mutate(date_time = Sys.time())
+
+        googlesheets4::sheet_append(
+          ss = "1nStfAOwUvUuVC4Xo3ArI8i1Be9TxGNdmntfn87OGSy4",
+          data = paper_to_add,
+          sheet = "papers"
+        )
+
+        googlesheets4::sheet_append(
+          ss = "1nStfAOwUvUuVC4Xo3ArI8i1Be9TxGNdmntfn87OGSy4",
+          data = contributor_to_add,
+          sheet = "contributors"
+        )
+
+        shinyalert::shinyalert(
+          title = "Suggestion sent!",
+          text = "Thank you for your contribution. The Zootraits team will review your suggestion.",
+          size = "s",
+          closeOnEsc = TRUE,
+          closeOnClickOutside = FALSE,
+          html = TRUE,
+          type = "success",
+          showConfirmButton = TRUE,
+          showCancelButton = FALSE,
+          confirmButtonText = "OK",
+          confirmButtonCol = "#AEDEF4",
+          timer = 0,
+          imageUrl = "",
+          animation = TRUE
+        )
+      } else {
+        showNotification(
+          "Please fix the errors in the form before continuing",
+          type = "warning"
+        )
+      }
+    })
   })
-
-  output$paper_study_location_responses <- reactable::renderReactable({
-    lat_lon() |>
-    reactable::reactable(
-      columns = list(
-        lng = reactable::colDef(name = "Longitude"),
-        lat = reactable::colDef(name = "Latitude")
-      )
-    )
-  })
-
-
-# TO DO: SEND SUGGESTION
-
-    # 4. Don't proceed if any input is invalid
-  # req(input_validator$is_valid())
-
-  # 5. If all inputs are valid, proceed
-
-  })
-
 }
 
 ## To be copied in the UI

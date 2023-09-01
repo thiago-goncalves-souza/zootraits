@@ -5,6 +5,8 @@
 #' @import shiny
 #' @noRd
 app_server <- function(input, output, session) {
+  autenticar_google_sheets()
+
   mod_review_data_exploration_server("review_data_exploration_1")
   mod_review_data_exploration_table_server("review_data_exploration_table_1")
   mod_about_server("about_1")
