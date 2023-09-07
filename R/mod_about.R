@@ -46,7 +46,7 @@ mod_about_ui <- function(id) {
         title = "App",
         collapsible = TRUE,
         width = 12,
-          htmltools::includeMarkdown(app_sys("app/www/md/dev.md"))
+        htmltools::includeMarkdown(app_sys("app/www/md/dev.md"))
       )
     )
   )
@@ -76,7 +76,6 @@ mod_about_server <- function(id) {
     })
 
     output$contributors_table <- reactable::renderReactable({
-
       contributors_list |>
         dplyr::transmute(
           name = contributor_name,

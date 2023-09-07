@@ -46,12 +46,13 @@ app_ui <- function(request) {
               text = "Metadata",
               tabName = "review_metadata",
               icon = icon("file-lines")
-            )),
-            bs4Dash::bs4SidebarMenuItem(
-              text = "FeedTrait",
-              tabName = "review_add_paper",
-              icon = icon("folder-plus")
-            ),
+            )
+          ),
+          bs4Dash::bs4SidebarMenuItem(
+            text = "FeedTrait",
+            tabName = "review_add_paper",
+            icon = icon("folder-plus")
+          ),
           bs4Dash::bs4SidebarMenuItem(
             text = "GetTrait",
             icon = icon("table"),
@@ -63,7 +64,7 @@ app_ui <- function(request) {
             icon = icon("book-open")
           )
         )
-    ),
+      ),
 
       # ----
       body = bs4Dash::dashboardBody(

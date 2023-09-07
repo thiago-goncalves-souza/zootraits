@@ -54,7 +54,6 @@ contributed_papers <- papers_raw |>
     trait_details = paste0(trait_details, trait_details_other, collapse = "; "),
   ) |>
   dplyr::select(-trait_details_other) |>
-
   tidyr::separate_longer_delim(trait_dimension, "; ")
 
 
@@ -71,4 +70,3 @@ contributors_list <- contributors_raw |>
   dplyr::distinct(contributor_email, .keep_all = TRUE)
 
 usethis::use_data(contributors_list, overwrite = TRUE)
-

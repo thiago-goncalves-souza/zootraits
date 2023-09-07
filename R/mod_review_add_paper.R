@@ -517,16 +517,22 @@ mod_review_add_paper_server <- function(id) {
         code <- paste0("c_", date_time_text, collapse = "")
 
         paper_to_add <- paper_responses() |>
-          dplyr::mutate(date_time = sys_time,
-                        contributor_email = input$your_email) |>
-          dplyr::mutate(verified = FALSE,
-                        code = code,
-                        .before = tidyselect::everything())
+          dplyr::mutate(
+            date_time = sys_time,
+            contributor_email = input$your_email
+          ) |>
+          dplyr::mutate(
+            verified = FALSE,
+            code = code,
+            .before = tidyselect::everything()
+          )
 
         contributor_to_add <- contributor_responses() |>
           dplyr::mutate(date_time = sys_time) |>
-          dplyr::mutate(code = code,
-                        .before = tidyselect::everything())
+          dplyr::mutate(
+            code = code,
+            .before = tidyselect::everything()
+          )
 
         googlesheets4::sheet_append(
           ss = "1nStfAOwUvUuVC4Xo3ArI8i1Be9TxGNdmntfn87OGSy4",
