@@ -35,6 +35,14 @@ mod_about_ui <- function(id) {
         shiny::HTML("Please visit the <a href='https://opentraits.org/members' target='_blank'>Open Traits Network members pages</a> to see a list of the current members.")
       ),
       bs4Dash::box(
+        title = "Citation",
+        collapsible = FALSE,
+        width = 12,
+        shiny::tags$p(
+          htmltools::includeMarkdown(app_sys("app/www/md/how-to-cite.md"))
+        )
+      ),
+      bs4Dash::box(
         title = "App",
         collapsible = TRUE,
         width = 12,

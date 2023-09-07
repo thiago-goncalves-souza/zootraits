@@ -12,11 +12,11 @@ mod_homepage_ui <- function(id) {
   tagList(
     fluidRow(
       bs4Dash::box(
-        title = "About ZooTraits",
+        title = "ZooTraits",
         collapsible = FALSE,
         width = 12,
         shiny::tags$p(
-          htmltools::includeMarkdown(app_sys("app/www/md/ZooTraits.md"))
+          htmltools::includeMarkdown(app_sys("app/www/md/home.md"))
         )
       ),
       bs4Dash::box(
@@ -24,7 +24,15 @@ mod_homepage_ui <- function(id) {
         collapsible = FALSE,
         width = 12,
         shiny::htmlOutput(ns("logos_institutions"))
-      )
+      ),
+      bs4Dash::box(
+        title = "Citation",
+        collapsible = FALSE,
+        width = 12,
+        shiny::tags$p(
+          htmltools::includeMarkdown(app_sys("app/www/md/how-to-cite.md"))
+        )
+      ),
     )
   )
 }
