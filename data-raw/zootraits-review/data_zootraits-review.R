@@ -27,7 +27,7 @@ review_data <- review_data_raw |>
   dplyr::mutate(
     doi = dplyr::coalesce(new_doi, doi),
     doi = fix_doi(doi),
-    doi_html = glue::glue("<a href='{doi}' target='_blank'>{doi}</a>")
+    doi_html = create_doi_html(doi)
   ) |>
   dplyr::select(-new_doi) |>
   tidyr::pivot_longer(

@@ -16,3 +16,8 @@ fix_doi <- function(doi_url) {
     stringr::str_remove_all("\\]$") |>
     stringr::str_remove_all(" ")
 }
+
+
+create_doi_html <- function(doi_url){
+  glue::glue("<a href='{doi_url}' target='_blank'>{doi_url}</a>")
+}
