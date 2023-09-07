@@ -43,6 +43,14 @@ mod_about_ui <- function(id) {
         )
       ),
       bs4Dash::box(
+        title = "License",
+        collapsible = FALSE,
+        width = 12,
+        shiny::tags$p(
+          htmltools::includeMarkdown(app_sys("app/www/md/license.md"))
+        )
+      ),
+      bs4Dash::box(
         title = "App",
         collapsible = TRUE,
         width = 12,

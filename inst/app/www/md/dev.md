@@ -1,7 +1,14 @@
 Developed by <a href='https://beamilz.com/about' target='_blank'>Beatriz Milz</a>.
 
-The app was developed using the <a href='https://cran.r-project.org/' target='_blank'>R programming language</a> and  <a href='https://www.rstudio.com/products/shiny/' target='_blank'>Shiny</a>.
 
+
+<details style="margin-bottom:10px;">
+<summary>
+The app was developed using the <a href='https://cran.r-project.org/' target='_blank'>R programming language</a> and  <a href='https://www.rstudio.com/products/shiny/' target='_blank'>Shiny</a>.
+</summary>
+
+
+<br>
 The R packages used in this app are:
 
 - **Web app**:
@@ -14,7 +21,9 @@ The R packages used in this app are:
   - [shinyalert](https://github.com/daattali/shinyalert)
   - [shinycssloaders](https://github.com/daattali/shinycssloaders)  
 
+
 <br>
+
   
 - **Visualizations**:
   - [echarts4r](https://echarts4r.john-coene.com/)
@@ -27,12 +36,4 @@ The R packages used in this app are:
   - [tidyverse](https://www.tidyverse.org/) 
   - [janitor](https://sfirke.github.io/janitor/)
   
-<br>
-
-- **Database**:
-  - [DBI](https://dbi.r-dbi.org/)
-  - [RPostgres](https://rpostgres.r-dbi.org/)
-  - [dbplyr](https://dbplyr.tidyverse.org/)
-
-
-
+</details>
