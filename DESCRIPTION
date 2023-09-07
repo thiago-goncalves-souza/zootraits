@@ -1,5 +1,5 @@
 Package: zootraits
-Title: What the Package Does (One Line, Title Case)
+Title: Shiny App To Explore Animal Traits
 Version: 0.0.0.9000
 Authors@R: 
     person("Beatriz", "Milz", , "milz.bea@gmail.com", role = c("aut", "cre"),
