@@ -418,8 +418,8 @@ mod_review_add_paper_server <- function(id) {
         longitude = input$longitude,
         trait_type = input$trait_type,
         intraspecific_data = input$intraspecific_data,
-        trait_dimension = list(input$trait_dimension),
-        trait_details = list(input$trait_details),
+        trait_dimension = paste0(input$trait_dimension, collapse = "; "),
+        trait_details = paste0(input$trait_details, collapse = "; "),
         trait_details_other = input$trait_details_other
       )
     })
@@ -508,11 +508,25 @@ mod_review_add_paper_server <- function(id) {
       if (input_validator$is_valid()) {
         # 5. If all inputs are valid, proceed
 
+        # generating an id to be used in the code column
+        sys_time <- Sys.time()
+        date_time_text <- stringr::str_extract_all(sys_time, pattern = "(\\d)+") |>
+          unlist() |>
+          paste0(collapse = "")
+
+        code <- paste0("c_", date_time_text, collapse = "")
+
         paper_to_add <- paper_responses() |>
-          dplyr::mutate(date_time = Sys.time(), contributor_email = input$your_email)
+          dplyr::mutate(date_time = sys_time,
+                        contributor_email = input$your_email) |>
+          dplyr::mutate(verified = FALSE,
+                        code = code,
+                        .before = tidyselect::everything())
 
         contributor_to_add <- contributor_responses() |>
-          dplyr::mutate(date_time = Sys.time())
+          dplyr::mutate(date_time = sys_time) |>
+          dplyr::mutate(code = code,
+                        .before = tidyselect::everything())
 
         googlesheets4::sheet_append(
           ss = "1nStfAOwUvUuVC4Xo3ArI8i1Be9TxGNdmntfn87OGSy4",
