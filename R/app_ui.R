@@ -29,7 +29,7 @@ app_ui <- function(request) {
             icon = icon("home")
           ),
           bs4Dash::bs4SidebarMenuItem(
-            text = "Review Dataset",
+            text = "ExploreTrait",
             icon = icon("table"),
             startExpanded = TRUE,
             bs4Dash::bs4SidebarMenuSubItem(
@@ -46,27 +46,16 @@ app_ui <- function(request) {
               text = "Metadata",
               tabName = "review_metadata",
               icon = icon("file-lines")
-            ),
-            bs4Dash::bs4SidebarMenuSubItem(
-              text = "Contribute to the Review",
+            )),
+            bs4Dash::bs4SidebarMenuItem(
+              text = "FeedTrait",
               tabName = "review_add_paper",
               icon = icon("folder-plus")
-            )
-          ),
-          bs4Dash::bs4SidebarMenuItem(
-            text = "Open Traits Network",
-            icon = icon("table"),
-            startExpanded = TRUE,
-            bs4Dash::bs4SidebarMenuSubItem(
-              text = "About",
-              tabName = "otn_about",
-              icon = icon("table")
             ),
-            bs4Dash::bs4SidebarMenuSubItem(
-              text = "Data Exploration",
-              tabName = "otn_explore",
-              icon = icon("magnifying-glass")
-            )
+          bs4Dash::bs4SidebarMenuItem(
+            text = "GetTrait",
+            icon = icon("table"),
+            tabName = "otn_explore"
           ),
           bs4Dash::bs4SidebarMenuItem(
             text = "About",
@@ -74,7 +63,7 @@ app_ui <- function(request) {
             icon = icon("book-open")
           )
         )
-      ),
+    ),
 
       # ----
       body = bs4Dash::dashboardBody(
@@ -105,10 +94,6 @@ app_ui <- function(request) {
             mod_otn_explore_ui("otn_explore_1")
           ),
           bs4Dash::bs4TabItem(
-            tabName = "otn_about",
-            mod_otn_about_ui("otn_about_1")
-          ),
-          bs4Dash::bs4TabItem(
             tabName = "about",
             mod_about_ui("about_1")
           )
@@ -118,10 +103,10 @@ app_ui <- function(request) {
       # ----
       footer = bs4Dash::dashboardFooter(
         right = shiny::HTML(
-          "<a href='https://onlinelibrary.wiley.com/doi/full/10.1002/ece3.10016' target='_blank'>Review Article</a>"
+          '<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" style="max-width: 20%;" /></a>.'
         ),
         left = shiny::HTML(
-          "<a href='https://seas.umich.edu/globalchangebiology' target='_blank'><img src='www/logos/global-change-biology-logo.png' style='max-width: 20%;'></a>"
+          "<a href='https://seas.umich.edu/globalchangebiology' target='_blank'><img src='www/logos/global-change-biology-logo.png' style='max-width: 30%;'></a>"
         )
       )
     )

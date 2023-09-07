@@ -12,7 +12,7 @@ mod_about_ui <- function(id) {
   tagList(
     fluidRow(
       bs4Dash::box(
-        title = "Authors of the Review Dataset",
+        title = "Authors of the Zootraits",
         collapsible = TRUE,
         width = 12,
         shiny::HTML("<b>Corresponding author</b>: <a href='mailto:tgoncalv@umich.edu'>Thiago Gonçalves-Souza</a>"),
@@ -23,7 +23,7 @@ mod_about_ui <- function(id) {
         reactable::reactableOutput(ns("authors_table"))
       ),
       bs4Dash::box(
-        title = "Contributors to the Review Dataset",
+        title = "Contributors of FeedTrait",
         collapsible = TRUE,
         width = 12,
         reactable::reactableOutput(ns("contributors_table"))

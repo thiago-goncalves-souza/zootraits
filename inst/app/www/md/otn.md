@@ -1,5 +1,9 @@
-The dataset available in this section is from the **<a href='https://opentraits.org/' target="_blank">Open Traits Network (OTN)</a>**. Below is a brief description of the OTN and its goals, from their website:
+The dataset available in this section is from the **<a href='https://opentraits.org/' target="_blank">Open Traits Network (OTN)</a>**. 
 
+<details style="margin-bottom:10px;">
+<summary>
+Click here to read a brief description of the OTN and its goals, from their website.
+</summary>
 
 The **<a href='https://opentraits.org/' target="_blank">Open Traits Network (OTN)</a>** is a global, decentralised <a href='https://opentraits.org/members' target="_blank">community of researchers</a> and institutions who welcomes anyone working towards standardising and integrating trait data across all organisms. We are guided by the principles of Open Science, particularly Open Methods, Open Source and Open Data. We believe that five key principles built upon Open Science ideals could be transformative for trait science:
 
@@ -28,3 +32,6 @@ The OTN seeks to undertake five key activities as a starting point for the synth
 - Facilitating consistent approaches to measuring traits within major groups
 
 Please visit our <a href='https://opentraits.org/members' target="_blank">members pages</a> to see a list of our current members. This page also has instructions on how you can join the Open Traits Network and offer your expertise and knowledge in the pursuit of a harmonised and curated trait dataset across all organisms.
+
+
+</details>

@@ -13,6 +13,5 @@ app_server <- function(input, output, session) {
   mod_homepage_server("homepage_1")
   mod_review_metadata_server("review_metadata_1")
   mod_otn_explore_server("otn_explore_1", otn_selected)
-  mod_otn_about_server("otn_about_1")
   mod_review_add_paper_server("review_add_paper_1")
 }

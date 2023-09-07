@@ -11,6 +11,14 @@ mod_review_data_exploration_ui <- function(id) {
   ns <- NS(id)
 
   tagList(
+    bs4Dash::box(
+      title = "ExploreTrait - Data exploration",
+      collapsible = FALSE,
+      width = 12,
+      "In this page, you can explore distribution and abundance/coverage of
+      trait data information from almost ~1,700 manuscripts to investigate trends
+      and gaps in traits used on several animal taxonomic groups (reviewed in Gonçalves-Souza et al. 2023). "
+    ),
     mod_review_filter_ui(ns("review_filter_1")),
     fluidRow(
       bs4Dash::box(

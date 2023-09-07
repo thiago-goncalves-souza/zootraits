@@ -52,7 +52,7 @@ mod_review_add_paper_ui <- function(id) {
   ns <- NS(id)
   tagList(
     bs4Dash::box(
-      title = "Contribute to the Review",
+      title = "FeedTrait - Contribute to the Review",
       collapsible = FALSE,
       width = 12,
       shiny::tags$p(

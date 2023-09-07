@@ -13,6 +13,15 @@ mod_otn_explore_ui <- function(id) {
 
   tagList(
     bs4Dash::box(
+      title = "GetTrait",
+      collapsible = FALSE,
+      width = 12,
+      shiny::tags$p(
+        htmltools::includeMarkdown(app_sys("app/www/md/otn.md"))
+      )
+    ),
+    br(),
+    bs4Dash::box(
       title = "Filter",
       collapsible = FALSE,
       width = 12,

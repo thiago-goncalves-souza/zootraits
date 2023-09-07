@@ -11,10 +11,17 @@ mod_review_data_exploration_table_ui <- function(id) {
   ns <- NS(id)
 
   tagList(
+    bs4Dash::box(
+      title = "ExploreTrait - Dataset download",
+      collapsible = FALSE,
+      width = 12,
+      "In this page, you can download the data from almost ~1,700 manuscripts,
+      reviewed in Gonçalves-Souza et al. 2023."
+    ),
     mod_review_filter_ui(ns("review_filter_1")),
     fluidRow(
       bs4Dash::box(
-        title = "Dataset download",
+        title = "ExploreTrait - Dataset download",
         collapsible = TRUE,
         width = 12,
         mod_download_table_ui(ns("download_table_1")),
