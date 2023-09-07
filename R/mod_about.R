@@ -12,12 +12,33 @@ mod_about_ui <- function(id) {
   tagList(
     fluidRow(
       bs4Dash::box(
-        title = "Authors",
+        title = "Authors of the Review Dataset",
         collapsible = TRUE,
         width = 12,
+        shiny::HTML("<b>Corresponding author</b>: <a href='mailto:tgoncalv@umich.edu'>Thiago Gonçalves-Souza</a>"),
+        br(),
+        br(),
         leaflet::leafletOutput(ns("authors_map")),
         br(),
         reactable::reactableOutput(ns("authors_table"))
+      ),
+      bs4Dash::box(
+        title = "Contributors to the Review Dataset",
+        collapsible = TRUE,
+        width = 12,
+        reactable::reactableOutput(ns("contributors_table"))
+      ),
+      bs4Dash::box(
+        title = "Authors of the Open Traits Network",
+        collapsible = TRUE,
+        width = 12,
+        shiny::HTML("Please visit the <a href='https://opentraits.org/members' target='_blank'>Open Traits Network members pages</a> to see a list of the current members.")
+      ),
+      bs4Dash::box(
+        title = "App",
+        collapsible = TRUE,
+        width = 12,
+          htmltools::includeMarkdown(app_sys("app/www/md/dev.md"))
       )
     )
   )
@@ -41,7 +62,28 @@ mod_about_server <- function(id) {
           pagination = FALSE,
           columns = list(
             name = reactable::colDef(name = "Author", maxWidth = 250),
-            desc_group = reactable::colDef(name = "Institutions", html = TRUE)
+            desc_group = reactable::colDef(name = "Affiliation", html = TRUE)
+          )
+        )
+    })
+
+    output$contributors_table <- reactable::renderReactable({
+
+      contributors_list |>
+        dplyr::transmute(
+          name = contributor_name,
+          affiliation = contributor_affiliation,
+          contact = glue::glue(
+            "<a href='mailto:{contributor_email}'>{fontawesome::fa('envelope')}</a>
+            <a href='{contributor_orcid}' target='blank'>{fontawesome::fa('orcid')}</a>"
+          )
+        ) |>
+        reactable::reactable(
+          pagination = FALSE,
+          columns = list(
+            name = reactable::colDef(name = "Contributor name", maxWidth = 250),
+            affiliation = reactable::colDef(name = "Affiliation", html = TRUE),
+            contact = reactable::colDef(name = "Contact", html = TRUE)
           )
         )
     })

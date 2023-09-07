@@ -66,8 +66,9 @@ emails <- papers_raw |>
   dplyr::distinct(contributor_email) |>
   dplyr::pull(contributor_email)
 
-contributors <- contributors_raw |>
+contributors_list <- contributors_raw |>
   dplyr::filter(contributor_email %in% emails) |>
   dplyr::distinct(contributor_email, .keep_all = TRUE)
 
-usethis::use_data(contributors, overwrite = TRUE)
+usethis::use_data(contributors_list, overwrite = TRUE)
+
