@@ -315,9 +315,8 @@ mod_review_add_paper_ui <- function(id) {
         collapsible = FALSE,
         width = 12,
         div(
-          style = "content-align: center; display: flex;",
+          style = "display: flex; justify-content: center;",
           shiny::actionButton(
-            # TO DO: center the button
             inputId = ns("send_suggestion"),
             label = "Send suggestion",
             icon = shiny::icon("plus"),
