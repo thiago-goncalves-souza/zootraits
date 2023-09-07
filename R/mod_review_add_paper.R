@@ -139,9 +139,24 @@ mod_review_add_paper_ui <- function(id) {
         ),
         fluidRow(
           picker_input(
+            inputId = ns("taxon"),
+            label = "Taxon",
+            choices = options_input(review_data$taxon, option_none = TRUE),
+            selected = "None",
+            multiple = FALSE
+          ),
+          picker_input(
             inputId = ns("taxon_span"),
             label = "Taxon span",
             choices = options_input(review_data$taxon_span, option_none = TRUE),
+            selected = "None",
+            multiple = FALSE
+          )),
+        fluidRow(
+          picker_input(
+            inputId = ns("taxonomic_group"),
+            label = "Taxonomic group",
+            choices = options_input(review_data$taxonomic_group, option_none = TRUE),
             selected = "None",
             multiple = FALSE
           ),
@@ -149,13 +164,6 @@ mod_review_add_paper_ui <- function(id) {
             inputId = ns("taxonomic_unit"),
             label = "Taxonomic unit",
             choices = options_input(review_data$taxunit, option_none = TRUE),
-            selected = "None",
-            multiple = FALSE
-          ),
-          picker_input(
-            inputId = ns("taxonomic_group"),
-            label = "Taxonomic group",
-            choices = options_input(review_data$taxonomic_group, option_none = TRUE),
             selected = "None",
             multiple = FALSE
           )
@@ -348,6 +356,7 @@ mod_review_add_paper_server <- function(id) {
     input_validator$add_rule("study_scale", shinyvalidate::sv_required())
     input_validator$add_rule("ecosystem", shinyvalidate::sv_required())
     input_validator$add_rule("where", shinyvalidate::sv_required())
+    input_validator$add_rule("taxon", shinyvalidate::sv_required())
     input_validator$add_rule("taxon_span", shinyvalidate::sv_required())
     input_validator$add_rule("taxonomic_unit", shinyvalidate::sv_required())
     input_validator$add_rule("taxonomic_group", shinyvalidate::sv_required())
@@ -409,6 +418,7 @@ mod_review_add_paper_server <- function(id) {
         study_scale = input$study_scale,
         ecosystem = input$ecosystem,
         where = paste0(input$where, collapse = "; "),
+        taxon = input$taxon,
         taxon_span = input$taxon_span,
         taxonomic_unit = input$taxonomic_unit,
         taxonomic_group = input$taxonomic_group,
@@ -447,6 +457,7 @@ mod_review_add_paper_server <- function(id) {
             study_scale = reactable::colDef(name = "Study Scale"),
             ecosystem = reactable::colDef(name = "Ecosystem"),
             where = reactable::colDef(name = "Where"),
+            taxon = reactable::colDef(name = "Taxon"),
             taxon_span = reactable::colDef(name = "Taxon span"),
             taxonomic_unit = reactable::colDef(name = "Taxonomic unit"),
             taxonomic_group = reactable::colDef(name = "Taxonomic group")
