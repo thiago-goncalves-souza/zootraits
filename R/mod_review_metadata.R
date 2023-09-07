@@ -10,11 +10,13 @@
 mod_review_metadata_ui <- function(id) {
   ns <- NS(id)
   tagList(
-    bs4Dash::box(
-      title = "ExploreTrait - Metadata",
-      collapsible = FALSE,
-      width = 12,
-      reactable::reactableOutput(ns("table"))
+    fluidRow(
+      bs4Dash::box(
+        title = "ExploreTrait - Metadata",
+        collapsible = FALSE,
+        width = 12,
+        reactable::reactableOutput(ns("table"))
+      )
     )
   )
 }

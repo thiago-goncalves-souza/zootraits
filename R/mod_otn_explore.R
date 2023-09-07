@@ -12,61 +12,64 @@ mod_otn_explore_ui <- function(id) {
   ns <- NS(id)
 
   tagList(
-    bs4Dash::box(
-      title = "GetTrait",
-      collapsible = FALSE,
-      width = 12,
-      shiny::tags$p(
-        htmltools::includeMarkdown(app_sys("app/www/md/otn.md"))
+    fluidRow(
+      bs4Dash::box(
+        title = "GetTrait",
+        collapsible = FALSE,
+        width = 12,
+        shiny::tags$p(
+          htmltools::includeMarkdown(app_sys("app/www/md/otn.md"))
+        )
       )
     ),
-    br(),
-    bs4Dash::box(
-      title = "Filter",
-      collapsible = FALSE,
-      width = 12,
-      fluidRow(
-        picker_input(
-          inputId = ns("phylum_name"),
-          label = "Phylum",
-          choices = unique(otn_filter_cols$resolved_phylum_name),
-          selected = unique(otn_filter_cols$resolved_phylum_name),
-          multiple = TRUE, search = TRUE,
-          width = 12
+    fluidRow(
+      bs4Dash::box(
+        title = "Filter",
+        collapsible = FALSE,
+        width = 12,
+        fluidRow(
+          picker_input(
+            inputId = ns("phylum_name"),
+            label = "Phylum",
+            choices = unique(otn_filter_cols$resolved_phylum_name),
+            selected = unique(otn_filter_cols$resolved_phylum_name),
+            multiple = TRUE, search = TRUE,
+            width = 12
+          ),
         ),
-      ),
-      fluidRow(
-        picker_input(
-          inputId = ns("family_name"),
-          label = "Family",
-          choices = unique(otn_filter_cols$resolved_family_name),
-          selected = unique(otn_filter_cols$resolved_family_name),
-          multiple = TRUE, search = TRUE,
-          width = 12
+        fluidRow(
+          picker_input(
+            inputId = ns("family_name"),
+            label = "Family",
+            choices = unique(otn_filter_cols$resolved_family_name),
+            selected = unique(otn_filter_cols$resolved_family_name),
+            multiple = TRUE, search = TRUE,
+            width = 12
+          ),
         ),
-      ),
-      fluidRow(
-        shiny::actionButton(inputId = ns("search"), label = "Search")
-      )
-      # fluidRow(
-      #   picker_input(
-      #     inputId = ns("genus_name"),
-      #     label = "Genus",
-      #     choices = unique(otn_filter_cols$resolved_genus_name),
-      #     selected = unique(otn_filter_cols$resolved_genus_name),
-      #     multiple = TRUE, width = 12, search = TRUE
-      #   )
-      # ),
+        fluidRow(
+          shiny::actionButton(inputId = ns("search"), label = "Search")
+        )
+        # fluidRow(
+        #   picker_input(
+        #     inputId = ns("genus_name"),
+        #     label = "Genus",
+        #     choices = unique(otn_filter_cols$resolved_genus_name),
+        #     selected = unique(otn_filter_cols$resolved_genus_name),
+        #     multiple = TRUE, width = 12, search = TRUE
+        #   )
+        # ),
 
-      # fluidRow(
-      #   picker_input(
-      #     inputId = ns("species_name"),
-      #     label = "Species",
-      #     choices = unique(otn_filter_cols$resolved_species_name),
-      #     selected = unique(otn_filter_cols$resolved_species_name),
-      #     multiple = TRUE, width = 12, search = TRUE
-      #   )
-      #   )
+        # fluidRow(
+        #   picker_input(
+        #     inputId = ns("species_name"),
+        #     label = "Species",
+        #     choices = unique(otn_filter_cols$resolved_species_name),
+        #     selected = unique(otn_filter_cols$resolved_species_name),
+        #     multiple = TRUE, width = 12, search = TRUE
+        #   )
+        #   )
+      )
     ),
     fluidRow(
       bs4Dash::box(

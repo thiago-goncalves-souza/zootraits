@@ -12,7 +12,7 @@ mod_about_ui <- function(id) {
   tagList(
     fluidRow(
       bs4Dash::box(
-        title = "Authors of the Zootraits",
+        title = "Authors",
         collapsible = TRUE,
         width = 12,
         shiny::HTML("<b>Corresponding author</b>: <a href='mailto:tgoncalv@umich.edu'>Thiago Gonçalves-Souza</a>"),
@@ -27,12 +27,6 @@ mod_about_ui <- function(id) {
         collapsible = TRUE,
         width = 12,
         reactable::reactableOutput(ns("contributors_table"))
-      ),
-      bs4Dash::box(
-        title = "Authors of the Open Traits Network",
-        collapsible = TRUE,
-        width = 12,
-        shiny::HTML("Please visit the <a href='https://opentraits.org/members' target='_blank'>Open Traits Network members pages</a> to see a list of the current members.")
       ),
       bs4Dash::box(
         title = "Citation",

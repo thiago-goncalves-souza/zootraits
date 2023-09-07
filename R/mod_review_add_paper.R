@@ -30,300 +30,299 @@
 # $ trait_details      <chr> "Maximum length; Maximum age; Fecundity; Reproduct…
 # $ trait_dimension    <chr> "trophic", "life_history", "habitat", "undetermine…
 
-# shiny inputs
-# function 	widget
-# actionButton 	Action Button
-# checkboxGroupInput 	A group of check boxes
-# checkboxInput 	A single check box
-# dateInput 	A calendar to aid date selection
-# dateRangeInput 	A pair of calendars for selecting a date range
-# fileInput 	A file upload control wizard
-# helpText 	Help text that can be added to an input form
-# numericInput 	A field to enter numbers
-# radioButtons 	A set of radio buttons
-# selectInput 	A box with choices to select from
-# sliderInput 	A slider bar
-# submitButton 	A submit button
-# textInput 	A field to enter text
-
-
 
 mod_review_add_paper_ui <- function(id) {
   ns <- NS(id)
   tagList(
-    bs4Dash::box(
-      title = "FeedTrait - Contribute to the Review",
-      collapsible = FALSE,
-      width = 12,
-      shiny::tags$p(
-        htmltools::includeMarkdown(app_sys("app/www/md/add-paper.md"))
-      )
-    ),
-    bs4Dash::box(
-      title = "Paper metadata",
-      collapsible = FALSE,
-      width = 12,
-      fluidRow(
-        column(
-          width = 12,
-          textInput(
-            inputId = ns("paper_title"),
-            label = shiny::HTML("Title <br> <small> (e.g. 'Functional response of fish assemblage to multiple stressors in a highly regulated Mediterranean river system') </small> "),
-            value = ""
-          )
-        )
-      ),
-      fluidRow(
-        column(
-          width = 12,
-          textInput(
-            inputId = ns("paper_doi"),
-            label = shiny::HTML("DOI <br> <small> (e.g. 'https://doi.org/10.1016/j.scitotenv.2020.138989') </small> "),
-            value = "https://doi.org/"
-          )
-        )
-      ),
-      fluidRow(
-        column(
-          width = 12,
-          textInput(
-            inputId = ns("paper_url"),
-            label = shiny::HTML("Alternative URL <br> <small> (e.g. 'https://www.sciencedirect.com/science/article/abs/pii/S0048969720325067') </small> "),
-            value = ""
-          )
-        )
-      ),
-      fluidRow(
-        column(
-          width = 4,
-          textInput(
-            inputId = ns("paper_author"),
-            label = shiny::HTML("Authors <br> <small> (e.g. 'Sánchez-Pérez et al.') </small> "),
-            value = ""
-          )
-        ),
-        column(
-          width = 4,
-          textInput(
-            inputId = ns("paper_journal"),
-            label = shiny::HTML("Journal Name <br> <small> (e.g. 'Science of The Total Environment') </small> "),
-            value = ""
-          )
-        ),
-        column(
-          width = 4,
-          numericInput(
-            inputId = ns("paper_year"),
-            label = shiny::HTML("Year <br> <small> (e.g. '2020') </small> "),
-            value = 2021,
-            min = 1900,
-            max = lubridate::year(Sys.Date())
-          )
-        ),
-      )
-    ),
-    bs4Dash::box(
-      title = "Information about the study",
-      collapsible = FALSE,
-      width = 12,
-      fluidRow(
-        picker_input(
-          inputId = ns("where"),
-          label = "Where",
-          choices = options_input(review_data$where, option_none = TRUE),
-          selected = "None",
-          multiple = TRUE
-        ),
-        picker_input(
-          inputId = ns("study_scale"),
-          label = "Study Scale",
-          choices = options_input(review_data$study_scale, option_none = TRUE),
-          selected = "None",
-          multiple = FALSE
-        ),
-        picker_input(
-          inputId = ns("ecosystem"),
-          label = "Ecosystem",
-          choices = options_input(review_data$ecosystem, option_none = TRUE),
-          selected = "None",
-          multiple = FALSE
-        )
-      ),
-      fluidRow(
-        picker_input(
-          inputId = ns("taxon_span"),
-          label = "Taxon span",
-          choices = options_input(review_data$taxon_span, option_none = TRUE),
-          selected = "None",
-          multiple = FALSE
-        ),
-        picker_input(
-          inputId = ns("taxonomic_unit"),
-          label = "Taxonomic unit",
-          choices = options_input(review_data$taxunit, option_none = TRUE),
-          selected = "None",
-          multiple = FALSE
-        ),
-        picker_input(
-          inputId = ns("taxonomic_group"),
-          label = "Taxonomic group",
-          choices = options_input(review_data$taxonomic_group, option_none = TRUE),
-          selected = "None",
-          multiple = FALSE
+    fluidRow(
+      bs4Dash::box(
+        title = "FeedTrait - Contribute to the Review",
+        collapsible = FALSE,
+        width = 12,
+        shiny::tags$p(
+          htmltools::includeMarkdown(app_sys("app/www/md/add-paper.md"))
         )
       )
     ),
-    bs4Dash::box(
-      title = "Information about the study - Approximate Location",
-      collapsible = FALSE,
-      width = 12,
-      fluidRow(
-        column(
-          width = 6,
-          sliderInput(
-            inputId = ns("latitude"),
-            label = shiny::HTML("Latitude (in Decimal Degrees) <br> <small> (e.g. '-28.1') </small> "),
-            value = 0, min = -90, max = 90, step = 0.1
+    fluidRow(
+      bs4Dash::box(
+        title = "Paper metadata",
+        collapsible = FALSE,
+        width = 12,
+        fluidRow(
+          column(
+            width = 12,
+            textInput(
+              inputId = ns("paper_title"),
+              label = shiny::HTML("Title <br> <small> (e.g. 'Functional response of fish assemblage to multiple stressors in a highly regulated Mediterranean river system') </small> "),
+              value = ""
+            )
           )
         ),
-        column(
-          width = 6,
-          sliderInput(
-            inputId = ns("longitude"),
-            label = shiny::HTML("Longitude (in Decimal Degrees) <br> <small> (e.g. '-20.3') </small> "),
-            value = 0, min = -180, max = 180, step = 0.1
+        fluidRow(
+          column(
+            width = 12,
+            textInput(
+              inputId = ns("paper_doi"),
+              label = shiny::HTML("DOI <br> <small> (e.g. 'https://doi.org/10.1016/j.scitotenv.2020.138989') </small> "),
+              value = "https://doi.org/"
+            )
           )
+        ),
+        fluidRow(
+          column(
+            width = 12,
+            textInput(
+              inputId = ns("paper_url"),
+              label = shiny::HTML("Alternative URL <br> <small> (e.g. 'https://www.sciencedirect.com/science/article/abs/pii/S0048969720325067') </small> "),
+              value = ""
+            )
+          )
+        ),
+        fluidRow(
+          column(
+            width = 4,
+            textInput(
+              inputId = ns("paper_author"),
+              label = shiny::HTML("Authors <br> <small> (e.g. 'Sánchez-Pérez et al.') </small> "),
+              value = ""
+            )
+          ),
+          column(
+            width = 4,
+            textInput(
+              inputId = ns("paper_journal"),
+              label = shiny::HTML("Journal Name <br> <small> (e.g. 'Science of The Total Environment') </small> "),
+              value = ""
+            )
+          ),
+          column(
+            width = 4,
+            numericInput(
+              inputId = ns("paper_year"),
+              label = shiny::HTML("Year <br> <small> (e.g. '2020') </small> "),
+              value = 2021,
+              min = 1900,
+              max = lubridate::year(Sys.Date())
+            )
+          ),
         )
-      ),
-      fluidRow(
-        shiny::HTML("You can use &nbsp; <b><a href='https://www.latlong.net/' target='_blank'> this website </a></b> &nbsp; to convert the latitude and longitude of the study site to decimals degrees.")
-      ),
-      br(),
-      fluidRow(strong("Preview study location:")),
-      fluidRow(
-        leaflet::leafletOutput(ns("study_location")),
       )
     ),
-    bs4Dash::box(
-      title = "Information about the study - Traits",
-      collapsible = FALSE,
-      width = 12,
-      fluidRow(
-        picker_input(
-          inputId = ns("trait_type"),
-          label = "Trait type",
-          choices = options_input(review_data$trait_type, option_none = TRUE),
-          selected = "None",
-          multiple = FALSE
+    fluidRow(
+      bs4Dash::box(
+        title = "Information about the study",
+        collapsible = FALSE,
+        width = 12,
+        fluidRow(
+          picker_input(
+            inputId = ns("where"),
+            label = "Where",
+            choices = options_input(review_data$where, option_none = TRUE),
+            selected = "None",
+            multiple = TRUE
+          ),
+          picker_input(
+            inputId = ns("study_scale"),
+            label = "Study Scale",
+            choices = options_input(review_data$study_scale, option_none = TRUE),
+            selected = "None",
+            multiple = FALSE
+          ),
+          picker_input(
+            inputId = ns("ecosystem"),
+            label = "Ecosystem",
+            choices = options_input(review_data$ecosystem, option_none = TRUE),
+            selected = "None",
+            multiple = FALSE
+          )
         ),
-        picker_input(
-          inputId = ns("intraspecific_data"),
-          label = "Intraspecific data",
-          choices = options_input(review_data$intraspecific_data, option_none = TRUE),
-          selected = "None",
-          multiple = FALSE
+        fluidRow(
+          picker_input(
+            inputId = ns("taxon_span"),
+            label = "Taxon span",
+            choices = options_input(review_data$taxon_span, option_none = TRUE),
+            selected = "None",
+            multiple = FALSE
+          ),
+          picker_input(
+            inputId = ns("taxonomic_unit"),
+            label = "Taxonomic unit",
+            choices = options_input(review_data$taxunit, option_none = TRUE),
+            selected = "None",
+            multiple = FALSE
+          ),
+          picker_input(
+            inputId = ns("taxonomic_group"),
+            label = "Taxonomic group",
+            choices = options_input(review_data$taxonomic_group, option_none = TRUE),
+            selected = "None",
+            multiple = FALSE
+          )
+        )
+      )
+    ),
+    fluidRow(
+      bs4Dash::box(
+        title = "Information about the study - Approximate Location",
+        collapsible = FALSE,
+        width = 12,
+        fluidRow(
+          column(
+            width = 6,
+            sliderInput(
+              inputId = ns("latitude"),
+              label = shiny::HTML("Latitude (in Decimal Degrees) <br> <small> (e.g. '-28.1') </small> "),
+              value = 0, min = -90, max = 90, step = 0.1
+            )
+          ),
+          column(
+            width = 6,
+            sliderInput(
+              inputId = ns("longitude"),
+              label = shiny::HTML("Longitude (in Decimal Degrees) <br> <small> (e.g. '-20.3') </small> "),
+              value = 0, min = -180, max = 180, step = 0.1
+            )
+          )
         ),
-        picker_input(
-          inputId = ns("trait_dimension"),
-          label = "Trait dimension",
-          choices = options_input(review_data$trait_dimension, option_none = TRUE),
-          selected = "None",
-          multiple = TRUE
+        fluidRow(
+          shiny::HTML("You can use &nbsp; <b><a href='https://www.latlong.net/' target='_blank'> this website </a></b> &nbsp; to convert the latitude and longitude of the study site to decimals degrees.")
+        ),
+        br(),
+        fluidRow(strong("Preview study location:")),
+        fluidRow(
+          leaflet::leafletOutput(ns("study_location")),
         )
-      ),
-      fluidRow(
-        picker_input(
-          inputId = ns("trait_details"),
-          label = "Trait details",
-          choices = options_input(trait_information$trait_details, option_none = TRUE),
-          selected = "None",
-          multiple = TRUE, search = TRUE,
-          width = 12
+      )
+    ),
+    fluidRow(
+      bs4Dash::box(
+        title = "Information about the study - Traits",
+        collapsible = FALSE,
+        width = 12,
+        fluidRow(
+          picker_input(
+            inputId = ns("trait_type"),
+            label = "Trait type",
+            choices = options_input(review_data$trait_type, option_none = TRUE),
+            selected = "None",
+            multiple = FALSE
+          ),
+          picker_input(
+            inputId = ns("intraspecific_data"),
+            label = "Intraspecific data",
+            choices = options_input(review_data$intraspecific_data, option_none = TRUE),
+            selected = "None",
+            multiple = FALSE
+          ),
+          picker_input(
+            inputId = ns("trait_dimension"),
+            label = "Trait dimension",
+            choices = options_input(review_data$trait_dimension, option_none = TRUE),
+            selected = "None",
+            multiple = TRUE
+          )
+        ),
+        fluidRow(
+          picker_input(
+            inputId = ns("trait_details"),
+            label = "Trait details",
+            choices = options_input(trait_information$trait_details, option_none = TRUE),
+            selected = "None",
+            multiple = TRUE, search = TRUE,
+            width = 12
+          )
+        ),
+        fluidRow(
+          column(
+            width = 12,
+            textInput(
+              inputId = ns("trait_details_other"),
+              label = shiny::HTML("Other trait details <br> <small> If there is any other trait not listed in the filter above, write it here: </small> "),
+              value = "",
+              width = "100%"
+            )
+          )
         )
-      ),
-      fluidRow(
-        column(
-          width = 12,
+      )
+    ),
+    fluidRow(
+      bs4Dash::box(
+        title = "Information about you (contributer)",
+        collapsible = FALSE,
+        width = 12,
+        fluidRow(
           textInput(
-            inputId = ns("trait_details_other"),
-            label = shiny::HTML("Other trait details <br> <small> If there is any other trait not listed in the filter above, write it here: </small> "),
+            inputId = ns("your_name"),
+            label = "Your name",
             value = "",
+            width = "100%"
+          )
+        ),
+        fluidRow(
+          textInput(
+            inputId = ns("your_email"),
+            label = "Your email",
+            value = "",
+            width = "100%"
+          )
+        ),
+        fluidRow(
+          textInput(
+            inputId = ns("your_affiliation"),
+            label = "Your affiliation",
+            value = "",
+            width = "100%"
+          )
+        ),
+        fluidRow(
+          textInput(
+            inputId = ns("your_orcid"),
+            label = "Your ORCID ID",
+            value = "https://orcid.org/0000-0000-0000-0000",
             width = "100%"
           )
         )
       )
     ),
-    bs4Dash::box(
-      title = "Information about you (contributer)",
-      collapsible = FALSE,
-      width = 12,
-      fluidRow(
-        textInput(
-          inputId = ns("your_name"),
-          label = "Your name",
-          value = "",
-          width = "100%"
-        )
-      ),
-      fluidRow(
-        textInput(
-          inputId = ns("your_email"),
-          label = "Your email",
-          value = "",
-          width = "100%"
-        )
-      ),
-      fluidRow(
-        textInput(
-          inputId = ns("your_affiliation"),
-          label = "Your affiliation",
-          value = "",
-          width = "100%"
-        )
-      ),
-      fluidRow(
-        textInput(
-          inputId = ns("your_orcid"),
-          label = "Your ORCID ID",
-          value = "https://orcid.org/0000-0000-0000-0000",
-          width = "100%"
+    fluidRow(
+      bs4Dash::box(
+        title = "Review your suggestion",
+        collapsible = FALSE,
+        width = 12,
+        br(),
+        shiny::h5("Paper metadata"),
+        reactable::reactableOutput(outputId = ns("paper_metadata_table_responses")),
+        br(), br(),
+        shiny::h5("Information about the study"),
+        reactable::reactableOutput(outputId = ns("paper_study_table_responses")),
+        br(), br(),
+        shiny::h5("Information about the study - Location"),
+        reactable::reactableOutput(ns("paper_study_location_responses")),
+        br(), br(),
+        shiny::h5("Information about the study - Traits"),
+        reactable::reactableOutput(ns("paper_study_traits_responses")),
+        br(), br(),
+        shiny::h5("Information about you (contributer)"),
+        reactable::reactableOutput(
+          outputId = ns("contributor_table_responses")
         )
       )
     ),
-    bs4Dash::box(
-      title = "Review your suggestion",
-      collapsible = FALSE,
-      width = 12,
-      br(),
-      shiny::h5("Paper metadata"),
-      reactable::reactableOutput(outputId = ns("paper_metadata_table_responses")),
-      br(), br(),
-      shiny::h5("Information about the study"),
-      reactable::reactableOutput(outputId = ns("paper_study_table_responses")),
-      br(), br(),
-      shiny::h5("Information about the study - Location"),
-      reactable::reactableOutput(ns("paper_study_location_responses")),
-      br(), br(),
-      shiny::h5("Information about the study - Traits"),
-      reactable::reactableOutput(ns("paper_study_traits_responses")),
-      br(), br(),
-      shiny::h5("Information about you (contributer)"),
-      reactable::reactableOutput(
-        outputId = ns("contributor_table_responses")
-      )
-    ),
-    bs4Dash::box(
-      title = "Submit your suggestion",
-      collapsible = FALSE,
-      width = 12,
-      div(
-        style = "content-align: center; display: flex;",
-        shiny::actionButton(
-          # TO DO: center the button
-          inputId = ns("send_suggestion"),
-          label = "Send suggestion",
-          icon = shiny::icon("plus"),
-          width = "20%"
+    fluidRow(
+      bs4Dash::box(
+        title = "Submit your suggestion",
+        collapsible = FALSE,
+        width = 12,
+        div(
+          style = "content-align: center; display: flex;",
+          shiny::actionButton(
+            # TO DO: center the button
+            inputId = ns("send_suggestion"),
+            label = "Send suggestion",
+            icon = shiny::icon("plus"),
+            width = "20%"
+          )
         )
       )
     )
