@@ -326,7 +326,7 @@ mod_review_add_paper_ui <- function(id) {
           style = "display: flex; justify-content: center;",
           shiny::actionButton(
             inputId = ns("send_suggestion"),
-            label = "Send suggestion",
+            label = "Submit your suggestion",
             icon = shiny::icon("plus"),
             width = "20%"
           )
