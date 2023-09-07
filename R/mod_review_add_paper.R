@@ -189,7 +189,7 @@ mod_review_add_paper_ui <- function(id) {
           shiny::HTML("You can use &nbsp; <b><a href='https://www.latlong.net/' target='_blank'> this website </a></b> &nbsp; to convert the latitude and longitude of the study site to decimals degrees.")
         ),
         br(),
-        fluidRow(strong("Preview study location:")),
+        fluidRow(strong("Click on the map to mark the study location:")),
         fluidRow(
           leaflet::leafletOutput(ns("study_location")),
         )
@@ -468,6 +468,18 @@ mod_review_add_paper_server <- function(id) {
         )
     })
 
+    observe({
+      click <- input$study_location_click
+
+      updateSliderInput(session,
+                        "longitude",
+                        value = click$lng)
+
+      updateSliderInput(session,
+                        "latitude",
+                        value = click$lat)
+
+    })
 
     lat_lon <- reactive({
       tibble::tibble(
