@@ -128,6 +128,13 @@ mod_review_add_paper_ui <- function(id) {
       width = 12,
       fluidRow(
         picker_input(
+          inputId = ns("where"),
+          label = "Where",
+          choices = options_input(review_data$where, option_none = TRUE),
+          selected = "None",
+          multiple = TRUE
+        ),
+        picker_input(
           inputId = ns("study_scale"),
           label = "Study Scale",
           choices = options_input(review_data$study_scale, option_none = TRUE),
@@ -138,13 +145,6 @@ mod_review_add_paper_ui <- function(id) {
           inputId = ns("ecosystem"),
           label = "Ecosystem",
           choices = options_input(review_data$ecosystem, option_none = TRUE),
-          selected = "None",
-          multiple = FALSE
-        ),
-        picker_input(
-          inputId = ns("where"),
-          label = "Where",
-          choices = options_input(review_data$where, option_none = TRUE),
           selected = "None",
           multiple = FALSE
         )
@@ -410,7 +410,7 @@ mod_review_add_paper_server <- function(id) {
         paper_year = input$paper_year,
         study_scale = input$study_scale,
         ecosystem = input$ecosystem,
-        where = input$where,
+        where = paste0(input$where, collapse = "; "),
         taxon_span = input$taxon_span,
         taxonomic_unit = input$taxonomic_unit,
         taxonomic_group = input$taxonomic_group,

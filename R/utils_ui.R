@@ -16,11 +16,14 @@ picker_input <- function(..., multiple = TRUE, search = FALSE, width = 4) {
 
 options_input <- function(col, option_none = FALSE) {
   options_to_add <- col |>
-    unique() |>
+    stringr::str_split(pattern = ";") |>
+    unlist() |>
+    stringr::str_trim() |>
     sort() |>
     as.character() |>
     stringr::str_to_title() |>
-    stringr::str_replace_all("_", " ")
+    stringr::str_replace_all("_", " ") |>
+    unique()
 
   if (isTRUE(option_none)) {
     options_to_add <- c("None", options_to_add)

@@ -1,4 +1,8 @@
+devtools::load_all()
+auth_google_sheets()
 url_sheet <- "https://docs.google.com/spreadsheets/d/1nStfAOwUvUuVC4Xo3ArI8i1Be9TxGNdmntfn87OGSy4/edit#gid=1464062411"
+
+
 
 # Papers ----
 papers_raw <- googlesheets4::read_sheet(url_sheet, sheet = "papers")
@@ -24,17 +28,17 @@ review_data |>
 # $ trait_details      <chr> "Maximum length; Maximum age; Fecundity; Re…
 # $ trait_dimension    <chr> "trophic", "life_history", "habitat", "unde…
 
-
-papers_raw |>
+contributed_papers <- papers_raw |>
+  dplyr::filter(verified == TRUE) |>
   dplyr::transmute(
-    code = "TO DO",
+    code,
     year = paper_year,
     reference = paste0(paper_author, "; ", paper_year, "; ", paper_journal),
     doi = fix_doi(paper_doi),
     doi_html = create_doi_html(doi),
     taxunit = taxonomic_unit,
     taxon_span,
-    taxon = '?',
+    taxon = "?",
     taxonomic_group,
     ecosystem,
     study_scale,
@@ -44,17 +48,26 @@ papers_raw |>
     trait_details,
     trait_details_other,
     trait_dimension
-  )
+  ) |>
+  dplyr::mutate(
+    trait_details_other = tidyr::replace_na(trait_details_other, ""),
+    trait_details = paste0(trait_details, trait_details_other, collapse = "; "),
+  ) |>
+  dplyr::select(-trait_details_other) |>
+
+  tidyr::separate_longer_delim(trait_dimension, "; ")
 
 
 # Contributors -----
 contributors_raw <- googlesheets4::read_sheet(url_sheet, sheet = "contributors")
 
-papers_raw |>
+emails <- papers_raw |>
   dplyr::filter(verified == TRUE) |>
-  dplyr::distinct(contributor_email)
+  dplyr::distinct(contributor_email) |>
+  dplyr::pull(contributor_email)
 
 contributors <- contributors_raw |>
+  dplyr::filter(contributor_email %in% emails) |>
   dplyr::distinct(contributor_email, .keep_all = TRUE)
 
 usethis::use_data(contributors, overwrite = TRUE)
