@@ -38,7 +38,7 @@ contributed_papers <- papers_raw |>
     doi_html = create_doi_html(doi),
     taxunit = taxonomic_unit,
     taxon_span,
-    taxon = "?",
+    taxon,
     taxonomic_group,
     ecosystem,
     study_scale,
@@ -70,3 +70,11 @@ contributors_list <- contributors_raw |>
   dplyr::distinct(contributor_email, .keep_all = TRUE)
 
 usethis::use_data(contributors_list, overwrite = TRUE)
+
+
+# Unir as tabelas
+complete_review_data <- review_data |>
+  dplyr::mutate(code = as.character(code)) |>
+  dplyr::bind_rows(contributed_papers)
+
+usethis::use_data(complete_review_data, overwrite = TRUE)

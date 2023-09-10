@@ -1,10 +1,17 @@
 devtools::load_all()
 # Read raw data --------
-review_data_raw <- readxl::read_xlsx("data-raw/zootraits-review/ZooTraits_review_data_may23.xlsx") |> janitor::clean_names()
+review_data_raw <- readxl::read_xlsx("data-raw/zootraits-review/ZooTraits_review_data_may23.xlsx") |>
+  janitor::clean_names() |>
+  dplyr::mutate(
+    code = as.character(code)
+  )
 
-taxon_names <- readxl::read_xlsx("data-raw/zootraits-review/ZooTraits_taxon_names_may23.xlsx") |> janitor::clean_names()
+taxon_names <- readxl::read_xlsx("data-raw/zootraits-review/ZooTraits_taxon_names_may23.xlsx") |>
+  janitor::clean_names()
 
-trait_information <- readxl::read_xlsx("data-raw/zootraits-review/ZooTraits_trait_information_may23.xlsx") |> janitor::clean_names()
+trait_information <- readxl::read_xlsx("data-raw/zootraits-review/ZooTraits_trait_information_may23.xlsx") |>
+  janitor::clean_names()
+
 
 correct_DOI <- readxl::read_xlsx("data-raw/zootraits-review/doi_check-july23.xlsx") |>
   janitor::clean_names() |>

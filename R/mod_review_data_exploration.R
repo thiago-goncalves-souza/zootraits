@@ -123,6 +123,9 @@ mod_review_data_exploration_server <- function(id) {
 
     output$map <- leaflet::renderLeaflet({
       review_map_data |>
+        dplyr::mutate(
+          code = as.character(code)
+        ) |>
         dplyr::left_join(review_dataset(),
           by = "code",
           relationship =

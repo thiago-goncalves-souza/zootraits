@@ -19,40 +19,40 @@ mod_review_filter_ui <- function(id) {
           picker_input(
             inputId = ns("taxonomic_group"),
             label =  "Taxonomic group",
-            choices = options_input(review_data$taxonomic_group),
-            selected =  options_input(review_data$taxonomic_group)
+            choices = options_input(complete_review_data$taxonomic_group),
+            selected =  options_input(complete_review_data$taxonomic_group)
           ),
           picker_input(
             inputId = ns("ecosystem"),
             label =  "Ecosystem",
-            choices = options_input(review_data$ecosystem),
-            selected =  options_input(review_data$ecosystem)
+            choices = options_input(complete_review_data$ecosystem),
+            selected =  options_input(complete_review_data$ecosystem)
           ),
           picker_input(
             inputId = ns("study_scale"),
             label =  "Study Scale",
-            choices = options_input(review_data$study_scale),
-            selected =  options_input(review_data$study_scale)
+            choices = options_input(complete_review_data$study_scale),
+            selected =  options_input(complete_review_data$study_scale)
           )
         ),
         fluidRow(
           picker_input(
             inputId = ns("trait_type"),
             label = "Trait type",
-            choices = options_input(review_data$trait_type),
-            selected = options_input(review_data$trait_type)
+            choices = options_input(complete_review_data$trait_type),
+            selected = options_input(complete_review_data$trait_type)
           ),
           picker_input(
             inputId = ns("trait_dimension"),
             label = "Trait dimension",
-            choices = options_input(review_data$trait_dimension),
-            selected = options_input(review_data$trait_dimension)
+            choices = options_input(complete_review_data$trait_dimension),
+            selected = options_input(complete_review_data$trait_dimension)
           ),
           picker_input(
             inputId = ns("intraspecific_data"),
             label = "Intraspecific data",
-            choices = options_input(review_data$intraspecific_data),
-            selected = options_input(review_data$intraspecific_data)
+            choices = options_input(complete_review_data$intraspecific_data),
+            selected = options_input(complete_review_data$intraspecific_data)
           )
         ),
         fluidRow(
@@ -79,7 +79,7 @@ mod_review_filter_server <- function(id) {
         req(input$trait_type)
         req(input$trait_dimension)
 
-        review_data |>
+        complete_review_data |>
           dplyr::filter(
             taxonomic_group %in% input$taxonomic_group
           ) |>

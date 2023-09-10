@@ -1,7 +1,7 @@
 devtools::load_all(".")
 
 metadata_var <- function(var) {
-  dataset <- review_data |>
+  dataset <- complete_review_data |>
     dplyr::pull({{ var }})
 
   name_var <- var
@@ -39,7 +39,7 @@ metadata_var <- function(var) {
 }
 
 
-variables <- review_data |>
+variables <- complete_review_data |>
   names()
 
 metadata_raw <- purrr::map(variables, metadata_var) |>
