@@ -47,7 +47,7 @@ prepare_wide_col <- function(col) {
 }
 
 
-create_metadata_description <- function(var, label = ""){
+create_metadata_description <- function(var, label = "") {
   description <- metadata_raw |>
     dplyr::filter(name_var == var) |>
     dplyr::pull(description) |>

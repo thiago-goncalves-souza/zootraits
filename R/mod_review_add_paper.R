@@ -151,7 +151,8 @@ mod_review_add_paper_ui <- function(id) {
             choices = options_input(complete_review_data$taxon_span, option_none = TRUE),
             selected = "None",
             multiple = FALSE
-          )),
+          )
+        ),
         fluidRow(
           picker_input(
             inputId = ns("taxonomic_group"),
@@ -216,8 +217,8 @@ mod_review_add_paper_ui <- function(id) {
             selected = "None",
             multiple = FALSE,
             width = 12
-
-          )),
+          )
+        ),
         fluidRow(
           picker_input(
             inputId = ns("intraspecific_data"),
@@ -226,7 +227,8 @@ mod_review_add_paper_ui <- function(id) {
             selected = "None",
             multiple = FALSE,
             width = 12
-          )),
+          )
+        ),
         fluidRow(
           picker_input(
             inputId = ns("trait_dimension"),
@@ -490,13 +492,14 @@ mod_review_add_paper_server <- function(id) {
       click <- input$study_location_click
 
       updateSliderInput(session,
-                        "longitude",
-                        value = click$lng)
+        "longitude",
+        value = click$lng
+      )
 
       updateSliderInput(session,
-                        "latitude",
-                        value = click$lat)
-
+        "latitude",
+        value = click$lat
+      )
     })
 
     lat_lon <- reactive({
