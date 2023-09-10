@@ -117,21 +117,21 @@ mod_review_add_paper_ui <- function(id) {
         fluidRow(
           picker_input(
             inputId = ns("where"),
-            label = "Where",
+            label = create_metadata_description("where", "Where"),
             choices = options_input(review_data$where, option_none = TRUE),
             selected = "None",
             multiple = TRUE
           ),
           picker_input(
             inputId = ns("study_scale"),
-            label = "Study Scale",
+            label = create_metadata_description("study_scale", "Study Scale"),
             choices = options_input(review_data$study_scale, option_none = TRUE),
             selected = "None",
             multiple = FALSE
           ),
           picker_input(
             inputId = ns("ecosystem"),
-            label = "Ecosystem",
+            label = create_metadata_description("ecosystem", "Ecosystem"),
             choices = options_input(review_data$ecosystem, option_none = TRUE),
             selected = "None",
             multiple = FALSE
@@ -140,14 +140,14 @@ mod_review_add_paper_ui <- function(id) {
         fluidRow(
           picker_input(
             inputId = ns("taxon"),
-            label = "Taxon",
+            label = create_metadata_description("taxon", "Taxon"),
             choices = options_input(review_data$taxon, option_none = TRUE),
             selected = "None",
             multiple = FALSE
           ),
           picker_input(
             inputId = ns("taxon_span"),
-            label = "Taxon span",
+            label = create_metadata_description("taxon_span", "Taxon span"),
             choices = options_input(review_data$taxon_span, option_none = TRUE),
             selected = "None",
             multiple = FALSE
@@ -155,14 +155,14 @@ mod_review_add_paper_ui <- function(id) {
         fluidRow(
           picker_input(
             inputId = ns("taxonomic_group"),
-            label = "Taxonomic group",
+            label = create_metadata_description("taxonomic_group", "Taxonomic group"),
             choices = options_input(review_data$taxonomic_group, option_none = TRUE),
             selected = "None",
             multiple = FALSE
           ),
           picker_input(
             inputId = ns("taxonomic_unit"),
-            label = "Taxonomic unit",
+            label = create_metadata_description("taxunit", "Taxonomic unit"),
             choices = options_input(review_data$taxunit, option_none = TRUE),
             selected = "None",
             multiple = FALSE
@@ -211,33 +211,40 @@ mod_review_add_paper_ui <- function(id) {
         fluidRow(
           picker_input(
             inputId = ns("trait_type"),
-            label = "Trait type",
+            label = create_metadata_description("trait_type", "Trait type"),
             choices = options_input(review_data$trait_type, option_none = TRUE),
             selected = "None",
-            multiple = FALSE
-          ),
+            multiple = FALSE,
+            width = 12
+
+          )),
+        fluidRow(
           picker_input(
             inputId = ns("intraspecific_data"),
-            label = "Intraspecific data",
+            label = create_metadata_description("intraspecific_data", "Intraspecific data"),
             choices = options_input(review_data$intraspecific_data, option_none = TRUE),
             selected = "None",
-            multiple = FALSE
-          ),
+            multiple = FALSE,
+            width = 12
+          )),
+        fluidRow(
           picker_input(
             inputId = ns("trait_dimension"),
-            label = "Trait dimension",
+            label = create_metadata_description("trait_dimension", "Trait dimension"),
             choices = options_input(review_data$trait_dimension, option_none = TRUE),
             selected = "None",
-            multiple = TRUE
+            multiple = TRUE,
+            width = 12
           )
         ),
         fluidRow(
           picker_input(
             inputId = ns("trait_details"),
-            label = "Trait details",
+            label = create_metadata_description("trait_details", "Trait details"),
             choices = options_input(trait_information$trait_details, option_none = TRUE),
             selected = "None",
-            multiple = TRUE, search = TRUE,
+            multiple = TRUE,
+            search = TRUE,
             width = 12
           )
         ),

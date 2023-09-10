@@ -45,3 +45,17 @@ prepare_wide_col <- function(col) {
     stringr::str_to_sentence() |>
     knitr::combine_words()
 }
+
+
+create_metadata_description <- function(var, label = ""){
+  description <- metadata_raw |>
+    dplyr::filter(name_var == var) |>
+    dplyr::pull(description) |>
+    purrr::pluck(1)
+
+  shiny::HTML(
+    glue::glue(
+      "{label} <br> <small>{description}</small>"
+    )
+  )
+}
