@@ -1,3 +1,4 @@
 auth_google_sheets <- function() {
-  googlesheets4::gs4_auth(path = "inst/token.json")
+  token <- Sys.getenv("TOKEN_GOOGLESHEETS_ZOOTRAITS")
+  googlesheets4::gs4_auth(path = token)
 }
