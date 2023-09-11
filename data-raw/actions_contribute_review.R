@@ -19,8 +19,6 @@ contributed_papers <- papers_raw |>
     doi = fix_doi(paper_doi),
     doi_html = create_doi_html(doi),
     taxonomic_unit,
-    taxon_span,
-    taxon,
     taxonomic_group,
     ecosystem,
     study_scale,

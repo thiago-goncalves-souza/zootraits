@@ -55,7 +55,6 @@ metadata_raw <- purrr::map(variables, metadata_var) |>
     "taxonomic_unit" ~ "Taxonomic unit of trait identification, i.e.,
     the trait information was attributed to species, genus or family level,
     or you set trait information using multiple levels).",
-    "taxon_span" ~ "More inclusive taxonomic unit used (genus, family, order...)",
     "taxonomic_group" ~ "More inclusive taxonomic group used
     (Arachnida, Araneae, Mammalia, etc...), you can refer to <a href='https://doi.org/10.1371/journal.pone.0119248' target='_blank'>Ruggiero et al.
     (2015)</a>.",
