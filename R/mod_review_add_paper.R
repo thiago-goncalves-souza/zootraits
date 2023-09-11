@@ -46,6 +46,30 @@ mod_review_add_paper_ui <- function(id) {
     ),
     fluidRow(
       bs4Dash::box(
+        title = "Contribute by submitting a file",
+        collapsible = TRUE,
+        collapsed = FALSE,
+        width = 12,
+        status = "primary",
+        solidHeader = TRUE,
+        "..."
+        # Download a template
+        # upload a file
+        # show some validations?
+        # send button
+      )
+    ),
+    fluidRow(
+      bs4Dash::bs4Card(
+        title = "Contribute by filling out the form",
+        width = 12,
+        collapsible = TRUE,
+        collapsed = FALSE,
+        status = "primary",
+        solidHeader = TRUE,
+
+    fluidRow(
+      bs4Dash::box(
         title = "Paper metadata",
         collapsible = FALSE,
         width = 12,
@@ -340,6 +364,8 @@ mod_review_add_paper_ui <- function(id) {
             width = "20%"
           )
         )
+      )
+    )
       )
     )
   )
