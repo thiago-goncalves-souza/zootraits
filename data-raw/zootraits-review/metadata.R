@@ -47,18 +47,33 @@ metadata_raw <- purrr::map(variables, metadata_var) |>
   dplyr::filter(name_var != "doi_html") |>
   dplyr::mutate(description = dplyr::case_match(
     name_var,
-    "code" ~ "Code attributed after downloading from Scopus or WOS",
+    "code" ~ "ID Code",
     "reference" ~ "Author, year and journal",
     "year" ~ "Year of publication",
     "doi" ~ "Paper's DOI",
     # ----
-    "taxunit" ~ "Taxonomic unit used",
+    "taxunit" ~ "Taxonomic unit of trait identification, i.e.,
+    the trait information was attributed to species, genus or family level,
+    or you set trait information using multiple levels).",
     "taxon_span" ~ "More inclusive taxonomic unit used (genus, family, order...)",
-    "taxon" ~ "More inclusive taxonomic group used (Arachnida, Araneae, Mammalia, etc...)",
-    "taxonomic_group" ~ "Taxonomic group used",
+    "taxonomic_group" ~ "More inclusive taxonomic group used
+    (Arachnida, Araneae, Mammalia, etc...), you can refer to <a href='https://doi.org/10.1371/journal.pone.0119248' target='_blank'>Ruggiero et al.
+    (2015)</a>.",
     "where" ~ "In which country/ocean/continent the study was conducted",
     "ecosystem" ~ "In which ecosystem the study was conducted",
-    "trait_type" ~ "Trait type use",
+    "trait_type" ~ "Trait type used: <br>
+
+- <b>Effect trait</b>: traits that cause variation in different aspects of
+ecosystem functioning <br>
+
+- <b>Response trait</b>: traits that respond to environmental changes <br>
+
+- <b>Response and effect trait</b>: traits that respond to environmental
+changes and also impact ecosystem funtioning <br>
+
+- <b>Undefinied</b>: generic description of species traits with no assumption
+that this is important in terms of response to or impacts on ecosystems <br>
+",
     "intraspecific_data" ~ "Intrapecific variability was included?",
     "study_scale" ~ "Spatial scale of the study: <br>
  - <b>Local</b> - few meters to few kilometers (same site, e.g., city, national park, etc) <br>
