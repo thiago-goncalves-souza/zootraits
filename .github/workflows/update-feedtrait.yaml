@@ -23,11 +23,8 @@ jobs:
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
           cache-version: 2
-          packages: |
+          extra-packages: |
             any::devtools
-            any::dplyr
-            any::googlesheets4
-            any::tidyr
             any::usethis
 
       - name: Execute Script
