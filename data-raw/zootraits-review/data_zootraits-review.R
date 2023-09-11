@@ -16,7 +16,10 @@ trait_information <- readxl::read_xlsx("data-raw/zootraits-review/ZooTraits_trai
 correct_DOI <- readxl::read_xlsx("data-raw/zootraits-review/doi_check-july23.xlsx") |>
   janitor::clean_names() |>
   dplyr::select(code, new_doi) |>
-  dplyr::mutate(new_doi = dplyr::na_if(new_doi, "no doi"))
+  dplyr::mutate(new_doi = dplyr::na_if(new_doi, "no doi")) |>
+  dplyr::mutate(
+    code = as.character(code)
+  )
 
 # Number of distinct papers reviewed!
 
@@ -30,6 +33,7 @@ review_data_raw |>
 review_data <- review_data_raw |>
   dplyr::select(-tidyselect::any_of(c("conclusion_ok", "conclusion_wrong"))) |>
   dplyr::rename("undetermined_morphological_traits" = "body_size_undetermined") |>
+  dplyr::rename(taxonomic_unit = taxunit) |>
   dplyr::left_join(correct_DOI, by = dplyr::join_by(code)) |>
   dplyr::mutate(
     doi = dplyr::coalesce(new_doi, doi),

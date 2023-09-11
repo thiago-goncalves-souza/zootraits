@@ -52,7 +52,7 @@ metadata_raw <- purrr::map(variables, metadata_var) |>
     "year" ~ "Year of publication",
     "doi" ~ "Paper's DOI",
     # ----
-    "taxunit" ~ "Taxonomic unit of trait identification, i.e.,
+    "taxonomic_unit" ~ "Taxonomic unit of trait identification, i.e.,
     the trait information was attributed to species, genus or family level,
     or you set trait information using multiple levels).",
     "taxon_span" ~ "More inclusive taxonomic unit used (genus, family, order...)",
