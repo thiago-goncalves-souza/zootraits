@@ -29,6 +29,7 @@ mod_review_metadata_server <- function(id) {
     ns <- session$ns
     output$table <- reactable::renderReactable({
       metadata_raw |>
+        dplyr::filter(name_var != "code") |>
         reactable::reactable(
           pagination = FALSE,
           searchable = TRUE,
