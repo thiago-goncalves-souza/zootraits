@@ -23,21 +23,7 @@ mod_review_add_paper_ui <- function(id) {
         )
       )
     ),
-    fluidRow(
-      bs4Dash::box(
-        title = "Contribute by submitting a file",
-        collapsible = TRUE,
-        collapsed = FALSE,
-        width = 12,
-        status = "primary",
-        solidHeader = TRUE,
-        "TO DO"
-        # Download a template
-        # upload a file
-        # show some validations?
-        # send button
-      )
-    ),
+    mod_feedtrait_add_with_file_ui("feedtrait_add_with_file_1"),
     fluidRow(
       bs4Dash::bs4Card(
         title = "Contribute by filling out the form",
@@ -353,6 +339,7 @@ mod_review_add_paper_server <- function(id) {
   moduleServer(id, function(input, output, session) {
     ns <- session$ns
 
+    mod_feedtrait_add_with_file_server("feedtrait_add_with_file_1")
 
     # Create an InputValidator object
     input_validator <- shinyvalidate::InputValidator$new()
