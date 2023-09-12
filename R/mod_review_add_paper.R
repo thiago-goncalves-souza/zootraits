@@ -353,6 +353,7 @@ mod_review_add_paper_server <- function(id) {
   moduleServer(id, function(input, output, session) {
     ns <- session$ns
 
+
     # Create an InputValidator object
     input_validator <- shinyvalidate::InputValidator$new()
 
@@ -416,6 +417,11 @@ mod_review_add_paper_server <- function(id) {
     })
 
     paper_responses <- reactive({
+
+      input_where <- discard_none(input$where)
+      input_trait_dimension <- discard_none(input$trait_dimension)
+      input_trait_details <- discard_none(input$trait_details)
+
       tibble::tibble(
         paper_title = input$paper_title,
         paper_doi = input$paper_doi,
@@ -425,15 +431,15 @@ mod_review_add_paper_server <- function(id) {
         paper_year = input$paper_year,
         study_scale = input$study_scale,
         ecosystem = input$ecosystem,
-        where = paste0(input$where, collapse = "; "),
+        where = input_where,
         taxonomic_unit = input$taxonomic_unit,
         taxonomic_group = input$taxonomic_group,
         latitude = input$latitude,
         longitude = input$longitude,
         trait_type = input$trait_type,
         intraspecific_data = input$intraspecific_data,
-        trait_dimension = paste0(input$trait_dimension, collapse = "; "),
-        trait_details = paste0(input$trait_details, collapse = "; "),
+        trait_dimension = input_trait_dimension,
+        trait_details = input_trait_details,
         trait_details_other = input$trait_details_other
       )
     })

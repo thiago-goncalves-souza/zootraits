@@ -65,3 +65,13 @@ create_metadata_description <- function(var, label = "") {
     )
   )
 }
+
+discard_none <- function(input_var) {
+  if (paste0(input_var, collapse = "; ") != "None") {
+    input_var |>
+      purrr::discard(~ .x == "None") |>
+      paste0(collapse = "; ")
+  } else {
+    input_var
+  }
+}
