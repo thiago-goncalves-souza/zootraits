@@ -81,7 +81,10 @@ review_data <- review_data_raw |>
   dplyr::relocate(ecosystem, study_scale, .before = where) |>
   dplyr::relocate(doi_html, .after = doi) |>
   dplyr::relocate(year, .after = code) |>
-  dplyr::select(-tidyselect::any_of(c("higher_taxon_lev2", "taxon", "taxon_span")))
+  dplyr::select(-tidyselect::any_of(c("higher_taxon_lev2", "taxon", "taxon_span"))) |>
+  dplyr::mutate(trait_type = dplyr::if_else(
+    trait_type == "both" |  trait_type == "both", "response and effect", trait_type
+  ))
 
 # Use data --------
 usethis::use_data(review_data, overwrite = TRUE)

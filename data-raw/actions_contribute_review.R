@@ -34,7 +34,10 @@ contributed_papers <- papers_raw |>
     trait_details = paste0(trait_details, trait_details_other, collapse = "; "),
   ) |>
   dplyr::select(-trait_details_other) |>
-  tidyr::separate_longer_delim(trait_dimension, "; ")
+  tidyr::separate_longer_delim(trait_dimension, "; ") |>
+  dplyr::mutate(trait_type = dplyr::if_else(
+    trait_type == "both" |  trait_type == "both", "response and effect", trait_type
+  ))
 
 
 # Contributors -----
