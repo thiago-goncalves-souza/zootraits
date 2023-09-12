@@ -59,7 +59,7 @@ metadata_raw <- purrr::map(variables, metadata_var) |>
     (Arachnida, Araneae, Mammalia, etc...), you can refer to <a href='https://doi.org/10.1371/journal.pone.0119248' target='_blank'>Ruggiero et al.
     (2015)</a>.",
     "where" ~ "In which country/ocean/continent the study was conducted",
-    "ecosystem" ~ "In which ecosystem the study was conducted",
+    "ecosystem" ~ "What is the predominant ecosystem in which the study was conducted",
     "trait_type" ~ "Trait type used: <br>
 
 - <b>Effect trait</b>: traits that cause variation in different aspects of

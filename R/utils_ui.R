@@ -14,7 +14,7 @@ picker_input <- function(..., multiple = TRUE, search = FALSE, width = 4) {
 }
 
 
-options_input <- function(col, option_none = FALSE) {
+options_input <- function(col, option_none = FALSE, option_other = FALSE) {
   options_to_add <- col |>
     stringr::str_split(pattern = ";") |>
     unlist() |>
@@ -26,7 +26,13 @@ options_input <- function(col, option_none = FALSE) {
     unique()
 
   if (isTRUE(option_none)) {
-    options_to_add <- c("None", options_to_add)
+    options_to_add <- c("None", options_to_add) |>
+      unique()
+  }
+
+  if (isTRUE(option_other)) {
+    options_to_add <- c(options_to_add, "Other") |>
+      unique()
   }
 
   options_to_add

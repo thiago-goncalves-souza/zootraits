@@ -135,7 +135,9 @@ mod_review_add_paper_ui <- function(id) {
           picker_input(
             inputId = ns("ecosystem"),
             label = create_metadata_description("ecosystem", "Ecosystem"),
-            choices = options_input(complete_review_data$ecosystem, option_none = TRUE),
+            choices = options_input(complete_review_data$ecosystem,
+                                    option_none = TRUE,
+                                    option_other = TRUE),
             selected = "None",
             multiple = FALSE
           )
