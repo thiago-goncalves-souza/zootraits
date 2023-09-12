@@ -123,15 +123,19 @@ mod_review_add_paper_ui <- function(id) {
             label = create_metadata_description("where", "Where"),
             choices = options_input(complete_review_data$where, option_none = TRUE),
             selected = "None",
-            multiple = TRUE
-          ),
+            multiple = TRUE,
+            width = 12
+          )),
+        fluidRow(
           picker_input(
             inputId = ns("study_scale"),
             label = create_metadata_description("study_scale", "Study Scale"),
             choices = options_input(complete_review_data$study_scale, option_none = TRUE),
             selected = "None",
-            multiple = FALSE
-          ),
+            multiple = FALSE,
+            width = 12
+          )),
+        fluidRow(
           picker_input(
             inputId = ns("ecosystem"),
             label = create_metadata_description("ecosystem", "Ecosystem"),
@@ -139,7 +143,8 @@ mod_review_add_paper_ui <- function(id) {
                                     option_none = TRUE,
                                     option_other = TRUE),
             selected = "None",
-            multiple = FALSE
+            multiple = FALSE,
+            width = 12
           )
         ),
         fluidRow(
@@ -148,14 +153,17 @@ mod_review_add_paper_ui <- function(id) {
             label = create_metadata_description("taxonomic_group", "Taxonomic group"),
             choices = options_input(complete_review_data$taxonomic_group, option_none = TRUE),
             selected = "None",
-            multiple = FALSE
-          ),
+            multiple = FALSE,
+            width = 12
+          )),
+        fluidRow(
           picker_input(
             inputId = ns("taxonomic_unit"),
             label = create_metadata_description("taxonomic_unit", "Taxonomic unit"),
             choices = options_input(complete_review_data$taxonomic_unit, option_none = TRUE),
             selected = "None",
-            multiple = FALSE
+            multiple = FALSE,
+            width = 12
           )
         )
       )
@@ -244,7 +252,9 @@ mod_review_add_paper_ui <- function(id) {
             width = 12,
             textInput(
               inputId = ns("trait_details_other"),
-              label = shiny::HTML("Other trait details <br> <small> If there is any other trait not listed in the filter above, write it here: </small> "),
+              label = shiny::HTML("Other trait details <br> <small>
+                                  If there is any other trait not listed in the filter above, write it here, separating by <b>;</b> : <br>
+                                  (e.g. Diet; Habitat; Feeding)</small> "),
               value = "",
               width = "100%"
             )
