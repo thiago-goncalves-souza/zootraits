@@ -62,6 +62,16 @@ mod_feedtrait_add_with_file_ui <- function(id) {
               )
             )
           )
+        ),
+        bs4Dash::box(
+          title = "Review and submit",
+          collapsible = FALSE,
+          width = 12,
+          fluidRow(
+            reactable::reactableOutput(
+              outputId = ns("uploaded_table")
+            )
+          )
         )
       )
     )
@@ -107,6 +117,22 @@ mod_feedtrait_add_with_file_server <- function(id) {
         readr::write_csv(x = template, file = file)
       }
     )
+
+
+    uploaded_data <- reactive({
+      req(input$upload_template)
+
+      raw_uploaded_data <- readr::read_csv(file = input$upload_template$datapath)
+
+      raw_uploaded_data
+    })
+
+    output$uploaded_table <- reactable::renderReactable({
+      req(input$upload_template)
+
+      uploaded_data() |>
+        reactable::reactable()
+    })
   })
 }
 
