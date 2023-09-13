@@ -26,10 +26,9 @@ mod_feedtrait_add_with_file_ui <- function(id){
           fluidRow(
             div(
               style = "display: flex; justify-content: center;",
-              downloadButton(outputId = ns("download_template"),
+              shiny::downloadButton(outputId = ns("download_template_csv"),
                              label = "Download",
-                             icon = icon("download"),
-                             width = "20%")
+                             icon = icon("download"))
             )
           )
         ),
@@ -73,9 +72,8 @@ mod_feedtrait_add_with_file_server <- function(id){
   moduleServer(id, function(input, output, session){
     ns <- session$ns
 
-    output$download_template <- downloadHandler(
+    output$download_template_csv <- shiny::downloadHandler(
       filename = "feedtraits_template.csv",
-      contentType = "text/csv",
       content = function(file) {
 
        template <- tibble::tibble(
@@ -104,7 +102,7 @@ mod_feedtrait_add_with_file_server <- function(id){
         ) |>
          tibble::add_row()
 
-       readr::write_csv(template, file)
+       readr::write_csv(x = template, file = file)
       }
     )
 

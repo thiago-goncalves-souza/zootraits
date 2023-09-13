@@ -14,4 +14,5 @@ app_server <- function(input, output, session) {
   mod_review_metadata_server("review_metadata_1")
   mod_otn_explore_server("otn_explore_1", otn_selected)
   mod_review_add_paper_server("review_add_paper_1")
+  mod_feedtrait_add_with_file_server("feedtrait_add_with_file_1")
 }
