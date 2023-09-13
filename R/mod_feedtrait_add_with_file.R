@@ -7,7 +7,7 @@
 #' @noRd
 #'
 #' @importFrom shiny NS tagList
-mod_feedtrait_add_with_file_ui <- function(id){
+mod_feedtrait_add_with_file_ui <- function(id) {
   ns <- NS(id)
   tagList(
     fluidRow(
@@ -18,7 +18,6 @@ mod_feedtrait_add_with_file_ui <- function(id){
         width = 12,
         status = "primary",
         solidHeader = TRUE,
-
         bs4Dash::box(
           title = "Download the file template",
           collapsible = FALSE,
@@ -26,9 +25,11 @@ mod_feedtrait_add_with_file_ui <- function(id){
           fluidRow(
             div(
               style = "display: flex; justify-content: center;",
-              shiny::downloadButton(outputId = ns("download_template_csv"),
-                             label = "Download",
-                             icon = icon("download"))
+              shiny::downloadButton(
+                outputId = ns("download_template_csv"),
+                label = "Download",
+                icon = icon("download")
+              )
             )
           )
         ),
@@ -53,9 +54,11 @@ mod_feedtrait_add_with_file_ui <- function(id){
                 inputId = ns("upload_template"),
                 label = "Upload the file",
                 multiple = FALSE,
-                accept = c("text/csv",
-                           "text/comma-separated-values,text/plain",
-                           ".csv")
+                accept = c(
+                  "text/csv",
+                  "text/comma-separated-values,text/plain",
+                  ".csv"
+                )
               )
             )
           )
@@ -68,15 +71,14 @@ mod_feedtrait_add_with_file_ui <- function(id){
 #' feedtrait_add_with_file Server Functions
 #'
 #' @noRd
-mod_feedtrait_add_with_file_server <- function(id){
-  moduleServer(id, function(input, output, session){
+mod_feedtrait_add_with_file_server <- function(id) {
+  moduleServer(id, function(input, output, session) {
     ns <- session$ns
 
     output$download_template_csv <- shiny::downloadHandler(
       filename = "feedtraits_template.csv",
       content = function(file) {
-
-       template <- tibble::tibble(
+        template <- tibble::tibble(
           paper_title = as.character(),
           paper_doi = as.character(),
           paper_url = as.character(),
@@ -100,13 +102,11 @@ mod_feedtrait_add_with_file_server <- function(id){
           contributor_affiliation = as.character(),
           contributor_orcid = as.character(),
         ) |>
-         tibble::add_row()
+          tibble::add_row()
 
-       readr::write_csv(x = template, file = file)
+        readr::write_csv(x = template, file = file)
       }
     )
-
-
   })
 }
 
