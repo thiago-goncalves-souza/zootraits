@@ -37,7 +37,14 @@ contributed_papers <- papers_raw |>
   tidyr::separate_longer_delim(trait_dimension, "; ") |>
   dplyr::mutate(trait_type = dplyr::if_else(
     trait_type == "both" |  trait_type == "both", "response and effect", trait_type
-  ))
+  )) |>
+  dplyr::mutate(
+    dplyr::across(.cols = c("taxonomic_unit", "ecosystem",
+                    "study_scale", "trait_type", "intraspecific_data",
+                    "trait_details", "trait_dimension"),
+                  .fns = stringr::str_to_lower),
+    trait_dimension = stringr::str_replace_all(trait_dimension, " ", "_")
+  )
 
 
 # Contributors -----

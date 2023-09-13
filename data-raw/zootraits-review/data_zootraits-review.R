@@ -71,7 +71,7 @@ review_data <- review_data_raw |>
     values_to = "trait_dimension_value"
   ) |>
   dplyr::mutate(trait_dimension = dplyr::if_else(
-    trait_dimension == "other", "undetermined_trait", trait_dimension
+    trait_dimension == "other", "undetermined_morphological_traits", trait_dimension
   )) |>
   dplyr::filter(trait_dimension_value == 1) |>
   dplyr::select(-trait_dimension_value) |>
