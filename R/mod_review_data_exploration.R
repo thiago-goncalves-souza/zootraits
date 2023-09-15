@@ -96,6 +96,7 @@ mod_review_data_exploration_server <- function(id) {
 
 
     output$chart_traits <- echarts4r::renderEcharts4r({
+
       data_tidy <- review_dataset() |>
         tidyr::separate_longer_delim(cols = "trait_details", delim = ";") |>
         dplyr::mutate(
@@ -110,7 +111,8 @@ mod_review_data_exploration_server <- function(id) {
         dplyr::rename(trait_type = trait_type.x)
 
       data_for_tree_map <- data_tidy |>
-        prepare_data_for_treemap_echart(x_var = "general_trait")
+        prepare_data_for_treemap_echart(x_var = "general_trait") |>
+        dplyr::filter(name != "Other")
 
       mod_download_table_server("download_table_4", data_for_tree_map,
         prefix = "data_for_general_trait_chart"
