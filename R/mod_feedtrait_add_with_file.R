@@ -55,9 +55,7 @@ mod_feedtrait_add_with_file_ui <- function(id) {
                 label = "Upload the file",
                 multiple = FALSE,
                 accept = c(
-                  "text/csv",
-                  "text/comma-separated-values,text/plain",
-                  ".csv"
+                  ".xlsx"
                 )
               )
             )
@@ -123,9 +121,9 @@ mod_feedtrait_add_with_file_server <- function(id) {
       tibble::add_row()
 
     output$download_template_csv <- shiny::downloadHandler(
-      filename = "feedtraits_template.csv",
+      filename = "feedtraits_template.xlsx",
       content = function(file) {
-        readr::write_csv(x = file_template, file = file)
+        writexl::write_xlsx(x = file_template, path = file)
       }
     )
 
@@ -133,7 +131,7 @@ mod_feedtrait_add_with_file_server <- function(id) {
     uploaded_data <- reactive({
       req(input$upload_template)
 
-      raw_uploaded_data <- readr::read_csv(file = input$upload_template$datapath)
+      raw_uploaded_data <- readxl::read_xlsx(path = input$upload_template$datapath)
 
       raw_uploaded_data
     })
@@ -153,6 +151,7 @@ mod_feedtrait_add_with_file_server <- function(id) {
 
     observeEvent(input$send_suggestion_csv, {
       # 4. Don't proceed if any input is invalid
+
       names_data_uploaded <- names(uploaded_data())
       names_file_template <- names(file_template)
       waldo_comp <- waldo::compare(names_data_uploaded, names_file_template, x_arg = "uploaded_file", y_arg = "template_file")

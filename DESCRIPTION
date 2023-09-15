@@ -27,6 +27,7 @@ Imports:
     markdown,
     pkgload,
     reactable,
+    readxl,
     RPostgres,
     sf,
     shiny,
@@ -38,6 +39,7 @@ Imports:
     tibble,
     tidyr,
     tidyselect,
+    waldo,
     writexl
 Suggests: 
     readr,
