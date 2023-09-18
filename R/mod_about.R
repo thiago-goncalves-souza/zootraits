@@ -15,7 +15,7 @@ mod_about_ui <- function(id) {
         title = "Authors",
         collapsible = TRUE,
         width = 12,
-        shiny::HTML("<b>Corresponding author</b>: <a href='mailto:tgoncalv@umich.edu'>Thiago Gonçalves-Souza</a>"),
+        shiny::HTML(paste0("<b>Corresponding author</b>: <a href='mailto:tgoncalv@umich.edu'> Thiago Gonçalves-Souza ", shiny::icon("envelope"), "</a> ", " <a href='https://orcid.org/0000-0001-8471-7479' target='_blank'>", shiny::icon("orcid"), "</a>")),
         br(),
         br(),
         leaflet::leafletOutput(ns("authors_map")),

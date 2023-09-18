@@ -164,6 +164,13 @@ mod_review_add_paper_ui <- function(id) {
             width = 12,
             fluidRow(
               column(
+                width = 12,
+                shiny::HTML("- If the study scale is Regional or Global, add the location that is more representative of the study."),
+              )
+            ),
+            br(),
+            fluidRow(
+              column(
                 width = 6,
                 sliderInput(
                   inputId = ns("latitude"),
