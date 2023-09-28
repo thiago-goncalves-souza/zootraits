@@ -48,6 +48,9 @@ contributed_papers <- papers_raw |>
       .fns = stringr::str_to_lower
     ),
     trait_dimension = stringr::str_replace_all(trait_dimension, " ", "_")
+  ) |>
+  dplyr::mutate(
+    year = as.numeric(year)
   )
 
 
