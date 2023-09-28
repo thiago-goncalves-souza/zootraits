@@ -4,22 +4,22 @@
 otn_raw <- readr::read_csv("data-raw/open-traits-network/traits.csv")
 
 # there are 23 datasets!
-otn_raw |>
-  dplyr::distinct(datasetId)
-
-# explore how many observations we have per kingdom
-otn_raw |>
-  dplyr::count(resolveKingdomName)
-
-# explore the missing values
-naniar::gg_miss_var(otn_raw, show_pct = TRUE)
+# otn_raw |>
+#   dplyr::distinct(datasetId)
+#
+# # explore how many observations we have per kingdom
+# otn_raw |>
+#   dplyr::count(resolveKingdomName)
+#
+# # explore the missing values
+# naniar::gg_miss_var(otn_raw, show_pct = TRUE)
 
 # export the missing values in Kingdom
-otn_raw |>
-  dplyr::filter(is.na(resolveKingdomName)) |>
-  dplyr::count(resolvedPhylumName, resolvedTaxonName, resolvedFamilyName, resolvedName, sort = TRUE) |>
-  dplyr::slice_head(n = 1000) |>
-  writexl::write_xlsx("data-raw/open-traits-network/missing-kingdom.xlsx")
+# otn_raw |>
+#   dplyr::filter(is.na(resolveKingdomName)) |>
+#   dplyr::count(resolvedPhylumName, resolvedTaxonName, resolvedFamilyName, resolvedName, sort = TRUE) |>
+#   dplyr::slice_head(n = 1000) |>
+#   writexl::write_xlsx("data-raw/open-traits-network/missing-kingdom.xlsx")
 
 
 
@@ -33,7 +33,7 @@ otn_selected <- otn_raw |>
     -resolvedCommonNames, -phylum, -taxonIdVerbatim, -traitIdVerbatim,
     -family, -resolvedExternalId, -relationName, -resolvedPath, -resolvedPathIds,
     -resolvedPathNames, -numberOfRecords, -accessDate, -traitNameVerbatim,
-    -resolveKingdomName, -providedTraitName, -datasetId, -scientificNameVerbatim
+    -resolveKingdomName, -providedTraitName, -scientificNameVerbatim
   ) |>
   dplyr::distinct() |>
   janitor::clean_names() |>

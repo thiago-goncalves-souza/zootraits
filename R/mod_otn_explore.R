@@ -165,6 +165,7 @@ mod_otn_explore_server <- function(id, otn_selected) {
     output$table <- reactable::renderReactable({
       prepared_data <- otn_filtered() |>
         dplyr::arrange(
+          dataset_id,
           resolved_phylum_name,
           resolved_family_name,
           resolved_genus_name,
@@ -173,12 +174,16 @@ mod_otn_explore_server <- function(id, otn_selected) {
         ) |>
         dplyr::distinct() |>
         dplyr::mutate(
+          dataset_id_short = stringr::str_remove(dataset_id, "https://opentraits.org/datasets/") |>
+            stringr::str_to_upper(),
+          dataset = glue::glue("<a href='{dataset_id}' target='_blank'>{dataset_id_short}</a>"),
           url_html = glue::glue("<a href='{resolved_external_url}' target='_blank'>{resolved_external_url}</a>"),
           resolved_species_name = tidyr::replace_na(resolved_species_name, ""),
           resolved_genus_name = paste0("<i>", resolved_genus_name, "</i>"),
           resolved_species_name = paste0("<i>", resolved_species_name, "</i>")
         ) |>
         dplyr::select(
+          dataset,
           resolved_phylum_name,
           resolved_family_name,
           resolved_genus_name,
@@ -200,7 +205,8 @@ mod_otn_explore_server <- function(id, otn_selected) {
               resolved_genus_name = reactable::colDef(name = "Genus", html = TRUE),
               resolved_species_name = reactable::colDef(name = "Species", html = TRUE),
               resolved_trait_name = reactable::colDef(name = "Trait"),
-              url_html = reactable::colDef(name = "URL", html = TRUE)
+              url_html = reactable::colDef(name = "URL", html = TRUE),
+              dataset = reactable::colDef(name = "Dataset", html = TRUE)
             )
         )
     })
