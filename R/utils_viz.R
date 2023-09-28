@@ -1,4 +1,5 @@
 prepare_data_for_treemap_echart <- function(dataset, x_var) {
+
   if (nrow(dataset) > 0) {
     data_prepared <- dataset |>
       dplyr::rename(tree_var = {{ x_var }}) |>
@@ -8,7 +9,8 @@ prepare_data_for_treemap_echart <- function(dataset, x_var) {
       tidyr::drop_na(tree_var) |>
       dplyr::filter(tree_var != "Na|NA|na") |>
       dplyr::count(tree_var) |>
-      dplyr::mutate(tree_var = dplyr::if_else(n < 10, "Other", tree_var)) |>
+      # dplyr::mutate(tree_var = forcats::fct_lump(tree_var,
+      #                                            other_level = "Other")) |>
       dplyr::arrange(n) |>
       dplyr::rename(name = tree_var, value = n) |>
       dplyr::group_by(name) |>
