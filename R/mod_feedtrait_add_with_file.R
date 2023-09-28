@@ -39,7 +39,7 @@ mod_feedtrait_add_with_file_ui <- function(id) {
           width = 12,
           fluidRow(
             HTML("- Fill out the template above. <br>
-                 - Make sure to create one row for each paper. <br>
+                 - Make sure to create one row for each paper or one row for each taxonomic group in case the same paper studied multiple taxonomic groups. <br>
                - Use the section below in this page as a guide to know
                what are the options to use in each column. <br>
                - In case you need to
