@@ -15,12 +15,14 @@ knitr::opts_chunk$set(
 
 # zootraits
 
-<!-- badges: start -->
-[![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
-[![R-CMD-check](https://github.com/beatrizmilz/zootraits/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/beatrizmilz/zootraits/actions/workflows/R-CMD-check.yaml)
-<!-- badges: end -->
+URL: <https://ecofun.shinyapps.io/zootraits/>
 
-`r  htmltools::includeMarkdown("inst/app/www/md/ZooTraits.md")`
+
+```{r, echo = FALSE, results='asis'}
+htmltools::includeMarkdown(path = "inst/app/www/md/home.md")
+```
+
+
 
 
 ## Code of Conduct
