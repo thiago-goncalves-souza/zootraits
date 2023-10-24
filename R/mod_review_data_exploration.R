@@ -24,18 +24,19 @@ mod_review_data_exploration_ui <- function(id) {
     mod_review_filter_ui(ns("review_filter_1")),
     fluidRow(
       bs4Dash::box(
-        title = "Higher taxonomic groups",
+        title = "Taxonomic groups",
         collapsible = TRUE,
         width = 6,
-        mod_download_table_ui(ns("download_table_2")),
-        echarts4r::echarts4rOutput(ns("chart_taxonomic_groups")) |> waiting()
+        echarts4r::echarts4rOutput(ns("chart_taxonomic_groups")) |> waiting(),
+        mod_download_table_ui(ns("download_table_2"))
       ),
       bs4Dash::box(
         title = "Trait dimensions",
         collapsible = TRUE,
         width = 6,
-        mod_download_table_ui(ns("download_table_3")),
-        echarts4r::echarts4rOutput(ns("chart_trait_dimension")) |> waiting()
+        echarts4r::echarts4rOutput(ns("chart_trait_dimension")) |> waiting(),
+        mod_download_table_ui(ns("download_table_3"))
+
       )
     ),
     fluidRow(
@@ -44,7 +45,6 @@ mod_review_data_exploration_ui <- function(id) {
         collapsible = TRUE,
         width = 12,
         p("Most of the studies are grouped by country."),
-        br(),
         leaflet::leafletOutput(ns("map")) |> waiting()
       )
     ),
@@ -53,8 +53,8 @@ mod_review_data_exploration_ui <- function(id) {
         title = "Traits",
         collapsible = TRUE,
         width = 12,
-        mod_download_table_ui(ns("download_table_4")),
-        echarts4r::echarts4rOutput(ns("chart_traits")) |> waiting()
+        echarts4r::echarts4rOutput(ns("chart_traits")) |> waiting(),
+        mod_download_table_ui(ns("download_table_4"))
       )
     )
   )
