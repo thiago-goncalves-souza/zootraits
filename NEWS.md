@@ -4,6 +4,8 @@
 
 * The taxonomic group is now being used from the column `new_level` from the file `ZooTraits_taxon_names_oct23.xlsx`.
 
+* Removed the Help button (in the top right of the page).
+
 # zootraits 1.0.0
 
 * The first version of the app is available in: https://ecofun.shinyapps.io/zootraits/

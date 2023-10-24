@@ -10,6 +10,7 @@ app_ui <- function(request) {
     golem_add_external_resources(),
     bs4Dash::dashboardPage(
       scrollToTop = TRUE,
+      help = NULL,
       dark = NULL,
 
       # ---
