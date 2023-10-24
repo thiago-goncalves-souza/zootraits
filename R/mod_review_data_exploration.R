@@ -71,6 +71,7 @@ mod_review_data_exploration_server <- function(id) {
 
 
     output$chart_taxonomic_groups <- echarts4r::renderEcharts4r({
+
       data_for_chart <- review_dataset() |>
         prepare_data_for_bar_echart(x_var = "taxonomic_group")
 
@@ -79,7 +80,13 @@ mod_review_data_exploration_server <- function(id) {
       )
 
       data_for_chart |>
-        bar_echart()
+        dplyr::slice_max(order_by = n, n = 10) |>
+        dplyr::arrange(n) |>
+        bar_echart(
+          title_lab = "Most frequent taxonomic groups found in the review",
+          x_lab = "Number of papers",
+          y_lab = "Taxonomic group"
+        )
     })
 
     output$chart_trait_dimension <- echarts4r::renderEcharts4r({
@@ -91,7 +98,11 @@ mod_review_data_exploration_server <- function(id) {
       )
 
       data_for_chart |>
-        bar_echart()
+        bar_echart(
+          title_lab = "Most frequent trait dimensions found in the review",
+          x_lab = "Number of papers",
+          y_lab = "Trait dimension"
+        )
     })
 
 
@@ -120,7 +131,9 @@ mod_review_data_exploration_server <- function(id) {
 
 
       data_for_tree_map |>
-        treemap_echart()
+        treemap_echart(
+          title_lab = "Number of papers where each trait appeared in the review"
+        )
     })
 
     output$map <- leaflet::renderLeaflet({

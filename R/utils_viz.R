@@ -20,7 +20,8 @@ prepare_data_for_treemap_echart <- function(dataset, x_var) {
   }
 }
 
-treemap_echart <- function(data_prepared, x_lab = "", y_lab = "") {
+treemap_echart <- function(data_prepared,
+                           title_lab = "") {
   if (nrow(data_prepared) > 0) {
     data_prepared |>
       echarts4r::e_chart(x = tree_var) |>
@@ -32,7 +33,9 @@ treemap_echart <- function(data_prepared, x_lab = "", y_lab = "") {
           "#440154FF", "#3B528BFF", "#21908CFF",
           "#5DC863FF"
         )
-        # viridis::viridis(n = 4)
+      ) |>
+      echarts4r::e_title(text = title_lab |>
+                           stringr::str_wrap(width = 60)
       )
   }
 }
@@ -43,13 +46,15 @@ prepare_data_for_bar_echart <- function(dataset, x_var) {
       dplyr::rename(bar_var = {{ x_var }}) |>
       dplyr::distinct(code, bar_var) |>
       dplyr::mutate(bar_var = stringr::str_to_title(bar_var) |>
-        stringr::str_replace_all("_", " ")) |>
+        stringr::str_replace_all("_", " ") |>
+          stringr::str_wrap(width = 15)) |>
       dplyr::count(bar_var) |>
       dplyr::arrange(n)
   }
 }
 
-bar_echart <- function(data_prepared, x_lab = "", y_lab = "") {
+bar_echart <- function(data_prepared, x_lab = "", y_lab = "",
+                       title_lab = "") {
   if (nrow(data_prepared) > 0) {
     data_prepared |>
       echarts4r::e_chart(x = bar_var) |>
@@ -60,7 +65,21 @@ bar_echart <- function(data_prepared, x_lab = "", y_lab = "") {
       echarts4r::e_flip_coords() |>
       echarts4r::e_grid(left = "20%") |>
       echarts4r::e_tooltip() |>
-      echart_theme()
+      echart_theme() |>
+      echarts4r::e_axis_labels(
+        x = x_lab, y = y_lab
+      ) |>
+      echarts4r::e_title(text = title_lab |>
+                           stringr::str_wrap(width = 60)
+      ) |>
+      echarts4r::e_y_axis(
+        nameLocation = "middle",
+        nameGap = 90
+      ) |>
+      echarts4r::e_x_axis(
+        nameLocation = "middle",
+        nameGap = 30
+      )
   }
 }
 
