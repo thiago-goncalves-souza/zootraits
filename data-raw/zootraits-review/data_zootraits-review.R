@@ -1,4 +1,5 @@
 devtools::load_all()
+
 # Read raw data --------
 review_data_raw <- readxl::read_xlsx("data-raw/zootraits-review/ZooTraits_review_data_may23.xlsx") |>
   janitor::clean_names() |>
@@ -6,8 +7,9 @@ review_data_raw <- readxl::read_xlsx("data-raw/zootraits-review/ZooTraits_review
     code = as.character(code)
   )
 
-taxon_names <- readxl::read_xlsx("data-raw/zootraits-review/ZooTraits_taxon_names_may23.xlsx") |>
-  janitor::clean_names()
+taxon_names <- readxl::read_xlsx("data-raw/zootraits-review/ZooTraits_taxon_names_oct23.xlsx") |>
+  janitor::clean_names() |>
+  dplyr::rename(taxon_new_level = new_level)
 
 trait_information <- readxl::read_xlsx("data-raw/zootraits-review/ZooTraits_trait_information_may23.xlsx") |>
   janitor::clean_names()
@@ -76,12 +78,12 @@ review_data <- review_data_raw |>
   dplyr::filter(trait_dimension_value == 1) |>
   dplyr::select(-trait_dimension_value) |>
   dplyr::left_join(taxon_names, by = "taxon") |>
-  dplyr::rename("taxonomic_group" = higher_taxon_lev1) |>
+  dplyr::rename("taxonomic_group" = taxon_new_level) |>
   dplyr::relocate(taxonomic_group, .after = taxon) |>
   dplyr::relocate(ecosystem, study_scale, .before = where) |>
   dplyr::relocate(doi_html, .after = doi) |>
   dplyr::relocate(year, .after = code) |>
-  dplyr::select(-tidyselect::any_of(c("higher_taxon_lev2", "taxon", "taxon_span"))) |>
+  dplyr::select(-tidyselect::any_of(c("higher_taxon_lev1", "higher_taxon_lev2", "taxon", "taxon_span"))) |>
   dplyr::mutate(trait_type = dplyr::if_else(
     trait_type == "both" | trait_type == "both", "response and effect", trait_type
   ))
@@ -90,3 +92,6 @@ review_data <- review_data_raw |>
 usethis::use_data(review_data, overwrite = TRUE)
 usethis::use_data(taxon_names, overwrite = TRUE)
 usethis::use_data(trait_information, overwrite = TRUE)
+
+# Remember to run "data-raw/actions_contribute_review.R" to update the dataset
+
