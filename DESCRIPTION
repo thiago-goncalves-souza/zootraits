@@ -1,6 +1,6 @@
 Package: zootraits
 Title: Shiny App To Explore Animal Traits
-Version: 1.0.0
+Version: 1.0.1
 Authors@R: 
     person("Beatriz", "Milz", , "milz.bea@gmail.com", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0002-3064-4486"))

@@ -6,6 +6,8 @@
 
 * Removed the Help button (in the top right of the page).
 
+* Added title and labels in the plots.
+
 # zootraits 1.0.0
 
 * The first version of the app is available in: https://ecofun.shinyapps.io/zootraits/
