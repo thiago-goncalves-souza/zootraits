@@ -1,11 +1,14 @@
 Package: zootraits
 Title: Shiny App To Explore Animal Traits
 Version: 1.0.1
-Authors@R: 
+Authors@R: c(
     person("Beatriz", "Milz", , "milz.bea@gmail.com", role = c("aut", "cre"),
-           comment = c(ORCID = "0000-0002-3064-4486"))
-Description: What the package does (one paragraph).
-License: CC BY 4.0
+           comment = c(ORCID = "0000-0002-3064-4486")),
+    person("Thiago", "Gonçalves-Souza", , "tgoncalv@umich.edu", role = "aut",
+           comment = c(ORCID = "0000-0001-8471-7479"))
+  )
+Description: Shiny App To Explore Animal Traits
+License: file LICENSE
 URL: https://github.com/beatrizmilz/zootraits
 BugReports: https://github.com/beatrizmilz/zootraits/issues
 Imports: 
@@ -14,7 +17,6 @@ Imports:
     DBI,
     dplyr,
     echarts4r,
-    forcats,
     fresh,
     glue,
     golem,
@@ -24,12 +26,10 @@ Imports:
     knitr,
     leaflet,
     lubridate,
-    markdown,
-    pkgload,
+    purrr,
     reactable,
     readxl,
     RPostgres,
-    sf,
     shiny,
     shinyalert,
     shinycssloaders,
@@ -42,7 +42,10 @@ Imports:
     waldo,
     writexl
 Suggests: 
+    forcats,
+    pkgload,
     readr,
+    sf,
     spelling,
     testthat (>= 3.0.0)
 Config/testthat/edition: 3

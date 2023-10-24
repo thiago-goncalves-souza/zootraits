@@ -9,8 +9,6 @@ prepare_data_for_treemap_echart <- function(dataset, x_var) {
       tidyr::drop_na(tree_var) |>
       dplyr::filter(tree_var != "Na|NA|na") |>
       dplyr::count(tree_var) |>
-      # dplyr::mutate(tree_var = forcats::fct_lump(tree_var,
-      #                                            other_level = "Other")) |>
       dplyr::arrange(n) |>
       dplyr::rename(name = tree_var, value = n) |>
       dplyr::group_by(name) |>
