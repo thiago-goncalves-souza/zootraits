@@ -9,14 +9,15 @@ Authors@R: c(
   )
 Description: Shiny App To Explore Animal Traits
 License: file LICENSE
-URL: https://github.com/beatrizmilz/zootraits
-BugReports: https://github.com/beatrizmilz/zootraits/issues
+URL: https://github.com/thiago-goncalves-souza/zootraits
+BugReports: https://github.com/thiago-goncalves-souza/zootraits/issues
 Imports: 
     bs4Dash,
     config,
     DBI,
     dplyr,
     echarts4r,
+    forcats,
     fresh,
     glue,
     golem,
@@ -26,10 +27,13 @@ Imports:
     knitr,
     leaflet,
     lubridate,
+    markdown,
+    pkgload,
     purrr,
     reactable,
     readxl,
     RPostgres,
+    sf,
     shiny,
     shinyalert,
     shinycssloaders,
@@ -42,10 +46,7 @@ Imports:
     waldo,
     writexl
 Suggests: 
-    forcats,
-    pkgload,
     readr,
-    sf,
     spelling,
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
