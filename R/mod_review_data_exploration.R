@@ -102,7 +102,8 @@ mod_review_data_exploration_server <- function(id) {
           title_lab = "Most frequent trait dimensions found in the review",
           x_lab = "Number of papers",
           y_lab = "Trait dimension"
-        )
+        ) |>
+        echarts4r::e_add_nested("itemStyle", color)
     })
 
 

@@ -40,13 +40,20 @@ treemap_echart <- function(data_prepared,
 
 prepare_data_for_bar_echart <- function(dataset, x_var) {
   if (nrow(dataset) > 0) {
+    if(x_var == "trait_dimension"){
+      dataset <- dataset |>
+        dplyr::left_join(trait_dimension_colors, by = "trait_dimension")
+    } else {
+      dataset <- dataset |>
+        dplyr::mutate(color = "grey")
+    }
     data_prepared <- dataset |>
       dplyr::rename(bar_var = {{ x_var }}) |>
-      dplyr::distinct(code, bar_var) |>
+      dplyr::distinct(code, bar_var, color) |>
       dplyr::mutate(bar_var = stringr::str_to_title(bar_var) |>
         stringr::str_replace_all("_", " ") |>
           stringr::str_wrap(width = 15)) |>
-      dplyr::count(bar_var) |>
+      dplyr::count(bar_var, color) |>
       dplyr::arrange(n)
   }
 }
