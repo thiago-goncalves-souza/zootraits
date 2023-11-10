@@ -94,4 +94,3 @@ usethis::use_data(taxon_names, overwrite = TRUE)
 usethis::use_data(trait_information, overwrite = TRUE)
 
 # Remember to run "data-raw/actions_contribute_review.R" to update the dataset
-

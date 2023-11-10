@@ -36,7 +36,6 @@ mod_review_data_exploration_ui <- function(id) {
         width = 6,
         echarts4r::echarts4rOutput(ns("chart_trait_dimension")) |> waiting(),
         mod_download_table_ui(ns("download_table_3"))
-
       )
     ),
     fluidRow(
@@ -71,7 +70,6 @@ mod_review_data_exploration_server <- function(id) {
 
 
     output$chart_taxonomic_groups <- echarts4r::renderEcharts4r({
-
       data_for_chart <- review_dataset() |>
         prepare_data_for_bar_echart(x_var = "taxonomic_group")
 
@@ -108,7 +106,6 @@ mod_review_data_exploration_server <- function(id) {
 
 
     output$chart_traits <- echarts4r::renderEcharts4r({
-
       data_tidy <- review_dataset() |>
         tidyr::separate_longer_delim(cols = "trait_details", delim = ";") |>
         dplyr::mutate(
@@ -120,8 +117,10 @@ mod_review_data_exploration_server <- function(id) {
           relationship = "many-to-many"
         ) |>
         dplyr::select(-trait_dimension) |>
-        dplyr::rename(trait_type = trait_type.x,
-                      trait_dimension = trait_type.y)
+        dplyr::rename(
+          trait_type = trait_type.x,
+          trait_dimension = trait_type.y
+        )
 
       data_for_tree_map <- data_tidy |>
         prepare_data_for_treemap_echart(x_var = "general_trait", color = "trait_dimension") |>

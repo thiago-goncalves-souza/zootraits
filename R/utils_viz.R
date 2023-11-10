@@ -1,19 +1,18 @@
 prepare_data_for_treemap_echart <- function(dataset, x_var, color = "trait_dimension") {
-
   if (nrow(dataset) > 0) {
     if (color == "trait_dimension") {
       trait_dimension_colors_fix <- trait_dimension_colors |>
         dplyr::mutate(trait_dimension = stringr::str_replace_all(trait_dimension, "_", " "))
 
-        dataset_colors <- dataset |>
+      dataset_colors <- dataset |>
         dplyr::left_join(trait_dimension_colors_fix, by = "trait_dimension") |>
-          dplyr::mutate(
-            color = dplyr::if_else(is.na(color), "gray", color)
-          )
+        dplyr::mutate(
+          color = dplyr::if_else(is.na(color), "gray", color)
+        )
 
-        # dataset_colors |>
-        #   dplyr::filter(color == "gray") |>
-        #   dplyr::count(trait_dimension)
+      # dataset_colors |>
+      #   dplyr::filter(color == "gray") |>
+      #   dplyr::count(trait_dimension)
     } else {
       dataset_colors <- dataset |>
         dplyr::mutate(color = "grey")
@@ -48,15 +47,14 @@ treemap_echart <- function(data_prepared,
       echarts4r::e_tooltip() |>
       echarts4r::e_toolbox_feature(feature = c("saveAsImage")) |>
       echarts4r::e_title(text = title_lab |>
-                           stringr::str_wrap(width = 60)
-      ) |>
+        stringr::str_wrap(width = 60)) |>
       echarts4r::e_add_nested("itemStyle", color)
   }
 }
 
 prepare_data_for_bar_echart <- function(dataset, x_var) {
   if (nrow(dataset) > 0) {
-    if(x_var == "trait_dimension"){
+    if (x_var == "trait_dimension") {
       dataset <- dataset |>
         dplyr::left_join(trait_dimension_colors, by = "trait_dimension")
     } else {
@@ -68,7 +66,7 @@ prepare_data_for_bar_echart <- function(dataset, x_var) {
       dplyr::distinct(code, bar_var, color) |>
       dplyr::mutate(bar_var = stringr::str_to_title(bar_var) |>
         stringr::str_replace_all("_", " ") |>
-          stringr::str_wrap(width = 15)) |>
+        stringr::str_wrap(width = 15)) |>
       dplyr::count(bar_var, color) |>
       dplyr::arrange(n)
   }
@@ -91,8 +89,7 @@ bar_echart <- function(data_prepared, x_lab = "", y_lab = "",
         x = x_lab, y = y_lab
       ) |>
       echarts4r::e_title(text = title_lab |>
-                           stringr::str_wrap(width = 60)
-      ) |>
+        stringr::str_wrap(width = 60)) |>
       echarts4r::e_y_axis(
         nameLocation = "middle",
         nameGap = 90
