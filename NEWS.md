@@ -8,6 +8,8 @@
 
 * Added title and labels in the plots.
 
+* The colors in the plots "Trait dimensions" (bar plot) and "Traits" (tree map) are mapped with the `trait_dimension` column.
+
 # zootraits 1.0.0
 
 * The first version of the app is available in: https://ecofun.shinyapps.io/zootraits/

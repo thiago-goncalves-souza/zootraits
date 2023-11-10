@@ -119,8 +119,9 @@ mod_review_data_exploration_server <- function(id) {
           by = "trait_details",
           relationship = "many-to-many"
         ) |>
-        dplyr::select(-trait_type.y) |>
-        dplyr::rename(trait_type = trait_type.x)
+        dplyr::select(-trait_dimension) |>
+        dplyr::rename(trait_type = trait_type.x,
+                      trait_dimension = trait_type.y)
 
       data_for_tree_map <- data_tidy |>
         prepare_data_for_treemap_echart(x_var = "general_trait", color = "trait_dimension") |>

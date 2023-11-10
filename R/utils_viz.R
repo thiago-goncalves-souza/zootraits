@@ -2,25 +2,34 @@ prepare_data_for_treemap_echart <- function(dataset, x_var, color = "trait_dimen
 
   if (nrow(dataset) > 0) {
     if (color == "trait_dimension") {
-      dataset <- dataset |>
-        dplyr::left_join(trait_dimension_colors, by = "trait_dimension")
+      trait_dimension_colors_fix <- trait_dimension_colors |>
+        dplyr::mutate(trait_dimension = stringr::str_replace_all(trait_dimension, "_", " "))
+
+        dataset_colors <- dataset |>
+        dplyr::left_join(trait_dimension_colors_fix, by = "trait_dimension") |>
+          dplyr::mutate(
+            color = dplyr::if_else(is.na(color), "gray", color)
+          )
+
+        # dataset_colors |>
+        #   dplyr::filter(color == "gray") |>
+        #   dplyr::count(trait_dimension)
     } else {
-      dataset <- dataset |>
+      dataset_colors <- dataset |>
         dplyr::mutate(color = "grey")
     }
 
-
-    data_prepared <- dataset |>
+    data_prepared <- dataset_colors |>
       dplyr::rename(tree_var = {{ x_var }}) |>
-      dplyr::distinct(code, tree_var) |>
+      dplyr::distinct(code, tree_var, color) |>
       dplyr::mutate(tree_var = stringr::str_to_title(tree_var) |>
         stringr::str_replace_all("_", " ")) |>
       tidyr::drop_na(tree_var) |>
       dplyr::filter(tree_var != "Na|NA|na") |>
-      dplyr::count(tree_var) |>
+      dplyr::count(tree_var, color) |>
       dplyr::arrange(n) |>
       dplyr::rename(name = tree_var, value = n) |>
-      dplyr::group_by(name) |>
+      dplyr::group_by(name, color) |>
       dplyr::summarise(value = sum(value))
 
     data_prepared
@@ -28,22 +37,20 @@ prepare_data_for_treemap_echart <- function(dataset, x_var, color = "trait_dimen
 }
 
 treemap_echart <- function(data_prepared,
+                           tree_var = "name",
                            title_lab = "") {
   if (nrow(data_prepared) > 0) {
     data_prepared |>
-      echarts4r::e_chart(x = tree_var) |>
+      dplyr::select(name, value, color) |>
+      dplyr::ungroup() |>
+      echarts4r::e_chart(x = name) |>
       echarts4r::e_treemap() |>
       echarts4r::e_tooltip() |>
       echarts4r::e_toolbox_feature(feature = c("saveAsImage")) |>
-      echarts4r::e_color(
-        color = c(
-          "#440154FF", "#3B528BFF", "#21908CFF",
-          "#5DC863FF"
-        )
-      ) |>
       echarts4r::e_title(text = title_lab |>
                            stringr::str_wrap(width = 60)
-      )
+      ) |>
+      echarts4r::e_add_nested("itemStyle", color)
   }
 }
 
