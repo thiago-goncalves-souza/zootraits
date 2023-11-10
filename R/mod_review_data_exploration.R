@@ -123,7 +123,7 @@ mod_review_data_exploration_server <- function(id) {
         dplyr::rename(trait_type = trait_type.x)
 
       data_for_tree_map <- data_tidy |>
-        prepare_data_for_treemap_echart(x_var = "general_trait") |>
+        prepare_data_for_treemap_echart(x_var = "general_trait", color = "trait_dimension") |>
         dplyr::filter(name != "Other")
 
       mod_download_table_server("download_table_4", data_for_tree_map,

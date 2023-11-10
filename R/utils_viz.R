@@ -1,6 +1,15 @@
-prepare_data_for_treemap_echart <- function(dataset, x_var) {
+prepare_data_for_treemap_echart <- function(dataset, x_var, color = "trait_dimension") {
 
   if (nrow(dataset) > 0) {
+    if (color == "trait_dimension") {
+      dataset <- dataset |>
+        dplyr::left_join(trait_dimension_colors, by = "trait_dimension")
+    } else {
+      dataset <- dataset |>
+        dplyr::mutate(color = "grey")
+    }
+
+
     data_prepared <- dataset |>
       dplyr::rename(tree_var = {{ x_var }}) |>
       dplyr::distinct(code, tree_var) |>
