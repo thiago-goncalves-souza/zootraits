@@ -55,7 +55,7 @@ mod_feedtrait_add_with_file_ui <- function(id) {
                 label = "Upload the file",
                 multiple = FALSE,
                 accept = c(
-                  ".xlsx"
+                  ".csv"
                 )
               )
             )
@@ -121,9 +121,9 @@ mod_feedtrait_add_with_file_server <- function(id) {
       tibble::add_row()
 
     output$download_template_csv <- shiny::downloadHandler(
-      filename = "feedtraits_template.xlsx",
+      filename = "feedtraits_template.csv",
       content = function(file) {
-        writexl::write_xlsx(x = file_template, path = file)
+        readr::write_csv(x = file_template, file = file)
       }
     )
 
@@ -131,7 +131,7 @@ mod_feedtrait_add_with_file_server <- function(id) {
     uploaded_data <- reactive({
       req(input$upload_template)
 
-      raw_uploaded_data <- readxl::read_xlsx(path = input$upload_template$datapath)
+      raw_uploaded_data <- readr::read_csv(file = input$upload_template$datapath)
 
       raw_uploaded_data
     })
