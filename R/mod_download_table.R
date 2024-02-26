@@ -31,10 +31,10 @@ mod_download_table_server <- function(id, dataset, prefix = "Zootraits_review") 
 
     output$download_data <- downloadHandler(
       filename = function() {
-        paste(prefix, "-", Sys.Date(), ".xlsx", sep = "")
+        paste(prefix, "-", Sys.Date(), ".csv", sep = "")
       },
       content = function(file) {
-        writexl::write_xlsx(dataset, file)
+        readr::write_csv(dataset, file)
       }
     )
   })
