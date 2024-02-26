@@ -68,9 +68,10 @@ mod_review_data_exploration_table_server <- function(id) {
         dplyr::select(-code) |>
         reactable::reactable(
           sortable = TRUE,
+          showSortable = TRUE,
           columns =
             list(
-              year = reactable::colDef(name = "Year", maxWidth = 50),
+              year = reactable::colDef(name = "Year", maxWidth = 70),
               reference = reactable::colDef(name = "Reference", minWidth = 200),
               doi_html = reactable::colDef(name = "DOI", html = TRUE),
               where = reactable::colDef(name = "Where", html = TRUE),

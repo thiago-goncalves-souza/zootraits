@@ -197,6 +197,7 @@ mod_otn_explore_server <- function(id, otn_selected) {
       prepared_data |>
         reactable::reactable(
           sortable = TRUE,
+          showSortable = TRUE,
           searchable = TRUE,
           columns =
             list(
