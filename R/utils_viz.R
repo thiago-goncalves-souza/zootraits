@@ -72,6 +72,35 @@ prepare_data_for_bar_echart <- function(dataset, x_var) {
   }
 }
 
+prepare_data_for_line_graph <- function(dataset, color_var){
+   if (nrow(dataset) > 0) {
+    if (color_var == "trait_dimension") {
+      dataset <- dataset |>
+        dplyr::left_join(trait_dimension_colors, by = "trait_dimension")
+    } else {
+      dataset <- dataset |>
+        dplyr::mutate(color = "grey")
+    }
+    data_prepared <- dataset |>
+      dplyr::rename(line_var = {{ color_var }}) |>
+      dplyr::distinct(code, line_var, color, year) |>
+      dplyr::mutate(line_var = stringr::str_to_title(line_var) |>
+        stringr::str_replace_all("_", " ") |>
+        stringr::str_wrap(width = 15)) |>
+      dplyr::count(line_var, year, color) |>
+        dplyr::group_by(color) |>
+        tidyr::complete(
+          year,
+          line_var,
+          fill = list(n = 0)) |>
+        dplyr::ungroup() |>
+        dplyr::arrange(year) |>
+        dplyr::group_by(line_var) |>
+        dplyr::mutate(cumulative_sum_n = cumsum(n))
+
+  }
+}
+
 bar_echart <- function(data_prepared, x_lab = "", y_lab = "",
                        title_lab = "") {
   if (nrow(data_prepared) > 0) {
@@ -99,6 +128,38 @@ bar_echart <- function(data_prepared, x_lab = "", y_lab = "",
         nameGap = 30
       )
   }
+}
+
+bar_linechart <- function(data_for_series_plot){
+  if (nrow(data_for_series_plot) > 0) {
+
+    data_for_series_plot |>
+      echarts4r::e_chart(x = year_date) |>
+      echarts4r::e_line(
+        serie = cumulative_sum_n,
+        legend = TRUE
+      ) |>
+      echarts4r::e_datazoom(
+        type = "slider",
+      )
+      # echarts4r::e_grid(left = "20%") |>
+      # echarts4r::e_tooltip() |>
+      # echart_theme() |>
+      # echarts4r::e_axis_labels(
+      #   x = x_lab, y = y_lab
+      # ) |>
+      # echarts4r::e_title(text = title_lab |>
+      #   stringr::str_wrap(width = 60)) |>
+      # echarts4r::e_y_axis(
+      #   nameLocation = "middle",
+      #   nameGap = 90
+      # ) |>
+      # echarts4r::e_x_axis(
+      #   nameLocation = "middle",
+      #   nameGap = 30
+      # )
+  }
+
 }
 
 # wordcloud_chart <- function(dataset, var){
