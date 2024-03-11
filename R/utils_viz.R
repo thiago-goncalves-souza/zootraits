@@ -130,7 +130,10 @@ bar_echart <- function(data_prepared, x_lab = "", y_lab = "",
   }
 }
 
-bar_linechart <- function(data_for_series_plot){
+bar_linechart <- function(data_for_series_plot,
+                         title_lab = "Number o papers published - Most frequent taxonomic groups",
+                         x_lab = "Year",
+                         y_lab = "Cumulative sum of papers"){
   if (nrow(data_for_series_plot) > 0) {
 
     data_for_series_plot |>
@@ -141,23 +144,24 @@ bar_linechart <- function(data_for_series_plot){
       ) |>
       echarts4r::e_datazoom(
         type = "slider",
-      )
-      # echarts4r::e_grid(left = "20%") |>
-      # echarts4r::e_tooltip() |>
-      # echart_theme() |>
-      # echarts4r::e_axis_labels(
-      #   x = x_lab, y = y_lab
-      # ) |>
-      # echarts4r::e_title(text = title_lab |>
-      #   stringr::str_wrap(width = 60)) |>
-      # echarts4r::e_y_axis(
-      #   nameLocation = "middle",
-      #   nameGap = 90
-      # ) |>
-      # echarts4r::e_x_axis(
-      #   nameLocation = "middle",
-      #   nameGap = 30
-      # )
+      ) |>
+      echarts4r::e_grid(left = "10%", bottom = "25%", top = "20%") |>
+      echarts4r::e_tooltip(trigger = "item") |>
+     echart_lineplot_theme() |>
+      echarts4r::e_axis_labels(
+        x = x_lab, y = y_lab
+      ) |>
+      echarts4r::e_title(text = title_lab |>
+        stringr::str_wrap(width = 60)) |>
+      echarts4r::e_y_axis(
+        nameLocation = "middle",
+        nameGap = 40
+      ) |>
+      echarts4r::e_x_axis(
+        nameLocation = "middle",
+        nameGap = 30
+      ) |>
+      echarts4r::e_legend(top = "7%")
   }
 
 }
@@ -175,5 +179,17 @@ bar_linechart <- function(data_for_series_plot){
 
 echart_theme <- function(plot) {
   echarts4r::e_theme_custom(plot, '{"color":["#01274c","#ffca06"]}') |>
+    echarts4r::e_toolbox_feature(feature = c("saveAsImage"))
+}
+
+echart_lineplot_theme <- function(plot) {
+
+  # colors <- viridis::viridis(10, begin = 0.1, end = 0.9)
+
+  echarts4r::e_theme_custom(
+    plot,
+    '{"color":["#482576FF","#424086FF", "#375A8CFF", "#2D718EFF", "#25858EFF", "#1E9B8AFF", "#29AF7FFF", "#4EC36BFF", "#81D34DFF", "#BBDF27FF"]}'
+  #  '{"color":[  ]}'
+  ) |>
     echarts4r::e_toolbox_feature(feature = c("saveAsImage"))
 }
