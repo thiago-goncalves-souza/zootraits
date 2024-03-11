@@ -72,6 +72,35 @@ prepare_data_for_bar_echart <- function(dataset, x_var) {
   }
 }
 
+prepare_data_for_line_graph <- function(dataset, color_var){
+   if (nrow(dataset) > 0) {
+    if (color_var == "trait_dimension") {
+      dataset <- dataset |>
+        dplyr::left_join(trait_dimension_colors, by = "trait_dimension")
+    } else {
+      dataset <- dataset |>
+        dplyr::mutate(color = "grey")
+    }
+    data_prepared <- dataset |>
+      dplyr::rename(line_var = {{ color_var }}) |>
+      dplyr::distinct(code, line_var, color, year) |>
+      dplyr::mutate(line_var = stringr::str_to_title(line_var) |>
+        stringr::str_replace_all("_", " ") |>
+        stringr::str_wrap(width = 15)) |>
+      dplyr::count(line_var, year, color) |>
+        dplyr::group_by(color) |>
+        tidyr::complete(
+          year,
+          line_var,
+          fill = list(n = 0)) |>
+        dplyr::ungroup() |>
+        dplyr::arrange(year) |>
+        dplyr::group_by(line_var) |>
+        dplyr::mutate(cumulative_sum_n = cumsum(n))
+
+  }
+}
+
 bar_echart <- function(data_prepared, x_lab = "", y_lab = "",
                        title_lab = "") {
   if (nrow(data_prepared) > 0) {
@@ -101,6 +130,42 @@ bar_echart <- function(data_prepared, x_lab = "", y_lab = "",
   }
 }
 
+bar_linechart <- function(data_for_series_plot,
+                         title_lab = "Number o papers published - Most frequent taxonomic groups",
+                         x_lab = "Year",
+                         y_lab = "Cumulative sum of papers"){
+  if (nrow(data_for_series_plot) > 0) {
+
+    data_for_series_plot |>
+      echarts4r::e_chart(x = year_date) |>
+      echarts4r::e_line(
+        serie = cumulative_sum_n,
+        legend = TRUE
+      ) |>
+      echarts4r::e_datazoom(
+        type = "slider",
+      ) |>
+      echarts4r::e_grid(left = "10%", bottom = "25%", top = "20%") |>
+      echarts4r::e_tooltip(trigger = "item") |>
+     echart_lineplot_theme() |>
+      echarts4r::e_axis_labels(
+        x = x_lab, y = y_lab
+      ) |>
+      echarts4r::e_title(text = title_lab |>
+        stringr::str_wrap(width = 60)) |>
+      echarts4r::e_y_axis(
+        nameLocation = "middle",
+        nameGap = 40
+      ) |>
+      echarts4r::e_x_axis(
+        nameLocation = "middle",
+        nameGap = 30
+      ) |>
+      echarts4r::e_legend(top = "7%")
+  }
+
+}
+
 # wordcloud_chart <- function(dataset, var){
 #   dataset |>
 #     dplyr::rename(var = {{var}}) |>
@@ -114,5 +179,17 @@ bar_echart <- function(data_prepared, x_lab = "", y_lab = "",
 
 echart_theme <- function(plot) {
   echarts4r::e_theme_custom(plot, '{"color":["#01274c","#ffca06"]}') |>
+    echarts4r::e_toolbox_feature(feature = c("saveAsImage"))
+}
+
+echart_lineplot_theme <- function(plot) {
+
+  # colors <- viridis::viridis(10, begin = 0.1, end = 0.9)
+
+  echarts4r::e_theme_custom(
+    plot,
+    '{"color":["#482576FF","#424086FF", "#375A8CFF", "#2D718EFF", "#25858EFF", "#1E9B8AFF", "#29AF7FFF", "#4EC36BFF", "#81D34DFF", "#BBDF27FF"]}'
+  #  '{"color":[  ]}'
+  ) |>
     echarts4r::e_toolbox_feature(feature = c("saveAsImage"))
 }

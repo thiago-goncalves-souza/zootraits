@@ -71,19 +71,26 @@ mod_review_data_exploration_server <- function(id) {
 
     output$chart_taxonomic_groups <- echarts4r::renderEcharts4r({
       data_for_chart <- review_dataset() |>
-        prepare_data_for_bar_echart(x_var = "taxonomic_group")
+        prepare_data_for_line_graph(color_var = "taxonomic_group")
+
 
       mod_download_table_server("download_table_2", data_for_chart,
         prefix = "data_for_taxonomic_group_chart"
       )
 
-      data_for_chart |>
-        dplyr::slice_max(order_by = n, n = 10) |>
-        dplyr::arrange(n) |>
-        bar_echart(
-          title_lab = "Most frequent taxonomic groups found in the review",
-          x_lab = "Number of papers",
-          y_lab = "Taxonomic group"
+      category <- data_for_chart |>
+        dplyr::group_by(line_var) |>
+        dplyr::summarise(soma = sum(n)) |>
+        dplyr::arrange(desc(soma)) |>
+        dplyr::slice_max(order_by = soma, n = 10) |>
+        dplyr::pull(line_var)
+
+      data_for_series_plot <- data_for_chart |>
+        dplyr::filter(line_var %in% category) |>
+        dplyr::mutate(year_date = lubridate::as_date(paste0(year, "-01-01")))
+
+      bar_linechart(
+          data_for_series_plot = data_for_series_plot
         )
     })
 
