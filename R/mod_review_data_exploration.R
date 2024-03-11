@@ -58,7 +58,7 @@ mod_review_data_exploration_ui <- function(id) {
     ),
     fluidRow(
       bs4Dash::box(
-        title = "ExploreTrait - Dataset download",
+        title = "Dataset download",
         collapsible = TRUE,
         width = 12,
         mod_download_table_ui(ns("download_table_5")),
