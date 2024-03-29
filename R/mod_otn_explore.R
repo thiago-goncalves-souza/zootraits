@@ -32,43 +32,37 @@ mod_otn_explore_ui <- function(id) {
             inputId = ns("phylum_name"),
             label = "Phylum",
             choices = unique(otn_filter_cols$resolved_phylum_name),
-            selected = unique(otn_filter_cols$resolved_phylum_name),
-            multiple = TRUE, search = TRUE,
+            selected = NULL,
+            multiple = TRUE,
+            search = TRUE,
             width = 12
           ),
         ),
         fluidRow(
           picker_input(
-            inputId = ns("family_name"),
-            label = "Family",
-            choices = unique(otn_filter_cols$resolved_family_name),
-            selected = unique(otn_filter_cols$resolved_family_name),
-            multiple = TRUE, search = TRUE,
+            inputId = ns("class_name"),
+            label = "Class",
+            choices = unique(otn_filter_cols$class),
+            selected = NULL,
+            multiple = TRUE,
+            search = TRUE,
+            width = 12
+          ),
+        ),
+        fluidRow(
+          picker_input(
+            inputId = ns("order_name"),
+            label = "Order",
+            choices = unique(otn_filter_cols$order),
+            selected = NULL,
+            multiple = TRUE,
+            search = TRUE,
             width = 12
           ),
         ),
         fluidRow(
           shiny::actionButton(inputId = ns("search"), label = "Search")
         )
-        # fluidRow(
-        #   picker_input(
-        #     inputId = ns("genus_name"),
-        #     label = "Genus",
-        #     choices = unique(otn_filter_cols$resolved_genus_name),
-        #     selected = unique(otn_filter_cols$resolved_genus_name),
-        #     multiple = TRUE, width = 12, search = TRUE
-        #   )
-        # ),
-
-        # fluidRow(
-        #   picker_input(
-        #     inputId = ns("species_name"),
-        #     label = "Species",
-        #     choices = unique(otn_filter_cols$resolved_species_name),
-        #     selected = unique(otn_filter_cols$resolved_species_name),
-        #     multiple = TRUE, width = 12, search = TRUE
-        #   )
-        #   )
       )
     ),
     fluidRow(
@@ -91,72 +85,63 @@ mod_otn_explore_server <- function(id, otn_selected) {
   moduleServer(id, function(input, output, session) {
     ns <- session$ns
 
-    observeEvent(input$kingdom_name, ignoreInit = TRUE, {
-      filter_options <- otn_filter_cols |>
-        dplyr::filter(resolve_kingdom_name %in% input$kingdom_name) |>
-        dplyr::distinct(resolved_phylum_name) |>
-        dplyr::pull(resolved_phylum_name)
-
-      shinyWidgets::updatePickerInput(
-        session = session,
-        inputId = "phylum_name",
-        choices = filter_options,
-        selected = filter_options
-      )
-    })
-
-
     observeEvent(input$phylum_name, ignoreInit = TRUE, {
       filter_options <- otn_filter_cols |>
         dplyr::filter(resolved_phylum_name %in% input$phylum_name) |>
-        dplyr::distinct(resolved_family_name) |>
-        dplyr::pull(resolved_family_name)
+        dplyr::distinct(class) |>
+        dplyr::pull(class)
 
       shinyWidgets::updatePickerInput(
         session = session,
-        inputId = "family_name",
+        inputId = "class_name",
         choices = filter_options,
         selected = filter_options
       )
     })
 
 
-    # observeEvent(input$family_name, ignoreInit = TRUE, {
+    observeEvent(input$class_name, ignoreInit = TRUE, {
+      filter_options <- otn_filter_cols |>
+        dplyr::filter(class %in% input$class_name) |>
+        dplyr::distinct(order) |>
+        dplyr::pull(order)
 
-    #     filter_options <- otn_filter_cols |>
-    #     dplyr::filter(resolved_family_name %in% input$family_name) |>
-    #     dplyr::distinct(resolved_genus_name, resolved_species_name)
+      shinyWidgets::updatePickerInput(
+        session = session,
+        inputId = "order_name",
+        choices = filter_options,
+        selected = filter_options
+      )
+    })
 
-    #     shinyWidgets::updatePickerInput(
-    #       session = session,
-    #       inputId = "genus_name",
-    #       choices = unique(filter_options$resolved_genus_name),
-    #       selected = unique(filter_options$resolved_genus_name)
-    #     )
-    #     shinyWidgets::updatePickerInput(
-    #       session = session,
-    #       inputId = "species_name",
-    #       choices = unique(filter_options$resolved_species_name),
-    #       selected = unique(filter_options$resolved_species_name)
-    #     )
-
-
-    #   })
 
     otn_filtered <- reactive({
       input$search
       isolate({
-        req(input$phylum_name)
-        req(input$family_name)
-        filter_phylum <- input$phylum_name
-        filter_family <- input$family_name
+        filter_phylum <-
+          prepare_input_to_filter_null(
+            input_filter = input$phylum_name,
+            col_name = "resolved_phylum_name",
+            dataset = otn_filter_cols
+          )
+
+
+        filter_class <-
+          prepare_input_to_filter_null(input_filter = input$class,
+                                       col_name = "class",
+                                       dataset = otn_filter_cols)
+
+        filter_order <-
+          prepare_input_to_filter_null(input_filter = input$order,
+                                       col_name = "order",
+                                       dataset = otn_filter_cols)
 
         otn_selected |>
           dplyr::filter(
             resolved_phylum_name %in% filter_phylum,
-            resolved_family_name %in% filter_family
-          ) |>
-          dplyr::collect()
+            class %in% filter_class,
+            order %in% filter_order
+          )
       })
     })
 
@@ -167,7 +152,8 @@ mod_otn_explore_server <- function(id, otn_selected) {
         dplyr::arrange(
           dataset_id,
           resolved_phylum_name,
-          resolved_family_name,
+          class,
+          order,
           resolved_genus_name,
           resolved_species_name,
           resolved_trait_name
@@ -185,7 +171,8 @@ mod_otn_explore_server <- function(id, otn_selected) {
         dplyr::select(
           dataset,
           resolved_phylum_name,
-          resolved_family_name,
+          class,
+          order,
           resolved_genus_name,
           resolved_species_name,
           resolved_trait_name,
@@ -202,7 +189,8 @@ mod_otn_explore_server <- function(id, otn_selected) {
           columns =
             list(
               resolved_phylum_name = reactable::colDef(name = "Phylum"),
-              resolved_family_name = reactable::colDef(name = "Family"),
+              class = reactable::colDef(name = "Class"),
+              order = reactable::colDef(name = "Order"),
               resolved_genus_name = reactable::colDef(name = "Genus", html = TRUE),
               resolved_species_name = reactable::colDef(name = "Species", html = TRUE),
               resolved_trait_name = reactable::colDef(name = "Trait"),
