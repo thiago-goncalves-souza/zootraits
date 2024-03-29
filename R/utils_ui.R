@@ -42,6 +42,17 @@ prepare_input_to_filter <- function(col) {
   col |> janitor::make_clean_names()
 }
 
+
+prepare_input_to_filter_taxonomic_group <- function(input_filtro, col_name, dataset) {
+
+  if(length(input_filtro) == 0){
+
+    input_filtro <- unique(dataset[[col_name]])
+  }
+
+  unique(input_filtro)
+}
+
 # utils to prepare table -------
 
 prepare_wide_col <- function(col) {

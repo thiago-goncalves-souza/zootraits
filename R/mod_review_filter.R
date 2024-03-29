@@ -20,7 +20,7 @@ mod_review_filter_ui <- function(id) {
             inputId = ns("taxonomic_group"),
             label =  "Taxonomic group",
             choices = options_input(complete_review_data$taxonomic_group),
-            selected =  options_input(complete_review_data$taxonomic_group)
+            selected =  NULL
           ),
           picker_input(
             inputId = ns("ecosystem"),
@@ -73,15 +73,23 @@ mod_review_filter_server <- function(id) {
     review_dataset <- reactive({
       input$search
       isolate({
-        req(input$taxonomic_group)
         req(input$ecosystem)
         req(input$study_scale)
         req(input$trait_type)
         req(input$trait_dimension)
 
+
+        taxonomic_group_filtrar <-
+          prepare_input_to_filter_taxonomic_group(
+            input_filtro = input$taxonomic_group,
+            col_name = "taxonomic_group",
+            dataset = complete_review_data
+          )
+
+
         complete_review_data |>
           dplyr::filter(
-            taxonomic_group %in% input$taxonomic_group
+            taxonomic_group %in% taxonomic_group_filtrar
           ) |>
           dplyr::filter(
             ecosystem %in% prepare_input_to_filter(input$ecosystem),
