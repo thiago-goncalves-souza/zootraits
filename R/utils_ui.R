@@ -43,14 +43,14 @@ prepare_input_to_filter <- function(col) {
 }
 
 
-prepare_input_to_filter_taxonomic_group <- function(input_filtro, col_name, dataset) {
+prepare_input_to_filter_null <- function(input_filter, col_name, dataset) {
 
-  if(length(input_filtro) == 0){
+  if(length(input_filter) == 0){
 
-    input_filtro <- unique(dataset[[col_name]])
+    input_filter <- unique(dataset[[col_name]])
   }
 
-  unique(input_filtro)
+  unique(input_filter)
 }
 
 # utils to prepare table -------

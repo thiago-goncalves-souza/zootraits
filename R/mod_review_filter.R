@@ -80,8 +80,8 @@ mod_review_filter_server <- function(id) {
 
 
         taxonomic_group_filtrar <-
-          prepare_input_to_filter_taxonomic_group(
-            input_filtro = input$taxonomic_group,
+          prepare_input_to_filter_null(
+            input_filter = input$taxonomic_group,
             col_name = "taxonomic_group",
             dataset = complete_review_data
           )
