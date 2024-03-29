@@ -198,7 +198,7 @@ mod_otn_explore_server <- function(id, otn_selected) {
         reactable::reactable(
           sortable = TRUE,
           showSortable = TRUE,
-          searchable = TRUE,
+          searchable = FALSE,
           columns =
             list(
               resolved_phylum_name = reactable::colDef(name = "Phylum"),
