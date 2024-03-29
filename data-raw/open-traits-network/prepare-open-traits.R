@@ -1,29 +1,16 @@
 # download data from
 # https://github.com/open-traits-network/otn-taxon-trait-summary/blob/main/traits.csv.gz
-
 otn_raw <- readr::read_csv("data-raw/open-traits-network/traits.csv")
 
-# there are 23 datasets!
-# otn_raw |>
-#   dplyr::distinct(datasetId)
-#
-# # explore how many observations we have per kingdom
-# otn_raw |>
-#   dplyr::count(resolveKingdomName)
-#
-# # explore the missing values
-# naniar::gg_miss_var(otn_raw, show_pct = TRUE)
-
-# export the missing values in Kingdom
-# otn_raw |>
-#   dplyr::filter(is.na(resolveKingdomName)) |>
-#   dplyr::count(resolvedPhylumName, resolvedTaxonName, resolvedFamilyName, resolvedName, sort = TRUE) |>
-#   dplyr::slice_head(n = 1000) |>
-#   writexl::write_xlsx("data-raw/open-traits-network/missing-kingdom.xlsx")
+# This file was created by Thiago:
+ranked_taxon <-
+  readxl::read_xlsx("data-raw/open-traits-network/ranked_taxon.xlsx") |>
+  janitor::clean_names() |>
+  dplyr::select(phylum, class, order, family) |>
+  dplyr::distinct()
 
 
-
-otn_selected <- otn_raw |>
+otn_filtered <- otn_raw |>
   # filter only the animal kingdom
   dplyr::filter(resolveKingdomName == "Animalia") |>
   # remove columns that are not needed
@@ -44,7 +31,13 @@ otn_selected <- otn_raw |>
     remove = FALSE
   )
 
-dplyr::glimpse(otn_selected)
+ranked_taxon |>
+  janitor::get_dupes(phylum, family)
+
+otn_selected <- otn_filtered |>
+  dplyr::left_join(ranked_taxon,
+                   by = c("resolved_phylum_name" = "phylum",
+                          "resolved_family_name" = "family"))
 
 nrow(otn_selected)
 names(otn_selected)
@@ -55,8 +48,12 @@ usethis::use_data(otn_selected, overwrite = TRUE)
 
 otn_filter_cols <- otn_selected |>
   dplyr::distinct(
-    resolved_phylum_name, resolved_family_name, resolved_name, resolved_genus_name, resolved_species_name
+    resolved_phylum_name,
+    class,
+    order
   ) |>
-  dplyr::arrange(resolved_phylum_name, resolved_family_name, resolved_genus_name)
+  dplyr::arrange(resolved_phylum_name,
+                 class,
+                 order)
 
 usethis::use_data(otn_filter_cols, overwrite = TRUE)
