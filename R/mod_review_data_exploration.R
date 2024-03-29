@@ -96,6 +96,7 @@ mod_review_data_exploration_server <- function(id) {
 
       data_for_series_plot <- data_for_chart |>
         dplyr::filter(line_var %in% category) |>
+        dplyr::filter(year <= 2020) |>
         dplyr::mutate(year_date = lubridate::as_date(paste0(year, "-01-01")))
 
       bar_linechart(
