@@ -81,7 +81,7 @@ mod_otn_explore_ui <- function(id) {
 #' otn Server Functions
 #'
 #' @noRd
-mod_otn_explore_server <- function(id, otn_selected) {
+mod_otn_explore_server <- function(id, prepared_gt_otn) {
   moduleServer(id, function(input, output, session) {
     ns <- session$ns
 
@@ -136,7 +136,7 @@ mod_otn_explore_server <- function(id, otn_selected) {
                                        col_name = "order",
                                        dataset = otn_filter_cols)
 
-        otn_selected |>
+        prepared_gt_otn |>
           dplyr::filter(
             resolved_phylum_name %in% filter_phylum,
             class %in% filter_class,
