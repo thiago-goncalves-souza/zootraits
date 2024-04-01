@@ -52,7 +52,7 @@ app_ui <- function(request) {
           bs4Dash::bs4SidebarMenuItem(
             text = "GetTrait",
             icon = icon("table"),
-            tabName = "otn_explore"
+            tabName = "get_trait"
           ),
           bs4Dash::bs4SidebarMenuItem(
             text = "About",
@@ -83,8 +83,8 @@ app_ui <- function(request) {
             mod_review_add_paper_ui("review_add_paper_1")
           ),
           bs4Dash::bs4TabItem(
-            tabName = "otn_explore",
-            mod_get_traits_ui("mod_get_traits_1")
+            tabName = "get_trait",
+            mod_get_trait_ui("mod_get_trait_1")
           ),
           bs4Dash::bs4TabItem(
             tabName = "about",

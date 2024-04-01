@@ -54,16 +54,11 @@ prepared_gt_otn <- otn_filtered |>
       "resolved_phylum_name" = "phylum",
       "resolved_family_name" = "family"
     )
-  )
+  ) |>
+  dplyr::mutate(
+    dataset = "otn", .before = tidyselect::everything()
+  ) |>
+  dplyr::rename_with(.fn = ~stringr::str_remove(.x, "resolved_") |>
+                      stringr::str_remove("_name"))
 
 usethis::use_data(prepared_gt_otn, overwrite = TRUE)
-
-otn_filter_cols <- prepared_gt_otn |>
-  dplyr::distinct(resolved_phylum_name,
-                  class,
-                  order) |>
-  dplyr::arrange(resolved_phylum_name,
-                 class,
-                 order)
-
-usethis::use_data(otn_filter_cols, overwrite = TRUE)

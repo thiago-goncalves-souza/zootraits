@@ -8,7 +8,7 @@
 #'
 #' @importFrom shiny NS tagList
 #'
-mod_get_traits_ui <- function(id) {
+mod_get_trait_ui <- function(id) {
   ns <- NS(id)
 
   tagList(
@@ -18,7 +18,7 @@ mod_get_traits_ui <- function(id) {
         collapsible = FALSE,
         width = 12,
         shiny::tags$p(
-          htmltools::includeMarkdown(app_sys("app/www/md/otn.md"))
+          htmltools::includeMarkdown(app_sys("app/www/md/get-traits.md"))
         )
       )
     ),
@@ -29,9 +29,21 @@ mod_get_traits_ui <- function(id) {
         width = 12,
         fluidRow(
           picker_input(
+            inputId = ns("dataset_name"),
+            label = "Dataset",
+            choices = list("AnimalTraits" =  "AnimalTraits",
+                        "Open Traits Network (OTN)" = "otn"),
+            selected = list("AnimalTraits" = "AnimalTraits"),
+            multiple = FALSE,
+            search = TRUE,
+            width = 12
+          ),
+        ),
+        fluidRow(
+          picker_input(
             inputId = ns("phylum_name"),
             label = "Phylum",
-            choices = unique(otn_filter_cols$resolved_phylum_name),
+            choices = unique(gt_filter_cols$phylum),
             selected = NULL,
             multiple = TRUE,
             search = TRUE,
@@ -42,7 +54,7 @@ mod_get_traits_ui <- function(id) {
           picker_input(
             inputId = ns("class_name"),
             label = "Class",
-            choices = unique(otn_filter_cols$class),
+            choices = unique(gt_filter_cols$class),
             selected = NULL,
             multiple = TRUE,
             search = TRUE,
@@ -53,7 +65,7 @@ mod_get_traits_ui <- function(id) {
           picker_input(
             inputId = ns("order_name"),
             label = "Order",
-            choices = unique(otn_filter_cols$order),
+            choices = unique(gt_filter_cols$order),
             selected = NULL,
             multiple = TRUE,
             search = TRUE,
@@ -81,13 +93,14 @@ mod_get_traits_ui <- function(id) {
 #' otn Server Functions
 #'
 #' @noRd
-mod_get_traits_server <- function(id, prepared_gt_otn) {
+mod_get_trait_server <- function(id, prepared_gt_otn) {
   moduleServer(id, function(input, output, session) {
     ns <- session$ns
 
     observeEvent(input$phylum_name, ignoreInit = TRUE, {
-      filter_options <- otn_filter_cols |>
-        dplyr::filter(resolved_phylum_name %in% input$phylum_name) |>
+      filter_options <- gt_filter_cols |>
+        dplyr::filter(dataset == input$dataset_name) |>
+        dplyr::filter(phylum %in% input$phylum_name) |>
         dplyr::distinct(class) |>
         dplyr::pull(class)
 
@@ -101,7 +114,8 @@ mod_get_traits_server <- function(id, prepared_gt_otn) {
 
 
     observeEvent(input$class_name, ignoreInit = TRUE, {
-      filter_options <- otn_filter_cols |>
+      filter_options <- gt_filter_cols |>
+        dplyr::filter(dataset == input$dataset_name) |>
         dplyr::filter(class %in% input$class_name) |>
         dplyr::distinct(order) |>
         dplyr::pull(order)
@@ -115,67 +129,67 @@ mod_get_traits_server <- function(id, prepared_gt_otn) {
     })
 
 
-    otn_filtered <- reactive({
+    dataset_filtered <- reactive({
       input$search
       isolate({
         filter_phylum <-
           prepare_input_to_filter_null(
             input_filter = input$phylum_name,
-            col_name = "resolved_phylum_name",
-            dataset = otn_filter_cols
+            col_name = "phylum",
+            dataset = gt_filter_cols
           )
 
 
         filter_class <-
           prepare_input_to_filter_null(input_filter = input$class,
                                        col_name = "class",
-                                       dataset = otn_filter_cols)
+                                       dataset = gt_filter_cols)
 
         filter_order <-
           prepare_input_to_filter_null(input_filter = input$order,
                                        col_name = "order",
-                                       dataset = otn_filter_cols)
+                                       dataset = gt_filter_cols)
 
         prepared_gt_otn |>
           dplyr::filter(
-            resolved_phylum_name %in% filter_phylum,
+            phylum %in% filter_phylum,
             class %in% filter_class,
             order %in% filter_order
           )
       })
     })
 
-    mod_download_table_server("download_table_1", otn_filtered(), prefix = "Zootraits_OTN")
+    mod_download_table_server("download_table_1", dataset_filtered(), prefix = "Zootraits_GetTrait_")
 
     output$table <- reactable::renderReactable({
-      prepared_data <- otn_filtered() |>
+      prepared_data <- dataset_filtered() |>
         dplyr::arrange(
           dataset_id,
-          resolved_phylum_name,
+          phylum,
           class,
           order,
-          resolved_genus_name,
-          resolved_species_name,
-          resolved_trait_name
+          genus,
+          species,
+          trait
         ) |>
         dplyr::distinct() |>
         dplyr::mutate(
           dataset_id_short = stringr::str_remove(dataset_id, "https://opentraits.org/datasets/") |>
             stringr::str_to_upper(),
           dataset = glue::glue("<a href='{dataset_id}' target='_blank'>{dataset_id_short}</a>"),
-          url_html = glue::glue("<a href='{resolved_external_url}' target='_blank'>{resolved_external_url}</a>"),
-          resolved_species_name = tidyr::replace_na(resolved_species_name, ""),
-          resolved_genus_name = paste0("<i>", resolved_genus_name, "</i>"),
-          resolved_species_name = paste0("<i>", resolved_species_name, "</i>")
+          url_html = glue::glue("<a href='{external_url}' target='_blank'>{external_url}</a>"),
+          species = tidyr::replace_na(species, ""),
+          genus = paste0("<i>", genus, "</i>"),
+          species = paste0("<i>", species, "</i>")
         ) |>
         dplyr::select(
           dataset,
-          resolved_phylum_name,
+          phylum,
           class,
           order,
-          resolved_genus_name,
-          resolved_species_name,
-          resolved_trait_name,
+          genus,
+          species,
+          trait,
           url_html
         )
 
@@ -188,12 +202,12 @@ mod_get_traits_server <- function(id, prepared_gt_otn) {
           searchable = FALSE,
           columns =
             list(
-              resolved_phylum_name = reactable::colDef(name = "Phylum"),
+              phylum = reactable::colDef(name = "Phylum"),
               class = reactable::colDef(name = "Class"),
               order = reactable::colDef(name = "Order"),
-              resolved_genus_name = reactable::colDef(name = "Genus", html = TRUE),
-              resolved_species_name = reactable::colDef(name = "Species", html = TRUE),
-              resolved_trait_name = reactable::colDef(name = "Trait"),
+              genus = reactable::colDef(name = "Genus", html = TRUE),
+              species = reactable::colDef(name = "Species", html = TRUE),
+              trait = reactable::colDef(name = "Trait"),
               url_html = reactable::colDef(name = "URL", html = TRUE),
               dataset = reactable::colDef(name = "Dataset", html = TRUE)
             )

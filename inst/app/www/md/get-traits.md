@@ -1,4 +1,4 @@
-The dataset available in this section is from the **<a href='https://opentraits.org/' target="_blank">Open Traits Network (OTN)</a>**. 
+The datasets available in this section are from the **<a href='https://opentraits.org/' target="_blank">Open Traits Network (OTN)</a>** and **<a href='https://animaltraits.org/' target='_blank'>AnimalTraits</a>** dabatases. 
 
 <details style="margin-bottom:10px;">
 <summary>
