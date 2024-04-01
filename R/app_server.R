@@ -11,7 +11,7 @@ app_server <- function(input, output, session) {
   mod_about_server("about_1")
   mod_homepage_server("homepage_1")
   mod_review_metadata_server("review_metadata_1")
-  mod_otn_explore_server("otn_explore_1", prepared_gt_otn)
+  mod_get_traits_server("mod_get_traits_1", prepared_gt_otn)
   mod_review_add_paper_server("review_add_paper_1")
   mod_feedtrait_add_with_file_server("feedtrait_add_with_file_1")
 }

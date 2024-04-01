@@ -8,7 +8,7 @@
 #'
 #' @importFrom shiny NS tagList
 #'
-mod_otn_explore_ui <- function(id) {
+mod_get_traits_ui <- function(id) {
   ns <- NS(id)
 
   tagList(
@@ -81,7 +81,7 @@ mod_otn_explore_ui <- function(id) {
 #' otn Server Functions
 #'
 #' @noRd
-mod_otn_explore_server <- function(id, prepared_gt_otn) {
+mod_get_traits_server <- function(id, prepared_gt_otn) {
   moduleServer(id, function(input, output, session) {
     ns <- session$ns
 

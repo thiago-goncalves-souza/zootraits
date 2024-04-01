@@ -84,7 +84,7 @@ app_ui <- function(request) {
           ),
           bs4Dash::bs4TabItem(
             tabName = "otn_explore",
-            mod_otn_explore_ui("otn_explore_1")
+            mod_get_traits_ui("mod_get_traits_1")
           ),
           bs4Dash::bs4TabItem(
             tabName = "about",
