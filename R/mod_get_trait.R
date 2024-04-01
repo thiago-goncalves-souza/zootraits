@@ -150,7 +150,16 @@ mod_get_trait_server <- function(id, prepared_gt_otn) {
                                        col_name = "order",
                                        dataset = gt_filter_cols)
 
-        prepared_gt_otn |>
+        if(input$dataset_name == "otn"){
+          dados <- prepared_gt_otn
+        } else if(input$dataset_name == "AnimalTraits"){
+          dados <- prepared_gt_animal_traits
+        }
+
+        # browser()
+        # TO DO: Filtro está estranho
+
+        dados |>
           dplyr::filter(
             phylum %in% filter_phylum,
             class %in% filter_class,
@@ -164,7 +173,7 @@ mod_get_trait_server <- function(id, prepared_gt_otn) {
     output$table <- reactable::renderReactable({
       prepared_data <- dataset_filtered() |>
         dplyr::arrange(
-          dataset_id,
+          dataset_url,
           phylum,
           class,
           order,
@@ -174,9 +183,9 @@ mod_get_trait_server <- function(id, prepared_gt_otn) {
         ) |>
         dplyr::distinct() |>
         dplyr::mutate(
-          dataset_id_short = stringr::str_remove(dataset_id, "https://opentraits.org/datasets/") |>
+          dataset_url_short = stringr::str_remove(dataset_url, "https://opentraits.org/datasets/") |>
             stringr::str_to_upper(),
-          dataset = glue::glue("<a href='{dataset_id}' target='_blank'>{dataset_id_short}</a>"),
+          dataset = glue::glue("<a href='{dataset_url}' target='_blank'>{dataset_url_short}</a>"),
           url_html = glue::glue("<a href='{external_url}' target='_blank'>{external_url}</a>"),
           species = tidyr::replace_na(species, ""),
           genus = paste0("<i>", genus, "</i>"),

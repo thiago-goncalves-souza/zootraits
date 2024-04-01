@@ -59,6 +59,7 @@ prepared_gt_otn <- otn_filtered |>
     dataset = "otn", .before = tidyselect::everything()
   ) |>
   dplyr::rename_with(.fn = ~stringr::str_remove(.x, "resolved_") |>
-                      stringr::str_remove("_name"))
+                      stringr::str_remove("_name")) |>
+  dplyr::rename(dataset_url = dataset_id)
 
 usethis::use_data(prepared_gt_otn, overwrite = TRUE)
