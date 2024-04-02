@@ -1,3 +1,11 @@
+# zootraits 1.0.3
+
+* Data from [AnimalTraits](https://animaltraits.org/) database was added to GetTrait.
+
+* GetTrait - Now that we have more than one database, in order to let everything well organized, we had to rename some files and code.
+
+* GetTrait - In the table, when the DOI is not available, the URL is a Google Search for the name of the paper.
+
 # zootraits 1.0.2
 
 Changes suggested by the reviewers of the manuscript.
@@ -12,14 +20,13 @@ Changes suggested by the reviewers of the manuscript.
 
 * ExploreTrait - The filter for taxonomic groups now is empty when the App starts.
 
-* GetTraits - Removed the search option in the table.
+* GetTrait - Removed the search option in the table.
 
-* GetTraits - Changes in the data: now there is information about Class and Order.
+* GetTrait - Changes in the data: now there is information about Class and Order.
 
-* GetTraits - Now there is possible to filter by Class and Order. Removed the filter by Family. 
+* GetTrait - Now there is possible to filter by Class and Order. Removed the filter by Family. 
 
-* GetTraits - The table shows information about Class and Order. There is no column about Family anymore.
-
+* GetTrait - The table shows information about Class and Order. There is no column about Family anymore.
 
 * About - Added Beatriz Milz in the list of authors.
 
