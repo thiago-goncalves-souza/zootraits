@@ -1,37 +1,28 @@
 The datasets available in this section are from the **<a href='https://opentraits.org/' target="_blank">Open Traits Network (OTN)</a>** and **<a href='https://animaltraits.org/' target='_blank'>AnimalTraits</a>** dabatases. 
 
+**About the source of the datasets**:
+
 <details style="margin-bottom:10px;">
 <summary>
-Click here to read a brief description of the OTN and its goals, from their website.
+About Open Traits Network (OTN)
 </summary>
 
-The **<a href='https://opentraits.org/' target="_blank">Open Traits Network (OTN)</a>** is a global, decentralised <a href='https://opentraits.org/members' target="_blank">community of researchers</a> and institutions who welcomes anyone working towards standardising and integrating trait data across all organisms. We are guided by the principles of Open Science, particularly Open Methods, Open Source and Open Data. We believe that five key principles built upon Open Science ideals could be transformative for trait science:
+<br>
 
+The **<a href='https://opentraits.org/' target="_blank">Open Traits Network (OTN)</a>** is a global, decentralised <a href='https://opentraits.org/members' target="_blank">community of researchers</a> and institutions who welcomes anyone working towards standardising and integrating trait data across all organisms. We are guided by the principles of Open Science, particularly Open Methods, Open Source and Open Data. 
 
-- Openly sharing data, methods, protocols, code, and workflows;
+</details>
 
-- Appropriately citing original data collectors, and providing scholarly credit;
+<details style="margin-bottom:10px;">
+<summary>
+About AnimalTraits
+</summary>
 
-- Providing appropriate metadata together with trait observations;
+<br> 
 
-- Collecting of trait data following reproducible, standardised methods and protocols (when available) or committing to their development;
+**<a href='https://animaltraits.org/' target='_blank'>AnimalTraits</a>** is a curated database containing body mass, metabolic rate and brain size measurements across a wide range of terrestrial animal taxa. The database is described in the paper:
 
-- Providing training resources in trait collection and database construction using Open Science principles.
-
-
-The OTN seeks to undertake five key activities as a starting point for the synthesis of trait data, which are:
-
-- Maintaining a global registry of trait-based initiatives
-
-- Sharing reproducible workflows and tools for aggregating trait data
-
-- Advocating for a free flow of data and appropriate recognition of efforts
-
-- Creating a trait core to facilitate synthesis and standardisation
-
-- Facilitating consistent approaches to measuring traits within major groups
-
-Please visit our <a href='https://opentraits.org/members' target="_blank">members pages</a> to see a list of our current members. This page also has instructions on how you can join the Open Traits Network and offer your expertise and knowledge in the pursuit of a harmonised and curated trait dataset across all organisms.
+<a href='https://www.nature.com/articles/s41597-022-01364-9' target='_blank'>Herberstein, M.E., McLean, D.J., Lowe, E. *et al.* AnimalTraits - a curated animal trait database for body mass, metabolic rate and brain size. *Sci Data* **9**, 265 (2022). https://doi.org/10.1038/s41597-022-01364-9</a>
 
 
 </details>
