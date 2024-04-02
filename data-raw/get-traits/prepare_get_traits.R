@@ -1,3 +1,4 @@
+devtools::load_all()
 
 gt_filter_cols <- prepared_gt_otn |>
   dplyr::bind_rows(prepared_gt_animal_traits) |>

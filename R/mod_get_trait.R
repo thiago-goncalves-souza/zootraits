@@ -183,10 +183,12 @@ mod_get_trait_server <- function(id, prepared_gt_otn) {
         ) |>
         dplyr::distinct() |>
         dplyr::mutate(
-          dataset_url_short = stringr::str_remove(dataset_url, "https://opentraits.org/datasets/") |>
-            stringr::str_to_upper(),
+          dataset_url_short = dplyr::case_when(
+            dataset == "AnimalTraits" ~ "Animal Traits",
+            TRUE ~ stringr::str_remove(dataset_url, "https://opentraits.org/datasets/") |>
+            stringr::str_to_upper()),
           dataset = glue::glue("<a href='{dataset_url}' target='_blank'>{dataset_url_short}</a>"),
-          url_html = glue::glue("<a href='{external_url}' target='_blank'>{external_url}</a>"),
+          url_html = glue::glue("<a href='{external_url}' target='_blank'><button type='button' class='btn btn-link'>Click here</button></a>"),
           species = tidyr::replace_na(species, ""),
           genus = paste0("<i>", genus, "</i>"),
           species = paste0("<i>", species, "</i>")
@@ -217,7 +219,7 @@ mod_get_trait_server <- function(id, prepared_gt_otn) {
               genus = reactable::colDef(name = "Genus", html = TRUE),
               species = reactable::colDef(name = "Species", html = TRUE),
               trait = reactable::colDef(name = "Trait"),
-              url_html = reactable::colDef(name = "URL", html = TRUE),
+              url_html = reactable::colDef(name = "Read more", html = TRUE),
               dataset = reactable::colDef(name = "Dataset", html = TRUE)
             )
         )
