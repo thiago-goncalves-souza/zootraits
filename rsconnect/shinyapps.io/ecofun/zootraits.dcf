@@ -5,9 +5,7 @@ account: ecofun
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 9903508
-bundleId: 7847732
+bundleId: 8447187
 url: https://ecofun.shinyapps.io/zootraits/
-when: 1698183345.8195
-lastSyncTime: 1698183345.81951
 asMultiple: FALSE
 asStatic: FALSE
