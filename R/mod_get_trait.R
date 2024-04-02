@@ -43,7 +43,7 @@ mod_get_trait_ui <- function(id) {
           picker_input(
             inputId = ns("phylum_name"),
             label = "Phylum",
-            choices = unique(gt_filter_cols$phylum),
+            choices = NULL,
             selected = NULL,
             multiple = TRUE,
             search = TRUE,
@@ -54,7 +54,7 @@ mod_get_trait_ui <- function(id) {
           picker_input(
             inputId = ns("class_name"),
             label = "Class",
-            choices = unique(gt_filter_cols$class),
+            choices = NULL,
             selected = NULL,
             multiple = TRUE,
             search = TRUE,
@@ -65,7 +65,7 @@ mod_get_trait_ui <- function(id) {
           picker_input(
             inputId = ns("order_name"),
             label = "Order",
-            choices = unique(gt_filter_cols$order),
+            choices = NULL,
             selected = NULL,
             multiple = TRUE,
             search = TRUE,
@@ -96,6 +96,21 @@ mod_get_trait_ui <- function(id) {
 mod_get_trait_server <- function(id, prepared_gt_otn) {
   moduleServer(id, function(input, output, session) {
     ns <- session$ns
+
+    observeEvent(input$dataset_name, ignoreInit = FALSE, {
+      filter_options <- gt_filter_cols |>
+        dplyr::filter(dataset == input$dataset_name) |>
+        dplyr::distinct(phylum) |>
+        dplyr::arrange(phylum) |>
+        dplyr::pull(phylum)
+
+      shinyWidgets::updatePickerInput(
+        session = session,
+        inputId = "phylum_name",
+        choices = filter_options,
+        selected = NULL
+      )
+    })
 
     observeEvent(input$phylum_name, ignoreInit = TRUE, {
       filter_options <- gt_filter_cols |>
@@ -155,9 +170,6 @@ mod_get_trait_server <- function(id, prepared_gt_otn) {
         } else if(input$dataset_name == "AnimalTraits"){
           dados <- prepared_gt_animal_traits
         }
-
-        # browser()
-        # TO DO: Filtro está estranho
 
         dados |>
           dplyr::filter(

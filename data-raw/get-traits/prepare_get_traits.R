@@ -5,8 +5,12 @@ gt_filter_cols <- prepared_gt_otn |>
   dplyr::distinct(dataset, phylum,
                   class,
                   order) |>
-  dplyr::arrange(dataset, phylum,
+  dplyr::arrange(phylum,
                  class,
-                 order)
+                 order) |>
+  dplyr::mutate(
+    class = dplyr::na_if(class, "NA"),
+    order = dplyr::na_if(order, "NA")
+  )
 
 usethis::use_data(gt_filter_cols, overwrite = TRUE)
