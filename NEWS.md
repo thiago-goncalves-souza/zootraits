@@ -6,6 +6,8 @@
 
 * GetTrait - In the table, when the DOI is not available, the URL is a Google Search for the name of the paper.
 
+* GetTrait - Removed the `try` dataset from OTN: it contains traits from plants.
+
 # zootraits 1.0.2
 
 Changes suggested by the reviewers of the manuscript.

@@ -14,6 +14,8 @@ ranked_taxon <-
 otn_filtered <- otn_raw |>
   # filter only the animal kingdom
   dplyr::filter(resolveKingdomName == "Animalia") |>
+  # Removing try dataset: there are plants on it.
+  dplyr::filter(datasetId != "https://opentraits.org/datasets/try") |>
   # remove columns that are not needed
   dplyr::select(
     -curator,
