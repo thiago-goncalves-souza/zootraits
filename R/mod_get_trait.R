@@ -123,7 +123,7 @@ mod_get_trait_server <- function(id, prepared_gt_otn) {
         session = session,
         inputId = "class_name",
         choices = filter_options,
-        selected = filter_options
+        selected = NULL
       )
     })
 
@@ -139,7 +139,7 @@ mod_get_trait_server <- function(id, prepared_gt_otn) {
         session = session,
         inputId = "order_name",
         choices = filter_options,
-        selected = filter_options
+        selected = NULL
       )
     })
 
