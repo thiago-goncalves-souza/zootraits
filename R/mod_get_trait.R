@@ -213,6 +213,7 @@ mod_get_trait_server <- function(id, prepared_gt_otn) {
           genus,
           species,
           trait,
+          `Trait Value` = tidyselect::any_of("trait_value"),
           url_html
         )
 
