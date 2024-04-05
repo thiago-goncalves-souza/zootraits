@@ -34,7 +34,7 @@ mod_download_table_server <- function(id, dataset, prefix = "Zootraits_review") 
         paste(prefix, "-", Sys.Date(), ".csv", sep = "")
       },
       content = function(file) {
-        readr::write_csv(dataset, file)
+        readr::write_csv(dataset(), file)
       }
     )
   })

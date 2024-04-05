@@ -203,7 +203,7 @@ mod_review_data_exploration_server <- function(id) {
         )
     })
 
-     mod_download_table_server("download_table_5", review_dataset())
+     mod_download_table_server("download_table_5", review_dataset)
 
     output$table <- reactable::renderReactable({
       prepared_data <- review_dataset() |>

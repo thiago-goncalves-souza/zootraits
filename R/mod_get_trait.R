@@ -180,7 +180,9 @@ mod_get_trait_server <- function(id, prepared_gt_otn) {
       })
     })
 
-    mod_download_table_server("download_table_1", dataset_filtered(), prefix = "Zootraits_GetTrait_")
+    mod_download_table_server("download_table_1",
+                              dataset_filtered,
+                              prefix = "Zootraits_GetTrait_")
 
     output$table <- reactable::renderReactable({
       prepared_data <- dataset_filtered() |>
