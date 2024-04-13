@@ -177,7 +177,8 @@ mod_review_data_exploration_server <- function(id) {
     })
 
     # Tree map chart ----------------------------------------------
-    output$chart_traits <- echarts4r::renderEcharts4r({
+
+    data_for_tree_map_chart <-  reactive({
       data_tidy <- review_dataset() |>
         tidyr::separate_longer_delim(cols = "trait_details", delim = ";") |>
         dplyr::mutate(
@@ -198,13 +199,20 @@ mod_review_data_exploration_server <- function(id) {
         prepare_data_for_treemap_echart(x_var = "general_trait", color = "trait_dimension") |>
         dplyr::filter(name != "Other")
 
+      data_for_tree_map
 
-      mod_download_table_server("download_table_4", data_for_tree_map_fun,
+    })
+
+
+      mod_download_table_server("download_table_4", data_for_tree_map_chart,
         prefix = "data_for_general_trait_chart"
       )
 
 
-      data_for_tree_map |>
+
+    output$chart_traits <- echarts4r::renderEcharts4r({
+
+      data_for_tree_map_chart() |>
         treemap_echart(
           title_lab = "Number of papers where each trait appeared in the review"
         )
