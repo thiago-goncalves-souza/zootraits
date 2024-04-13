@@ -131,7 +131,7 @@ bar_echart <- function(data_prepared, x_lab = "", y_lab = "",
 }
 
 bar_linechart <- function(data_for_series_plot,
-                         title_lab = "Number o papers published - Most frequent taxonomic groups",
+                         title_lab = "Number of papers published - Most frequent taxonomic groups",
                          x_lab = "Year",
                          y_lab = "Cumulative sum of papers"){
   if (nrow(data_for_series_plot) > 0) {
