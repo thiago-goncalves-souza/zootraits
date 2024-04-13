@@ -85,12 +85,12 @@ mod_review_data_exploration_server <- function(id) {
 
 
     mod_download_table_server("download_table_chart_taxonomic_groups",
-                              data_for_taxonomic_group_chart,
-                              prefix = "data_for_taxonomic_group_chart")
+      data_for_taxonomic_group_chart,
+      prefix = "data_for_taxonomic_group_chart"
+    )
 
 
     output$chart_taxonomic_groups <- echarts4r::renderEcharts4r({
-
       category <- data_for_taxonomic_group_chart() |>
         dplyr::group_by(line_var) |>
         dplyr::summarise(soma = sum(n)) |>
@@ -104,8 +104,8 @@ mod_review_data_exploration_server <- function(id) {
         dplyr::mutate(year_date = lubridate::as_date(paste0(year, "-01-01")))
 
       bar_linechart(
-          data_for_series_plot = data_for_series_plot
-        )
+        data_for_series_plot = data_for_series_plot
+      )
     })
 
     # Trait dimensions chart ----------------------------------------------
@@ -115,18 +115,21 @@ mod_review_data_exploration_server <- function(id) {
     })
 
     mod_download_table_server("download_table_chart_trait_dimension",
-                              data_for_trait_dimensions_chart,
-                              prefix = "data_for_trait_dimension_chart")
+      data_for_trait_dimensions_chart,
+      prefix = "data_for_trait_dimension_chart"
+    )
 
     output$chart_trait_dimension <- echarts4r::renderEcharts4r({
       data_for_trait_dimensions_chart() |>
-        bar_echart(title_lab = "Most frequent trait dimensions found in the review",
-                   x_lab = "Number of papers",
-                   y_lab = "Trait dimension") |>
+        bar_echart(
+          title_lab = "Most frequent trait dimensions found in the review",
+          x_lab = "Number of papers",
+          y_lab = "Trait dimension"
+        ) |>
         echarts4r::e_add_nested("itemStyle", color)
     })
 
-        # Map ----------------------------------------------
+    # Map ----------------------------------------------
     output$map <- leaflet::renderLeaflet({
       review_map_data |>
         dplyr::mutate(
@@ -178,7 +181,7 @@ mod_review_data_exploration_server <- function(id) {
 
     # Tree map chart ----------------------------------------------
 
-    data_for_tree_map_chart <-  reactive({
+    data_for_tree_map_chart <- reactive({
       data_tidy <- review_dataset() |>
         tidyr::separate_longer_delim(cols = "trait_details", delim = ";") |>
         dplyr::mutate(
@@ -200,19 +203,17 @@ mod_review_data_exploration_server <- function(id) {
         dplyr::filter(name != "Other")
 
       data_for_tree_map
-
     })
 
 
-      mod_download_table_server("download_table_tree_map_chart",
-                                data_for_tree_map_chart,
-        prefix = "data_for_general_trait_chart"
-      )
+    mod_download_table_server("download_table_tree_map_chart",
+      data_for_tree_map_chart,
+      prefix = "data_for_general_trait_chart"
+    )
 
 
 
     output$chart_traits <- echarts4r::renderEcharts4r({
-
       data_for_tree_map_chart() |>
         treemap_echart(
           title_lab = "Number of papers where each trait appeared in the review"
