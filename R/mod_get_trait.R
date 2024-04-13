@@ -156,12 +156,12 @@ mod_get_trait_server <- function(id, prepared_gt_otn) {
 
 
         filter_class <-
-          prepare_input_to_filter_null(input_filter = input$class,
+          prepare_input_to_filter_null(input_filter = input$class_name,
                                        col_name = "class",
                                        dataset = gt_filter_cols)
 
         filter_order <-
-          prepare_input_to_filter_null(input_filter = input$order,
+          prepare_input_to_filter_null(input_filter = input$order_name,
                                        col_name = "order",
                                        dataset = gt_filter_cols)
 
@@ -170,6 +170,7 @@ mod_get_trait_server <- function(id, prepared_gt_otn) {
         } else if(input$dataset_name == "AnimalTraits"){
           dados <- prepared_gt_animal_traits
         }
+
 
         dados |>
           dplyr::filter(
