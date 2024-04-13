@@ -126,39 +126,7 @@ mod_review_data_exploration_server <- function(id) {
         echarts4r::e_add_nested("itemStyle", color)
     })
 
-    # Tree map chart ----------------------------------------------
-    output$chart_traits <- echarts4r::renderEcharts4r({
-      data_tidy <- review_dataset() |>
-        tidyr::separate_longer_delim(cols = "trait_details", delim = ";") |>
-        dplyr::mutate(
-          trait_details = stringr::str_to_lower(trait_details),
-          trait_details = stringr::str_squish(trait_details)
-        ) |>
-        dplyr::left_join(trait_information,
-          by = "trait_details",
-          relationship = "many-to-many"
-        ) |>
-        dplyr::select(-trait_dimension) |>
-        dplyr::rename(
-          trait_type = trait_type.x,
-          trait_dimension = trait_type.y
-        )
-
-      data_for_tree_map <- data_tidy |>
-        prepare_data_for_treemap_echart(x_var = "general_trait", color = "trait_dimension") |>
-        dplyr::filter(name != "Other")
-
-      mod_download_table_server("download_table_4", data_for_tree_map,
-        prefix = "data_for_general_trait_chart"
-      )
-
-
-      data_for_tree_map |>
-        treemap_echart(
-          title_lab = "Number of papers where each trait appeared in the review"
-        )
-    })
-
+        # Map ----------------------------------------------
     output$map <- leaflet::renderLeaflet({
       review_map_data |>
         dplyr::mutate(
@@ -208,7 +176,44 @@ mod_review_data_exploration_server <- function(id) {
         )
     })
 
-     mod_download_table_server("download_table_5", review_dataset)
+    # Tree map chart ----------------------------------------------
+    output$chart_traits <- echarts4r::renderEcharts4r({
+      data_tidy <- review_dataset() |>
+        tidyr::separate_longer_delim(cols = "trait_details", delim = ";") |>
+        dplyr::mutate(
+          trait_details = stringr::str_to_lower(trait_details),
+          trait_details = stringr::str_squish(trait_details)
+        ) |>
+        dplyr::left_join(trait_information,
+          by = "trait_details",
+          relationship = "many-to-many"
+        ) |>
+        dplyr::select(-trait_dimension) |>
+        dplyr::rename(
+          trait_type = trait_type.x,
+          trait_dimension = trait_type.y
+        )
+
+      data_for_tree_map <- data_tidy |>
+        prepare_data_for_treemap_echart(x_var = "general_trait", color = "trait_dimension") |>
+        dplyr::filter(name != "Other")
+
+
+      mod_download_table_server("download_table_4", data_for_tree_map_fun,
+        prefix = "data_for_general_trait_chart"
+      )
+
+
+      data_for_tree_map |>
+        treemap_echart(
+          title_lab = "Number of papers where each trait appeared in the review"
+        )
+    })
+
+
+    # Table - Reactable ----------------------------------------------
+
+    mod_download_table_server("download_table_5", review_dataset)
 
     output$table <- reactable::renderReactable({
       prepared_data <- review_dataset() |>
