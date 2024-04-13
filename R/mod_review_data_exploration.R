@@ -28,14 +28,14 @@ mod_review_data_exploration_ui <- function(id) {
         collapsible = TRUE,
         width = 6,
         echarts4r::echarts4rOutput(ns("chart_taxonomic_groups")) |> waiting(),
-        mod_download_table_ui(ns("download_table_2"))
+        mod_download_table_ui(ns("download_table_chart_taxonomic_groups"))
       ),
       bs4Dash::box(
         title = "Trait dimensions",
         collapsible = TRUE,
         width = 6,
         echarts4r::echarts4rOutput(ns("chart_trait_dimension")) |> waiting(),
-        mod_download_table_ui(ns("download_table_3"))
+        mod_download_table_ui(ns("download_table_chart_trait_dimension"))
       )
     ),
     fluidRow(
@@ -53,7 +53,7 @@ mod_review_data_exploration_ui <- function(id) {
         collapsible = TRUE,
         width = 12,
         echarts4r::echarts4rOutput(ns("chart_traits")) |> waiting(),
-        mod_download_table_ui(ns("download_table_4"))
+        mod_download_table_ui(ns("download_table_tree_map_chart"))
       )
     ),
     fluidRow(
@@ -61,7 +61,7 @@ mod_review_data_exploration_ui <- function(id) {
         title = "Dataset download",
         collapsible = TRUE,
         width = 12,
-        mod_download_table_ui(ns("download_table_5")),
+        mod_download_table_ui(ns("download_table_review")),
         reactable::reactableOutput(ns("table")) |> waiting()
       ),
     )
@@ -84,7 +84,7 @@ mod_review_data_exploration_server <- function(id) {
     })
 
 
-    mod_download_table_server("download_table_2",
+    mod_download_table_server("download_table_chart_taxonomic_groups",
                               data_for_taxonomic_group_chart,
                               prefix = "data_for_taxonomic_group_chart")
 
@@ -114,7 +114,7 @@ mod_review_data_exploration_server <- function(id) {
         prepare_data_for_bar_echart(x_var = "trait_dimension")
     })
 
-    mod_download_table_server("download_table_3",
+    mod_download_table_server("download_table_chart_trait_dimension",
                               data_for_trait_dimensions_chart,
                               prefix = "data_for_trait_dimension_chart")
 
@@ -204,7 +204,8 @@ mod_review_data_exploration_server <- function(id) {
     })
 
 
-      mod_download_table_server("download_table_4", data_for_tree_map_chart,
+      mod_download_table_server("download_table_tree_map_chart",
+                                data_for_tree_map_chart,
         prefix = "data_for_general_trait_chart"
       )
 
@@ -221,7 +222,7 @@ mod_review_data_exploration_server <- function(id) {
 
     # Table - Reactable ----------------------------------------------
 
-    mod_download_table_server("download_table_5", review_dataset)
+    mod_download_table_server("download_table_review", review_dataset)
 
     output$table <- reactable::renderReactable({
       prepared_data <- review_dataset() |>
