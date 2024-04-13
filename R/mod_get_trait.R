@@ -31,8 +31,10 @@ mod_get_trait_ui <- function(id) {
           picker_input(
             inputId = ns("dataset_name"),
             label = "Dataset",
-            choices = list("AnimalTraits" =  "AnimalTraits",
-                        "Open Traits Network (OTN)" = "otn"),
+            choices = list(
+              "AnimalTraits" = "AnimalTraits",
+              "Open Traits Network (OTN)" = "otn"
+            ),
             selected = list("AnimalTraits" = "AnimalTraits"),
             multiple = FALSE,
             search = TRUE,
@@ -156,18 +158,22 @@ mod_get_trait_server <- function(id, prepared_gt_otn) {
 
 
         filter_class <-
-          prepare_input_to_filter_null(input_filter = input$class_name,
-                                       col_name = "class",
-                                       dataset = gt_filter_cols)
+          prepare_input_to_filter_null(
+            input_filter = input$class_name,
+            col_name = "class",
+            dataset = gt_filter_cols
+          )
 
         filter_order <-
-          prepare_input_to_filter_null(input_filter = input$order_name,
-                                       col_name = "order",
-                                       dataset = gt_filter_cols)
+          prepare_input_to_filter_null(
+            input_filter = input$order_name,
+            col_name = "order",
+            dataset = gt_filter_cols
+          )
 
-        if(input$dataset_name == "otn"){
+        if (input$dataset_name == "otn") {
           dados <- prepared_gt_otn
-        } else if(input$dataset_name == "AnimalTraits"){
+        } else if (input$dataset_name == "AnimalTraits") {
           dados <- prepared_gt_animal_traits
         }
 
@@ -182,8 +188,9 @@ mod_get_trait_server <- function(id, prepared_gt_otn) {
     })
 
     mod_download_table_server("download_table_1",
-                              dataset_filtered,
-                              prefix = "Zootraits_GetTrait_")
+      dataset_filtered,
+      prefix = "Zootraits_GetTrait_"
+    )
 
     output$table <- reactable::renderReactable({
       prepared_data <- dataset_filtered() |>
@@ -201,7 +208,8 @@ mod_get_trait_server <- function(id, prepared_gt_otn) {
           dataset_url_short = dplyr::case_when(
             dataset == "AnimalTraits" ~ "Animal Traits",
             TRUE ~ stringr::str_remove(dataset_url, "https://opentraits.org/datasets/") |>
-            stringr::str_to_upper()),
+              stringr::str_to_upper()
+          ),
           dataset = glue::glue("<a href='{dataset_url}' target='_blank'>{dataset_url_short}</a>"),
           url_html = glue::glue("<a href='{external_url}' target='_blank'><button type='button' class='btn btn-link'>Click here</button></a>"),
           species = tidyr::replace_na(species, ""),
