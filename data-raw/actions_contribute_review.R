@@ -7,13 +7,17 @@ usethis::ui_info("Checking the environmental variable --------------------------
 
 env_var <- Sys.getenv("TOKEN_GOOGLESHEETS_ZOOTRAITS")
 
-if (is.null(env_var)) {
+env_var |>
+  stringr::str_trunc(width = 100) |>
+  print()
+
+if (env_var == "") {
   stop("Please set the environment variable TOKEN_GOOGLESHEETS_ZOOTRAITS with the credentials to access the Google Sheet.")
 }
 
 usethis::ui_info("Authenticating on Google Sheets -------------------------------------")
 # googlesheets4::gs4_auth(path = "inst/token.json")
-googlesheets4::gs4_auth(path = Sys.getenv("TOKEN_GOOGLESHEETS_ZOOTRAITS"))
+googlesheets4::gs4_auth(path = env_var)
 
 usethis::ui_info("Importing data from Google Sheets ----------------------------------------")
 url_sheet <- "https://docs.google.com/spreadsheets/d/1nStfAOwUvUuVC4Xo3ArI8i1Be9TxGNdmntfn87OGSy4/edit#gid=1464062411"
