@@ -25,6 +25,9 @@ jobs:
             any::devtools
             any::usethis
 
+      - name: Write service account key to file
+        run: echo "${{ secrets.TOKEN_GOOGLESHEETS_ZOOTRAITS }}" > inst/token.json
+
       - name: Execute Script
         run: |
           Rscript "data-raw/actions_contribute_review.R"
