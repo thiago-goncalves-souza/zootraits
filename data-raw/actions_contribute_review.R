@@ -12,7 +12,7 @@ if (is.null(env_var)) {
 }
 
 usethis::ui_info("Authenticating on Google Sheets -------------------------------------")
-googlesheets4::gs4_auth("inst/token.json")
+googlesheets4::gs4_auth(path = "inst/token.json")
 
 usethis::ui_info("Importing data from Google Sheets ----------------------------------------")
 url_sheet <- "https://docs.google.com/spreadsheets/d/1nStfAOwUvUuVC4Xo3ArI8i1Be9TxGNdmntfn87OGSy4/edit#gid=1464062411"
