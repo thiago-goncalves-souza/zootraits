@@ -1,5 +1,5 @@
 ---
-title: "upload-data-feed-trait"
+title: "Upload data from FeedTrait"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{upload-data-feed-trait}
@@ -22,7 +22,11 @@ The app `zootraits` allows users to contribute to the review, uploading new pape
 knitr::include_graphics("images/feedtrait-panel.png")
 ```
 
-After uploading a new paper in the **FeedTrait** panel, the data is stored in a [Google Spreadsheet](https://docs.google.com/spreadsheets/d/1nStfAOwUvUuVC4Xo3ArI8i1Be9TxGNdmntfn87OGSy4/edit?usp=sharing). The authors of the app have access to this spreadsheet and can review the data. 
+In this tutorial, we will explain how to upload new papers into the database, and to upload the app.
+
+## Review the contributions
+
+After someone uploads a new paper in the **FeedTrait** panel, the data is stored in a [Google Spreadsheet](https://docs.google.com/spreadsheets/d/1nStfAOwUvUuVC4Xo3ArI8i1Be9TxGNdmntfn87OGSy4/edit?usp=sharing). The authors of the app have access to this spreadsheet and can review the data. 
 
 The authors of the app should check regularly the spreadsheet, to check if the data is correct and complete. It is important to check if all the most relevant categories are filled.
 
@@ -34,5 +38,26 @@ If the data is correct, they can change the column `verified` to `TRUE`:
 knitr::include_graphics("images/google-spreadsheet.png")
 ```
 
+## Upload the data
+
+To upload the data, the authors of the app need to trigger an GitHub Workflow that will upload the data to the app. The workflow is called [`update-feedtrait.yaml`](https://github.com/thiago-goncalves-souza/zootraits/actions/workflows/update-feedtrait.yaml). In the GitHub repository, go to the **Actions** tab, select the workflow `update-feedtrait.yaml` and click on the **Run workflow** button.
+
+```{r}
+#| echo: FALSE
+#| out.width: "100%"
+knitr::include_graphics("images/workflow-start.png")
+```
+
+Wait for the workflow to finish. You can check the progress of the workflow in the **Actions** tab. If everything goes well, you will see a message like this:
+
+[ADD IMAGE LATER]
+
+If the workflow fails, you can check the logs to see what went wrong. If you need help, you can contact the developer of the app (Beatriz).
+
+```{r}
+#| echo: FALSE
+#| out.width: "100%"
+knitr::include_graphics("images/workflow-error.png")
+```
 
 

@@ -3,10 +3,10 @@
 on:
   workflow_dispatch:
 
-name: update-dataset
+name: update-feedtrait
 
 jobs:
-  R-CMD-check:
+  update-feedtrait:
     runs-on: ubuntu-latest
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
