@@ -6,3 +6,4 @@
 dev/
 data-raw/get-traits/open-traits-network/traits.csv
 data-raw/zootraits-review/doi_check/temp*
+inst/doc
