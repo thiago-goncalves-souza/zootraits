@@ -2,6 +2,15 @@ usethis::ui_info("Loading packages ----------------------------------------")
 
 devtools::load_all()
 
+
+usethis::ui_info("Checking the environmental variable -------------------------------------")
+
+env_var <- Sys.getenv("TOKEN_GOOGLESHEETS_ZOOTRAITS")
+
+if (is.null(env_var)) {
+  stop("Please set the environment variable TOKEN_GOOGLESHEETS_ZOOTRAITS with the credentials to access the Google Sheet.")
+}
+
 usethis::ui_info("Authenticating on Google Sheets -------------------------------------")
 auth_google_sheets()
 
