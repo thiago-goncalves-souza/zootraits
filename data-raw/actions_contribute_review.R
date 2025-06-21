@@ -7,6 +7,9 @@ usethis::ui_info("Checking the environmental variable --------------------------
 
 env_var <- Sys.getenv("TOKEN_GOOGLESHEETS_ZOOTRAITS")
 
+# IMPORTANT: Execute only in the cloud, not locally.
+writeLines(env_var, "inst/token.json")
+
 if (is.null(env_var)) {
   stop("Please set the environment variable TOKEN_GOOGLESHEETS_ZOOTRAITS with the credentials to access the Google Sheet.")
 }
