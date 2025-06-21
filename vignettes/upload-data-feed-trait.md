@@ -1,26 +1,8 @@
----
-title: "Upload data from FeedTrait"
-output: rmarkdown::html_vignette
-vignette: >
-  %\VignetteIndexEntry{upload-data-feed-trait}
-  %\VignetteEngine{knitr::rmarkdown}
-  %\VignetteEncoding{UTF-8}
----
-
-```{r, include = FALSE}
-knitr::opts_chunk$set(
-  collapse = TRUE,
-  comment = "#>"
-)
-```
+# Upload data from FeedTrait
 
 The app `zootraits` allows users to contribute to the review, uploading new papers into the database, in the **FeedTrait** panel:
 
-```{r}
-#| echo: FALSE
-#| out.width: "100%"
-knitr::include_graphics("images/feedtrait-panel.png")
-```
+![](images/feedtrait-panel.png)
 
 In this tutorial, we will explain how to upload new papers into the database, and to upload the app.
 
@@ -32,33 +14,23 @@ The authors of the app should check regularly the spreadsheet, to check if the d
 
 If the data is correct, they can change the column `verified` to `TRUE`:
 
-```{r}
-#| echo: FALSE
-#| out.width: "100%"
-knitr::include_graphics("images/google-spreadsheet.png")
-```
+![](images/google-spreadsheet.png)
 
 ## Update the data
 
 To update the data, the authors of the app need to trigger an GitHub Workflow that will update the data used in the app. The workflow is called [`update-feedtrait.yaml`](https://github.com/thiago-goncalves-souza/zootraits/actions/workflows/update-feedtrait.yaml). In the GitHub repository, go to the **Actions** tab, select the workflow `update-feedtrait.yaml` and click on the **Run workflow** button.
 
-```{r}
-#| echo: FALSE
-#| out.width: "100%"
-knitr::include_graphics("images/workflow-start.png")
-```
+
+![](images/workflow-start.png)
 
 Wait for the workflow to finish. You can check the progress of the workflow in the **Actions** tab. If everything goes well, you will see a message like this:
 
-[ADD IMAGE LATER]
+![](images/workflow-check.png)
 
 If the workflow fails, you can check the logs to see what went wrong. If you need help, you can contact the developer of the app (Beatriz).
 
-```{r}
-#| echo: FALSE
-#| out.width: "100%"
-knitr::include_graphics("images/workflow-error.png")
-```
+
+![](images/workflow-error.png)
 
 ## Update the app
 
