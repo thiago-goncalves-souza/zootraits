@@ -2,8 +2,7 @@ usethis::ui_info("Loading packages ----------------------------------------")
 
 devtools::load_all()
 
-
-usethis::ui_info("Checking the environmental variable -------------------------------------")
+usethis::ui_info("Checking the environment variable -------------------------------------")
 
 env_var <- Sys.getenv("TOKEN_GOOGLESHEETS_ZOOTRAITS")
 
@@ -56,10 +55,11 @@ contributed_papers <- papers_raw |>
     trait_details = paste0(trait_details, trait_details_other, collapse = "; "),
   ) |>
   dplyr::select(-trait_details_other) |>
-  tidyr::separate_longer_delim(trait_dimension, "; ") |>
+  tidyr::separate_longer_delim(trait_dimension, ";") |>
   dplyr::mutate(trait_type = dplyr::if_else(
     trait_type == "both" | trait_type == "both", "response and effect", trait_type
-  )) |>
+  ),
+  trait_dimension = stringr::str_squish(trait_dimension)) |>
   dplyr::mutate(
     dplyr::across(
       .cols = c(
