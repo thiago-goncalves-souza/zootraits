@@ -1,11 +1,19 @@
+usethis::ui_info("Loading packages ----------------------------------------")
+
 devtools::load_all()
+
+usethis::ui_info("Authenticating on Google Sheets -------------------------------------")
 auth_google_sheets()
+
+usethis::ui_info("Importing data from Google Sheets ----------------------------------------")
 url_sheet <- "https://docs.google.com/spreadsheets/d/1nStfAOwUvUuVC4Xo3ArI8i1Be9TxGNdmntfn87OGSy4/edit#gid=1464062411"
 
-
-
-# Papers ----
 papers_raw <- googlesheets4::read_sheet(url_sheet, sheet = "papers")
+
+contributors_raw <- googlesheets4::read_sheet(url_sheet, sheet = "contributors")
+
+
+usethis::ui_info("Preparing data for papers ----------------------------------------")
 
 review_data |>
   dplyr::glimpse()
@@ -54,8 +62,8 @@ contributed_papers <- papers_raw |>
   )
 
 
-# Contributors -----
-contributors_raw <- googlesheets4::read_sheet(url_sheet, sheet = "contributors")
+usethis::ui_info("Preparing data of Contributors ----------------------------------------")
+
 
 emails <- papers_raw |>
   dplyr::filter(verified == TRUE) |>
@@ -69,9 +77,10 @@ contributors_list <- contributors_raw |>
 usethis::use_data(contributors_list, overwrite = TRUE)
 
 
-# Unir as tabelas
+usethis::ui_info("Join tables - Review and Contributed Papers ----------------------------------------")
 complete_review_data <- review_data |>
   dplyr::mutate(code = as.character(code)) |>
   dplyr::bind_rows(contributed_papers)
 
+usethis::ui_info("Upload data in the app ----------------------------------------")
 usethis::use_data(complete_review_data, overwrite = TRUE)
