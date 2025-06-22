@@ -22,6 +22,16 @@ jobs:
           cache-version: 2
           extra-packages: |
             any::rsconnect
+            any::giscoR
+            any::viridis
+            any::cpp11
+            any::plogr
+            any::progress
+
+      - name: Install local version of Zootraits
+        run: |
+          devtools::install()
+        shell: Rscript {0}
 
       - name: Set up rsconnect account
         run: |
