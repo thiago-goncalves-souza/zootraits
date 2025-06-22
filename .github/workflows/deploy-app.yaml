@@ -35,7 +35,7 @@ jobs:
       - name: Install zootraits from GitHub
         run: |
           install.packages("remotes")
-          remotes::install_github("ecofunlab/zootraits")
+          remotes::install_github("thiago-goncalves-souza/zootraits")
         shell: Rscript {0}
 
 
