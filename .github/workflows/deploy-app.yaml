@@ -1,0 +1,42 @@
+name: Deploy Shiny App
+
+on:
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    env:
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: r-lib/actions/setup-r@v2
+        with:
+          use-public-rspm: true
+
+      - uses: r-lib/actions/setup-r-dependencies@v2
+        with:
+          cache-version: 2
+          extra-packages: |
+            any::rsconnect
+
+      - name: Set up rsconnect account
+        run: |
+          rsconnect::setAccountInfo(
+            name = "ecofun",
+            token = "${{ secrets.SHINYAPPS_TOKEN }}",
+            secret = "${{ secrets.SHINYAPPS_SECRET }}"
+          )
+        shell: Rscript {0}
+
+      - name: Deploy Shiny App
+        run: |
+          rsconnect::deployApp(
+            appDir = ".",
+            appName = "zootraits",
+            account = "ecofun"
+          )
+        shell: Rscript {0}
