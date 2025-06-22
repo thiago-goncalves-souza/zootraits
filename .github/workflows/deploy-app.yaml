@@ -52,6 +52,8 @@ jobs:
 
       - name: Deploy Shiny App
         run: |
+          options(rsconnect.packrat.enabled = FALSE)
+          options(repos = c(CRAN = "https://cloud.r-project.org"))
           rsconnect::deployApp(
             appDir = ".",
             appName = "zootraits",
