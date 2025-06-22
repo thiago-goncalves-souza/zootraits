@@ -16,7 +16,7 @@ jobs:
       - uses: r-lib/actions/setup-r@v2
         with:
           r-version: '4.3.2'
-          use-public-rspm: true
+          use-public-rspm: false
 
 
       - uses: r-lib/actions/setup-r-dependencies@v2
@@ -38,13 +38,6 @@ jobs:
         run: |
           install.packages("remotes")
           remotes::install_github("thiago-goncalves-souza/zootraits")
-        shell: Rscript {0}
-
-      - name: Generate manifest without renv
-        run: |
-          options(rsconnect.packrat.enabled = FALSE)
-          options(repos = c(CRAN = "https://cloud.r-project.org"))
-          rsconnect::writeManifest(appDir = ".")
         shell: Rscript {0}
 
       - name: Set up rsconnect account
