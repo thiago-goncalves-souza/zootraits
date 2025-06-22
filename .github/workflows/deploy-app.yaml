@@ -40,6 +40,12 @@ jobs:
           remotes::install_github("thiago-goncalves-souza/zootraits")
         shell: Rscript {0}
 
+      - name: Generate manifest without renv
+        run: |
+          options(rsconnect.packrat.enabled = FALSE)
+          options(repos = c(CRAN = "https://cloud.r-project.org"))
+          rsconnect::writeManifest(appDir = ".")
+        shell: Rscript {0}
 
       - name: Set up rsconnect account
         run: |
@@ -52,8 +58,6 @@ jobs:
 
       - name: Deploy Shiny App
         run: |
-          options(rsconnect.packrat.enabled = FALSE)
-          options(repos = c(CRAN = "https://cloud.r-project.org"))
           rsconnect::deployApp(
             appDir = ".",
             appName = "zootraits",
