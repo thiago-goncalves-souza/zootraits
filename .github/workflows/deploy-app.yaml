@@ -43,11 +43,13 @@ jobs:
       - name: Generate manifest without renv
         run: |
           options(rsconnect.packrat.enabled = FALSE)
-          repos <- getOption("repos")
-          repos["CRAN"] <- "https://cloud.r-project.org"
+          repos <- c("https://cloud.r-project.org")
+          names(repos) <- NULL
           options(repos = repos)
+          Sys.setenv(RSCONNECT_PACKRAT_REPOS = "https://cloud.r-project.org")
           rsconnect::writeManifest(appDir = ".")
         shell: Rscript {0}
+
 
       - name: Set up rsconnect account
         run: |
