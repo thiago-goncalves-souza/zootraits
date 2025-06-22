@@ -22,11 +22,22 @@ jobs:
           cache-version: 2
           extra-packages: |
             any::rsconnect
+            any::giscoR
+            any::viridis
+            any::cpp11
+            any::plogr
+            any::progress
+            any::geometries
+            any::jsonify
+            any::rapidjsonr
+            any::sfheaders
 
-      - name: Install local version of Zootraits
+      - name: Install zootraits from GitHub
         run: |
-          devtools::install()
+          install.packages("remotes")
+          remotes::install_github("ecofunlab/zootraits")
         shell: Rscript {0}
+
 
       - name: Set up rsconnect account
         run: |
@@ -42,7 +53,6 @@ jobs:
           rsconnect::deployApp(
             appDir = ".",
             appName = "zootraits",
-            account = "ecofun",
-            envManagement = "none"
+            account = "ecofun"
           )
         shell: Rscript {0}
