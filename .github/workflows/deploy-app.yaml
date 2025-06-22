@@ -40,6 +40,15 @@ jobs:
           remotes::install_github("thiago-goncalves-souza/zootraits")
         shell: Rscript {0}
 
+      - name: Generate manifest without renv
+        run: |
+          options(rsconnect.packrat.enabled = FALSE)
+          repos <- getOption("repos")
+          repos["CRAN"] <- "https://cloud.r-project.org"
+          options(repos = repos)
+          rsconnect::writeManifest(appDir = ".")
+        shell: Rscript {0}
+
       - name: Set up rsconnect account
         run: |
           rsconnect::setAccountInfo(
