@@ -24,30 +24,11 @@ jobs:
           cache-version: 2
           extra-packages: |
             any::rsconnect
-            any::giscoR
-            any::viridis
-            any::cpp11
-            any::plogr
-            any::progress
-            any::geometries
-            any::jsonify
-            any::rapidjsonr
-            any::sfheaders
+            any::remotes
 
       - name: Install zootraits from GitHub
         run: |
-          install.packages("remotes")
           remotes::install_github("thiago-goncalves-souza/zootraits")
-        shell: Rscript {0}
-
-      - name: Generate manifest without renv
-        run: |
-          options(rsconnect.packrat.enabled = FALSE)
-          repos <- c("https://cloud.r-project.org")
-          names(repos) <- NULL
-          options(repos = repos)
-          Sys.setenv(RSCONNECT_PACKRAT_REPOS = "https://cloud.r-project.org")
-          rsconnect::writeManifest(appDir = ".")
         shell: Rscript {0}
 
 
