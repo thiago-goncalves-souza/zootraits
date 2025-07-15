@@ -31,6 +31,8 @@ jobs:
         run: |
           remotes::install_github("thiago-goncalves-souza/zootraits")
           install.packages("rsconnect", repos = "https://cran.rstudio.com")
+          Sys.setenv(TOKEN_GOOGLESHEETS_ZOOTRAITS = "${{ secrets.TOKEN_GOOGLESHEETS_ZOOTRAITS }}")
+
         shell: Rscript {0}
 
       - name: Write service account key to file
