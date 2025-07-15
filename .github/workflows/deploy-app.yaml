@@ -27,9 +27,10 @@ jobs:
             any::rsconnect
             any::remotes
 
-      - name: Install zootraits from GitHub
+      - name: Install zootraits and rsconnect
         run: |
           remotes::install_github("thiago-goncalves-souza/zootraits")
+          install.packages("rsconnect", repos = "https://cran.rstudio.com")
         shell: Rscript {0}
 
       - name: Write service account key to file
