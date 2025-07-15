@@ -9,6 +9,7 @@ jobs:
 
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+      TOKEN_GOOGLESHEETS_ZOOTRAITS: ${{ secrets.TOKEN_GOOGLESHEETS_ZOOTRAITS }}
 
     steps:
       - uses: actions/checkout@v3
@@ -31,6 +32,8 @@ jobs:
           remotes::install_github("thiago-goncalves-souza/zootraits")
         shell: Rscript {0}
 
+      - name: Write service account key to file
+        run: echo "${{ secrets.TOKEN_GOOGLESHEETS_ZOOTRAITS }}" > inst/token.json
 
       - name: Set up rsconnect account
         run: |
