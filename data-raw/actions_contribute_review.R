@@ -4,7 +4,7 @@ devtools::load_all()
 
 usethis::ui_info("Checking the environment variable -------------------------------------")
 
-env_var <- Sys.getenv("TOKEN_GOOGLESHEETS_ZOOTRAITS")
+env_var <- Sys.getenv("TOKEN_GOOGLESHEETS_ZOOTRAITS_GITHUB")
 
 env_var |>
   stringr::str_trunc(width = 100) |>
