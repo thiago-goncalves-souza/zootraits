@@ -30,6 +30,13 @@ jobs:
           writeLines(Sys.getenv("TOKEN_GOOGLESHEETS_ZOOTRAITS_GITHUB"), "inst/token.json")
         shell: Rscript {0}
 
+      - name: Check token.json
+        run: |
+          print("inst/token.json exists?")
+          file.exists("inst/token.json")
+          readLines("inst/token.json")[1:4]
+        shell: Rscript {0}
+
       - name: Execute Script
         run: |
           Rscript "data-raw/actions_contribute_review.R"
