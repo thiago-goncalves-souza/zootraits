@@ -34,7 +34,9 @@ jobs:
         shell: Rscript {0}
 
       - name: Write service account key to file
-        run: echo "${{ secrets.TOKEN_GOOGLESHEETS_ZOOTRAITS }}" > inst/token.json
+        run: |
+          writeLines(Sys.getenv("TOKEN_GOOGLESHEETS_ZOOTRAITS"), "inst/token.json")
+        shell: Rscript {0}
 
       - name: Check token.json
         run: |
