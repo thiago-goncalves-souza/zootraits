@@ -9,7 +9,7 @@ jobs:
 
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
-      TOKEN_GOOGLESHEETS_ZOOTRAITS: ${{ secrets.TOKEN_GOOGLESHEETS_ZOOTRAITS }}
+      TOKEN_GOOGLESHEETS_ZOOTRAITS_GITHUB: ${{ secrets.TOKEN_GOOGLESHEETS_ZOOTRAITS }}
 
     steps:
       - uses: actions/checkout@v3
@@ -35,7 +35,7 @@ jobs:
 
       - name: Write service account key to file
         run: |
-          writeLines(Sys.getenv("TOKEN_GOOGLESHEETS_ZOOTRAITS"), "inst/token.json")
+          writeLines(Sys.getenv("TOKEN_GOOGLESHEETS_ZOOTRAITS_GITHUB"), "inst/token.json")
         shell: Rscript {0}
 
       - name: Check token.json
